@@ -1,0 +1,26 @@
+[
+  {
+    "name": "netsuite",
+    "path": "/Files/history",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/netsuite",
+        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
+      }
+    }
+  },
+  {
+    "name": "itv",
+    "path": "/Files/history",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/itv",
+        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
+      }
+    }
+  }
+]
