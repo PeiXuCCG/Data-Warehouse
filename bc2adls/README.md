@@ -19,6 +19,26 @@ https://businesscentral.dynamics.com/<tenantId>/<environment>?page=82560
 # What are the XMLs for?
 These are the data export configurations of the BC objects for each company.
 
+# How do I export data from BC using this tool
+* Navigate to the extension
+* Configure the Fabric Environment 
+    - Storage Type - Microsoft Fabric
+    - Tenant ID -  will be the same as Business Central
+    - Microsoft Fabric
+      - Given the url - https://app.fabric.microsoft.com/groups/<workspaceGUID>/lakehouses/<lakehouseGUID>
+        - Workspace - GUID 
+        - Lakehouse - GUID 
+    - App registration
+        - This is a service principal that needs to be registered by CCG.
+        - Both of these should be stored in KeyVault
+            - Client ID (ApplicationID)
+            - Client Secret
+
+* Configure and execute the data extract
+    - Import the xml file
+    - Schema Export
+    - Start Export
+
 # What if there is a new company created and I want to import data.
 Use the template xml file and import it in the BC2ADLS extension, make your changes and the export it again and save in this project.
 
