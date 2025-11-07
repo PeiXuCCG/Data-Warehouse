@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "S2R_Netsuite"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "0875547f-b2fd-ae19-4588-d7588b9ec158"
+  }
+}

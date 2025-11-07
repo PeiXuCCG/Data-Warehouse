@@ -16,9 +16,6 @@ https://github.com/Bertverbeek4PS/bc2adls/blob/main/README.md
 # How do I access this BC2ADLS extension?
 https://businesscentral.dynamics.com/<tenantId>/<environment>?page=82560
 
-# What are the XMLs for?
-These are the data export configurations of the BC objects for each company.
-
 # How do I export data from BC using this tool
 * Navigate to the extension
 * Configure the Fabric Environment 
@@ -44,6 +41,10 @@ These are the data export configurations of the BC objects for each company.
     - Import the xml file
     - Schema Export
     - Start Export
+
+
+# What are the XMLs for?
+These are the data export configurations of the BC objects for each company.
 
 # What if there is a new company created and I want to import data.
 Use the template xml file and import it in the BC2ADLS extension, make your changes and the export it again and save in this project.

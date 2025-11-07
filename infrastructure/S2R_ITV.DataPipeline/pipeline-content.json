@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "target_schema": {
+              "value": "ccg_bronze",
+              "type": "string"
+            },
+            "target_db": {
+              "value": "raw",
+              "type": "string"
+            },
+            "source_system": {
+              "value": "ITV",
+              "type": "string"
+            },
+            "source_entity": {
+              "value": "FisherLane",
+              "type": "string"
+            },
+            "source_path": {
+              "value": "Files/source/itv/customer",
+              "type": "string"
+            },
+            "is_multi_line": {
+              "value": "True",
+              "type": "bool"
+            },
+            "pipeline_name": {
+              "value": "S2R_ITV_Customer",
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "S2R_ITV_Customer",
+        "dependsOn": []
+      }
+    ]
+  }
+}
