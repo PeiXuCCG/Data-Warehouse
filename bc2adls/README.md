@@ -21,3 +21,12 @@ These are the data export configurations of the BC objects for each company.
 
 # What if there is a new company created and I want to import data.
 Use the template xml file and import it in the BC2ADLS extension, make your changes and the export it again and save in this project.
+
+# How do we configure each company export
+This can be achieved in multiple ways.
+
+* Forked version of BC2ADLS
+* JobQueues
+* PowerAutomate
+
+This is still TBC.
