@@ -33,6 +33,12 @@ These are the data export configurations of the BC objects for each company.
         - Both of these should be stored in KeyVault
             - Client ID (ApplicationID)
             - Client Secret
+    - Other settings
+        - Delete Table - Yes
+        - Add delivered DateTime - Yes
+        - Emit Telemetry - Yes
+        - Skip row versioning - Yes
+        - Export Company Database Tables - <company>
 
 * Configure and execute the data extract
     - Import the xml file
