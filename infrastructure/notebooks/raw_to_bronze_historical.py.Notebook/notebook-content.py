@@ -25,14 +25,25 @@ from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_br
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# CELL ********************
+# PARAMETERS CELL ********************
 
 # %%
 # These are the input variables for each bronze table
+target_schema = "lh_bronze_dev"
+target_db = "bronze"
+target_table = "historical_customer"
+
+# source tables
+source_schema = "raw"
 source_table = "netsuite_customer"
 source_system = "Netsuite"
-source_db = "raw"
-target_table = "historical_customer"
+
+# source keys 
+source_primary_keys = ["customerid"]
+source_foreign_keys = ["location"] # fill these in if there are any
+business_keys = ["location"] # this is used for partition the table in the lakehouse, helpful for querying
+
+# fields to build primary key on
 deduplicate_fields = ["customer_name", "phone", "address"] # please change this for each entity
 
 # METADATA ********************
@@ -82,7 +93,7 @@ def deduplicate(df):
 # CELL ********************
 
 # %%
-df = spark.read.table(f"{raw}.{source_table}")
+df = spark.read.table(f"{source_schema}.{source_table}")
 
 # METADATA ********************
 
@@ -95,7 +106,7 @@ df = spark.read.table(f"{raw}.{source_table}")
 
 # %%
 # 4. Create the curated keyed table
-bronze_table =  table = KeyedTable(
+bronze_table  = KeyedTable(
             target_db=target_db,
             target_schema=target_schema,
             name=target_table,
@@ -105,8 +116,8 @@ bronze_table =  table = KeyedTable(
             business_keys=business_keys,
             source_primary_keys=source_primary_keys,
             source_foreign_keys=source_foreign_keys,
-            transform=transform, # YOU CAN CHANGE THIS TO NONE if there is not deduplication function
-            deduplicate=deduplicate # YOU CAN CHANGE THIS TO NONE if there is not deduplication function
+            transform=transform, # This is used for converting the schema from Historical to BC schema using schemabridge4BC
+            deduplicate=deduplicate # this creates the primary key for the table
 )
 
 # METADATA ********************
