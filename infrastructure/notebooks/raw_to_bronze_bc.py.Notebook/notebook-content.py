@@ -42,6 +42,7 @@ deduplicate_fields = ["customer_name", "phone", "address"] # please change this 
 
 def transform(df):
     # NOT USED IN BC implementation
+    pass
 
 # METADATA ********************
 
@@ -54,11 +55,17 @@ def transform(df):
 
 # %%
 def deduplicate(df):
-
-    df = df.withColumn(
-        {target_table}_hk,
-        sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
-    )
+    # This doesn't change the referential integrity of the data.
+    # We are assigning a primary key to all the records that match based on the selected fields.
+    # Essentially, for records that have identical values in these fields, we generate the same primary key.
+    # This is useful for deduplication, grouping, or creating a consistent identifier without modifying
+    # the relationships between tables or violating foreign key constraints.
+    df = (
+            df.withColumn(
+                    f"{target_table}_hk",
+                    sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
+            )
+    ) 
 
     return df
 

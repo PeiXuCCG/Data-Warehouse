@@ -15,6 +15,8 @@ from pyspark.sql import SparkSession
 from loom.tables.keyed_table import KeyedTable
 from loom.pipelines import Pipeline
 from pyspark.sql.functions import col, sha2
+from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_bridge
+
 
 # METADATA ********************
 
@@ -27,8 +29,10 @@ from pyspark.sql.functions import col, sha2
 
 # %%
 # These are the input variables for each bronze table
-source_table = "raw.customer"
-target_table = "customer"
+source_table = "netsuite_customer"
+source_system = "Netsuite"
+source_db = "raw"
+target_table = "historical_customer"
 deduplicate_fields = ["customer_name", "phone", "address"] # please change this for each entity
 
 # METADATA ********************
@@ -42,6 +46,8 @@ deduplicate_fields = ["customer_name", "phone", "address"] # please change this 
 
 def transform(df):
     # import mapping library here and convert to bc schema
+    df = transform_using_schema_bridge(source_system, target_table.split("_")[1], df)
+    return df
 
 # METADATA ********************
 
@@ -52,14 +58,18 @@ def transform(df):
 
 # CELL ********************
 
-# %%
 def deduplicate(df):
-
-    df = df.withColumn(
-        {target_table}_hk,
-        sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
-    )
-
+    # This doesn't change the referential integrity of the data.
+    # We are assigning a primary key to all the records that match based on the selected fields.
+    # Essentially, for records that have identical values in these fields, we generate the same primary key.
+    # This is useful for deduplication, grouping, or creating a consistent identifier without modifying
+    # the relationships between tables or violating foreign key constraints.
+    df = (
+            df.withColumn(
+                f"{target_table}_hk",
+                sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
+            )
+    )       
     return df
 
 # METADATA ********************
@@ -72,7 +82,7 @@ def deduplicate(df):
 # CELL ********************
 
 # %%
-df = spark.read.table(source_table)
+df = spark.read.table(f"{raw}.{source_table}")
 
 # METADATA ********************
 
