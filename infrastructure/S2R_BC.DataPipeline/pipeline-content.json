@@ -2,50 +2,94 @@
   "properties": {
     "activities": [
       {
-        "type": "TridentNotebook",
+        "type": "ForEach",
         "typeProperties": {
-          "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
-          "workspaceId": "00000000-0000-0000-0000-000000000000",
-          "parameters": {
-            "target_schema": {
-              "value": "ccg_bronze",
-              "type": "string"
-            },
-            "target_db": {
-              "value": "raw",
-              "type": "string"
-            },
-            "source_system": {
-              "value": "BC",
-              "type": "string"
-            },
-            "source_entity": {
-              "value": null,
-              "type": "string"
-            },
-            "source_path": {
-              "value": "Files/deltas/Customer-18",
-              "type": "string"
-            },
-            "is_multi_line": {
-              "value": "True",
-              "type": "bool"
-            },
-            "pipeline_name": {
-              "value": "S2R_BC_Customer",
-              "type": "string"
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@item().target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@item().target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": {
+                      "value": "@item().source_system",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@item().source_path",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": {
+                      "value": "@item().is_multi_line",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@item().pipeline_name",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_BC_Entity",
+              "dependsOn": []
             }
-          }
+          ]
         },
-        "policy": {
-          "retry": 0,
-          "retryIntervalInSeconds": 30,
-          "secureInput": false,
-          "secureOutput": false
-        },
-        "name": "S2R_BC_Customer",
+        "name": "S2R_BC",
         "dependsOn": []
       }
-    ]
+    ],
+    "parameters": {
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_schema": "lk_bronze_dev",
+            "target_db": "raw",
+            "source_system": "BC",
+            "source_entity": null,
+            "source_path": "Files/deltas/Customer-18",
+            "is_multi_line": "True",
+            "pipeline_name": "S2R_BC_Customer"
+          }
+        ]
+      }
+    }
   }
 }

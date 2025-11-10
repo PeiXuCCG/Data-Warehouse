@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Lakehouse",
-    "displayName": "lh_bronze_dev"
+    "type": "Notebook",
+    "displayName": "R2B_BC",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "ddef9667-68be-8bf8-401b-7cf2059ddf57"
+    "logicalId": "11363096-0db8-9724-4979-fb4b00909b73"
   }
 }
