@@ -17,21 +17,21 @@
                 "parameters": {
                   "target_schema": {
                     "value": {
-                      "value": "@item().target_schema",
+                      "value": "@pipeline().parameters.target_schema",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_db": {
                     "value": {
-                      "value": "@item().target_db",
+                      "value": "@pipeline().parameters.target_db",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "source_system": {
                     "value": {
-                      "value": "@item().source_system",
+                      "value": "BC",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -45,14 +45,21 @@
                   },
                   "is_multi_line": {
                     "value": {
-                      "value": "@item().is_multi_line",
+                      "value": "True",
                       "type": "Expression"
                     },
                     "type": "bool"
                   },
                   "pipeline_name": {
                     "value": {
-                      "value": "@item().pipeline_name",
+                      "value": "@concat('S2R_',item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -80,15 +87,18 @@
         "type": "array",
         "defaultValue": [
           {
-            "target_schema": "lk_bronze_dev",
-            "target_db": "raw",
-            "source_system": "BC",
-            "source_entity": null,
-            "source_path": "Files/deltas/Customer-18",
-            "is_multi_line": "True",
-            "pipeline_name": "S2R_BC_Customer"
+            "target_table": "customer",
+            "source_path": "Files/deltas/Customer-18"
           }
         ]
+      },
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lk_bronze_dev"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
       }
     }
   }
