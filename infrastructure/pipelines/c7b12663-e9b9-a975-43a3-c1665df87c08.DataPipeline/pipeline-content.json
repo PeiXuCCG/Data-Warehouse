@@ -37,7 +37,7 @@
                     "type": "string"
                   },
                   "source_system": {
-                    "value": "Netsuite",
+                    "value": "ITV",
                     "type": "string"
                   },
                   "target_table": {
@@ -97,8 +97,8 @@
         "defaultValue": [
           {
             "target_table": "customer",
-            "source_path": "Files/history/netsuite/vital_living/customer",
-            "source_entity": "vital_living"
+            "source_path": "Files/history/itv/fisherlane/customer",
+            "source_entity": "fisherlane"
           }
         ]
       }
