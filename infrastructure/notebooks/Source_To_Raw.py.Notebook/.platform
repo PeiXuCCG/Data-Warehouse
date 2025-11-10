@@ -3,7 +3,7 @@
   "metadata": {
     "type": "Notebook",
     "displayName": "source_to_raw.py",
-    "description": "New notebook"
+    "description": "Source to Raw ingestion for all sources"
   },
   "config": {
     "version": "2.0",
