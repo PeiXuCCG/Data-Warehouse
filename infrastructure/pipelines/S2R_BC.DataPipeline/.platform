@@ -1,12 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Notebook",
-    "displayName": "R2B_BC",
-    "description": "New notebook"
+    "type": "DataPipeline",
+    "displayName": "pl_s2r_bc",
+    "description": "Pipeline to execute Source To Raw for BC"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "11363096-0db8-9724-4979-fb4b00909b73"
+    "logicalId": "0b74c95f-25b6-b7e6-4f21-487696a11eb4"
   }
 }

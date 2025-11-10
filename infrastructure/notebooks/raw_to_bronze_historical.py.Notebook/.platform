@@ -1,11 +1,12 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "DataPipeline",
-    "displayName": "S2R_BC"
+    "type": "Notebook",
+    "displayName": "raw_to_bronze_historical.py",
+    "description": "New notebook"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "0b74c95f-25b6-b7e6-4f21-487696a11eb4"
+    "logicalId": "91dad485-d600-8560-4fea-29a406f901ff"
   }
 }

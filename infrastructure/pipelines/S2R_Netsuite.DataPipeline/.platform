@@ -1,12 +1,11 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
   "metadata": {
-    "type": "Environment",
-    "displayName": "Spark",
-    "description": "Spark instance environment"
+    "type": "DataPipeline",
+    "displayName": "pl_s2r_netsuite"
   },
   "config": {
     "version": "2.0",
-    "logicalId": "19ef04e9-33e6-8865-4282-9c499f72e816"
+    "logicalId": "0875547f-b2fd-ae19-4588-d7588b9ec158"
   }
 }
