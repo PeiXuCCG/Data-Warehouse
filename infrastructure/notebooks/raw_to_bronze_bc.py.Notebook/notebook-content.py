@@ -14,7 +14,8 @@
 from pyspark.sql import SparkSession
 from loom.tables.keyed_table import KeyedTable
 from loom.pipelines import Pipeline
-from pyspark.sql.functions import col, sha2
+from pyspark.sql.functions import col, sha2, window, current_timestamp, lag
+
 
 # METADATA ********************
 
@@ -72,12 +73,25 @@ def deduplicate(df):
     # Essentially, for records that have identical values in these fields, we generate the same primary key.
     # This is useful for deduplication, grouping, or creating a consistent identifier without modifying
     # the relationships between tables or violating foreign key constraints.
+    # But we do want to end date those duplicates
     df = (
             df.withColumn(
                     f"{target_table}_hk",
                     sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
             )
     ) 
+
+    # this is metadata that we need to override that was in the loom framework (default to 1900)
+    df = df.withColumn("effectivity_start_date", lit("1900-01-01 00:00:00").cast("timestamp"))
+
+    # Define window partitioned by hash key, ordered by lastdatemodified descending (this is a field in BC)
+    w = window.partitionBy(f"{target_table}_hk").orderBy(F.col("lastdatemodified").desc())
+
+    # Use lag to get the next record’s lastdatemodified (in descending order)
+    df = df.withColumn(
+        "effectivity_end_date",
+        lag("lastdatemodified").over(w).cast("timestamp")
+    )
 
     return df
 
