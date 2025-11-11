@@ -55,20 +55,6 @@ deduplicate_fields = ["customer_name", "phone", "address"] # please change this 
 
 # CELL ********************
 
-def transform(df):
-    # import mapping library here and convert to bc schema
-    df = transform_using_schema_bridge(source_system, target_table.split("_")[1], df)
-    return df
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 def deduplicate(df):
     # This doesn't change the referential integrity of the data.
     # We are assigning a primary key to all the records that match based on the selected fields.
@@ -96,6 +82,21 @@ def deduplicate(df):
     )
        
     return df
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def transform(df):
+    # import mapping library here and convert to bc schema
+    new_df = transform_using_schema_bridge(source_system, target_table.split("_")[1], df)
+    new_df = new_df.withColumn("source_file", df["source_file"])
+    return new_df
 
 # METADATA ********************
 
