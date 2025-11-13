@@ -8,18 +8,18 @@
 # META   },
 # META   "dependencies": {
 # META     "lakehouse": {
-# META       "default_lakehouse": "3f1f512f-42fd-421b-b609-0bf88b0310aa",
-# META       "default_lakehouse_name": "ccg_bronze",
-# META       "default_lakehouse_workspace_id": "58ec2dce-fe1c-4c33-bde7-923914528ace",
+# META       "default_lakehouse": "059ddf57-7cf2-401b-8bf8-68beddef9667",
+# META       "default_lakehouse_name": "lh_bronze",
+# META       "default_lakehouse_workspace_id": "0380b4e3-57d1-4574-abb4-3f7e7e8427d0",
 # META       "known_lakehouses": [
 # META         {
-# META           "id": "3f1f512f-42fd-421b-b609-0bf88b0310aa"
+# META           "id": "059ddf57-7cf2-401b-8bf8-68beddef9667"
 # META         }
 # META       ]
 # META     },
 # META     "environment": {
-# META       "environmentId": "1e90633d-7747-4031-8cd8-68323cec79cc",
-# META       "workspaceId": "58ec2dce-fe1c-4c33-bde7-923914528ace"
+# META       "environmentId": "19ef04e9-33e6-8865-4282-9c499f72e816",
+# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
