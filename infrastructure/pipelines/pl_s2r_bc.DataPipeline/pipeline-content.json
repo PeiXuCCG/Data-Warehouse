@@ -4,7 +4,8 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
+          "batchCount": 10,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -88,20 +89,208 @@
         "type": "array",
         "defaultValue": [
           {
-            "target_table": "BC_AccountingPeriod",
+            "target_table": "bc_accountingperiod",
             "source_path": "Files/deltas/AccountingPeriod-50"
+          },
+          {
+            "target_table": "bc_currency",
+            "source_path": "Files/deltas/Currency-4"
+          },
+          {
+            "target_table": "bc_custledgerentry",
+            "source_path": "Files/deltas/CustLedgerEntry-21"
+          },
+          {
+            "target_table": "bc_customer",
+            "source_path": "Files/deltas/Customer-18"
+          },
+          {
+            "target_table": "bc_customerpostinggroup",
+            "source_path": "Files/deltas/CustomerPostingGroup-92"
+          },
+          {
+            "target_table": "bc_customerpricegroup",
+            "source_path": "Files/deltas/CustomerPriceGroup-6"
+          },
+          {
+            "target_table": "bc_difotsalesline",
+            "source_path": "Files/deltas/DIFOTSalesLine-50010"
+          },
+          {
+            "target_table": "bc_depreciationbook",
+            "source_path": "Files/deltas/DepreciationBook-5611"
+          },
+          {
+            "target_table": "bc_employee",
+            "source_path": "Files/deltas/Employee-5200"
+          },
+          {
+            "target_table": "bc_faclass",
+            "source_path": "Files/deltas/FAClass-5607"
+          },
+          {
+            "target_table": "bc_fadepreciationbook",
+            "source_path": "Files/deltas/FADepreciationBook-5612"
+          },
+          {
+            "target_table": "bc_fajournalline",
+            "source_path": "Files/deltas/FAJournalLine-5621"
+          },
+          {
+            "target_table": "bc_faledgerentry",
+            "source_path": "Files/deltas/FALedgerEntry-5601"
+          },
+          {
+            "target_table": "bc_falocation",
+            "source_path": "Files/deltas/FALocation-5609"
+          },
+          {
+            "target_table": "bc_fapostinggroup",
+            "source_path": "Files/deltas/FAPostingGroup-5606"
+          },
+          {
+            "target_table": "bc_fapostingtype",
+            "source_path": "Files/deltas/FAPostingType-5644"
+          },
+          {
+            "target_table": "bc_fareclassjournalline",
+            "source_path": "Files/deltas/FAReclassJournalLine-5624"
+          },
+          {
+            "target_table": "bc_faregister",
+            "source_path": "Files/deltas/FARegister-5617"
+          },
+          {
+            "target_table": "bc_fasubclass",
+            "source_path": "Files/deltas/FASubclass-5608"
+          },
+          {
+            "target_table": "bc_fixedasset",
+            "source_path": "Files/deltas/FixedAsset-5600"
+          },
+          {
+            "target_table": "bc_glaccount",
+            "source_path": "Files/deltas/GLAccount-15"
+          },
+          {
+            "target_table": "bc_glentry",
+            "source_path": "Files/deltas/GLEntry-17"
+          },
+          {
+            "target_table": "bc_genbusinesspostinggroup",
+            "source_path": "Files/deltas/GenBusinessPostingGroup-250"
+          },
+          {
+            "target_table": "bc_genproductpostinggroup",
+            "source_path": "Files/deltas/GenProductPostingGroup-251"
+          },
+          {
+            "target_table": "bc_inventorypostinggroup",
+            "source_path": "Files/deltas/InventoryPostingGroup-94"
+          },
+          {
+            "target_table": "bc_item",
+            "source_path": "Files/deltas/Item-27"
+          },
+          {
+            "target_table": "bc_itemcategory",
+            "source_path": "Files/deltas/ItemCategory-5722"
+          },
+          {
+            "target_table": "bc_itemledgerentry",
+            "source_path": "Files/deltas/ItemLedgerEntry-32"
+          },
+          {
+            "target_table": "bc_location",
+            "source_path": "Files/deltas/Location-14"
+          },
+          {
+            "target_table": "bc_manufacturer",
+            "source_path": "Files/deltas/Manufacturer-5720"
+          },
+          {
+            "target_table": "bc_paymentterms",
+            "source_path": "Files/deltas/PaymentTerms-3"
+          },
+          {
+            "target_table": "bc_purchinvheader",
+            "source_path": "Files/deltas/PurchInvHeader-122"
+          },
+          {
+            "target_table": "bc_purchinvline",
+            "source_path": "Files/deltas/PurchInvLine-123"
+          },
+          {
+            "target_table": "bc_purchaseheader",
+            "source_path": "Files/deltas/PurchaseHeader-38"
+          },
+          {
+            "target_table": "bc_purchaseline",
+            "source_path": "Files/deltas/PurchaseLine-39"
+          },
+          {
+            "target_table": "bc_salesheader",
+            "source_path": "Files/deltas/SalesHeader-36"
+          },
+          {
+            "target_table": "bc_salesinvoiceheader",
+            "source_path": "Files/deltas/SalesInvoiceHeader-112"
+          },
+          {
+            "target_table": "bc_salesinvoiceline",
+            "source_path": "Files/deltas/SalesInvoiceLine-113"
+          },
+          {
+            "target_table": "bc_salesline",
+            "source_path": "Files/deltas/SalesLine-37"
+          },
+          {
+            "target_table": "bc_salespersonpurchaser",
+            "source_path": "Files/deltas/SalespersonPurchaser-13"
+          },
+          {
+            "target_table": "bc_unitofmeasure",
+            "source_path": "Files/deltas/UnitofMeasure-204"
+          },
+          {
+            "target_table": "bc_vatbusinesspostinggroup",
+            "source_path": "Files/deltas/VATBusinessPostingGroup-323"
+          },
+          {
+            "target_table": "bc_vatproductpostinggroup",
+            "source_path": "Files/deltas/VATProductPostingGroup-324"
+          },
+          {
+            "target_table": "bc_valueentry",
+            "source_path": "Files/deltas/ValueEntry-5802"
+          },
+          {
+            "target_table": "bc_vendor",
+            "source_path": "Files/deltas/Vendor-23"
+          },
+          {
+            "target_table": "bc_vendorledgerentry",
+            "source_path": "Files/deltas/VendorLedgerEntry-25"
+          },
+          {
+            "target_table": "bc_vendorpostinggroup",
+            "source_path": "Files/deltas/VendorPostingGroup-93"
+          },
+          {
+            "target_table": "bc_whtproductpostinggroup",
+            "source_path": "Files/deltas/WHTProductPostingGroup-28041"
           }
         ]
       },
       "target_schema": {
         "type": "string",
-        "defaultValue": "lk_bronze"
+        "defaultValue": "lh_bronze"
       },
       "target_db": {
         "type": "string",
         "defaultValue": "raw"
       }
     },
-    "concurrency": 1
+    "concurrency": 4
   }
 }

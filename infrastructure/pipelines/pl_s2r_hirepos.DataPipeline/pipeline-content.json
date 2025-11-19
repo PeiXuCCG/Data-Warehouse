@@ -1,0 +1,200 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Lakeside Mobility",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/lakeside_mobility/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Lakeside_Mobility_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Lakeside_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Lakeside_Mobility",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Homecare Equipment",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/homecare_equipment/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Homecare_Equipment_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Homecare_Equipment_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Homecare_Equipment",
+        "dependsOn": [
+          {
+            "activity": "S2R_Lakeside_Mobility",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "job_configuration": {
+        "type": "array"
+      }
+    }
+  }
+}

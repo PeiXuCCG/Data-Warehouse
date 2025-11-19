@@ -66,6 +66,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -149,6 +153,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -239,6 +247,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -329,6 +341,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -419,6 +435,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -509,6 +529,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },
@@ -599,6 +623,10 @@
                   "write_method": {
                     "value": "append",
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },

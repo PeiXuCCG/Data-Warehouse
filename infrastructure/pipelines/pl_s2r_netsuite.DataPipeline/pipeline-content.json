@@ -64,6 +64,10 @@
                       "type": "Expression"
                     },
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
                   }
                 }
               },

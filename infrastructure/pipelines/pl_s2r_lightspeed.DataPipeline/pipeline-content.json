@@ -1,0 +1,254 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": false,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Ansteys",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Lightspeed",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/lightspeed/ansteys/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Ansteys_Lightspeed_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Ansteys_Lightspeed_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Ansteys",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": false,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Open Mobility",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Lightspeed",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/lightspeed/open_mobility/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Open_Mobility_Lightspeed_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Open_Mobility_Lightspeed_Acitivity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Open_Mobility",
+        "dependsOn": [
+          {
+            "activity": "S2R_Ansteys",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_table": "lightspeed_brand",
+            "source_path": "brand"
+          },
+          {
+            "target_table": "lightspeed_customer",
+            "source_path": "customer"
+          },
+          {
+            "target_table": "lightspeed_facility",
+            "source_path": "facility"
+          },
+          {
+            "target_table": "lightspeed_item",
+            "source_path": "item"
+          },
+          {
+            "target_table": "lightspeed_location",
+            "source_path": "location"
+          },
+          {
+            "target_table": "lightspeed_prescriber",
+            "source_path": "prescriber"
+          },
+          {
+            "target_table": "lightspeed_salesheader",
+            "source_path": "salesheader"
+          },
+          {
+            "target_table": "lightspeed_salesinvoiceheader",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "lightspeed_salesinvoiceline",
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "lightspeed_salesline",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "lightspeed_vendor",
+            "source_path": "vendor"
+          },
+          {
+            "target_table": "lightspeed_custledgerentry",
+            "source_path": "custledgerentry"
+          },
+          {
+            "target_table": "lightspeed_itemledgerentry",
+            "source_path": "itemledgerentry"
+          }
+        ]
+      }
+    }
+  }
+}

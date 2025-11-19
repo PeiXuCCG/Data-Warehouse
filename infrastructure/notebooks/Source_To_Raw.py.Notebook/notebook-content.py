@@ -55,15 +55,16 @@ spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite","LEGACY")
 
 # PARAMETERS CELL ********************
 
-target_schema = "ccg_bronze" # lakehouse
+target_schema = "lh_bronze" # lakehouse
 target_db =  "raw"  # db schema
-source_system = "BC"# data source
-source_entity = "" # the company
-target_table = f"State"
-source_path = 'Files/deltas/County-28004'
+source_system = "Lightspeed"# data source
+source_entity = "Open Mobility" # the company
+target_table = f"lightspeed_item"
+source_path = 'Files/history/lightspeed/open_mobility/item'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
-write_method = "overwrite"
+write_method = "append"
+infer_schema = True
 
 # METADATA ********************
 
@@ -101,7 +102,7 @@ def cleanse(df):
     #remove spaces and special characters
     pattern = r"[^a-z0-9_]+" 
     remove_dashes_columns = [col_name.split("-")[0].lower() for col_name in df.columns]
-    new_columns = [re.sub(pattern, "", col_name) for col_name in remove_dashes_columns]
+    new_columns = [re.sub(pattern, "", col_name) for col_name in remove_dashes_columns if col_name != "predictionconfidence"]
     df_cleaned = df.toDF(*new_columns)
 
     # call cleanse engine here
@@ -174,7 +175,7 @@ else:
 
 # CELL ********************
 
-df = spark.read.option("header", True).option("inferSchema", True).option("multiLine", is_multi_line).csv(new_files)
+df = spark.read.option("header", True).option("inferSchema", infer_schema).option("multiLine", is_multi_line).option("quote", "\"").option("escape", "\"").csv(new_files)
 
 
 # METADATA ********************
@@ -206,6 +207,7 @@ customers_raw = PlainTable(
     source_system=source_system,
     target_path="NOT_SUPPORTED_YET", # this is technically not used due to fabric not supporting it but leave it here
     write_method=write_method,
+    schema_evolution=True,
     cleanse_function=cleanse
 )
 
@@ -241,16 +243,6 @@ for p in pipelines:
     p.summary()
     p.validate()
     p.execute()
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 
 # METADATA ********************
 
