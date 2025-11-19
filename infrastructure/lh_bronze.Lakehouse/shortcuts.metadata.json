@@ -1,5 +1,17 @@
 [
   {
+    "name": "xero",
+    "path": "/Files/history",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/xero",
+        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
+      }
+    }
+  },
+  {
     "name": "netsuite",
     "path": "/Files/history",
     "target": {

@@ -1,0 +1,724 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Ansteys",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/ansteys/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Ansteys_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Ansteys",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Lakeside Mobility",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/lakeside_mobility/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Lakeside_Mobility_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Lakeside_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Lakeside_Mobility",
+        "dependsOn": [
+          {
+            "activity": "S2R_Ansteys",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Open Mobility",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/open_mobility/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Open_Mobility_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Open_Mobility",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Open_Mobility_Activity",
+        "dependsOn": [
+          {
+            "activity": "S2R_Lakeside_Mobility",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Homecare Equipment",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/homecare_equipment/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Homecare_Equipment_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Homecare_Equipment_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Homecare_Equipment",
+        "dependsOn": [
+          {
+            "activity": "S2R_Open_Mobility_Activity",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Uccello Marketing AU",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/uccello_marketing_au/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Uccello_Marketing_AU_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Uccello_Marketing_AU",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Uccello_Marketing_AU_Activity",
+        "dependsOn": [
+          {
+            "activity": "S2R_Homecare_Equipment",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Uccello_Designs",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/uccello_designs/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Uccello_Designs_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Uccello_Designs",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Uccello_Designs_Activity",
+        "dependsOn": [
+          {
+            "activity": "S2R_Uccello_Marketing_AU_Activity",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Uccello Marketing EU",
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Xero",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/history/xero/uccello_marketing_eu/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Uccello_Marketing_EU_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Uccello_Marketing_EU_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Uccello_Marketing_EU",
+        "dependsOn": [
+          {
+            "activity": "S2R_Uccello_Designs_Activity",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_table": "xero_customer",
+            "source_path": "customer"
+          },
+          {
+            "target_table": "xero_customer_ledger_entry",
+            "source_path": "custledgerentry"
+          },
+          {
+            "target_table": "xero_gl_account",
+            "source_path": "glaccount"
+          },
+          {
+            "target_table": "xero_gl_entry",
+            "source_path": "glentry"
+          },
+          {
+            "target_table": "xero_item",
+            "source_path": "item"
+          },
+          {
+            "target_table": "xero_item_ledger_entry",
+            "source_path": "itemledgerentry"
+          },
+          {
+            "target_table": "xero_location",
+            "source_path": "location"
+          },
+          {
+            "target_table": "xero_payment_method",
+            "source_path": "paymentmethod"
+          },
+          {
+            "target_table": "xero_prescriber",
+            "source_path": "prescriber"
+          },
+          {
+            "target_table": "xero_purchase_order_header",
+            "source_path": "purchheader"
+          },
+          {
+            "target_table": "xero_purchase_order_line",
+            "source_path": "purchline"
+          },
+          {
+            "target_table": "xero_purchase_invoice_header",
+            "source_path": "purchinvheader"
+          },
+          {
+            "target_table": "xero_purchase_invoice_line",
+            "source_path": "purchinvline"
+          },
+          {
+            "target_table": "xero_sales_order_header",
+            "source_path": "salesheader"
+          },
+          {
+            "target_table": "xero_sales_order_line",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "xero_sales_invoice_header",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "xero_sales_invoice_line",
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "xero_value_ledger",
+            "source_path": "valueledgerentry"
+          },
+          {
+            "target_table": "xero_vendor",
+            "source_path": "vendor"
+          },
+          {
+            "target_table": "xero_vendor_ledger_entry",
+            "source_path": "vendorledgerentry"
+          }
+        ]
+      }
+    }
+  }
+}

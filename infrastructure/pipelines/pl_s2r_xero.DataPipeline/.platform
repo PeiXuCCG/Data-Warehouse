@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_s2r_xero"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "976009e7-d3b2-9d84-43a5-f87ae8d6fc5b"
+  }
+}

@@ -55,14 +55,15 @@ spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite","LEGACY")
 
 # PARAMETERS CELL ********************
 
-target_schema = "ccg_bronze"
-target_db =  "raw" 
-source_system = "BC"
-source_entity = ""
+target_schema = "ccg_bronze" # lakehouse
+target_db =  "raw"  # db schema
+source_system = "BC"# data source
+source_entity = "" # the company
 target_table = f"State"
 source_path = 'Files/deltas/County-28004'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
+write_method = "overwrite"
 
 # METADATA ********************
 
@@ -97,10 +98,13 @@ pipelines = []
 # CELL ********************
 
 def cleanse(df):
-    #remove spaces
-    pattern = r"[^a-zA-Z0-9_]+" 
-    new_columns = [re.sub(pattern, "", col_name).split("-")[0].lower() for col_name in df.columns]
+    #remove spaces and special characters
+    pattern = r"[^a-z0-9_]+" 
+    remove_dashes_columns = [col_name.split("-")[0].lower() for col_name in df.columns]
+    new_columns = [re.sub(pattern, "", col_name) for col_name in remove_dashes_columns]
     df_cleaned = df.toDF(*new_columns)
+
+    # call cleanse engine here
 
     return df_cleaned
 
@@ -111,36 +115,55 @@ def cleanse(df):
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# MARKDOWN ********************
+# CELL ********************
 
+def path_exists(path):
+    try:
+        mssparkutils.fs.ls(path)
+        return True
+    except Exception as e:
+        if 'java.io.FileNotFoundException' in str(e):
+            return False
+        else:
+            # Re-raise other exceptions if they are not related to file not found
+            raise e
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
 # CELL ********************
 
 # Prevent duplicate loads
-files = [f.path for f in mssparkutils.fs.ls(source_path) if f.name.endswith(".csv")]
+if path_exists(source_path):
+    files = [f.path for f in mssparkutils.fs.ls(source_path) if f.name.endswith(".csv")]
 
-# Step 2: Read existing file log
-log_df = None
-if spark.catalog.tableExists(ingestion_log):
-    log_df = spark.read.table(ingestion_log)
-    print("Table loaded successfully.")
+    # Step 2: Read existing file log
+    log_df = None
+    if spark.catalog.tableExists(ingestion_log):
+        log_df = spark.read.table(ingestion_log)
+        print("Table loaded successfully.")
+    else:
+        print(f"Table {ingestion_log} does not exist.")
+
+    if log_df is not None:
+        loaded_files = [r["source_file"] for r in log_df.collect()]
+
+        # Step 3: Filter new files
+        new_files = [f for f in files if f not in loaded_files]
+    else:
+        # Step 3: first load
+        new_files = files
+
+    if not new_files:
+        mssparkutils.notebook.exit(f"No new files to load for {source_entity}")
+    else:
+        print(f"📂 Loading {len(new_files)} new files...")
 else:
-    print(f"Table {ingestion_log} does not exist.")
-
-if log_df is not None:
-    loaded_files = [r["source_file"] for r in log_df.collect()]
-
-    # Step 3: Filter new files
-    new_files = [f for f in files if f not in loaded_files]
-else:
-    # Step 3: first load
-    new_files = files
-
-if not new_files:
-    print("✅ No new files to load, exit")
-    sys.exit()
-else:
-    print(f"📂 Loading {len(new_files)} new files...")
+   mssparkutils.notebook.exit(f"Path doesn't exist for {source_entity}")
 
 # METADATA ********************
 
@@ -182,7 +205,7 @@ customers_raw = PlainTable(
     df=df,
     source_system=source_system,
     target_path="NOT_SUPPORTED_YET", # this is technically not used due to fabric not supporting it but leave it here
-    write_method="overwrite",
+    write_method=write_method,
     cleanse_function=cleanse
 )
 

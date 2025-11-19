@@ -4,6 +4,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -87,19 +88,20 @@
         "type": "array",
         "defaultValue": [
           {
-            "target_table": "customer",
-            "source_path": "Files/deltas/Customer-18"
+            "target_table": "BC_AccountingPeriod",
+            "source_path": "Files/deltas/AccountingPeriod-50"
           }
         ]
       },
       "target_schema": {
         "type": "string",
-        "defaultValue": "lk_bronze_dev"
+        "defaultValue": "lk_bronze"
       },
       "target_db": {
         "type": "string",
         "defaultValue": "raw"
       }
-    }
+    },
+    "concurrency": 1
   }
 }
