@@ -57,3 +57,5 @@ This can be achieved in multiple ways.
 * PowerAutomate
 
 This is still TBC.
+
+After BC upgrade, the Allow HttpCient Requests maybe disabled. Need enable to update schema.
