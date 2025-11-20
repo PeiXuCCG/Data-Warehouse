@@ -5,8 +5,8 @@
     "target": {
       "type": "OneLake",
       "oneLake": {
-        "path": "Files/xero",
-        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "path": "Files/history/xero",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
         "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
       }
     }
@@ -17,8 +17,8 @@
     "target": {
       "type": "OneLake",
       "oneLake": {
-        "path": "Files/netsuite",
-        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "path": "Files/history/netsuite",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
         "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
       }
     }
@@ -29,8 +29,8 @@
     "target": {
       "type": "OneLake",
       "oneLake": {
-        "path": "Files/lightspeed",
-        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "path": "Files/history/lightspeed",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
         "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
       }
     }
@@ -41,8 +41,8 @@
     "target": {
       "type": "OneLake",
       "oneLake": {
-        "path": "Files/itv",
-        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "path": "Files/history/itv",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
         "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
       }
     }
@@ -53,8 +53,8 @@
     "target": {
       "type": "OneLake",
       "oneLake": {
-        "path": "Files/hirepos",
-        "itemId": "f5564e29-02df-4566-beb1-759cba33ae3c",
+        "path": "Files/history/hirepos",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
         "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
       }
     }

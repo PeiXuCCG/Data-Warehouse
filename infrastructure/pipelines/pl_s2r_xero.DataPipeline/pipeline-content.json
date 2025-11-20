@@ -670,15 +670,15 @@
             "source_path": "customer"
           },
           {
-            "target_table": "xero_customer_ledger_entry",
+            "target_table": "xero_custledgerentry",
             "source_path": "custledgerentry"
           },
           {
-            "target_table": "xero_gl_account",
+            "target_table": "xero_glaccount",
             "source_path": "glaccount"
           },
           {
-            "target_table": "xero_gl_entry",
+            "target_table": "xero_glentry",
             "source_path": "glentry"
           },
           {
@@ -686,7 +686,7 @@
             "source_path": "item"
           },
           {
-            "target_table": "xero_item_ledger_entry",
+            "target_table": "xero_itemledgerentry",
             "source_path": "itemledgerentry"
           },
           {
@@ -694,23 +694,23 @@
             "source_path": "location"
           },
           {
-            "target_table": "xero_payment_method",
-            "source_path": "paymentmethod"
+            "target_table": "xero_paymentterms",
+            "source_path": "paymentterms"
           },
           {
             "target_table": "xero_prescriber",
             "source_path": "prescriber"
           },
           {
-            "target_table": "xero_purchase_order_header",
+            "target_table": "xero_purchheader",
             "source_path": "purchheader"
           },
           {
-            "target_table": "xero_purchase_order_line",
+            "target_table": "xero_purchline",
             "source_path": "purchline"
           },
           {
-            "target_table": "xero_purchase_invoice_header",
+            "target_table": "xero_purchinvheader",
             "source_path": "purchinvheader"
           },
           {
@@ -718,23 +718,23 @@
             "source_path": "purchinvline"
           },
           {
-            "target_table": "xero_sales_order_header",
+            "target_table": "xero_salesheader",
             "source_path": "salesheader"
           },
           {
-            "target_table": "xero_sales_order_line",
+            "target_table": "xero_salesline",
             "source_path": "salesline"
           },
           {
-            "target_table": "xero_sales_invoice_header",
+            "target_table": "xero_salesinvoiceheader",
             "source_path": "salesinvoiceheader"
           },
           {
-            "target_table": "xero_sales_invoice_line",
+            "target_table": "xero_salesinvoiceline",
             "source_path": "salesinvoiceline"
           },
           {
-            "target_table": "xero_value_ledger",
+            "target_table": "xero_valueledgerentry",
             "source_path": "valueledgerentry"
           },
           {
@@ -742,7 +742,7 @@
             "source_path": "vendor"
           },
           {
-            "target_table": "xero_vendor_ledger_entry",
+            "target_table": "xero_vendorledgerentry",
             "source_path": "vendorledgerentry"
           }
         ]

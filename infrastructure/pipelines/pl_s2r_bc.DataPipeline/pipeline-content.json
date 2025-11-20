@@ -5,7 +5,7 @@
         "type": "ForEach",
         "typeProperties": {
           "isSequential": false,
-          "batchCount": 10,
+          "batchCount": 5,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"

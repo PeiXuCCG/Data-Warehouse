@@ -30,7 +30,7 @@ from pyspark.sql import SparkSession
 from loom.tables.table_type  import TableType
 from loom.tables.plain_table import PlainTable
 from loom.pipelines import Pipeline
-from pyspark.sql.functions import lit
+from pyspark.sql.functions import lit, concat_ws, col, sha2
 import re
 from notebookutils import mssparkutils
 import sys
@@ -138,7 +138,7 @@ def path_exists(path):
 
 # CELL ********************
 
-# Prevent duplicate loads
+# Prevent duplicate loads of files in directory
 if path_exists(source_path):
     files = [f.path for f in mssparkutils.fs.ls(source_path) if f.name.endswith(".csv")]
 
@@ -175,8 +175,39 @@ else:
 
 # CELL ********************
 
+def prevent_duplicate_data(df):
+    exclude_cols = ["delivereddatetime", "SystemModifiedAt"]  # Add more if needed
+    
+    cols_to_hash = [c for c in df.columns if c not in exclude_cols]
+    
+    concat_cols = concat_ws("||", *[col(c).cast("string") for c in cols_to_hash])
+    df_hashed = df.withColumn("row_hash", sha2(concat_cols, 256))
+    
+    df_deduped = df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
+    return df_deduped
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 df = spark.read.option("header", True).option("inferSchema", infer_schema).option("multiLine", is_multi_line).option("quote", "\"").option("escape", "\"").csv(new_files)
 
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = prevent_duplicate_data(df)
 
 # METADATA ********************
 
@@ -243,6 +274,16 @@ for p in pipelines:
     p.summary()
     p.validate()
     p.execute()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 
 # METADATA ********************
 
