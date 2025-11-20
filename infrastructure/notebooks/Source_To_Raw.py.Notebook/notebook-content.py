@@ -57,13 +57,13 @@ spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite","LEGACY")
 
 target_schema = "lh_bronze" # lakehouse
 target_db =  "raw"  # db schema
-source_system = "Lightspeed"# data source
-source_entity = "Open Mobility" # the company
-target_table = f"lightspeed_item"
-source_path = 'Files/history/lightspeed/open_mobility/item'
+source_system = "BC"# data source
+source_entity = "" # the company
+target_table = f"bc_custledgerentry"
+source_path = 'Files/deltas/CustLedgerEntry-21'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
-write_method = "append"
+write_method = "overwrite"
 infer_schema = True
 
 # METADATA ********************
@@ -176,7 +176,8 @@ else:
 # CELL ********************
 
 def prevent_duplicate_data(df):
-    exclude_cols = ["delivereddatetime", "SystemModifiedAt"]  # Add more if needed
+    exclude_cols = ["systemmodifiedat","systemmodifiedby","delivereddatetime","ingestion_timestamp"]  # Add more if needed 
+    #***(we want to keep if there are changes in the source system for a record) *** #
     
     cols_to_hash = [c for c in df.columns if c not in exclude_cols]
     

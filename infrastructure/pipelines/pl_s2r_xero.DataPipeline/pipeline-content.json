@@ -4,7 +4,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -91,7 +91,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -185,7 +185,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -279,7 +279,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -373,7 +373,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -467,7 +467,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -561,7 +561,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": true,
+          "isSequential": false,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
