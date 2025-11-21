@@ -193,7 +193,69 @@
         "defaultValue": "raw"
       },
       "job_configuration": {
-        "type": "array"
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_table": "hirepos_customer",
+            "source_path": "customer"
+          },
+          {
+            "target_table": "hirepos_employee",
+            "source_path": "employee"
+          },
+          {
+            "target_table": "hirepos_faregister",
+            "source_path": "faregister"
+          },
+          {
+            "target_table": "hirepos_fixedassets",
+            "source_path": "fixedassets"
+          },
+          {
+            "target_table": "hirepos_item",
+            "source_path": "item"
+          },
+          {
+            "target_table": "hirepos_itemledgerentry",
+            "source_path": "itemledgerentry"
+          },
+          {
+            "target_table": "hirepos_location",
+            "source_path": "location"
+          },
+          {
+            "target_table": "hirepos_paymentterms",
+            "source_path": "paymentterms"
+          },
+          {
+            "target_table": "hirepos_purchheader",
+            "source_path": "purchheader"
+          },
+          {
+            "target_table": "hirepos_purchline",
+            "source_path": "purchline"
+          },
+          {
+            "target_table": "hirepos_salesheader",
+            "source_path": "salesheader"
+          },
+          {
+            "target_table": "hirepos_salesinvoiceheader",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "hirepos_salesinvoiceline",
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "hirepos_salesline",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "hirepos_vendor",
+            "source_path": "vendor"
+          }
+        ]
       }
     }
   }

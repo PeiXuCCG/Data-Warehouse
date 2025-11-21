@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Xero Count Test"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "57331038-b9c2-90aa-4986-0be9855ed99a"
+  }
+}
