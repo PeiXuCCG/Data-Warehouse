@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_s2r_myob"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a63d54a0-22bb-9ff5-4216-9584bed309e4"
+  }
+}

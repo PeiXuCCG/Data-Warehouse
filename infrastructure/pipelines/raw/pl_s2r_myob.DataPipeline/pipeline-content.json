@@ -1,0 +1,565 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 5,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Myob",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Healthsaver",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/myob/healthsaver/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Healthsaver_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Healthsaver",
+        "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 5,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Myob",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Chair Doctor",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/myob/chairdoctor/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Chair_Doctor_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Chair_Doctor",
+        "dependsOn": [
+          {
+            "activity": "S2R_Healthsaver",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 5,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Myob",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Ergo",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/myob/ergo/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Ergo_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_Ergo",
+        "dependsOn": [
+          {
+            "activity": "S2R_Chair_Doctor",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 5,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Myob",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "FisherLane Mobility",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/myob/fisherLanemobility/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_FisherLane_Mobility_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_FisherLane_Mobility",
+        "dependsOn": [
+          {
+            "activity": "S2R_Ergo",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "batchCount": 5,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Myob",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "WILLAID",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/myob/willaid/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": "append",
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_WILLAID_Activity",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "S2R_WILLAID",
+        "dependsOn": [
+          {
+            "activity": "S2R_FisherLane_Mobility",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_table": "myob_customer",
+            "source_path": "customer"
+          },
+          {
+            "target_table": "myob_custledgerentry",
+            "source_path": "custledgerentry"
+          },
+          {
+            "target_table": "myob_glaccount",
+            "source_path": "glaccount"
+          },
+          {
+            "target_table": "myob_glentry",
+            "source_path": "glentry"
+          },
+          {
+            "target_table": "myob_item",
+            "source_path": "item"
+          },
+          {
+            "target_table": "myob_itemledgerentry",
+            "source_path": "itemledgerentry"
+          },
+          {
+            "target_table": "myob_location",
+            "source_path": "location"
+          },
+          {
+            "target_table": "myob_paymentterms",
+            "source_path": "paymentterms"
+          },
+          {
+            "target_table": "myob_prescriber",
+            "source_path": "prescriber"
+          },
+          {
+            "target_table": "myob_purchheader",
+            "source_path": "purchheader"
+          },
+          {
+            "target_table": "myob_purchline",
+            "source_path": "purchline"
+          },
+          {
+            "target_table": "myob_purchinvheader",
+            "source_path": "purchinvheader"
+          },
+          {
+            "target_table": "myob_purchase_invoice_line",
+            "source_path": "purchinvline"
+          },
+          {
+            "target_table": "myob_salesheader",
+            "source_path": "salesheader"
+          },
+          {
+            "target_table": "myob_salesline",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "myob_salesinvoiceheader",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "myob_salesinvoiceline",
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "myob_valueledgerentry",
+            "source_path": "valueledgerentry"
+          },
+          {
+            "target_table": "myob_vendor",
+            "source_path": "vendor"
+          },
+          {
+            "target_table": "myob_vendorledgerentry",
+            "source_path": "vendorledgerentry"
+          }
+        ]
+      }
+    },
+    "concurrency": 1
+  }
+}

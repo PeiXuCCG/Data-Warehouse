@@ -26,14 +26,16 @@
 
 # CELL ********************
 
-from pyspark.sql import SparkSession
 from loom.tables.table_type  import TableType
 from loom.tables.plain_table import PlainTable
 from loom.pipelines import Pipeline
+from data_cleaning_rules.rule_engine import clean
+from pyspark.sql import SparkSession
 from pyspark.sql.functions import lit, concat_ws, col, sha2
 import re
 from notebookutils import mssparkutils
 import sys
+
 
 # METADATA ********************
 
@@ -87,6 +89,7 @@ spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{target_schema}`.`{target_db}`")
 # CELL ********************
 
 ingestion_log = "dbo.ingestion_log"
+rules_table = "dbo.cleaning_rules_set"
 pipelines = []
 
 # METADATA ********************
@@ -106,7 +109,8 @@ def cleanse(df):
     df_cleaned = df.toDF(*new_columns)
 
     # call cleanse engine here
-
+    df_cleaned = clean(df_cleaned, spark.table(rules_table), source_system)
+    
     return df_cleaned
 
 # METADATA ********************

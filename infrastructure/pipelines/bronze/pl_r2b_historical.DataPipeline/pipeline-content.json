@@ -1,0 +1,156 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_customer",
+                    "type": "string"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\" \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"city\": [\"city\", \"source_system\", \"company\"]},\n                        {\"postcode\": [\"postcode\", \"source_system\", \"company\"]},\n                        {\"county\": [\"county\", \"source_system\", \"company\"]} , \n                        {\"customerpostinggroup\":[\"customerpostinggroup\", \"source_system\", \"company\"]}\n                      ]",
+                    "type": "string"
+                  },
+                  "deduplicate_keys": {
+                    "value": "[\"phoneno\", \"address\", \"mobilephoneno\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"locationcode\"]",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Customer_Activity",
+              "dependsOn": []
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_custledgerentry",
+                    "type": "string"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\" \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[\n    {\"customerno\": [\"customerno\", \"source_system\", \"company\"]},\n    {\"documenttype\": [\"documenttype\", \"source_system\", \"company\"]},\n    {\"currencycode\": [\"currencycode\", \"source_system\", \"company\"]},\n    {\"customerpostinggroup\": [\"customerpostinggroup\", \"source_system\", \"company\"]},\n    {\"globaldimension1code\": [\"globaldimension1code\", \"source_system\", \"company\"]},\n    {\"globaldimension2code\": [\"globaldimension2code\", \"source_system\", \"company\"]},\n    {\"salespersoncode\": [\"salespersoncode\", \"source_system\", \"company\"]},\n    {\"sourcecode\": [\"sourcecode\", \"source_system\", \"company\"]},\n    {\"reasoncode\": [\"reasoncode\", \"source_system\", \"company\"]},\n    {\"balanceaccounttype\": [\"balanceaccounttype\", \"source_system\", \"company\"]},\n    {\"balaccountno\": [\"balaccountno\", \"source_system\", \"company\"]}\n]",
+                    "type": "string"
+                  },
+                  "deduplicate_keys": {
+                    "value": "[\"entryno\", \"company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"customerno\"]",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Customer_Ledger_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Customer_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "Historical",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "bronze"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          "Xero",
+          "Myob",
+          "Netsuite",
+          "Hirepos",
+          "Lightspeed",
+          "Windward",
+          "Natsoft",
+          "Ostendo"
+        ]
+      }
+    }
+  }
+}

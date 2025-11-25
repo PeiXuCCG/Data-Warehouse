@@ -27,11 +27,14 @@
 # CELL ********************
 
 # %%
-from pyspark.sql import SparkSession
+from pyspark.sql import SparkSession, Row
 from loom.tables.keyed_table import KeyedTable
 from loom.pipelines import Pipeline
-from pyspark.sql.functions import col, sha2, window, current_timestamp, lag
-
+from pyspark.sql.functions import from_unixtime, monotonically_increasing_id, coalesce,lower, expr,regexp_replace, col, sha2, window, current_timestamp, lag, concat_ws, lit, row_number, when, sum
+from pyspark.sql import Window
+from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_bridge
+import re
+import json
 
 # METADATA ********************
 
@@ -44,21 +47,43 @@ from pyspark.sql.functions import col, sha2, window, current_timestamp, lag
 
 # %%
 # These are the input variables for each bronze table
-target_schema = "lh_bronze_dev"
+target_schema = "lh_bronze"
 target_db = "bronze"
 target_table = "customer"
 
 # source - don't need source schema
 source_db = "raw"
-source_table = "customer"
+source_table = "bc_customer"
+
+pipeline_name = f"{source_db}_{source_table}_to_{target_db}_{target_table}"
 
 # source keys 
-source_primary_keys = ["no"]
-source_foreign_keys = ["locationcode"] # fill these in if there are any
-business_keys = [] # this is used for partition the table in the lakehouse, helpful for querying but isn't required
+source_primary_keys = ["no", "source_system", "company"]
+source_foreign_keys = [
+                        {"city": ["city", "source_system", "company"]},
+                        {"postcode": ["postcode", "source_system", "company"]},
+                        {"county": ["county", "source_system", "company"]} , 
+                        {"customerpostinggroup":["customerpostinggroup", "source_system", "company"]},
+                        {"customerpricegroup":["customerpricegroup", "source_system", "company"]},
+                        {"locationcode": ["locationcode", "source_system", "company"]},
+                        {"shiptocode": ["shiptocode", "source_system", "company"]},
+                        {"globaldimension1code": ["globaldimension1code", "source_system", "company"]},
+                        {"globaldimension2code": ["globaldimension2code", "source_system", "company"]},
+                        {"languagecode": ["languagecode", "source_system", "company"]},
+                        {"paymenttermscode": ["paymenttermscode", "source_system", "company"]},
+                        {"customerdiscgroup": ["customerdiscgroup", "source_system", "company"]},
+                        {"countryregioncode": ["countryregioncode", "source_system", "company"]},
+                        {"territorycode": ["territorycode", "source_system", "company"]},
+                        {"salespersoncode": ["salespersoncode", "source_system", "company"]},
+                        {"shipmentmethodcode": ["shipmentmethodcode", "source_system", "company"]},
+                        {"shippingagentcode": ["shippingagentcode", "source_system", "company"]},
+                        {"billtocustomerno": ["billtocustomerno", "source_system", "company"]},
+                        {"paymentmethodcode": ["paymentmethodcode", "source_system", "company"]}
+                      ] # fill these in if there are any
+business_keys = ["locationcode"] # this is used for partition the table in the lakehouse, helpful for querying but isn't required
 
 # how to build the primary key
-deduplicate_fields = ["name", "phoneno", "address"] # please change this for each entity
+deduplicate_fields = ["phoneno", "address", "mobilephoneno"] # please change this for each entity
 
 # METADATA ********************
 
@@ -69,7 +94,7 @@ deduplicate_fields = ["name", "phoneno", "address"] # please change this for eac
 
 # CELL ********************
 
-def transform(df):
+def transform_func(df):
     # NOT USED IN BC implementation
     pass
 
@@ -83,30 +108,72 @@ def transform(df):
 # CELL ********************
 
 # %%
-def deduplicate(df):
-    # This doesn't change the referential integrity of the data.
-    # We are assigning a primary key to all the records that match based on the selected fields.
-    # Essentially, for records that have identical values in these fields, we generate the same primary key.
-    # This is useful for deduplication, grouping, or creating a consistent identifier without modifying
-    # the relationships between tables or violating foreign key constraints.
-    # But we do want to end date those duplicates
-    df = (
-            df.withColumn(
-                    f"{target_table}_hk",
-                    sha2(concat_ws("|", *[col(c) for c in deduplicate_fields]), 256)
-            )
-    ) 
+def deduplicate_func(df):
 
-    # this is metadata that we need to override that was in the loom framework (default to 1900)
-    df = df.withColumn("effectivity_start_date", lit("1900-01-01 00:00:00").cast("timestamp"))
-
-    # Define window partitioned by hash key, ordered by lastdatemodified descending (this is a field in BC)
-    w = window.partitionBy(f"{target_table}_hk").orderBy(F.col("lastdatemodified").desc())
-
-    # Use lag to get the next record’s lastdatemodified (in descending order)
+    # Generate hash key for deduplication
     df = df.withColumn(
-        "effectivity_end_date",
-        lag("lastdatemodified").over(w).cast("timestamp")
+        f"{target_table}_hk",
+        sha2(
+            concat_ws(
+                "|",
+                *[
+                    regexp_replace(
+                        lower(coalesce(col(c), lit(""))), "\\s+", ""
+                    )
+                    for c in deduplicate_fields
+                ]
+            ),
+            256
+        )
+    )
+
+    # Start date always 1900
+    df = df.withColumn(
+        "effectivity_start_date",
+        lit("1900-01-01 00:00:00").cast("timestamp")
+    )
+
+    # Surrogate ordering for NULL lastdatemodified groups
+    df = df.withColumn("surrogate_order", monotonically_increasing_id())
+
+   
+    # Convert surrogate_order into a TIMESTAMP for safe comparison
+    df = df.withColumn(
+        "surrogate_ts",
+        from_unixtime(col("surrogate_order")).cast("timestamp")
+    )
+
+    df = df.withColumn("has_lastmod", col("lastdatemodified").isNotNull().cast("int"))
+
+    w_grp = Window.partitionBy(f"{target_table}_hk")
+
+
+    # If ALL lastdatemodified are NULL → use surrogate ordering
+    # If ANY lastdatemodified is present → use real lastdatemodified
+    df = df.withColumn(
+        "ordering_key",
+        when(
+            sum("has_lastmod").over(w_grp) == 0,   # all NULL
+            col("surrogate_ts")                 # deterministic order
+        ).otherwise(
+            col("lastdatemodified")                # normal ordering
+        )
+    )
+
+    # Sort newest (or lowest surrogate) first
+    w = Window.partitionBy(f"{target_table}_hk").orderBy(col("ordering_key").desc())
+
+    df = (
+        df.withColumn(
+            "effectivity_end_date",
+            lag("ordering_key").over(w).cast("timestamp")
+        )
+        .withColumn("rn", row_number().over(w))
+        .withColumn(
+            "effectivity_end_date",
+            when(col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
+        )
+        .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
     )
 
     return df
@@ -144,8 +211,8 @@ bronze_table = KeyedTable(
             business_keys=business_keys,
             source_primary_keys=source_primary_keys,
             source_foreign_keys=source_foreign_keys,
-            transform=transform, # YOU CAN CHANGE THIS TO NONE if there is transformations to be completed.
-            deduplicate=deduplicate # this generates the primary key for the table based off the fields you provide
+            transform=None, # YOU CAN CHANGE THIS TO NONE if there is transformations to be completed.
+            deduplicate=deduplicate_func # this generates the primary key for the table based off the fields you provide
 )
 
 # METADATA ********************
@@ -161,7 +228,7 @@ bronze_table = KeyedTable(
 # 5. Build the pipeline
 pipeline = Pipeline(
     name=pipeline_name,
-    tables=bronze_table,
+    tables=[bronze_table],
     dry_run=True,   # simulate execution without writing
 )
 
