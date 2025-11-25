@@ -85,7 +85,7 @@
                     "type": "string"
                   },
                   "source_key": {
-                    "value": "no",
+                    "value": "entryno",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -117,6 +117,66 @@
               "dependsOn": [
                 {
                   "activity": "Customer_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_glaccount",
+                    "type": "string"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\" \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[\n    {\"accounttype\": [\"accounttype\", \"source_system\", \"company\"]},\n    {\"globaldimension1code\": [\"globaldimension1code\", \"source_system\", \"company\"]},\n    {\"globaldimension2code\": [\"globaldimension2code\", \"source_system\", \"company\"]},\n    {\"accountcategory\": [\"accountcategory\", \"source_system\", \"company\"]},\n    {\"sourcecurrencycode\": [\"sourcecurrencycode\", \"source_system\", \"company\"]},\n    {\"sourcecurrencyposting\": [\"sourcecurrencyposting\", \"source_system\", \"company\"]},\n    {\"consoltranslationmethod\": [\"consoltranslationmethod\", \"source_system\", \"company\"]},\n    {\"genpostingtype\": [\"genpostingtype\", \"source_system\", \"company\"]},\n    {\"genbuspostinggroup\": [\"genbuspostinggroup\", \"source_system\", \"company\"]},\n    {\"genprodpostinggroup\": [\"genprodpostinggroup\", \"source_system\", \"company\"]},\n    {\"taxareacode\": [\"taxareacode\", \"source_system\", \"company\"]},\n    {\"taxgroupcode\": [\"taxgroupcode\", \"source_system\", \"company\"]},\n    {\"vatbuspostinggroup\": [\"vatbuspostinggroup\", \"source_system\", \"company\"]},\n    {\"vatprodpostinggroup\": [\"vatprodpostinggroup\", \"source_system\", \"company\"]},\n    {\"defaulticpartnerglaccno\": [\"defaulticpartnerglaccno\", \"source_system\", \"company\"]},\n    {\"defaultdeferraltemplatecode\": [\"defaultdeferraltemplatecode\", \"source_system\", \"company\"]},\n    {\"apiaccounttype\": [\"apiaccounttype\", \"source_system\", \"company\"]},\n    {\"whtbusinesspostinggroupwhtproductpostinggroup\": [\"whtbusinesspostinggroupwhtproductpostinggroup\", \"source_system\", \"company\"]}\n]",
+                    "type": "string"
+                  },
+                  "deduplicate_keys": {
+                    "value": "[\"no\", \"company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"company\"]",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "GL_Account_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Customer_Ledger_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
