@@ -31,7 +31,7 @@ from loom.tables.plain_table import PlainTable
 from loom.pipelines import Pipeline
 from data_cleaning_rules.rule_engine import clean
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import lit, concat_ws, col, sha2
+from pyspark.sql.functions import lit, concat_ws, col, sha2, input_file_name
 import re
 from notebookutils import mssparkutils
 import sys
@@ -201,7 +201,18 @@ def prevent_duplicate_data(df):
 # CELL ********************
 
 df = spark.read.option("header", True).option("inferSchema", infer_schema).option("multiLine", is_multi_line).option("quote", "\"").option("escape", "\"").csv(new_files)
+df = df.withColumn("source_file", input_file_name())
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+display(df)
 
 # METADATA ********************
 

@@ -4,7 +4,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -91,7 +91,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -185,7 +185,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -279,7 +279,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -373,7 +373,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -467,7 +467,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -561,7 +561,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "isSequential": false,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -714,7 +714,7 @@
             "source_path": "purchinvheader"
           },
           {
-            "target_table": "xero_purchase_invoice_line",
+            "target_table": "xero_purchinvline",
             "source_path": "purchinvline"
           },
           {

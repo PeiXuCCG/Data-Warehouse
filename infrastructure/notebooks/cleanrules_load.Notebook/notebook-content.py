@@ -39,25 +39,24 @@ from pyspark.sql import functions as F
 from pyspark.sql.types import StringType, ArrayType
 from pyspark.sql.functions import col, to_date, current_timestamp
 
-def load_rules_from_excel(excel_path: str
-                        ,table_name: str = "dbo.cleaning_rules_set"
-                        ,created_by_user: str = "unknown"):
+def load_rules_from_csv(csv_path: str
+                        ,table_name: str = "dbo.cleaning_rules_set"):
 
     """
     Load data cleaning rules from an Excel file into a Fabric Delta table.
 
     Parameters:
-        excel_path (str): Path inside the Lakehouse Files area.
+        csv_path (str): Path inside the Lakehouse Files area.
         table_name (str): Target Delta table to write into.
-        created_by_user (str): Who uploaded/loaded the file.
     """
     
     # reading the excel file
     df_raw = (
-        spark.read.format("excel")
+        spark.read.format("csv")
         .option("header", "true")
         .option("inferSchema", "true")
-        .load(excel_path)
+        .option("multiLine", "true")
+        .load(csv_path)
     )
 
     #Transform Schema
@@ -65,34 +64,16 @@ def load_rules_from_excel(excel_path: str
     df_rules = (
         df_raw
         .withColumn("source_columns", F.split(col("source_columns"), ","))
+        .withColumn("target_column", col("target_column").cast(StringType()))
         .withColumn("rule_set", col("rule_set").cast(StringType()))
-        .withColumn("effective_starts_date", to_date(col("effective_start_date"), "yyyy-MM-dd"))
-        .withColumn("effective_end_date",to_date(col("effective_end_date"), "yyyy-MM-dd"))
-        .withColumn("created_by", F.lit(created_by_user))
+        .withColumn("effectivity_start_date", to_date(col("effectivity_start_date"), "yyyy-MM-dd"))
+        .withColumn("effectivity_end_date",to_date(col("effectivity_start_date"), "yyyy-MM-dd"))
+        .withColumn("created_by", col("created_by").cast(StringType()))
         .withColumn("created_date", current_timestamp())
     )
 
-    # Making sure 
 
-    spark.sql("""
-    create table if not EXISTS {table_name}(
-        id BIGINT,
-        source_column ARRAY<STRING>,
-        target_column STRING,
-        rule_set STRING,
-        cleaning_rule STRING,
-        effectivity_start_date DATE,
-        effectivity_end_date DATE,
-        create_by STRING,
-        create_date TIMESTAMP
-    )
-
-    USING DELTA
-    
-    """)
-
-
-    df_rules.write.format('delta').mode('append').saveAsTable(table_name)
+    df_rules.write.format('delta').mode('overwrite').saveAsTable(table_name)
 
     print('Successfull loaded rules from {excel_path} into {table_name}')
 
@@ -108,6 +89,7 @@ def load_rules_from_excel(excel_path: str
 
 # CELL ********************
 
+load_rules_from_csv("Files/rules/rules.csv")
 
 # METADATA ********************
 
