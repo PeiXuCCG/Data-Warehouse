@@ -68,7 +68,7 @@ is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
 infer_schema = False
-dry_run=True
+dry_run=False
 
 # METADATA ********************
 
@@ -272,7 +272,7 @@ for file in new_files:
     one_df = (
         spark.read
             .option("header", True)
-            .option("inferSchema", True)
+            .option("inferSchema", infer_schema)
             .option("multiLine", True)
             .option("quote", "\"")
             .option("escape", "\"")
