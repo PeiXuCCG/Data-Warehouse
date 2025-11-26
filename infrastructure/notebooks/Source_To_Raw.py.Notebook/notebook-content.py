@@ -67,7 +67,7 @@ source_path = 'Files/deltas/CustLedgerEntry-21'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
-infer_schema = False
+infer_schema = True
 dry_run=False
 
 # METADATA ********************
