@@ -30,11 +30,12 @@ from loom.tables.table_type  import TableType
 from loom.tables.plain_table import PlainTable
 from loom.pipelines import Pipeline
 from data_cleaning_rules.rule_engine import clean
-from pyspark.sql import SparkSession
-from pyspark.sql.functions import lit, concat_ws, col, sha2, input_file_name
+from pyspark.sql import SparkSession, DataFrame
+from pyspark.sql.functions import lit, concat_ws, col, sha2, input_file_name, first
 import re
 from notebookutils import mssparkutils
 import sys
+import os
 
 
 # METADATA ********************
@@ -66,7 +67,8 @@ source_path = 'Files/deltas/CustLedgerEntry-21'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
-infer_schema = True
+infer_schema = False
+dry_run=True
 
 # METADATA ********************
 
@@ -102,15 +104,38 @@ pipelines = []
 # CELL ********************
 
 def cleanse(df):
-    #remove spaces and special characters
-    pattern = r"[^a-z0-9_]+" 
-    remove_dashes_columns = [col_name.split("-")[0].lower() for col_name in df.columns]
-    new_columns = [re.sub(pattern, "", col_name) for col_name in remove_dashes_columns if col_name != "predictionconfidence"]
-    df_cleaned = df.toDF(*new_columns)
+    pattern = r"[^a-z0-9_]+"
+    rename_map = {}
+    drop_cols = []
+
+    for col in df.columns:
+        # Step 1: split on '-' and lowercase
+        base = col.split("-")[0].lower()
+
+        # Step 2: remove special chars
+        sanitized = re.sub(pattern, "", base)
+
+        # Step 3: Skip predictionconfidence
+        if sanitized == "predictionconfidence":
+            drop_cols.append(col)
+            continue
+
+        rename_map[col] = sanitized
+
+    # Apply renames safely
+    df_cleaned = df
+    for original, new in rename_map.items():
+        if original != new:
+            df_cleaned = df_cleaned.withColumnRenamed(original, new)
+
+    # Drop unwanted columns
+    if drop_cols:
+        df_cleaned = df_cleaned.drop(*drop_cols)
 
     # call cleanse engine here
     df_cleaned = clean(df_cleaned, spark.table(rules_table), source_system)
-    
+
+
     return df_cleaned
 
 # METADATA ********************
@@ -150,7 +175,7 @@ if path_exists(source_path):
     log_df = None
     if spark.catalog.tableExists(ingestion_log):
         log_df = spark.read.table(ingestion_log)
-        print("Table loaded successfully.")
+        print("Ingestion Log Table loaded successfully.")
     else:
         print(f"Table {ingestion_log} does not exist.")
 
@@ -200,8 +225,29 @@ def prevent_duplicate_data(df):
 
 # CELL ********************
 
-df = spark.read.option("header", True).option("inferSchema", infer_schema).option("multiLine", is_multi_line).option("quote", "\"").option("escape", "\"").csv(new_files)
-df = df.withColumn("source_file", input_file_name())
+def align_headers(df, master_columns):
+    """
+    Adds missing columns as NULL.
+    Drops extra columns.
+    Reorders columns to match master_columns.
+    """
+
+    df_cols = df.columns
+
+    # Add missing columns
+    for col in master_columns:
+        if col not in df_cols:
+            df = df.withColumn(col, F.lit(None))
+
+    # Drop unexpected columns
+    for col in df_cols:
+        if col not in master_columns:
+            df = df.drop(col)
+
+    # Reorder to match master schema
+    df = df.select(master_columns)
+
+    return df
 
 # METADATA ********************
 
@@ -212,7 +258,37 @@ df = df.withColumn("source_file", input_file_name())
 
 # CELL ********************
 
-display(df)
+master_columns = None
+df = None
+
+for file in new_files:
+    if not file.lower().endswith(".csv"):
+        continue
+
+
+
+    print(f"Loading {file}")
+
+    one_df = (
+        spark.read
+            .option("header", True)
+            .option("inferSchema", True)
+            .option("multiLine", True)
+            .option("quote", "\"")
+            .option("escape", "\"")
+            .option("mode", "PERMISSIVE")
+            .option("columnNameOfCorruptRecord", "_corrupt_record")
+            .csv(file)
+    )
+
+    # First file defines the master schema
+    if df is None:
+        df = one_df
+        master_columns = df.columns
+        continue
+
+    one_df = align_headers(one_df, master_columns)
+    df = df.unionByName(one_df)
 
 # METADATA ********************
 
@@ -223,7 +299,13 @@ display(df)
 
 # CELL ********************
 
-df = prevent_duplicate_data(df)
+df_with_file = df.withColumn("_source_file_temp", input_file_name())
+
+# Collect a single filename (in case Spark splits files)
+filename = df_with_file.select(first("_source_file_temp", ignorenulls=True)).collect()[0][0]
+
+# Add a literal column so it survives renames/select/etc
+df = df.withColumn("source_file", lit(filename))
 
 # METADATA ********************
 
@@ -246,7 +328,29 @@ if not source_system == 'BC':
 
 # CELL ********************
 
-customers_raw = PlainTable(
+df = prevent_duplicate_data(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+display(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+raw = PlainTable(
     target_db=target_db,
     target_schema=target_schema,
     name=target_table,
@@ -269,8 +373,8 @@ customers_raw = PlainTable(
 
 pipeline = Pipeline(
     name=pipeline_name,
-    tables=[customers_raw],
-    dry_run=False,  # Set to True to simulate without writing
+    tables=[raw],
+    dry_run=dry_run,  # Set to True to simulate without writing
     target_schema=target_schema,
     target_db="dbo" # this for audit logs
 )
@@ -290,16 +394,6 @@ for p in pipelines:
     p.summary()
     p.validate()
     p.execute()
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 
 # METADATA ********************
 
