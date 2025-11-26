@@ -182,6 +182,66 @@
                   ]
                 }
               ]
+            },
+             {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_glentry",
+                    "type": "string"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\" \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "",
+                    "type": "string"
+                  },
+                  "deduplicate_keys": {
+                    "value": "[\"entryno\", \"company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"company\"]",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "GL_Ledger_Activity",
+              "dependsOn": [
+                {
+                  "activity": "GL_Account_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
