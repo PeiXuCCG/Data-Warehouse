@@ -50,6 +50,13 @@
                   "business_keys": {
                     "value": "code",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -103,6 +110,13 @@
                   "business_keys": {
                     "value": "code",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -163,6 +177,13 @@
                   "business_keys": {
                     "value": "company",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -223,6 +244,13 @@
                   "business_keys": {
                     "value": "company",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -283,6 +311,13 @@
                   "business_keys": {
                     "value": "company",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -343,6 +378,13 @@
                   "business_keys": {
                     "value": "company,  postingdate",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -403,6 +445,13 @@
                   "business_keys": {
                     "value": "company",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -463,6 +512,13 @@
                   "business_keys": {
                     "value": "company, postingdate",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -523,6 +579,13 @@
                   "business_keys": {
                     "value": "cpmpany",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -583,6 +646,13 @@
                   "business_keys": {
                     "value": "company, postingdate",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -643,6 +713,13 @@
                   "business_keys": {
                     "value": "company, itemcategorycode",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -703,6 +780,13 @@
                   "business_keys": {
                     "value": "company, postingdate",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -763,6 +847,13 @@
                   "business_keys": {
                     "value": "company, selltocustomerno",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -823,6 +914,13 @@
                   "business_keys": {
                     "value": "company",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -883,6 +981,13 @@
                   "business_keys": {
                     "value": "company, buyfromvendorno",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -943,6 +1048,13 @@
                   "business_keys": {
                     "value": "company,  no",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1003,6 +1115,13 @@
                   "business_keys": {
                     "value": "company, selltocustomerno",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1063,6 +1182,13 @@
                   "business_keys": {
                     "value": "company, no",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1123,6 +1249,13 @@
                   "business_keys": {
                     "value": "company, buyfromvendorno",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1183,6 +1316,13 @@
                   "business_keys": {
                     "value": "company, no",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1243,6 +1383,13 @@
                   "business_keys": {
                     "value": "company, city",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1303,6 +1450,13 @@
                   "business_keys": {
                     "value": "company, city",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -1350,6 +1504,10 @@
           "Natsoft",
           "Ostendo"
         ]
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
       }
     }
   }
