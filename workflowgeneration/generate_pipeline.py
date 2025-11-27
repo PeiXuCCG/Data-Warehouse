@@ -32,7 +32,12 @@ TEMPLATE = {
             "job_configuration": {
                 "type": "array",
                 "defaultValue": []
-            }
+            },
+            "dry_run": {
+                "type": "bool",
+                "defaultValue": "false"
+            },
+
         }
     }
 }

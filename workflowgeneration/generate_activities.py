@@ -121,8 +121,11 @@ def generate(path_to_file):
                         "type": "string"
                     },
                     "dry_run": {
-                        "value": "@pipeline().parameters.dry_run",
-                        "type": "Expression"
+                       "value": {
+                            "value": "@pipeline().parameters.dry_run",
+                            "type": "Expression"
+                        },
+                        "type": "bool"
                     }
                 }
             },
