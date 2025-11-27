@@ -1,6 +1,5 @@
 {
   "properties": {
-    "description": "Pipeline to execute BC raw To bronze",
     "activities": [
       {
         "type": "ForEach",
@@ -40,7 +39,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@item().source_path",
+                      "value": "@concat(item().source_path, item().target_table)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -73,6 +72,13 @@
                   "dry_run": {
                     "value": false,
                     "type": "bool"
+                  },
+                  "target_path": {
+                    "value": {
+                      "value": "@concat(item().target_path, item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
                   }
                 }
               },
