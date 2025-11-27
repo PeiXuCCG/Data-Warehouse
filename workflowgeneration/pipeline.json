@@ -48,8 +48,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "code",
+                    "value": "[\"code\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -101,8 +105,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "code",
+                    "value": "[\"code\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -161,8 +169,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company",
+                    "value": "[\"company\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -221,8 +233,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company",
+                    "value": "[\"company\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -281,8 +297,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company",
+                    "value": "[\"company\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -341,8 +361,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company,  postingdate",
+                    "value": "[\"company\", \"postingdate\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -401,8 +425,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company",
+                    "value": "[\"company\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -461,8 +489,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, postingdate",
+                    "value": "[\"company\", \"postingdate\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -521,8 +553,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "cpmpany",
+                    "value": "[\"cpmpany\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -581,8 +617,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, postingdate",
+                    "value": "[\"company\", \"postingdate\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -641,8 +681,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, itemcategorycode",
+                    "value": "[\"company\", \"itemcategorycode\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -701,8 +745,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, postingdate",
+                    "value": "[\"company\", \"postingdate\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -761,8 +809,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, selltocustomerno",
+                    "value": "[\"company\", \"selltocustomerno\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -821,8 +873,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company",
+                    "value": "[\"company\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -881,8 +937,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, buyfromvendorno",
+                    "value": "[\"company\", \"buyfromvendorno\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -941,8 +1001,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company,  no",
+                    "value": "[\"company\", \"no\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1001,8 +1065,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, selltocustomerno",
+                    "value": "[\"company\", \"selltocustomerno\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1061,8 +1129,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, no",
+                    "value": "[\"company\", \"no\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1121,8 +1193,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, buyfromvendorno",
+                    "value": "[\"company\", \"buyfromvendorno\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1181,8 +1257,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, no",
+                    "value": "[\"company\", \"no\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1241,8 +1321,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, city",
+                    "value": "[\"company\", \"city\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },
@@ -1301,8 +1385,12 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "company, city",
+                    "value": "[\"company\", \"city\"]",
                     "type": "string"
+                  },
+                  "dry_run": {
+                    "value": "@pipeline().parameters.dry_run",
+                    "type": "Expression"
                   }
                 }
               },

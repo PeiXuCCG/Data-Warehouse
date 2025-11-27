@@ -16,6 +16,19 @@ def clean_key_list(value: str) -> str:
     return json.dumps(cleaned)
 
 
+def build_busines_keys(value: str) -> str:
+    if not isinstance(value, str):
+        return "[]"
+    
+    parts = value.split(",")
+
+    # strip whitespace and remove blanks
+    cleaned = [p.strip() for p in parts if p.strip()]
+
+    # return JSON-style array string
+    return json.dumps(cleaned)
+
+
 def build_source_fk(value: str) -> str:
     if not isinstance(value, str):
         return "[]"
@@ -51,7 +64,7 @@ def generate(path_to_file):
         source_primary_keys = clean_key_list(row["Bronze_Source_Keys"])        # keep EXACT formatting
         dedup = clean_key_list(row["Bronze_Deduplication_Keys"])
         source_fk = build_source_fk(row["Bronze_Source_Foreign_Keys"])                  # keep EXACT formatting
-        business_keys = row["Bronze_Partition_Keys"]                     # keep EXACT formatting
+        business_keys = build_busines_keys(row["Bronze_Partition_Keys"])                  # keep EXACT formatting
 
         activity_name = f"{entity}_Activity"
 
@@ -106,6 +119,10 @@ def generate(path_to_file):
                     "business_keys": {
                         "value": business_keys,
                         "type": "string"
+                    },
+                    "dry_run": {
+                        "value": "@pipeline().parameters.dry_run",
+                        "type": "Expression"
                     }
                 }
             },
