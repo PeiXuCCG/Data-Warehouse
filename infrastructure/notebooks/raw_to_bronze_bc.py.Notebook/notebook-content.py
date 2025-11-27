@@ -85,6 +85,8 @@ business_keys = ["locationcode"] # this is used for partition the table in the l
 # how to build the primary key
 deduplicate_fields = ["phoneno", "address", "mobilephoneno"] # please change this for each entity
 
+dry_run = True # you need to override this to false to make it save to the schema
+
 # METADATA ********************
 
 # META {
@@ -229,7 +231,7 @@ bronze_table = KeyedTable(
 pipeline = Pipeline(
     name=pipeline_name,
     tables=[bronze_table],
-    dry_run=True,   # simulate execution without writing
+    dry_run=dry_run,   # simulate execution without writing
 )
 
 # METADATA ********************
@@ -246,6 +248,20 @@ pipeline = Pipeline(
 pipeline.summary()   # Prints info about each table
 pipeline.validate()  # Validates structure and metadata
 pipeline.execute()   # Runs the prepare + write steps
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+try:
+    spark.stop()
+except:
+    pass
 
 # METADATA ********************
 

@@ -237,7 +237,7 @@ def align_headers(df, master_columns):
     # Add missing columns
     for col in master_columns:
         if col not in df_cols:
-            df = df.withColumn(col, F.lit(None))
+            df = df.withColumn(col, lit(None))
 
     # Drop unexpected columns
     for col in df_cols:
@@ -394,6 +394,20 @@ for p in pipelines:
     p.summary()
     p.validate()
     p.execute()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+try:
+    spark.stop()
+except:
+    pass
 
 # METADATA ********************
 

@@ -64,6 +64,17 @@
                       "type": "Expression"
                     },
                     "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": false,
+                    "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -288,8 +299,12 @@
       "target_db": {
         "type": "string",
         "defaultValue": "raw"
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
       }
     },
-    "concurrency": 4
+    "concurrency": 1
   }
 }

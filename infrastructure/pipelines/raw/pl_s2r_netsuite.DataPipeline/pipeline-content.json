@@ -68,6 +68,13 @@
                   "infer_schema": {
                     "value": "False",
                     "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
                   }
                 }
               },
@@ -200,6 +207,10 @@
             "source_entity": "Vital Living"
           }
         ]
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
       }
     }
   }
