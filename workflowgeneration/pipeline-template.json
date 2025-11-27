@@ -1,0 +1,37 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            
+          ]
+        },
+        "name": "job_name",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "target_lakehouse": {
+        "type": "string",
+        "defaultValue": ""
+      },
+      "target_schema": {
+        "type": "string",
+        "defaultValue": ""
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+            
+        ]
+      }
+    }
+  }
+}
