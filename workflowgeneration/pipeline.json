@@ -364,7 +364,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"city\":[\"city\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"county\":[\"county\",\"company\",\"source_system\"]},{\"countryregion\":[\"countryregion\",\"company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"company\",\"source_system\"]},{\"shipmentbincode\":[\"shipmentbincode\",\"company\",\"source_system\"]},{\"receiptbincode\":[\"receiptbincode\",\"company\",\"source_system\"]},{\"adjustmentbincode\":[\"adjustmentbincode\",\"company\",\"source_system\"]},{\"putawaybinpolicy\":[\"putawaybinpolicy\",\"company\",\"source_system\"]},{\"pickbinpolicy\":[\"pickbinpolicy\",\"company\",\"source_system\"]},{\"bincapacitycode\":[\"bincapacitycode\",\"company\",\"source_system\"]},{\"pickbinpolicy\":[\"pickbinpolicy\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"county\":[\"county\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -992,7 +992,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"vendorNo\", \"company\"]",
+                    "value": "[\"entryno\", \"vendorno\", \"company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1408,7 +1408,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentNo\", \"lineNo\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1616,7 +1616,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentNo\", \"lineNo\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1824,7 +1824,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentNo\", \"lineNo\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -2032,7 +2032,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentNo\", \"lineNo\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\"]",
                     "type": "string"
                   },
                   "business_keys": {
