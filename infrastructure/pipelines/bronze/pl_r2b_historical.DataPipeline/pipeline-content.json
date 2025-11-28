@@ -90,6 +90,24 @@
               "dependsOn": []
             },
             {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PaymentTerms",
+              "dependsOn": [
+                {
+                  "activity": "PaymentTerms_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
               "type": "TridentNotebook",
               "typeProperties": {
                 "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
@@ -168,7 +186,25 @@
               "name": "Currency_Activity",
               "dependsOn": [
                 {
-                  "activity": "PaymentTerms_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_PaymentTerms",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Currency",
+              "dependsOn": [
+                {
+                  "activity": "Currency_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -254,7 +290,25 @@
               "name": "SalespersonPurchaser_Activity",
               "dependsOn": [
                 {
-                  "activity": "Currency_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Currency",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
+              "dependsOn": [
+                {
+                  "activity": "SalespersonPurchaser_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -340,7 +394,25 @@
               "name": "Location_Activity",
               "dependsOn": [
                 {
-                  "activity": "SalespersonPurchaser_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Location",
+              "dependsOn": [
+                {
+                  "activity": "Location_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -426,7 +498,25 @@
               "name": "GLAccount_Activity",
               "dependsOn": [
                 {
-                  "activity": "Location_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Location",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_GLAccount",
+              "dependsOn": [
+                {
+                  "activity": "GLAccount_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -512,7 +602,25 @@
               "name": "GLEntry_Activity",
               "dependsOn": [
                 {
-                  "activity": "GLAccount_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_GLAccount",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_GLEntry",
+              "dependsOn": [
+                {
+                  "activity": "GLEntry_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -598,7 +706,25 @@
               "name": "Customer_Activity",
               "dependsOn": [
                 {
-                  "activity": "GLEntry_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_GLEntry",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Customer",
+              "dependsOn": [
+                {
+                  "activity": "Customer_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -684,7 +810,25 @@
               "name": "CustLedgerEntry_Activity",
               "dependsOn": [
                 {
-                  "activity": "Customer_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Customer",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_CustLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "CustLedgerEntry_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -770,7 +914,25 @@
               "name": "Vendor_Activity",
               "dependsOn": [
                 {
-                  "activity": "CustLedgerEntry_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_CustLedgerEntry",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Vendor",
+              "dependsOn": [
+                {
+                  "activity": "Vendor_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -856,7 +1018,25 @@
               "name": "VendorLedgerEntry_Activity",
               "dependsOn": [
                 {
-                  "activity": "Vendor_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Vendor",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "VendorLedgerEntry_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -942,7 +1122,25 @@
               "name": "Item_Activity",
               "dependsOn": [
                 {
-                  "activity": "VendorLedgerEntry_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Item",
+              "dependsOn": [
+                {
+                  "activity": "Item_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1028,7 +1226,25 @@
               "name": "ItemLedgerEntry_Activity",
               "dependsOn": [
                 {
-                  "activity": "Item_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Item",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "ItemLedgerEntry_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1114,7 +1330,25 @@
               "name": "SalesHeader_Activity",
               "dependsOn": [
                 {
-                  "activity": "ItemLedgerEntry_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesHeader",
+              "dependsOn": [
+                {
+                  "activity": "SalesHeader_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1200,7 +1434,25 @@
               "name": "SalesLine_Activity",
               "dependsOn": [
                 {
-                  "activity": "SalesHeader_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_SalesHeader",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesLine",
+              "dependsOn": [
+                {
+                  "activity": "SalesLine_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1286,7 +1538,25 @@
               "name": "PurchaseHeader_Activity",
               "dependsOn": [
                 {
-                  "activity": "SalesLine_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_SalesLine",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchaseHeader",
+              "dependsOn": [
+                {
+                  "activity": "PurchaseHeader_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1372,7 +1642,25 @@
               "name": "PurchaseLine_Activity",
               "dependsOn": [
                 {
-                  "activity": "PurchaseHeader_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_PurchaseHeader",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchaseLine",
+              "dependsOn": [
+                {
+                  "activity": "PurchaseLine_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1458,7 +1746,25 @@
               "name": "SalesInvoiceHeader_Activity",
               "dependsOn": [
                 {
-                  "activity": "PurchaseLine_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_PurchaseLine",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesInvoiceHeader",
+              "dependsOn": [
+                {
+                  "activity": "SalesInvoiceHeader_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1544,7 +1850,25 @@
               "name": "SalesInvoiceLine_Activity",
               "dependsOn": [
                 {
-                  "activity": "SalesInvoiceHeader_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_SalesInvoiceHeader",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesInvoiceLine",
+              "dependsOn": [
+                {
+                  "activity": "SalesInvoiceLine_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1630,7 +1954,25 @@
               "name": "PurchInvHeader_Activity",
               "dependsOn": [
                 {
-                  "activity": "SalesInvoiceLine_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_SalesInvoiceLine",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchInvHeader",
+              "dependsOn": [
+                {
+                  "activity": "PurchInvHeader_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1716,7 +2058,25 @@
               "name": "PurchInvLine_Activity",
               "dependsOn": [
                 {
-                  "activity": "PurchInvHeader_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_PurchInvHeader",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchInvLine",
+              "dependsOn": [
+                {
+                  "activity": "PurchInvLine_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1802,7 +2162,25 @@
               "name": "Prescriber_Activity",
               "dependsOn": [
                 {
-                  "activity": "PurchInvLine_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_PurchInvLine",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Prescriber",
+              "dependsOn": [
+                {
+                  "activity": "Prescriber_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -1888,7 +2266,25 @@
               "name": "Facility_Activity",
               "dependsOn": [
                 {
-                  "activity": "Prescriber_Activity",
+                  "activity": "Wait_For_Spark_To_Stop_Prescriber",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Facility",
+              "dependsOn": [
+                {
+                  "activity": "Facility_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
