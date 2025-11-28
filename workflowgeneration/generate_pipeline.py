@@ -37,6 +37,10 @@ TEMPLATE = {
                 "type": "bool",
                 "defaultValue": "false"
             },
+            "wait_seconds": {
+                "type": "int",
+                "defaultValue": 5
+            },
 
         }
     }
@@ -61,6 +65,7 @@ def build_pipeline_json(job_config, job_name, source_lakehouse, source_schema, t
     pipeline_json["properties"]["parameters"]["target_schema"]["defaultValue"] = target_lakehouse
     pipeline_json["properties"]["parameters"]["target_db"]["defaultValue"] = target_schema
 
+    pipeline_json["properties"]["parameters"]["wait_seconds"]["defaultValue"] = 5
     # Set job configuration parameter
     pipeline_json["properties"]["parameters"]["job_configuration"]["defaultValue"] = job_config
 
