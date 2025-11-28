@@ -47,7 +47,7 @@ def build_source_fk(value: str) -> str:
     return json.dumps(fk_list, separators=(",", ":"))
 
 # --- Load Excel ---
-def generate(path_to_file):
+def generate(path_to_file,  source_system, source_lakehouse, source_schema, target_lakehouse, target_schema):
 
     df = pd.read_excel(path_to_file)  
     # Expected columns:
@@ -92,8 +92,27 @@ def generate(path_to_file):
                         },
                         "type": "string"
                     },
+                    "source_lakehouse": {
+                        "value": f"{source_lakehouse}",
+                        "type": "string"
+                    },
                     "source_schema": {
-                        "value": "raw",
+                        "value": f"{source_schema}",
+                        "type": "string"
+                    },
+                    "source_table": {
+                        "value": {
+                            "value": f"@concat(item(),'_{entity.lower()}')",
+                            "type": "Expression"
+                        },
+                        "type": "string"
+                    },
+                    "target_lakehouse": {
+                        "value": f"{target_lakehouse}",
+                        "type": "string"
+                    },
+                    "target_db": {
+                        "value": f"{target_schema}",
                         "type": "string"
                     },
                     "target_table": {

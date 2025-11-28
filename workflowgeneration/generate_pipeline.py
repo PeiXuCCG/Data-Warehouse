@@ -43,7 +43,7 @@ TEMPLATE = {
 }
 
 
-def build_pipeline_json(job_config, job_name, target, target_schema):
+def build_pipeline_json(job_config, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema):
     """
     Build updated ADF pipeline JSON from template.
     job_config: list (job configuration array)
@@ -58,13 +58,13 @@ def build_pipeline_json(job_config, job_name, target, target_schema):
     pipeline_json["properties"]["activities"][0]["name"] = job_name
 
     # Set target values
-    pipeline_json["properties"]["parameters"]["target_schema"]["defaultValue"] = target
+    pipeline_json["properties"]["parameters"]["target_schema"]["defaultValue"] = target_lakehouse
     pipeline_json["properties"]["parameters"]["target_db"]["defaultValue"] = target_schema
 
     # Set job configuration parameter
     pipeline_json["properties"]["parameters"]["job_configuration"]["defaultValue"] = job_config
 
-    generated = generate_activities.generate(path_to_excel)
+    generated = generate_activities.generate(path_to_excel, job_config, source_lakehouse,source_schema, target_lakehouse, target_schema)
 
     pipeline_json["properties"]["activities"][0]["typeProperties"]["activities"] = generated
 
@@ -85,12 +85,14 @@ if __name__ == "__main__":
           "Ostendo"
     ]
     job_name = "Load_Historical_Data"
-    target = "lh_bronze"
+    source_lakehouse = "lh_bronze"
+    source_schema = "raw"
+    target_lakehouse = "lh_bronze"
     target_schema = "bronze"
     path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
     output_path = "pipeline.json"
 
-    output = build_pipeline_json(job_configuration, job_name, target, target_schema)
+    output = build_pipeline_json(job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema)
 
     # write to disk
     with open(output_path, "w", encoding="utf-8") as f:

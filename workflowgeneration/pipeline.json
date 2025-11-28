@@ -23,8 +23,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_paymentterms')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -83,8 +102,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_currency')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -150,8 +188,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salespersonpurchaser')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -217,8 +274,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_location')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -284,8 +360,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_glaccount')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -351,8 +446,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_glentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -418,8 +532,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_customer')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -485,8 +618,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_custledgerentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -552,8 +704,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_vendor')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -619,8 +790,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_vendorledgerentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -686,8 +876,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_item')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -753,8 +962,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_itemledgerentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -820,8 +1048,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesheader')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -887,8 +1134,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -954,8 +1220,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchaseheader')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1021,8 +1306,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchaseline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1088,8 +1392,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesinvoiceheader')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1155,8 +1478,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesinvoiceline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1222,8 +1564,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchinvheader')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1289,8 +1650,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchinvline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1356,8 +1736,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_prescriber')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1423,8 +1822,27 @@
                     },
                     "type": "string"
                   },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
                   "source_schema": {
                     "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_facility')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
