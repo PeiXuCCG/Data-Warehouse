@@ -2322,6 +2322,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": "false"
+      },
+      "wait_seconds": {
+        "type": "int",
+        "defaultValue": 5
       }
     }
   }
