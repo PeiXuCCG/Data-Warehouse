@@ -111,7 +111,7 @@ def generate(path_to_file,  source_system, source_lakehouse, source_schema, targ
                         "value": f"{target_lakehouse}",
                         "type": "string"
                     },
-                    "target_db": {
+                    "target_schema": {
                         "value": f"{target_schema}",
                         "type": "string"
                     },
