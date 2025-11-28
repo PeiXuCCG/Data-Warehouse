@@ -28,9 +28,10 @@
 
 # %%
 from pyspark.sql import SparkSession, Row
+from notebookutils import mssparkutils
 from loom.tables.keyed_table import KeyedTable
 from loom.pipelines import Pipeline
-from pyspark.sql.functions import monotonically_increasing_id, coalesce,lower, expr,regexp_replace, col, sha2, window, current_timestamp, lag, concat_ws, lit, row_number, when
+from pyspark.sql.functions import sum, monotonically_increasing_id, coalesce,lower, expr,regexp_replace, col, sha2, window, current_timestamp, lag, concat_ws, lit, row_number, when
 from pyspark.sql import Window
 from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_bridge
 import re
@@ -101,7 +102,27 @@ source_foreign_keys = json.loads(source_foreign_keys)
 
 def deduplicate_func(df):
 
-    # Generate hash key for deduplication
+    # --- Build unified lastdatemodified using available columns ---
+    lastmod_candidates = [
+        "systemmodifiedat",
+        "lastmodifieddatetime",
+        "lastdatemodified",
+        "timestamp"
+    ]
+
+    # Pick only columns that exist in df
+    available_cols = [c for c in lastmod_candidates if c in df.columns]
+
+    if not available_cols:
+        # If none exist, create a NULL column
+        df = df.withColumn("lastdatemodified", lit(None).cast("timestamp"))
+    else:
+        df = df.withColumn(
+            "lastdatemodified",
+            coalesce(*[col(c).cast("timestamp") for c in available_cols])
+        )
+
+    # --- Generate HK hash key ---
     df = df.withColumn(
         f"{target_table}_hk",
         sha2(
@@ -127,25 +148,22 @@ def deduplicate_func(df):
     # Surrogate ordering for NULL lastdatemodified groups
     df = df.withColumn("surrogate_order", monotonically_increasing_id())
 
-    # Mark which rows have a real lastdatemodified
     df = df.withColumn("has_lastmod", col("lastdatemodified").isNotNull().cast("int"))
 
     # Window by hash key
     w_grp = Window.partitionBy(f"{target_table}_hk")
 
-    # If ALL lastdatemodified are NULL → use surrogate ordering
-    # If ANY lastdatemodified is present → use real lastdatemodified
     df = df.withColumn(
         "ordering_key",
         when(
-            sum("has_lastmod").over(w_grp) == 0,   # all NULL
-            col("surrogate_order")                 # deterministic order
+            sum("has_lastmod").over(w_grp) == lit(0),     # all NULL
+            col("surrogate_order")                   # deterministic fallback
         ).otherwise(
-            col("lastdatemodified")                # normal ordering
+            col("lastdatemodified").cast("long")
         )
     )
 
-    # Sort newest (or lowest surrogate) first
+    # Sort newest first
     w = Window.partitionBy(f"{target_table}_hk").orderBy(col("ordering_key").desc())
 
     df = (
@@ -162,7 +180,6 @@ def deduplicate_func(df):
     )
 
     return df
-
 
 # METADATA ********************
 
@@ -196,7 +213,10 @@ def transform_func(df):
 # CELL ********************
 
 # %%
-df = spark.read.table(f"{source_schema}.{source_table}")
+if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
+    df = spark.read.table(f"{source_schema}.{source_table}")
+else:
+   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
 
 # METADATA ********************
 

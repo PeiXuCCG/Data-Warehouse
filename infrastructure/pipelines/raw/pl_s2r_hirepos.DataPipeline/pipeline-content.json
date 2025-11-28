@@ -89,6 +89,21 @@
               },
               "name": "S2R_Lakeside_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Lakeside",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Lakeside_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -183,6 +198,21 @@
               },
               "name": "S2R_Homecare_Equipment_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Homecare",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Homecare_Equipment_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },

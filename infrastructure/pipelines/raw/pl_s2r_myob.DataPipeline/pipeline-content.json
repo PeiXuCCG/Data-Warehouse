@@ -89,6 +89,21 @@
               },
               "name": "S2R_Healthsaver_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Healthsaver",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Healthsaver_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -183,6 +198,21 @@
               },
               "name": "S2R_Chair_Doctor_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_ChairDoctor",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Chair_Doctor_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -284,6 +314,21 @@
               },
               "name": "S2R_Ergo_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Ergo",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Ergo_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -385,6 +430,21 @@
               },
               "name": "S2R_FisherLane_Mobility_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Fisherlane",
+              "dependsOn": [
+                {
+                  "activity": "S2R_FisherLane_Mobility_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -486,6 +546,21 @@
               },
               "name": "S2R_WILLAID_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Willaid",
+              "dependsOn": [
+                {
+                  "activity": "S2R_WILLAID_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },

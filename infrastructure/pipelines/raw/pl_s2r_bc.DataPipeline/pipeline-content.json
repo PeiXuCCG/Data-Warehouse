@@ -87,6 +87,21 @@
               },
               "name": "S2R_BC_Entity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop",
+              "dependsOn": [
+                {
+                  "activity": "S2R_BC_Entity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },

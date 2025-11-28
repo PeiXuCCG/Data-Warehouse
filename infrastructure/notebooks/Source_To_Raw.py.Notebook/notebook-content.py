@@ -112,6 +112,10 @@ def cleanse(df):
         # Step 1: split on '-' and lowercase
         base = col.split("-")[0].lower()
 
+        if '$' in base and "company" not in base:
+            #set the prefix to bc2adls for deliverytime 
+            base = f"bc2adls_{base}"
+
         # Step 2: remove special chars
         sanitized = re.sub(pattern, "", base)
 
@@ -210,7 +214,7 @@ def prevent_duplicate_data(df):
     
     cols_to_hash = [c for c in df.columns if c not in exclude_cols]
     
-    concat_cols = concat_ws("||", *[col(c).cast("string") for c in cols_to_hash])
+    concat_cols = concat_ws("||", *[col(f"`{c}`").cast("string") for c in cols_to_hash])
     df_hashed = df.withColumn("row_hash", sha2(concat_cols, 256))
     
     df_deduped = df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")

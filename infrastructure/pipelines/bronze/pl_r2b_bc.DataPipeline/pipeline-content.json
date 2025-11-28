@@ -91,6 +91,24 @@
               },
               "name": "R2B_BC_Entity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop",
+              "dependsOn": [
+                {
+                  "activity": "R2B_BC_Entity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -119,6 +137,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     },
     "concurrency": 1

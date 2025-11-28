@@ -109,10 +109,29 @@ def transform_func(df):
 
 # CELL ********************
 
-# %%
 def deduplicate_func(df):
 
-    # Generate hash key for deduplication
+    # --- Build unified lastdatemodified using available columns ---
+    lastmod_candidates = [
+        "systemmodifiedat",
+        "lastmodifieddatetime",
+        "lastdatemodified",
+        "timestamp"
+    ]
+
+    # Pick only columns that exist in df
+    available_cols = [c for c in lastmod_candidates if c in df.columns]
+
+    if not available_cols:
+        # If none exist, create a NULL column
+        df = df.withColumn("lastdatemodified", lit(None).cast("timestamp"))
+    else:
+        df = df.withColumn(
+            "lastdatemodified",
+            coalesce(*[col(c).cast("timestamp") for c in available_cols])
+        )
+
+    # --- Generate HK hash key ---
     df = df.withColumn(
         f"{target_table}_hk",
         sha2(
@@ -138,31 +157,22 @@ def deduplicate_func(df):
     # Surrogate ordering for NULL lastdatemodified groups
     df = df.withColumn("surrogate_order", monotonically_increasing_id())
 
-   
-    # Convert surrogate_order into a TIMESTAMP for safe comparison
-    df = df.withColumn(
-        "surrogate_ts",
-        from_unixtime(col("surrogate_order")).cast("timestamp")
-    )
-
     df = df.withColumn("has_lastmod", col("lastdatemodified").isNotNull().cast("int"))
 
+    # Window by hash key
     w_grp = Window.partitionBy(f"{target_table}_hk")
 
-
-    # If ALL lastdatemodified are NULL → use surrogate ordering
-    # If ANY lastdatemodified is present → use real lastdatemodified
     df = df.withColumn(
         "ordering_key",
         when(
-            sum("has_lastmod").over(w_grp) == 0,   # all NULL
-            col("surrogate_ts")                 # deterministic order
+            sum("has_lastmod").over(w_grp) == lit(0),     # all NULL
+            col("surrogate_order")                   # deterministic fallback
         ).otherwise(
-            col("lastdatemodified")                # normal ordering
+            col("lastdatemodified")                  # real value
         )
     )
 
-    # Sort newest (or lowest surrogate) first
+    # Sort newest first
     w = Window.partitionBy(f"{target_table}_hk").orderBy(col("ordering_key").desc())
 
     df = (
@@ -173,7 +183,7 @@ def deduplicate_func(df):
         .withColumn("rn", row_number().over(w))
         .withColumn(
             "effectivity_end_date",
-            when(col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
+            when(F.col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
         )
         .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
     )

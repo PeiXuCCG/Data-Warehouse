@@ -89,6 +89,21 @@
               },
               "name": "S2R_Ansteys_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Ansteys",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Ansteys_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -183,6 +198,21 @@
               },
               "name": "S2R_Lakeside_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Lakeside",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Lakeside_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -284,6 +314,21 @@
               },
               "name": "S2R_Open_Mobility",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Open",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Open_Mobility",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -385,6 +430,21 @@
               },
               "name": "S2R_Homecare_Equipment_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Homecare",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Homecare_Equipment_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -486,6 +546,21 @@
               },
               "name": "S2R_Uccello_Marketing_AU",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Uccello_Marketing_AU",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Uccello_Marketing_AU",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -587,6 +662,21 @@
               },
               "name": "S2R_Uccello_Designs",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Ucello_Designs",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Uccello_Designs",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -688,6 +778,21 @@
               },
               "name": "S2R_Uccello_Marketing_EU_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              },
+              "name": "Wait_For_Spark_To_Stop_Ucello_Marketing_EU",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Uccello_Marketing_EU_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
