@@ -131,7 +131,7 @@ def generate(path_to_file,  source_system, source_lakehouse, source_schema, targ
                         "value": source_fk,
                         "type": "string"
                     },
-                    "deduplicate_keys": {
+                    "deduplicate_fields": {
                         "value": dedup,
                         "type": "string"
                     },
