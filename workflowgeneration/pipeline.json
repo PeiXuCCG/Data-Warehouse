@@ -464,7 +464,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"name\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -472,7 +472,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"code\", \"name\"]",
+                    "value": "[\"no\", \"name\"]",
                     "type": "string"
                   },
                   "business_keys": {
