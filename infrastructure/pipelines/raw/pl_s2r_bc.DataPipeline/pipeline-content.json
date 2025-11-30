@@ -91,7 +91,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop",
               "dependsOn": [
@@ -318,6 +321,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     },
     "concurrency": 1

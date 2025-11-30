@@ -59,7 +59,7 @@ source_schema = "raw"
 source_table = "xero_customer"
 source_system = "Xero"
 
-pipeline_name = f"{source_schema}_{source_table}_to_{target_db}_{target_table}"
+pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # source keys (in bc form, not source field names)
 source_key = "no" # this is used in the schemabridge for capture the unmapped columns
