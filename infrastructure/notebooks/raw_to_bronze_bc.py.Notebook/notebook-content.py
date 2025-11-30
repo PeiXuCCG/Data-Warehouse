@@ -47,15 +47,16 @@ import json
 
 # %%
 # These are the input variables for each bronze table
-target_schema = "lh_bronze"
-target_db = "bronze"
+target_lakehouse = "lh_bronze"
+target_schema = "bronze"
 target_table = "customer"
 
 # source - don't need source schema
-source_db = "raw"
+source_lakehouse = "lh_bronze"
+source_schema = "raw"
 source_table = "bc_customer"
 
-pipeline_name = f"{source_db}_{source_table}_to_{target_db}_{target_table}"
+pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # source keys 
 source_primary_keys = ["no", "source_system", "company"]
@@ -200,7 +201,7 @@ def deduplicate_func(df):
 # CELL ********************
 
 # %%
-df = spark.read.table(f"{source_db}.{source_table}")
+df = spark.read.table(f"{source_lakehouse}.{source_schema}.{source_table}")
 
 # METADATA ********************
 
@@ -214,8 +215,8 @@ df = spark.read.table(f"{source_db}.{source_table}")
 # %%
 # 4. Create the curated keyed table
 bronze_table = KeyedTable(
-            target_db=target_db,
-            target_schema=target_schema,
+            target_db=target_schema,
+            target_schema=target_lakehouse,
             name=target_table,
             schema_evolution=False,
             df=df,
