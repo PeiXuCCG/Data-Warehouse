@@ -50,8 +50,8 @@ import json
 # %%
 # These are the input variables for each bronze table
 
-target_schema = "lh_bronze"
-target_db = "bronze"
+target_lakehouse = "lh_bronze"
+target_schema = "bronze"
 target_table = "historical_customer"
 
 # source tables
@@ -230,8 +230,8 @@ else:
 # %%
 # 4. Create the curated keyed table
 bronze_table  = KeyedTable(
-            target_db=target_db,
-            target_schema=target_schema,
+            target_db=target_schema,
+            target_schema=target_lakehouse,
             name=target_table,
             schema_evolution=False,
             df=df,
