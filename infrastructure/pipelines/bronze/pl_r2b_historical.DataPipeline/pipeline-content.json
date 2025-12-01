@@ -1196,7 +1196,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"company\",\"source_system\"]},{\"itemtracking\":[\"itemtracking\",\"company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"itemtracking\":[\"itemtracking\",\"company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
