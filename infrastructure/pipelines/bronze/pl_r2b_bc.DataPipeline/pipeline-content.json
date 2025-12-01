@@ -892,7 +892,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"cpmpany\"]",
+                    "value": "[\"orginating_cpmpany\"]",
                     "type": "string"
                   },
                   "dry_run": {
