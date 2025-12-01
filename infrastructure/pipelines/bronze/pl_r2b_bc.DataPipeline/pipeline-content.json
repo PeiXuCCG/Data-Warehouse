@@ -892,7 +892,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"orginating_company\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
