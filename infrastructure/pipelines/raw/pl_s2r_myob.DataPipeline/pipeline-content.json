@@ -4,7 +4,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "batchCount": 5,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -64,7 +64,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -113,7 +116,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "batchCount": 5,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -173,7 +176,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -229,7 +235,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "batchCount": 5,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -289,7 +295,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -345,7 +354,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "batchCount": 5,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -405,7 +414,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -461,7 +473,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
-          "batchCount": 5,
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -521,7 +533,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -672,6 +687,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     },
     "concurrency": 1

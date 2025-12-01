@@ -179,8 +179,6 @@ def deduplicate_func(df):
         .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
     )
 
-    df = df.withColumnRenamed("company", "originating_company")
-
     return df
 
 # METADATA ********************
