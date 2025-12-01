@@ -97,6 +97,21 @@ dry_run = True # you need to override this to false to make it save to the schem
 
 # CELL ********************
 
+# Reload strings as arrays
+deduplicate_fields = json.loads(deduplicate_fields)
+business_keys = json.loads(business_keys)
+source_primary_keys = json.loads(source_primary_keys)
+source_foreign_keys = json.loads(source_foreign_keys)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def transform_func(df):
     # NOT USED IN BC implementation
     pass
@@ -169,7 +184,7 @@ def deduplicate_func(df):
             sum("has_lastmod").over(w_grp) == lit(0),     # all NULL
             col("surrogate_order")                   # deterministic fallback
         ).otherwise(
-            col("lastdatemodified")                  # real value
+            col("lastdatemodified").cast("long")
         )
     )
 
@@ -184,7 +199,7 @@ def deduplicate_func(df):
         .withColumn("rn", row_number().over(w))
         .withColumn(
             "effectivity_end_date",
-            when(F.col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
+            when(col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
         )
         .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
     )
