@@ -43,6 +43,18 @@ import json
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+spark.conf.set("spark.sql.parquet.int96RebaseModeInWrite", "CORRECTED")
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # PARAMETERS CELL ********************
 
 # %%
