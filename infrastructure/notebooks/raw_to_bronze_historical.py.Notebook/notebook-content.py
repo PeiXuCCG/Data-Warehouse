@@ -179,6 +179,8 @@ def deduplicate_func(df):
         .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
     )
 
+    df = df.withColumnRenamed("company", "originating_company")
+
     return df
 
 # METADATA ********************
@@ -235,7 +237,7 @@ bronze_table  = KeyedTable(
             name=target_table,
             schema_evolution=False,
             df=df,
-            target_path="", # NOT SUPPORTED IN FABRIC
+            target_path="NOT_SUPPORTED_YET", # NOT SUPPORTED IN FABRIC
             business_keys=business_keys,
             source_primary_keys=source_primary_keys,
             source_foreign_keys=source_foreign_keys,
