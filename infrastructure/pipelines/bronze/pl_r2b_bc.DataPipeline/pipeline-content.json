@@ -268,7 +268,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                   "value":"[\"originating_company\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -372,7 +372,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                   "value":"[\"originating_company\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -476,7 +476,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                   "value":"[\"originating_company\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -580,7 +580,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"postingdate\"]",
+                    "value": "[\"originating_company\",\"postingdate\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -684,7 +684,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                   "value":"[\"originating_company\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -788,7 +788,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"postingdate\"]",
+                    "value": "[\"originating_company\",\"postingdate\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -996,7 +996,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"postingdate\"]",
+                    "value": "[\"originating_company\",\"postingdate\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1100,7 +1100,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"itemcategorycode\"]",
+                    "value": "[\"originating_company\",\"itemcategorycode\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1204,7 +1204,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"postingdate\"]",
+                    "value": "[\"originating_company\",\"postingdate\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1308,7 +1308,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"selltocustomerno\"]",
+                    "value": "[\"originating_company\",\"selltocustomerno\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1516,7 +1516,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"buyfromvendorno\"]",
+                    "value": "[\"originating_company\",\"buyfromvendorno\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1620,7 +1620,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"no\"]",
+                    "value": "[\"originating_company\",\"no\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1724,7 +1724,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"selltocustomerno\"]",
+                    "value": "[\"originating_company\",\"selltocustomerno\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1828,7 +1828,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"no\"]",
+                    "value": "[\"originating_company\",\"no\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1932,7 +1932,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"buyfromvendorno\"]",
+                    "value": "[\"originating_company\",\"buyfromvendorno\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -2036,7 +2036,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"no\"]",
+                    "value": "[\"originating_company\",\"no\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -2140,7 +2140,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"city\"]",
+                    "value": "[\"originating_company\",\"city\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -2244,7 +2244,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value":"[\"originating_company\",\"city\"]",
+                    "value": "[\"originating_company\",\"city\"]",
                     "type": "string"
                   },
                   "dry_run": {

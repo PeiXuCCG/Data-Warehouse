@@ -45,8 +45,11 @@ import json
 
 # CELL ********************
 
+spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite", "CORRECTED")
+spark.conf.set("spark.sql.legacy.parquet.datetimeRebaseModeInRead", "CORRECTED")
 spark.conf.set("spark.sql.parquet.int96RebaseModeInWrite", "CORRECTED")
-spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")  # optional, for parsing strings
+
 
 # METADATA ********************
 
