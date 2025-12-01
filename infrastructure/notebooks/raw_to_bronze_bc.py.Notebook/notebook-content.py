@@ -232,7 +232,10 @@ def deduplicate_func(df):
 # CELL ********************
 
 # %%
-df = spark.read.table(f"{source_lakehouse}.{source_schema}.{source_table}")
+if spark.catalog.tableExists(f"{source_lakehouse}.{source_schema}.{source_table}"):
+    df = spark.read.table(f"{source_lakehouse}.{source_schema}.{source_table}")
+else:
+   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
 
 # METADATA ********************
 
