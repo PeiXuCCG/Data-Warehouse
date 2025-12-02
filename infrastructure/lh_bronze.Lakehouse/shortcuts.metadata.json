@@ -12,6 +12,18 @@
     }
   },
   {
+    "name": "windward",
+    "path": "/Files/history",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Files/history/windward",
+        "itemId": "6e8bedbf-449b-42e1-8031-f8a31fd1893e",
+        "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
+      }
+    }
+  },
+  {
     "name": "netsuite",
     "path": "/Files/history",
     "target": {

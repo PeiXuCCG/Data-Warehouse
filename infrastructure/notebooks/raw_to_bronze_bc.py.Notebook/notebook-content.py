@@ -142,26 +142,6 @@ def transform_func(df):
 
 def deduplicate_func(df):
 
-    # --- Build unified lastdatemodified using available columns ---
-    lastmod_candidates = [
-        "systemmodifiedat",
-        "lastmodifieddatetime",
-        "lastdatemodified",
-        "timestamp"
-    ]
-
-    # Pick only columns that exist in df
-    available_cols = [c for c in lastmod_candidates if c in df.columns]
-
-    if not available_cols:
-        # If none exist, create a NULL column
-        df = df.withColumn("lastdatemodified", lit(None).cast("timestamp"))
-    else:
-        df = df.withColumn(
-            "lastdatemodified",
-            coalesce(*[col(c).cast("timestamp") for c in available_cols])
-        )
-
     # --- Generate HK hash key ---
     df = df.withColumn(
         f"{target_table}_hk",
@@ -179,46 +159,37 @@ def deduplicate_func(df):
         )
     )
 
-    # Start date always 1900
+    # --- Fixed effectivity_start_date ---
     df = df.withColumn(
         "effectivity_start_date",
         lit("1900-01-01 00:00:00").cast("timestamp")
     )
 
-    # Surrogate ordering for NULL lastdatemodified groups
-    df = df.withColumn("surrogate_order", monotonically_increasing_id())
-
-    df = df.withColumn("has_lastmod", col("lastdatemodified").isNotNull().cast("int"))
-
-    # Window by hash key
-    w_grp = Window.partitionBy(f"{target_table}_hk")
-
+    # --- Pure surrogate ordering across duplicates ---
     df = df.withColumn(
-        "ordering_key",
-        when(
-            sum("has_lastmod").over(w_grp) == lit(0),     # all NULL
-            col("surrogate_order")                   # deterministic fallback
-        ).otherwise(
-            col("lastdatemodified").cast("long")
-        )
+        "surrogate_order",
+        monotonically_increasing_id()
     )
 
-    # Sort newest first
-    w = Window.partitionBy(f"{target_table}_hk").orderBy(col("ordering_key").desc())
+    # Window by hash key ordered **only** by surrogate_order (descending → newest first)
+    w = (
+        Window
+        .partitionBy(f"{target_table}_hk")
+        .orderBy(col("surrogate_order").desc())
+    )
+
+    # --- SCD2 chaining using surrogate ID ---
+    now_ts = current_timestamp()
 
     df = (
-        df.withColumn(
-            "effectivity_end_date",
-            lag("ordering_key").over(w).cast("timestamp")
-        )
-        .withColumn("rn", row_number().over(w))
+        df.withColumn("rn", row_number().over(w))
         .withColumn(
             "effectivity_end_date",
-            when(col("rn") == 1, lit(None)).otherwise(col("effectivity_end_date"))
+            when(col("rn") == 1, lit(None))   # newest version → still open
+            .otherwise(now_ts)               # older versions → closed now
         )
-        .drop("rn", "surrogate_order", "has_lastmod", "ordering_key")
+        .drop("rn", "surrogate_order")
     )
-
 
     return df
 
