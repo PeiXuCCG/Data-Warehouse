@@ -2556,14 +2556,14 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": "false"
+        "defaultValue": false
       },
       "wait_seconds": {
         "type": "int",
         "defaultValue": 5
       },
       "skip_activities": {
-        "type": "string",
+        "type": "array",
         "defaultValue": []
       }
     }
