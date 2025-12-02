@@ -33,7 +33,8 @@ def generate(path_to_file,
              source_schema,
              target_lakehouse,
              target_schema,
-             table_prefix):
+             table_prefix,
+             notebook_id):
 
     df = pd.read_excel(path_to_file)
 
@@ -64,7 +65,7 @@ def generate(path_to_file,
         notebook_activity = {
             "type": "TridentNotebook",
             "typeProperties": {
-                "notebookId": ,
+                "notebookId": notebook_id,
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                     "source_system": {
