@@ -72,7 +72,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -180,7 +180,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -295,7 +295,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -410,7 +410,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -525,7 +525,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -640,7 +640,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -755,7 +755,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -870,7 +870,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -985,7 +985,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1100,7 +1100,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1215,7 +1215,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1330,7 +1330,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1445,7 +1445,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1560,7 +1560,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1675,7 +1675,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1790,7 +1790,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1905,7 +1905,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2020,7 +2020,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2135,7 +2135,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2250,7 +2250,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2365,7 +2365,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2480,7 +2480,7 @@
                   },
                   "skip_activities": {
                     "value": {
-                      "value": "@string(pipeline().parameters.skip_activitie)",
+                      "value": "@string(pipeline().parameters.skip_activities)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2556,7 +2556,7 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": false
+        "defaultValue": "false"
       },
       "wait_seconds": {
         "type": "int",

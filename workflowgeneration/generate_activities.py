@@ -94,7 +94,7 @@ def generate(path_to_file,
                     "business_keys": {"value": business_keys, "type": "string"},
                     "skip_activities": { 
                         "value": {
-                            "value": "@string(pipeline().parameters.skip_activitie)",
+                            "value": "@string(pipeline().parameters.skip_activities)",
                             "type": "Expression"
                         },
                         "type": "string"
