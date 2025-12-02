@@ -1396,11 +1396,11 @@
                     "type": "string"
                   },
                   "source_key": {
-                    "value": "documentNo, lineNo",
+                    "value": "documentno, lineno",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"Lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1608,7 +1608,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"Lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1816,7 +1816,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"Lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2020,11 +2020,11 @@
                     "type": "string"
                   },
                   "source_key": {
-                    "value": "document no,  line no.",
+                    "value": "documentno,  lineno",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"Lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2293,7 +2293,7 @@
             }
           ]
         },
-        "name": "Load_Historical_Data",
+        "name": "Load_Data",
         "dependsOn": []
       }
     ],
