@@ -71,6 +71,9 @@ source_lakehouse = "lh_bronze"
 source_schema = "raw"
 source_table = "bc_customer"
 
+skip_activities = []
+activity = "Customer"
+
 pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # source keys 
@@ -117,6 +120,19 @@ deduplicate_fields = json.loads(deduplicate_fields)
 business_keys = json.loads(business_keys)
 source_primary_keys = json.loads(source_primary_keys)
 source_foreign_keys = json.loads(source_foreign_keys)
+skip_activities = json.loads(skip_activities)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+if activity in skip_activities:
+    mssparkutils.notebook.exit(f"Skipping activity {activity}")
 
 # METADATA ********************
 

@@ -76,6 +76,17 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PaymentTerms",
+                    "type": "string"
                   }
                 }
               },
@@ -2314,11 +2325,15 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": "false"
+        "defaultValue": false
       },
       "wait_seconds": {
         "type": "int",
         "defaultValue": 5
+      },
+      "skip_activities": {
+        "type": "string",
+        "defaultValue": []
       }
     }
   }
