@@ -2309,14 +2309,7 @@
       "job_configuration": {
         "type": "array",
         "defaultValue": [
-          "Xero",
-          "Myob",
-          "Netsuite",
-          "Hirepos",
-          "Lightspeed",
-          "Windward",
-          "Natsoft",
-          "Ostendo"
+          "BC"
         ]
       },
       "dry_run": {
