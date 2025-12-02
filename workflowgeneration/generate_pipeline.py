@@ -1,6 +1,7 @@
 import json
 from copy import deepcopy
 import generate_activities 
+import sys
 
 
 TEMPLATE = {
@@ -80,9 +81,16 @@ def build_pipeline_json(job_config, job_name, source_lakehouse, source_schema, t
 if __name__ == "__main__":
     # Example usage:
     
+    bc_job_name = "Load_Data"
+    bc_notebook_id =  "11363096-0db8-9724-4979-fb4b00909b73" 
+    bc_table_prefix = "bc" 
     bc_job_configuration = [
         "BC"
     ]
+
+    historical_job_name = "Load_Historical_Data"
+    historical_notebook_id = "91dad485-d600-8560-4fea-29a406f901ff"
+    historical_table_prefix = "historical" 
     historical_job_configuration = [
           "Xero",
           "Myob",
@@ -93,18 +101,30 @@ if __name__ == "__main__":
           "Natsoft",
           "Ostendo"
     ]
-    job_name = "Load_Data"
+
     source_lakehouse = "lh_bronze"
     source_schema = "raw"
     target_lakehouse = "lh_bronze"
     target_schema = "bronze"
-    table_prefix = "bc" #bc
+    
+
     path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
     output_path = "pipeline.json"
-    notebook_id =  "11363096-0db8-9724-4979-fb4b00909b73"   
-    
-    #"91dad485-d600-8560-4fea-29a406f901ff" - historical
-    #"11363096-0db8-9724-4979-fb4b00909b73" - bc
+      
+    workflow_type = sys.argv[1]
+
+    if workflow_type == "bc":
+        job_configuration = bc_job_configuration
+        job_name = bc_job_name
+        notebook_id = bc_notebook_id
+        table_prefix = bc_table_prefix
+    elif workflow_type == "historical":
+        job_configuration = historical_job_configuration
+        job_name = historical_job_name
+        notebook_id = historical_notebook_id
+        table_prefix = historical_table_prefix
+    else:
+        raise Exception("Unknown workflow generation")
 
     output = build_pipeline_json(bc_job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
 

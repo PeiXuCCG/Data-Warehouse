@@ -1828,7 +1828,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"no\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
@@ -2036,7 +2036,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"no\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "dry_run": {
