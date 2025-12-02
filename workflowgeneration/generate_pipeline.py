@@ -90,6 +90,9 @@ if __name__ == "__main__":
     table_prefix = "bc"
     path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
     output_path = "pipeline.json"
+    notebook_id =  "91dad485-d600-8560-4fea-29a406f901ff"   
+    
+    #"91dad485-d600-8560-4fea-29a406f901ff" - historical
 
     output = build_pipeline_json(job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix)
 

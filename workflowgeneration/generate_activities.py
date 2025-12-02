@@ -64,7 +64,7 @@ def generate(path_to_file,
         notebook_activity = {
             "type": "TridentNotebook",
             "typeProperties": {
-                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "notebookId": ,
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                     "source_system": {
