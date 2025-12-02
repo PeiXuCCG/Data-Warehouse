@@ -92,6 +92,14 @@ def generate(path_to_file,
                     "source_foreign_keys": {"value": source_fk, "type": "string"},
                     "deduplicate_fields": {"value": dedup, "type": "string"},
                     "business_keys": {"value": business_keys, "type": "string"},
+                    "skip_activities": { 
+                        "value": {
+                            "value": "@pipeline().parameters.skip_activities",
+                            "type": "Expression"
+                        },
+                        "type": "string"
+                    },
+                    "activity": {"value": f"{entity}", "type": "string"},
                     "dry_run": {
                         "value": {
                             "value": "@pipeline().parameters.dry_run",

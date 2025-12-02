@@ -70,6 +70,17 @@
                     "value": "[\"code\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PaymentTerms",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -165,6 +176,17 @@
                   },
                   "business_keys": {
                     "value": "[\"code\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Currency",
                     "type": "string"
                   },
                   "dry_run": {
@@ -271,6 +293,17 @@
                     "value": "[\"originating_company\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalespersonPurchaser",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -373,6 +406,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Location",
                     "type": "string"
                   },
                   "dry_run": {
@@ -479,6 +523,17 @@
                     "value": "[\"originating_company\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "GLAccount",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -581,6 +636,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\", \"postingdate\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "GLEntry",
                     "type": "string"
                   },
                   "dry_run": {
@@ -687,6 +753,17 @@
                     "value": "[\"originating_company\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Customer",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -789,6 +866,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\", \"postingdate\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "CustLedgerEntry",
                     "type": "string"
                   },
                   "dry_run": {
@@ -895,6 +983,17 @@
                     "value": "[\"originating_company\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Vendor",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -997,6 +1096,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\", \"postingdate\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "VendorLedgerEntry",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1103,6 +1213,17 @@
                     "value": "[\"originating_company\", \"itemcategorycode\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Item",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -1205,6 +1326,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\", \"postingdate\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ItemLedgerEntry",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1311,6 +1443,17 @@
                     "value": "[\"originating_company\", \"selltocustomerno\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesHeader",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -1413,6 +1556,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesLine",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1519,6 +1673,17 @@
                     "value": "[\"originating_company\", \"buyfromvendorno\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchaseHeader",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -1621,6 +1786,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\", \"no\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchaseLine",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1727,6 +1903,17 @@
                     "value": "[\"originating_company\", \"selltocustomerno\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesInvoiceHeader",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -1829,6 +2016,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesInvoiceLine",
                     "type": "string"
                   },
                   "dry_run": {
@@ -1935,6 +2133,17 @@
                     "value": "[\"originating_company\", \"buyfromvendorno\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchInvHeader",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -2037,6 +2246,17 @@
                   },
                   "business_keys": {
                     "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchInvLine",
                     "type": "string"
                   },
                   "dry_run": {
@@ -2143,6 +2363,17 @@
                     "value": "[\"originating_company\", \"city\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Prescriber",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -2247,6 +2478,17 @@
                     "value": "[\"originating_company\", \"city\"]",
                     "type": "string"
                   },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@pipeline().parameters.skip_activities",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Facility",
+                    "type": "string"
+                  },
                   "dry_run": {
                     "value": {
                       "value": "@pipeline().parameters.dry_run",
@@ -2319,6 +2561,10 @@
       "wait_seconds": {
         "type": "int",
         "defaultValue": 5
+      },
+      "skip_activities": {
+        "type": "string",
+        "defaultValue": []
       }
     }
   }
