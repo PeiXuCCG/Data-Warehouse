@@ -32,7 +32,8 @@ def generate(path_to_file,
              source_lakehouse,
              source_schema,
              target_lakehouse,
-             target_schema):
+             target_schema,
+             table_prefix):
 
     df = pd.read_excel(path_to_file)
 
@@ -82,7 +83,7 @@ def generate(path_to_file,
                     "target_lakehouse": {"value": target_lakehouse, "type": "string"},
                     "target_schema": {"value": target_schema, "type": "string"},
                     "target_table": {
-                        "value": f"historical_{entity.lower()}",
+                        "value": f"{table_prefix}_{entity.lower()}",
                         "type": "string"
                     },
                     "source_key": {"value": source_key, "type": "string"},
