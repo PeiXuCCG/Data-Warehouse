@@ -43,7 +43,7 @@ TEMPLATE = {
                 "defaultValue": 5
             },
             "skip_activities": {
-                "type": "string",
+                "type": "array",
                 "defaultValue": []
             }
         }
