@@ -13,7 +13,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -47,7 +47,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_paymentterms",
+                    "value": "historical_paymentterms",
                     "type": "string"
                   },
                   "source_key": {
@@ -110,7 +110,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -144,7 +144,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_currency",
+                    "value": "historical_currency",
                     "type": "string"
                   },
                   "source_key": {
@@ -214,7 +214,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -248,7 +248,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salespersonpurchaser",
+                    "value": "historical_salespersonpurchaser",
                     "type": "string"
                   },
                   "source_key": {
@@ -318,7 +318,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -352,7 +352,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_location",
+                    "value": "historical_location",
                     "type": "string"
                   },
                   "source_key": {
@@ -422,7 +422,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -456,7 +456,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_glaccount",
+                    "value": "historical_glaccount",
                     "type": "string"
                   },
                   "source_key": {
@@ -526,7 +526,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -560,7 +560,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_glentry",
+                    "value": "historical_glentry",
                     "type": "string"
                   },
                   "source_key": {
@@ -630,7 +630,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -664,7 +664,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_customer",
+                    "value": "historical_customer",
                     "type": "string"
                   },
                   "source_key": {
@@ -734,7 +734,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -768,7 +768,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_custledgerentry",
+                    "value": "historical_custledgerentry",
                     "type": "string"
                   },
                   "source_key": {
@@ -838,7 +838,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -872,7 +872,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_vendor",
+                    "value": "historical_vendor",
                     "type": "string"
                   },
                   "source_key": {
@@ -942,7 +942,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -976,7 +976,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_vendorledgerentry",
+                    "value": "historical_vendorledgerentry",
                     "type": "string"
                   },
                   "source_key": {
@@ -1046,7 +1046,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1080,7 +1080,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_item",
+                    "value": "historical_item",
                     "type": "string"
                   },
                   "source_key": {
@@ -1092,7 +1092,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"baseunitofmeasure\":[\"baseunitofmeasure\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"shelfno\":[\"shelfno\",\"company\",\"source_system\"]},{\"itemdiscgroup\":[\"itemdiscgroup\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"countryregionpurchasedcode\":[\"countryregionpurchasedcode\",\"company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"company\",\"source_system\"]},{\"flushingmethod\":[\"flushingmethod\",\"company\",\"source_system\"]},{\"salesunitofmeasure\":[\"salesunitofmeasure\",\"company\",\"source_system\"]},{\"purchaseunitofmeasure\":[\"purchaseunitofmeasure\",\"company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"company\",\"source_system\"]},{\"manufacturingpolicy\":[\"manufacturingpolicy\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"itemtrackingcode\":[\"itemtrackingcode\",\"company\",\"source_system\"]},{\"subscriptionoption\":[\"subscriptionoption\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"baseunitofmeasure\":[\"baseunitofmeasure\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"shelfno\":[\"shelfno\",\"company\",\"source_system\"]},{\"itemdiscgroup\":[\"itemdiscgroup\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"countryregionpurchasedcode\":[\"countryregionpurchasedcode\",\"company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"company\",\"source_system\"]},{\"flushingmethod\":[\"flushingmethod\",\"company\",\"source_system\"]},{\"salesunitofmeasure\":[\"salesunitofmeasure\",\"company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"company\",\"source_system\"]},{\"manufacturingpolicy\":[\"manufacturingpolicy\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"itemtrackingcode\":[\"itemtrackingcode\",\"company\",\"source_system\"]},{\"subscriptionoption\":[\"subscriptionoption\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1150,7 +1150,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1184,7 +1184,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_itemledgerentry",
+                    "value": "historical_itemledgerentry",
                     "type": "string"
                   },
                   "source_key": {
@@ -1254,7 +1254,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1288,7 +1288,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesheader",
+                    "value": "historical_salesheader",
                     "type": "string"
                   },
                   "source_key": {
@@ -1358,7 +1358,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1392,7 +1392,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesline",
+                    "value": "historical_salesline",
                     "type": "string"
                   },
                   "source_key": {
@@ -1462,7 +1462,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1496,7 +1496,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaseheader",
+                    "value": "historical_purchaseheader",
                     "type": "string"
                   },
                   "source_key": {
@@ -1566,7 +1566,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1600,7 +1600,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaseline",
+                    "value": "historical_purchaseline",
                     "type": "string"
                   },
                   "source_key": {
@@ -1670,7 +1670,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1704,7 +1704,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesinvoiceheader",
+                    "value": "historical_salesinvoiceheader",
                     "type": "string"
                   },
                   "source_key": {
@@ -1774,7 +1774,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1808,7 +1808,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesinvoiceline",
+                    "value": "historical_salesinvoiceline",
                     "type": "string"
                   },
                   "source_key": {
@@ -1878,7 +1878,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -1912,7 +1912,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchinvheader",
+                    "value": "historical_purchinvheader",
                     "type": "string"
                   },
                   "source_key": {
@@ -1982,7 +1982,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -2016,7 +2016,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchinvline",
+                    "value": "historical_purchinvline",
                     "type": "string"
                   },
                   "source_key": {
@@ -2086,7 +2086,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -2120,7 +2120,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_prescriber",
+                    "value": "historical_prescriber",
                     "type": "string"
                   },
                   "source_key": {
@@ -2190,7 +2190,7 @@
             {
               "type": "TridentNotebook",
               "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
                 "workspaceId": "00000000-0000-0000-0000-000000000000",
                 "parameters": {
                   "source_system": {
@@ -2224,7 +2224,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_facility",
+                    "value": "historical_facility",
                     "type": "string"
                   },
                   "source_key": {
@@ -2293,7 +2293,7 @@
             }
           ]
         },
-        "name": "Load_Data",
+        "name": "Load_Historical_Data",
         "dependsOn": []
       }
     ],
@@ -2309,7 +2309,14 @@
       "job_configuration": {
         "type": "array",
         "defaultValue": [
-          "BC"
+          "Xero",
+          "Myob",
+          "Netsuite",
+          "Hirepos",
+          "Lightspeed",
+          "Windward",
+          "Natsoft",
+          "Ostendo"
         ]
       },
       "dry_run": {
