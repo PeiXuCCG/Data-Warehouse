@@ -93,7 +93,7 @@ if __name__ == "__main__":
           "Natsoft",
           "Ostendo"
     ]
-    job_name = "Load_Historical_Data"
+    job_name = "Load_Data"
     source_lakehouse = "lh_bronze"
     source_schema = "raw"
     target_lakehouse = "lh_bronze"
