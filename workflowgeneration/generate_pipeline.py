@@ -91,6 +91,7 @@ if __name__ == "__main__":
     bc_job_configuration = [
         "BC"
     ]
+    bc_path_to_excel = "../documentation/bc_bronze_workflow_mapping.xlsx"
 
     historical_job_name = "Load_Historical_Data"
     historical_notebook_id = "91dad485-d600-8560-4fea-29a406f901ff"
@@ -105,6 +106,7 @@ if __name__ == "__main__":
           "Natsoft",
           "Ostendo"
     ]
+    historical_path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
 
     source_lakehouse = "lh_bronze"
     source_schema = "raw"
@@ -112,7 +114,7 @@ if __name__ == "__main__":
     target_schema = "bronze"
     
 
-    path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
+    
     output_path = "pipeline.json"
       
     workflow_type = sys.argv[1]
@@ -122,15 +124,17 @@ if __name__ == "__main__":
         job_name = bc_job_name
         notebook_id = bc_notebook_id
         table_prefix = bc_table_prefix
+        path_to_excel = bc_path_to_excel
     elif workflow_type == "historical":
         job_configuration = historical_job_configuration
         job_name = historical_job_name
         notebook_id = historical_notebook_id
         table_prefix = historical_table_prefix
+        path_to_excel = historical_path_to_excel
     else:
         raise Exception("Unknown workflow generation")
 
-    output = build_pipeline_json(bc_job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+    output = build_pipeline_json(job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
 
     # write to disk
     with open(output_path, "w", encoding="utf-8") as f:
