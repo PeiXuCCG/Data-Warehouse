@@ -18,5 +18,11 @@ CCG's datawarehouse GIT repo, contains the following.
 - Documentation
     - Excel spreadsheets to define keys/metadata for Bronze
 - Workflowgeneration
-    - workflow  - Generating the Bronze workflows from the Excel spreadsheets in the Documentation folder 
+    - workflow  - Generating the Bronze workflows from the Excel spreadsheets in the Documentation folder
     - other - (bc_table_numbers)
+
+
+# How to generate the workflow
+cd workflowgeneration;
+python generate_pipeline.py bc;
+python generate_pipeline.py historical;

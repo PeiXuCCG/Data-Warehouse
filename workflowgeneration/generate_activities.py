@@ -44,11 +44,16 @@ def generate(path_to_file,
     for _, row in df.iterrows():
 
         entity = row["Entity"]
-        source_key = row["SchemaBridge_Source_Key"]
+
+        if "BC" not in source_system:
+            source_key = row["SchemaBridge_Source_Key"]
+
         source_primary_keys = clean_key_list(row["Bronze_Source_Keys"])
         dedup = clean_key_list(row["Bronze_Deduplication_Keys"])
         source_fk = build_source_fk(row["Bronze_Source_Foreign_Keys"])
         business_keys = build_busines_keys(row["Bronze_Partition_Keys"])
+
+
 
         # ==================================================================
         # NOTEBOOK ACTIVITY
@@ -87,7 +92,6 @@ def generate(path_to_file,
                         "value": f"{table_prefix}_{entity.lower()}",
                         "type": "string"
                     },
-                    "source_key": {"value": source_key, "type": "string"},
                     "source_primary_keys": {"value": source_primary_keys, "type": "string"},
                     "source_foreign_keys": {"value": source_fk, "type": "string"},
                     "deduplicate_fields": {"value": dedup, "type": "string"},
@@ -119,6 +123,12 @@ def generate(path_to_file,
             "name": notebook_name,
             "dependsOn": notebook_depends
         }
+
+        if "BC" not in source_system:
+            notebook_activity["typeProperties"]["parameters"]["sourcekey"] = {
+                "value": source_key,
+                "type": "string"
+            }
 
         output.append(notebook_activity)
 

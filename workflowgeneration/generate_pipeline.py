@@ -91,7 +91,7 @@ if __name__ == "__main__":
     bc_job_configuration = [
         "BC"
     ]
-    bc_path_to_excel = "../documentation/bc_bronze_workflow_mapping.xlsx"
+    bc_path_to_excel = "../documentation/workflow/bc_bronze_workflow_mapping.xlsx"
 
     historical_job_name = "Load_Historical_Data"
     historical_notebook_id = "91dad485-d600-8560-4fea-29a406f901ff"
@@ -106,7 +106,7 @@ if __name__ == "__main__":
           "Natsoft",
           "Ostendo"
     ]
-    historical_path_to_excel = "../documentation/historical_bronze_workflow_mapping.xlsx"
+    historical_path_to_excel = "../documentation/workflow/historical_bronze_workflow_mapping.xlsx"
 
     source_lakehouse = "lh_bronze"
     source_schema = "raw"
