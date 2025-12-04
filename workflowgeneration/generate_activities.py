@@ -40,8 +40,9 @@ def generate(df,
 
     output = []
     previous_step = None      # Tracks notebook OR wait activity
+    last_index = df.index[-1]
 
-    for _, row in df.iterrows():
+    for idx, row in df.iterrows():
 
         entity = row["Entity"]
 
@@ -135,28 +136,32 @@ def generate(df,
         # ==================================================================
         # WAIT ACTIVITY (USING PIPELINE PARAMETER)
         # ==================================================================
-        wait_name = f"Wait_For_Spark_To_Stop_{entity}"
+        if idx != last_index:
 
-        wait_activity = {
-            "type": "Wait",
-            "typeProperties": {
-                "waitTimeInSeconds": {
-                    "value": "@pipeline().parameters.wait_seconds",
-                    "type": "Expression"
-                }
-            },
-            "name": wait_name,
-            "dependsOn": [
-                {
-                    "activity": notebook_name,
-                    "dependencyConditions": ["Succeeded"]
-                }
-            ]
-        }
+            wait_name = f"Wait_For_Spark_To_Stop_{entity}"
 
-        output.append(wait_activity)
+            wait_activity = {
+                "type": "Wait",
+                "typeProperties": {
+                    "waitTimeInSeconds": {
+                        "value": "@pipeline().parameters.wait_seconds",
+                        "type": "Expression"
+                    }
+                },
+                "name": wait_name,
+                "dependsOn": [
+                    {
+                        "activity": notebook_name,
+                        "dependencyConditions": ["Succeeded"]
+                    }
+                ]
+            }
 
-        # Next activity depends on THIS wait
-        previous_step = wait_name
+            output.append(wait_activity)
+            previous_step = wait_name  # only advance previous_step if wait exists
+
+        else:
+            # Last item → next activity depends on notebook, not a wait
+            previous_step = notebook_name
 
     return output

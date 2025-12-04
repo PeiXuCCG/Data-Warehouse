@@ -6644,24 +6644,6 @@
                   ]
                 }
               ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_ItemRegister",
-              "dependsOn": [
-                {
-                  "activity": "ItemRegister_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
             }
           ]
         },
