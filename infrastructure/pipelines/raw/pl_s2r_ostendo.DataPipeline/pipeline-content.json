@@ -1,213 +1,209 @@
 {
-    "name": "pl_s2r_ostendo",
-    "objectId": "7a5c65f7-c1ca-4da2-8948-93bd393d04ff ",
-    "properties": {
-        "activities": [
+  "properties": {
+    "activities": [
+      {
+        "name": "S2R_Willaid",
+        "type": "ForEach",
+        "dependsOn": [],
+        "typeProperties": {
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "isSequential": true,
+          "activities": [
             {
-                "name": "S2R_Willaid",
-                "type": "ForEach",
-                "dependsOn": [],
-                "typeProperties": {
-                    "items": {
-                        "value": "@pipeline().parameters.job_configuration",
-                        "type": "Expression"
+              "name": "S2R_Willaid_Activity",
+              "type": "TridentNotebook",
+              "dependsOn": [],
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "typeProperties": {
+                "notebookId": "a646ee64-86f9-4ad6-b830-8c7562c28e71",
+                "workspaceId": "ac4f6d6f-0d6d-4c24-b56e-a49baf8c7706",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
                     },
-                    "isSequential": true,
-                    "activities": [
-                        {
-                            "name": "S2R_Willaid_Activity",
-                            "type": "TridentNotebook",
-                            "dependsOn": [],
-                            "policy": {
-                                "timeout": "0.12:00:00",
-                                "retry": 0,
-                                "retryIntervalInSeconds": 30,
-                                "secureOutput": false,
-                                "secureInput": false
-                            },
-                            "typeProperties": {
-                                "notebookId": "a646ee64-86f9-4ad6-b830-8c7562c28e71",
-                                "workspaceId": "ac4f6d6f-0d6d-4c24-b56e-a49baf8c7706",
-                                "parameters": {
-                                    "target_schema": {
-                                        "value": {
-                                            "value": "@pipeline().parameters.target_schema",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "target_db": {
-                                        "value": {
-                                            "value": "@pipeline().parameters.target_db",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "source_system": {
-                                        "value": "Ostendo",
-                                        "type": "string"
-                                    },
-                                    "source_entity": {
-                                        "value": "Willaid",
-                                        "type": "string"
-                                    },
-                                    "target_table": {
-                                        "value": {
-                                            "value": "@item().target_table\n",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "source_path": {
-                                        "value": {
-                                            "value": "@concat(\n    'Files/history/ostendo/willaid/',item().source_path\n)",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "is_multi_line": {
-                                        "value": "True",
-                                        "type": "bool"
-                                    },
-                                    "pipeline_name": {
-                                        "value": {
-                                            "value": "@concat('S2R', item().target_table)",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "write_method": {
-                                        "value": {
-                                            "value": "@pipeline().parameters.write_method",
-                                            "type": "Expression"
-                                        },
-                                        "type": "string"
-                                    },
-                                    "infer_schema": {
-                                        "value": "False",
-                                        "type": "bool"
-                                    },
-                                    "dry_run": {
-                                        "value": {
-                                            "value": "@pipeline().parameters.dry_run",
-                                            "type": "Expression"
-                                        },
-                                        "type": "bool"
-                                    }
-                                }
-                            }
-                        },
-                        {
-                            "name": "Wait_For_Spark_To_Stop_Healthsaver",
-                            "type": "Wait",
-                            "dependsOn": [
-                                {
-                                    "activity": "S2R_Willaid_Activity",
-                                    "dependencyConditions": [
-                                        "Succeeded"
-                                    ]
-                                }
-                            ],
-                            "typeProperties": {
-                                "waitTimeInSeconds": 5
-                            }
-                        }
-                    ]
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": "Ostendo",
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "Willaid",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table\n",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/ostendo/willaid/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
                 }
+              }
+            },
+            {
+              "name": "Wait_For_Spark_To_Stop_Healthsaver",
+              "type": "Wait",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Willaid_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ],
+              "typeProperties": {
+                "waitTimeInSeconds": 5
+              }
             }
-        ],
-        "parameters": {
-            "target_schema": {
-                "type": "string",
-                "defaultValue": "lh_bronze"
-            },
-            "target_db": {
-                "type": "string",
-                "defaultValue": "raw"
-            },
-            "job_configuration": {
-                "type": "array",
-                "defaultValue": [
-                    {
-                        "target_table": "ostendo_customer",
-                        "source_path": "customer"
-                    },
-                    {
-                        "target_table": "ostendo_custledgerentry",
-                        "source_path": "custledgerentry"
-                    },
-                    {
-                        "target_table": "ostendo_item",
-                        "source_path": "item"
-                    },
-                    {
-                        "target_table": "ostendo_itemledgerentry",
-                        "source_path": "itemledgerentry"
-                    },
-                    {
-                        "target_table": "ostendo_location",
-                        "source_path": "location"
-                    },
-                    {
-                        "target_table": "ostendo_paymentterms",
-                        "source_path": "paymentterms"
-                    },
-                    {
-                        "target_table": "ostendo_prescriber",
-                        "source_path": "prescriber"
-                    },
-                    {
-                        "target_table": "ostendo_purchheader",
-                        "source_path": "purchheader"
-                    },
-                    {
-                        "target_table": "ostendo_purchline",
-                        "source_path": "purchline"
-                    },
-                    {
-                        "target_table": "ostendo_purchinvheader",
-                        "source_path": "purchinvheader"
-                    },
-                    {
-                        "target_table": "ostendo_purchaseinvoiceline",
-                        "source_path": "purchinvline"
-                    },
-                    {
-                        "target_table": "ostendo_salesheader",
-                        "source_path": "salesheader"
-                    },
-                    {
-                        "target_table": "ostendo_salesline",
-                        "source_path": "salesline"
-                    },
-                    {
-                        "target_table": "ostendo_salesinvoiceheader",
-                        "source_path": "salesinvoiceheader"
-                    },
-                    {
-                        "target_table": "ostendo_salesinvoiceline",
-                        "source_path": "salesinvoiceline"
-                    },
-                    {
-                        "target_table": "ostendo_vendor",
-                        "source_path": "vendor"
-                    },
-                    {
-                        "target_table": "ostendo_vendorledgerentry",
-                        "source_path": "vendorledgerentry"
-                    }
-                ]
-            },
-            "dry_run": {
-                "type": "bool",
-                "defaultValue": false
-            },
-            "write_method": {
-                "type": "string",
-                "defaultValue": "append"
-            }
-        },
-        "lastModifiedByObjectId": "29f73f89-b012-4308-a1db-abfa9213cd40",
-        "lastPublishTime": "2025-12-03T07:09:47Z"
+          ]
+        }
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          {
+            "target_table": "ostendo_customer",
+            "source_path": "customer"
+          },
+          {
+            "target_table": "ostendo_custledgerentry",
+            "source_path": "custledgerentry"
+          },
+          {
+            "target_table": "ostendo_item",
+            "source_path": "item"
+          },
+          {
+            "target_table": "ostendo_itemledgerentry",
+            "source_path": "itemledgerentry"
+          },
+          {
+            "target_table": "ostendo_location",
+            "source_path": "location"
+          },
+          {
+            "target_table": "ostendo_paymentterms",
+            "source_path": "paymentterms"
+          },
+          {
+            "target_table": "ostendo_prescriber",
+            "source_path": "prescriber"
+          },
+          {
+            "target_table": "ostendo_purchheader",
+            "source_path": "purchheader"
+          },
+          {
+            "target_table": "ostendo_purchline",
+            "source_path": "purchline"
+          },
+          {
+            "target_table": "ostendo_purchinvheader",
+            "source_path": "purchinvheader"
+          },
+          {
+            "target_table": "ostendo_purchaseinvoiceline",
+            "source_path": "purchinvline"
+          },
+          {
+            "target_table": "ostendo_salesheader",
+            "source_path": "salesheader"
+          },
+          {
+            "target_table": "ostendo_salesline",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "ostendo_salesinvoiceheader",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "ostendo_salesinvoiceline",
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "ostendo_vendor",
+            "source_path": "vendor"
+          },
+          {
+            "target_table": "ostendo_vendorledgerentry",
+            "source_path": "vendorledgerentry"
+          }
+        ]
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
+      }
     }
+  }
 }
