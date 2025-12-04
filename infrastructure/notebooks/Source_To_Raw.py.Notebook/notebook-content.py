@@ -17,10 +17,7 @@
 # META         }
 # META       ]
 # META     },
-# META     "environment": {
-# META       "environmentId": "19ef04e9-33e6-8865-4282-9c499f72e816",
-# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
-# META     }
+# META     "environment": {}
 # META   }
 # META }
 
@@ -69,7 +66,7 @@ pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
 infer_schema = True
 dry_run=False
-workspace_id = mssparkutils.env.getWorkspaceId()
+workspace_name = mssparkutils.env.getWorkspaceName()
 
 # METADATA ********************
 
@@ -409,7 +406,7 @@ for p in pipelines:
 
 # CELL ********************
 
-if workspace_id == '0380b4e3-57d1-4574-abb4-3f7e7e8427d0': #DEV (when on the trial)
+if "DEV" in workspace_name: #DEV (when on the trial)
     try:
         spark.stop()
     except:

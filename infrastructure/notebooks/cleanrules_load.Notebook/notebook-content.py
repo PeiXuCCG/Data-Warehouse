@@ -63,17 +63,18 @@ def load_rules_from_csv(csv_path: str
 
     df_rules = (
         df_raw
-        .withColumn("source_columns", F.split(col("source_columns"), ","))
-        .withColumn("target_column", col("target_column").cast(StringType()))
-        .withColumn("rule_set", col("rule_set").cast(StringType()))
+        .withColumn("source_columns", col("source_columns"))
+        .withColumn("target_column", col("target_column"))
+        .withColumn("rule_set", col("rule_set"))
         .withColumn("effectivity_start_date", to_date(col("effectivity_start_date"), "yyyy-MM-dd"))
         .withColumn("effectivity_end_date",to_date(col("effectivity_start_date"), "yyyy-MM-dd"))
         .withColumn("created_by", col("created_by").cast(StringType()))
         .withColumn("created_date", current_timestamp())
     )
 
+    display(df_rules)
 
-    df_rules.write.format('delta').mode('overwrite').saveAsTable(table_name)
+   # df_rules.write.format('delta').mode('overwrite').saveAsTable(table_name)
 
     print('Successfull loaded rules from {excel_path} into {table_name}')
 

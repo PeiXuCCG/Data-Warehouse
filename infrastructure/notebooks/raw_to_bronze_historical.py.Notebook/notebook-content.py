@@ -94,7 +94,7 @@ deduplicate_fields = "[\"phoneno\", \"address\", \"mobilephoneno\"]" # please ch
 
 dry_run = True # need to override this to make it save to the schema
 
-workspace_id = mssparkutils.env.getWorkspaceId()
+workspace_name = mssparkutils.env.getWorkspaceName()
 
 # METADATA ********************
 
@@ -289,7 +289,7 @@ pipeline.execute()   # Runs the prepare + write steps
 
 # CELL ********************
 
-if workspace_id == '0380b4e3-57d1-4574-abb4-3f7e7e8427d0': #DEV (when on the trial)
+if "DEV" in workspace_name: #DEV (when on the trial)
     try:
         spark.stop()
     except:
