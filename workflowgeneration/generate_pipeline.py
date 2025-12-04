@@ -2,6 +2,8 @@ import json
 from copy import deepcopy
 import generate_activities 
 import sys
+import pandas as pd
+import numpy as np
 
 
 TEMPLATE = {
@@ -51,7 +53,7 @@ TEMPLATE = {
 }
 
 
-def build_pipeline_json(job_config, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id):
+def build_pipeline_jsons(output_path, job_config, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id):
     """
     Build updated ADF pipeline JSON from template.
     job_config: list (job configuration array)
@@ -60,26 +62,42 @@ def build_pipeline_json(job_config, job_name, source_lakehouse, source_schema, t
     target_schema: string
     """
 
-    pipeline_json = deepcopy(TEMPLATE)
+    df = pd.read_excel(path_to_excel)
 
-    # Update job name
-    pipeline_json["properties"]["activities"][0]["name"] = job_name
+    count = 0
+    chunk_size = 60
+    chunks = [
+        df[i:i + chunk_size]
+        for i in range(0, len(df), chunk_size)
+    ]
 
-    # Set target values
-    pipeline_json["properties"]["parameters"]["target_schema"]["defaultValue"] = target_lakehouse
-    pipeline_json["properties"]["parameters"]["target_db"]["defaultValue"] = target_schema
+    for chunk in chunks:
+        count = count + 1
 
-    pipeline_json["properties"]["parameters"]["wait_seconds"]["defaultValue"] = 5
-    
-    # Set job configuration parameter
-    pipeline_json["properties"]["parameters"]["job_configuration"]["defaultValue"] = job_config
+        pipeline_json = deepcopy(TEMPLATE)
 
-    generated = generate_activities.generate(path_to_excel, job_config, source_lakehouse,source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+        # Update job name
+        pipeline_json["properties"]["activities"][0]["name"] = job_name
 
-    pipeline_json["properties"]["activities"][0]["typeProperties"]["activities"] = generated
+        # Set target values
+        pipeline_json["properties"]["parameters"]["target_schema"]["defaultValue"] = target_lakehouse
+        pipeline_json["properties"]["parameters"]["target_db"]["defaultValue"] = target_schema
+
+        pipeline_json["properties"]["parameters"]["wait_seconds"]["defaultValue"] = 5
+        
+        # Set job configuration parameter
+        pipeline_json["properties"]["parameters"]["job_configuration"]["defaultValue"] = job_config
+
+        generated = generate_activities.generate(chunk, job_config, source_lakehouse,source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+
+        pipeline_json["properties"]["activities"][0]["typeProperties"]["activities"] = generated
 
 
-    return pipeline_json
+        # write to disk
+        with open(f"{output_path}_{count}.json", "w", encoding="utf-8") as f:
+            json.dump(pipeline_json, f, ensure_ascii=False, indent=2)
+
+        print(f"JSON written to {output_path}")
 
 
 if __name__ == "__main__":
@@ -115,7 +133,7 @@ if __name__ == "__main__":
     
 
     
-    output_path = "pipeline.json"
+    output_path = "pipeline-content"
       
     workflow_type = sys.argv[1]
 
@@ -134,10 +152,6 @@ if __name__ == "__main__":
     else:
         raise Exception("Unknown workflow generation")
 
-    output = build_pipeline_json(job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+    build_pipeline_jsons(output_path, job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
 
-    # write to disk
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
 
-    print(f"JSON written to {output_path}")

@@ -27,7 +27,7 @@ def build_source_fk(value: str) -> str:
 # -----------------------------------------------------------------------
 # FULL GENERATOR SCRIPT WITH WAIT ACTIVITY AS A PIPELINE PARAMETER
 # -----------------------------------------------------------------------
-def generate(path_to_file,
+def generate(df,
              source_system,
              source_lakehouse,
              source_schema,
@@ -36,7 +36,7 @@ def generate(path_to_file,
              table_prefix,
              notebook_id):
 
-    df = pd.read_excel(path_to_file)
+
 
     output = []
     previous_step = None      # Tracks notebook OR wait activity
