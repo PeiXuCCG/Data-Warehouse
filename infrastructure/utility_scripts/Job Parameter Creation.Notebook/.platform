@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Job Parameter Creation"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "85550a48-3b0a-8780-425f-57c8f8869e62"
+  }
+}
