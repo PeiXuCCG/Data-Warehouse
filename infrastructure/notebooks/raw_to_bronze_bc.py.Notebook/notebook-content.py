@@ -35,6 +35,7 @@ from pyspark.sql import Window
 from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_bridge
 import re
 import json
+from notebookutils import mssparkutils
 
 # METADATA ********************
 
@@ -105,6 +106,8 @@ business_keys = ["locationcode"] # this is used for partition the table in the l
 deduplicate_fields = ["phoneno", "address", "mobilephoneno"] # please change this for each entity
 
 dry_run = True # you need to override this to false to make it save to the schema
+
+workspace_id = mssparkutils.env.getWorkspaceId()
 
 # METADATA ********************
 
@@ -290,10 +293,11 @@ pipeline.execute()   # Runs the prepare + write steps
 
 # CELL ********************
 
-try:
-    spark.stop()
-except:
-    pass
+if workspace_id == '0380b4e3-57d1-4574-abb4-3f7e7e8427d0': #DEV (when on the trial)
+    try:
+        spark.stop()
+    except:
+        pass
 
 # METADATA ********************
 

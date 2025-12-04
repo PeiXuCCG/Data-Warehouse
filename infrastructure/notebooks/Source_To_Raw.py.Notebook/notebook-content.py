@@ -69,6 +69,7 @@ pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
 infer_schema = True
 dry_run=False
+workspace_id = mssparkutils.env.getWorkspaceId()
 
 # METADATA ********************
 
@@ -408,10 +409,11 @@ for p in pipelines:
 
 # CELL ********************
 
-try:
-    spark.stop()
-except:
-    pass
+if workspace_id == '0380b4e3-57d1-4574-abb4-3f7e7e8427d0': #DEV (when on the trial)
+    try:
+        spark.stop()
+    except:
+        pass
 
 # METADATA ********************
 
