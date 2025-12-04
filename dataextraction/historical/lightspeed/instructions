@@ -1,0 +1,316 @@
+
+---
+
+🔵 1. Customer Ledger (Transactions: Invoices, Payments)
+
+A. Sales History (Invoices & Sales)
+
+Back Office → Sales → Sales History → Export
+
+You will get:
+
+Sale ID
+
+Date
+
+Customer
+
+Products
+
+Quantities
+
+Totals
+
+Payments breakdown
+
+Sale type (sale / return / on-account)
+
+
+This is the closest to “invoice header + lines”.
+
+B. On-Account Balances (Customer ledger-like)
+
+Back Office → Customers → Export Customers
+
+Exports:
+
+Customer details
+
+On-Account balance
+
+
+But does NOT include line-by-line ledger history.
+You need to reconstruct ledger using:
+
+Sales History (on-account sales)
+
+Payments Report (on-account payments)
+
+
+C. Payments Report (Payments ledger)
+
+Back Office → Reporting → Payments → Export
+
+Gives:
+
+Payment date
+
+Payment method
+
+Amount
+
+Customer
+
+Sale ID
+
+
+This plus Sales History = Full customer ledger.
+
+
+---
+
+🔵 2. Sales Orders (Quotes / On-hold sales)
+
+Sales Orders (Held sales)
+
+Back Office → Sales → Parked Sales → Export
+
+Gives:
+
+Sales order header
+
+Customer
+
+Line items
+
+Totals
+
+
+
+---
+
+🔵 3. Sales Invoices (Header & Lines)
+
+Lightspeed X-Series does not have a separate “invoice module” UI, but an invoice = a completed sale.
+
+So use:
+
+Sales → Sales History → Export
+
+
+This includes both header + line-level detail.
+
+
+---
+
+🔵 4. Purchase Orders (Header & Lines)
+
+Stock Orders
+
+Back Office → Inventory → Stock Control → Stock Orders → Export
+
+Exports:
+
+PO header (Supplier, Order #, Dates)
+
+PO line items
+
+Quantities ordered/received
+
+Costs
+
+Outlet (location)
+
+
+
+---
+
+🔵 5. Purchase Invoices (Header & Lines)
+
+In X-Series:
+
+A “Purchase Invoice” is created automatically when a Stock Order is marked Received.
+
+
+They appear in: Inventory → Stock Control → Stock Orders → Export
+
+The export includes:
+
+Received quantities
+
+Received cost value
+
+Supplier invoice number (if entered)
+
+
+This serves as the "purchase invoice".
+
+
+---
+
+🔵 6. Items (Products)
+
+Product List
+
+Back Office → Inventory → Products → Export
+
+Exports:
+
+Product ID
+
+Description
+
+SKU
+
+Supplier
+
+Brand
+
+Cost / price
+
+Stock on hand (by outlet)
+
+
+
+---
+
+🔵 7. Item Ledger Entry (Stock Tracking)
+
+Lightspeed does not have an “Item Ledger Entry” like an ERP.
+
+But you can extract the stock movement components:
+
+A. Stock order receipts
+
+Inventory → Stock Control → Stock Orders → Export
+
+B. Stock takes (counts)
+
+Inventory → Stock Control → Stock Counts → Export
+
+C. Stock transfers
+
+Inventory → Stock Control → Transfers → Export
+
+D. Sales History (for stock deductions)
+
+Sales → Sales History → Export
+
+With these four you can rebuild the item ledger manually.
+
+
+---
+
+🔵 8. Vendors (Suppliers)
+
+Supplier List
+
+Back Office → Inventory → Suppliers → Export
+
+Exports:
+
+Supplier name
+
+Contact info
+
+Default costs
+
+Supplier codes
+
+
+
+---
+
+🔵 9. Vendor Ledger Entry
+
+Lightspeed X-Series does not track supplier payments.
+
+Therefore:
+
+No “vendor ledger”
+
+No accounts payable
+
+No supplier balances
+
+
+You can only export Purchase Orders (i.e., stock orders) as above.
+
+
+---
+
+🔵 10. Payment Terms
+
+There is no Payment Terms module in X-Series.
+
+You can only extract:
+
+(Optional) Custom text fields inside product or customer exports
+
+Nothing structured like “30 days EOM”
+
+
+
+---
+
+🔵 11. Locations
+
+Outlet List
+
+Back Office → Setup → Outlets → Export
+
+Exports:
+
+Outlet names
+
+Addresses
+
+Registers
+
+
+
+---
+
+🔵 12. Currency
+
+Lightspeed X-Series is single-currency per account.
+
+There is:
+
+No currency export
+
+No exchange rate table
+
+No multicurrency ledger
+
+
+Currency is the account-level default.
+
+
+---
+
+🔵 13. Fixed Assets (Hiring Equipment)
+
+Lightspeed has no fixed asset module.
+
+If your hire equipment is entered as products, you can extract:
+
+Inventory → Products → Export
+
+
+But there is no depreciation or asset tracking.
+
+
+---
+
+🔵 14. Manufacturers / Brands
+
+Brand List
+
+Back Office → Inventory → Brands → Export
+
+Exports:
+
+Brand ID
+
+Brand name

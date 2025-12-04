@@ -1,0 +1,232 @@
+---
+
+✅ HIREPOS – How to Extract All Required Data from the UI
+
+HirePOS provides most exports under:
+
+Reports → Data Export
+and
+Main Menu → Lists (Customers, Items, Suppliers, etc.) → Export
+
+Below is the breakdown for every entity you listed.
+
+
+---
+
+📌 1. Customers
+
+Path:
+Customers → Customer List → Export (CSV)
+
+Contains:
+
+Customer details
+
+Addresses
+
+Contact details
+
+Pricing groups
+
+Terms (if enabled)
+
+
+If you need Payment Terms, export the customer list and also export the Terms list (see further below).
+
+
+---
+
+📌 2. Customer Ledger (Invoices + Payments)
+
+HirePOS does not have a single “customer ledger” export, but you build it using:
+
+A. Sales Invoices (Header & Lines)
+
+Reports → Sales → Invoice Register → Export
+
+Choose:
+
+Detailed Export → includes line items
+
+Summary Export → header only
+
+
+B. Customer Payments
+
+Sales → Payments → Export
+
+This gives:
+
+Payment date
+
+Amount
+
+Customer
+
+Linked invoice numbers
+
+
+You can join payments to the invoice register by Invoice Number.
+
+
+---
+
+📌 3. Sales Orders (Header & Lines)
+
+Sales → Sales Orders → Export
+
+Select Detailed for lines.
+
+
+---
+
+📌 4. Sales Invoices (Header & Line Items)
+
+Same export as used for customer ledger:
+
+Reports → Sales → Invoice Register → Export (Detailed)
+
+
+---
+
+📌 5. Purchase Orders (Header & Lines)
+
+Purchases → Purchase Orders → Export
+
+Choose Detailed to extract line items.
+
+
+---
+
+📌 6. Purchase Invoices (Header & Lines)
+
+Purchases → Supplier Invoices → Export
+
+Exports invoice lines & header data.
+
+
+---
+
+📌 7. Items / Products
+
+Inventory → Products → Export
+
+Exports:
+
+Item codes
+
+Descriptions
+
+Pricing
+
+Categories
+
+Current stock levels (summary only)
+
+
+
+---
+
+📌 8. Item Ledger Entry (Stock Movements)
+
+For real stock tracking history:
+
+Reports → Stock → Stock Movements → Export
+
+This includes:
+
+Received
+
+Sold
+
+Adjusted
+
+Transferred
+
+Hire asset movements
+
+Dates & quantities
+
+
+This is the HirePOS equivalent of item ledger entries.
+
+
+---
+
+📌 9. Vendors / Suppliers
+
+Suppliers → Supplier List → Export
+
+Gets all supplier master data.
+
+
+---
+
+📌 10. Vendor Ledger Entry (Supplier Invoices + Payments)
+
+HirePOS exposes supplier transactional data through:
+
+A. Supplier Invoices
+
+Purchases → Supplier Invoices → Export
+
+B. Supplier Payments
+
+Purchases → Payments → Export
+
+Join together by Supplier Invoice Number.
+
+
+---
+
+📌 11. Payment Terms
+
+Settings → Lists → Terms → Export
+
+This gives the payment terms list used by customers + suppliers.
+
+
+---
+
+📌 12. Locations (Stock Sites)
+
+Settings → Stock Locations → Export
+
+Exports site/location names & codes.
+
+
+---
+
+📌 13. Currency
+
+If multi-currency is enabled:
+
+Settings → Currencies → Export
+
+
+---
+
+📌 14. Fixed Assets (Hire Equipment)
+
+HirePOS treats hire assets as Items with Asset Tracking.
+
+Export asset listing using:
+
+Hire → Hire Assets → Export
+
+OR if assets are linked to item master, export:
+
+Inventory → Products → Export
+(tick Include Assets)
+
+
+---
+
+📌 15. Manufacturers / Brands
+
+These are under Item attributes.
+
+Settings → Product Attributes → Brands / Manufacturers → Export
+
+
+---

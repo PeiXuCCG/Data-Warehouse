@@ -1,0 +1,281 @@
+Here are the step-by-step MYOB UI instructions for extracting every dataset you listed.
+I’ll give the steps for:
+
+✅ MYOB AccountRight (most common)
+➡ If you want MYOB Business (Essentials) or MYOB Advanced, tell me and I’ll provide those UI steps too.
+
+
+---
+
+⭐ MYOB AccountRight — How to Export Everything From the UI
+
+All exports are available from:
+
+File → Import/Export Assistant → Export Data
+
+I’ll list the menu path + export type for each dataset.
+
+
+---
+
+🧑‍💼 1. Customer
+
+Path:
+File → Import/Export Assistant → Export Data → Cards → Customer Cards
+
+You can choose:
+
+Card Details
+
+Addresses
+
+Selling Details
+
+Payment Details
+
+
+
+---
+
+📒 2. Customer Ledger (Receivables Transactions)
+
+There is no direct Customer Ledger export, but you can get it from:
+
+A. Sales Register → Export
+
+Path:
+Sales → Sales Register → (Filter by Date) → Print/Email → Export
+
+Exports invoices + payments info.
+
+B. Customer Payments
+
+Path:
+Sales → Receive Payments → Print Receipts → Export
+
+C. Activity by Customer Report
+
+Path:
+Reports → Sales → Customer → Activity by Customer → Export (Excel/PDF)
+
+This is the closest to a real ledger.
+
+
+---
+
+📦 3. Item List
+
+Path:
+File → Import/Export Assistant → Export Data → Items → Item List
+
+Exports item master data.
+
+
+---
+
+🔄 4. Item Ledger (Stock Movements)
+
+A. Item Register
+
+Path:
+Inventory → Item Register → Export
+
+B. Item Transactions Report
+
+Path:
+Reports → Inventory → Item Transactions → Export
+
+This includes all stock ins/outs, adjustments, purchases, sales.
+
+
+---
+
+💳 5. Payment Terms
+
+Terms cannot be exported directly.
+
+But MYOB stores them under the name “Terms”.
+
+Extract from:
+Lists → Sales → Terms
+Then use the Print button → Export (Excel).
+
+
+---
+
+💱 6. Currency (if Multi-currency Enabled)
+
+Path:
+Lists → Currencies → Print → Export
+
+
+---
+
+📍 7. Location
+
+Locations export:
+
+Path:
+Inventory → Locations → Print → Export
+
+
+---
+
+🛒 8. Vendor (Supplier)
+
+Path:
+File → Import/Export Assistant → Export Data → Cards → Supplier Cards
+
+
+---
+
+📒 9. Vendor Ledger (Payables Transactions)
+
+A. Purchases Register
+
+Purchases → Purchase Register → Print/Email → Export
+
+B. Activity by Supplier
+
+Reports → Purchases → Supplier → Activity by Supplier → Export
+
+(Equivalent of Payables Ledger.)
+
+
+---
+
+💲 10. Value Ledger (Inventory Value Movements)
+
+There is no single "Value Ledger" export, but you can export:
+
+A. Item Value Reconciliation
+
+Reports → Inventory → Item List → Item Value Reconciliation → Export
+
+B. Item Transactions Report (includes value + cost)
+
+Reports → Inventory → Item Transactions → Export
+
+These two together give full inventory value movement.
+
+
+---
+
+📘 11. GL Accounts (Chart of Accounts)
+
+Path:
+File → Import/Export Assistant → Export Data → Accounts → Accounts List
+
+
+---
+
+📙 12. GL Ledger (General Ledger Transactions)
+
+A. General Ledger Details Report
+
+Reports → Accounts → General Ledger → General Ledger Detail → Export
+
+B. Transaction Journals
+
+Accounts → Transaction Journal → Export
+
+
+---
+
+🚚 13. DIFOT (Delivery In Full On Time)
+
+MYOB has no DIFOT export, but you can extract:
+
+Sales Orders
+
+Sales → Sales Register → Orders → Export
+
+Sales Invoices
+
+Sales → Sales Register → Invoices → Export
+
+To calculate DIFOT:
+Delivered qty = invoice qty
+Expected date = promise/ship date on order
+
+I can write the formula for you.
+
+
+---
+
+🧱 14. Fixed Assets (Register + Journals)
+
+A. Asset Register
+
+Accounts → Assets → Asset List → Print → Export
+
+B. Depreciation Journal
+
+Reports → Accounts → General Ledger → Journal Entries → Export
+
+Filter for depreciation accounts.
+
+
+---
+
+🧾 15. Sales Order Header/Lines
+
+Header:
+
+Sales → Sales Register → Orders → Export
+
+Lines:
+Not directly exportable via UI.
+Workaround: use Print/Save to Excel inside the Sales Order window.
+
+
+---
+
+🧾 16. Sales Invoice Header/Lines
+
+Header:
+
+Sales → Sales Register → Invoices → Export
+
+Lines:
+Open invoice → Print/Email → Save to Excel
+
+
+---
+
+📥 17. Purchase Order Header/Lines
+
+Header:
+
+Purchases → Purchase Register → Orders → Export
+
+Lines:
+Open order → Print/Email → Save to Excel
+
+
+---
+
+🧾 18. Purchase Invoice Header/Lines (Bills)
+
+Header:
+
+Purchases → Purchase Register → Bills → Export
+
+Lines:
+Open bill → Print/Email → Excel
+
+
+---
+
+🏷 19. Posting Groups (if exist)
+
+MYOB does not have Posting Groups like Dynamics.
+
+But you can export:
+
+Linked Accounts
+
+Lists → Accounts → Linked Accounts → Print → Export
+
+This is the closest equivalent.
+

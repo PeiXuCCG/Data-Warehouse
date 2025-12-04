@@ -1,0 +1,102 @@
+Windward Extraction
+
+With all reports -  Once Report is loaded right click in the report and export to file
+
+Brands
+ Reports -> Sales Reports -> Supplier  / Brand Sales Report -> Brand Sales Report
+ 
+ Change the book months to your reqired extract
+
+ Click View
+
+
+
+Currency
+ 
+  N/a
+
+CustLedgerEntry
+ 
+ Reports -> Sales Reports -> Customer andd Invoice Sales Reports -> Invoice Report
+ Accounts Receivable -> List of Payments -
+ 
+ Double check the Departments and include all field options, need python script to link
+
+
+Customer
+  
+  Accounts Receivable -> Customers 
+
+   Search based on Country (Australia)
+
+Facility
+
+  n/a
+
+GL Account
+
+  General Ledger -> Ledger Numbers -> Chart Of Accounts
+
+GL Entry
+
+  General Ledger -> Ledger Numbers -> List of Transactions
+
+Item
+
+  Inventory and Purchases ->  Inventory Reports -> Design your own report (Defaults) -> View
+
+ItemLedgerEntry
+
+  Inventory and Purchases -> Inventory Reports -> Dailiy Receiving Report
+
+ItemCategory
+
+  Inventory and Purchases -> Inventory Report -> Category Report
+
+Location
+
+  Setup Tools -> Configuration -> Company Setup -> Department Setup 
+	Manually copy to csv file
+
+PaymentTerms
+
+   n/a
+
+
+Prescriber
+
+  n/a
+
+Purchinvline
+	Daily Receiving Report
+	Need to convert to headers with python scripts
+
+Purchline
+	Inventory and Purchases -> Purchases - > List of Purchase Orders
+	Need to convert to headers with python scripts
+
+
+Salesinvline
+	Reports -> Sales Reports -> Customer andd Invoice Sales Reports -> Invoice Report
+	Need to convert to headers with python scripts
+
+Salesline
+	Reports -> A/R Reports -> List Open Work Orders 
+
+	n/a generally	
+
+	Need to convert to headers with python scripts
+ 
+
+SalesPersonPurchaser
+
+	Setup Tools -> Configuration -> Users and Security
+
+Vendor
+
+	Accounts Payable -> Suppliers 
+
+	Enter the State/Province
+
+VendorLedgerEntry
+	Accounts Payable -> A/P Reports -> A/P Transaction Report
