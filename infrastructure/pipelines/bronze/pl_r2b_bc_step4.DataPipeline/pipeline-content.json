@@ -33,221 +33,6 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_prodorderroutingline')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_prodorderroutingline",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "ProdOrderRoutingLine",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "ProdOrderRoutingLine_Activity",
-              "dependsOn": []
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_ProdOrderRoutingLine",
-              "dependsOn": [
-                {
-                  "activity": "ProdOrderRoutingLine_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
-                      "value": "@concat(item(),'_prodorderroutingtool')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_prodorderroutingtool",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[\"lineno\", \"no\", \"description\"]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "ProdOrderRoutingTool",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "ProdOrderRoutingTool_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_ProdOrderRoutingLine",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_ProdOrderRoutingTool",
-              "dependsOn": [
-                {
-                  "activity": "ProdOrderRoutingTool_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
                       "value": "@concat(item(),'_prodorderrtngcommentline')",
                       "type": "Expression"
                     },
@@ -309,14 +94,7 @@
                 "secureOutput": false
               },
               "name": "ProdOrderRtngCommentLine_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_ProdOrderRoutingTool",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
+              "dependsOn": []
             },
             {
               "type": "Wait",
@@ -2579,117 +2357,6 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_purchaselinediscount')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_purchaselinediscount",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "PurchaseLineDiscount",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "PurchaseLineDiscount_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_PurchaseLineArchive",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_PurchaseLineDiscount",
-              "dependsOn": [
-                {
-                  "activity": "PurchaseLineDiscount_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
                       "value": "@concat(item(),'_purchaseorderentitybuffer')",
                       "type": "Expression"
                     },
@@ -2753,7 +2420,7 @@
               "name": "PurchaseOrderEntityBuffer_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_PurchaseLineDiscount",
+                  "activity": "Wait_For_Spark_To_Stop_PurchaseLineArchive",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -2819,11 +2486,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"itemno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3596,7 +3263,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"resourceno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6482,7 +6149,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"salescode\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6639,6 +6306,339 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalesPrice",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesQuoteEntityBuffer",
+              "dependsOn": [
+                {
+                  "activity": "SalesQuoteEntityBuffer_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesshipmentheader')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_salesshipmentheader",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"selltocustomerno\":[\"selltocustomerno\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"company\",\"source_system\"]},{\"billtocity\":[\"billtocity\",\"company\",\"source_system\"]},{\"billtocontact\":[\"billtocontact\",\"company\",\"source_system\"]},{\"shiptocode\":[\"shiptocode\",\"company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"company\",\"source_system\"]},{\"shiptocontact\":[\"shiptocontact\",\"company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"company\",\"source_system\"]},{\"invoicedisccode\":[\"invoicedisccode\",\"company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"company\",\"source_system\"]},{\"vatcountryregioncode\":[\"vatcountryregioncode\",\"company\",\"source_system\"]},{\"selltocity\":[\"selltocity\",\"company\",\"source_system\"]},{\"selltocontact\":[\"selltocontact\",\"company\",\"source_system\"]},{\"billtopostcode\":[\"billtopostcode\",\"company\",\"source_system\"]},{\"billtocounty\":[\"billtocounty\",\"company\",\"source_system\"]},{\"billtocountryregioncode\":[\"billtocountryregioncode\",\"company\",\"source_system\"]},{\"selltopostcode\":[\"selltopostcode\",\"company\",\"source_system\"]},{\"selltocounty\":[\"selltocounty\",\"company\",\"source_system\"]},{\"selltocountryregioncode\":[\"selltocountryregioncode\",\"company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"quoteno\":[\"quoteno\",\"company\",\"source_system\"]},{\"selltocontactno\":[\"selltocontactno\",\"company\",\"source_system\"]},{\"billtocontactno\":[\"billtocontactno\",\"company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"company\",\"source_system\"]},{\"shippingagentservicecode\":[\"shippingagentservicecode\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesShipmentHeader",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesShipmentHeader_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesQuoteEntityBuffer",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesShipmentHeader",
+              "dependsOn": [
+                {
+                  "activity": "SalesShipmentHeader_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesshipmentline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_salesshipmentline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"selltocustomerno\":[\"selltocustomerno\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"company\",\"source_system\"]},{\"purchaseorderno\":[\"purchaseorderno\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesShipmentLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesShipmentLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesShipmentHeader",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesShipmentLine",
+              "dependsOn": [
+                {
+                  "activity": "SalesShipmentLine_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_odtrentalregister')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_odtrentalregister",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ODTRentalRegister",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ODTRentalRegister_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesShipmentLine",
                   "dependencyConditions": [
                     "Succeeded"
                   ]

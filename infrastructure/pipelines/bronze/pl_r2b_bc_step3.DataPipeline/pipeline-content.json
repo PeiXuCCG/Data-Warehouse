@@ -33,221 +33,6 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_itemsubstitution')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_itemsubstitution",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "ItemSubstitution",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "ItemSubstitution_Activity",
-              "dependsOn": []
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_ItemSubstitution",
-              "dependsOn": [
-                {
-                  "activity": "ItemSubstitution_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
-                      "value": "@concat(item(),'_itemtrackingcode')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_itemtrackingcode",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "ItemTrackingCode",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "ItemTrackingCode_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_ItemSubstitution",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_ItemTrackingCode",
-              "dependsOn": [
-                {
-                  "activity": "ItemTrackingCode_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
                       "value": "@concat(item(),'_itemtrackingcomment')",
                       "type": "Expression"
                     },
@@ -309,14 +94,7 @@
                 "secureOutput": false
               },
               "name": "ItemTrackingComment_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_ItemTrackingCode",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
+              "dependsOn": []
             },
             {
               "type": "Wait",
@@ -599,11 +377,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"itemno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"vendoritemno\":[\"vendoritemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"vendoritemno\":[\"vendoritemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1709,7 +1487,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"userid\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3596,7 +3374,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"primarykey\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4595,11 +4373,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"itemno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6639,6 +6417,228 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_ProdOrderComponent",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ProdOrderLine",
+              "dependsOn": [
+                {
+                  "activity": "ProdOrderLine_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_prodorderroutingline')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_prodorderroutingline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"description\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ProdOrderRoutingLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ProdOrderRoutingLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_ProdOrderLine",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ProdOrderRoutingLine",
+              "dependsOn": [
+                {
+                  "activity": "ProdOrderRoutingLine_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_prodorderroutingtool')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_prodorderroutingtool",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"lineno\", \"no\", \"description\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ProdOrderRoutingTool",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ProdOrderRoutingTool_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_ProdOrderRoutingLine",
                   "dependencyConditions": [
                     "Succeeded"
                   ]

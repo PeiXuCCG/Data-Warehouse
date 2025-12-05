@@ -33,110 +33,6 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_depreciationbook')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_depreciationbook",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[\"code\"]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "DepreciationBook",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "DepreciationBook_Activity",
-              "dependsOn": []
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_DepreciationBook",
-              "dependsOn": [
-                {
-                  "activity": "DepreciationBook_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
                       "value": "@concat(item(),'_depreciationtableheader')",
                       "type": "Expression"
                     },
@@ -198,14 +94,7 @@
                 "secureOutput": false
               },
               "name": "DepreciationTableHeader_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_DepreciationBook",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
+              "dependsOn": []
             },
             {
               "type": "Wait",
@@ -821,7 +710,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"id\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1043,7 +932,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"id\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2708,11 +2597,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"glaccountno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"glaccountno\":[\"glaccountno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3152,7 +3041,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"glentryno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4244,117 +4133,6 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_inventoryadjmtentryorder')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_inventoryadjmtentryorder",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "InventoryAdjmtEntryOrder",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "InventoryAdjmtEntryOrder_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_IndustryGroup",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_InventoryAdjmtEntryOrder",
-              "dependsOn": [
-                {
-                  "activity": "InventoryAdjmtEntryOrder_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
                       "value": "@concat(item(),'_inventorycommentline')",
                       "type": "Expression"
                     },
@@ -4418,7 +4196,7 @@
               "name": "InventoryCommentLine_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_InventoryAdjmtEntryOrder",
+                  "activity": "Wait_For_Spark_To_Stop_IndustryGroup",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -4595,7 +4373,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"entryno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5150,7 +4928,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"attributeid\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6038,7 +5816,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"itementryno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6639,6 +6417,228 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_ItemReference",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ItemRegister",
+              "dependsOn": [
+                {
+                  "activity": "ItemRegister_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_itemsubstitution')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_itemsubstitution",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"description\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ItemSubstitution",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ItemSubstitution_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_ItemRegister",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ItemSubstitution",
+              "dependsOn": [
+                {
+                  "activity": "ItemSubstitution_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_itemtrackingcode')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_itemtrackingcode",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\", \"description\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ItemTrackingCode",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ItemTrackingCode_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_ItemSubstitution",
                   "dependencyConditions": [
                     "Succeeded"
                   ]

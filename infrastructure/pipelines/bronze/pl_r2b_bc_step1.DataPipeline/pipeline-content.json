@@ -488,7 +488,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"entryno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1598,7 +1598,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"primarykey\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2153,11 +2153,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"itemno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3374,7 +3374,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"startdate\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3707,7 +3707,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"reportid\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3818,7 +3818,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"primarykey\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4706,11 +4706,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"contactno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"contactno\":[\"contactno\",\"company\",\"source_system\"]}]",
+                    "value": "[]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4817,11 +4817,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"contactno\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"contactno\":[\"contactno\",\"company\",\"source_system\"]}]",
+                    "value": "[]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4881,117 +4881,6 @@
               "dependsOn": [
                 {
                   "activity": "ContactIndustryGroup_Activity",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "TridentNotebook",
-              "typeProperties": {
-                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
-                "workspaceId": "00000000-0000-0000-0000-000000000000",
-                "parameters": {
-                  "source_system": {
-                    "value": {
-                      "value": "@item()",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "source_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "source_schema": {
-                    "value": "raw",
-                    "type": "string"
-                  },
-                  "source_table": {
-                    "value": {
-                      "value": "@concat(item(),'_costadjmtactionmessage')",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "target_lakehouse": {
-                    "value": "lh_bronze",
-                    "type": "string"
-                  },
-                  "target_schema": {
-                    "value": "bronze",
-                    "type": "string"
-                  },
-                  "target_table": {
-                    "value": "bc_costadjmtactionmessage",
-                    "type": "string"
-                  },
-                  "source_primary_keys": {
-                    "value": "[]",
-                    "type": "string"
-                  },
-                  "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]}]",
-                    "type": "string"
-                  },
-                  "deduplicate_fields": {
-                    "value": "[\"company\", \"source_system\"]",
-                    "type": "string"
-                  },
-                  "business_keys": {
-                    "value": "[\"originating_company\"]",
-                    "type": "string"
-                  },
-                  "skip_activities": {
-                    "value": {
-                      "value": "@string(pipeline().parameters.skip_activities)",
-                      "type": "Expression"
-                    },
-                    "type": "string"
-                  },
-                  "activity": {
-                    "value": "CostAdjmtActionMessage",
-                    "type": "string"
-                  },
-                  "dry_run": {
-                    "value": {
-                      "value": "@pipeline().parameters.dry_run",
-                      "type": "Expression"
-                    },
-                    "type": "bool"
-                  }
-                }
-              },
-              "policy": {
-                "timeout": "0.12:00:00",
-                "retry": 0,
-                "retryIntervalInSeconds": 30,
-                "secureInput": false,
-                "secureOutput": false
-              },
-              "name": "CostAdjmtActionMessage_Activity",
-              "dependsOn": [
-                {
-                  "activity": "Wait_For_Spark_To_Stop_ContactIndustryGroup",
-                  "dependencyConditions": [
-                    "Succeeded"
-                  ]
-                }
-              ]
-            },
-            {
-              "type": "Wait",
-              "typeProperties": {
-                "waitTimeInSeconds": {
-                  "value": "@pipeline().parameters.wait_seconds",
-                  "type": "Expression"
-                }
-              },
-              "name": "Wait_For_Spark_To_Stop_CostAdjmtActionMessage",
-              "dependsOn": [
-                {
-                  "activity": "CostAdjmtActionMessage_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -5084,7 +4973,7 @@
               "name": "CountryRegion_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_CostAdjmtActionMessage",
+                  "activity": "Wait_For_Spark_To_Stop_ContactIndustryGroup",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -5372,7 +5261,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"cuurencycode\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6593,7 +6482,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[]",
+                    "value": "[\"tableid\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6639,6 +6528,117 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_DefaultDimension",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_DefaultDimensionPriority",
+              "dependsOn": [
+                {
+                  "activity": "DefaultDimensionPriority_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_depreciationbook')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bc_depreciationbook",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "DepreciationBook",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "DepreciationBook_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_DefaultDimensionPriority",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
