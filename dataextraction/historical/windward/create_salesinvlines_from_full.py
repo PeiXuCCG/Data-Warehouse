@@ -3,7 +3,7 @@ import pandas as pd
 # ----------------------------
 # Config
 # ----------------------------
-company = "complexrehab"
+company = "tccg"
 input_file = f"{company}/salesinvline/sales.csv"
 output_file = f"{company}/salesinvline/cleaned_lines.csv"
 

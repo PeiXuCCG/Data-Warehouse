@@ -1,8 +1,8 @@
 import pandas as pd
 import glob
 
-company = "fisherlane"
-SALES_PATH = f"{company}/vendorledgerentry/vendorledger.csv"
+company = "healthsaver"
+VENDOR_LEDGER_PATH = f"{company}/vendorledgerentry/vendorledgerentry.csv"
 OUTPUT_FILE = f"{company}/vendorledgerentry/cleaned.csv"
 
 REAL_HEADERS = ["Date","Src","ID No.","Memo","Transaction Amount","Balance"]
@@ -18,42 +18,59 @@ def load_csvs(path):
         dfs.append(df)
     return pd.concat(dfs, ignore_index=True)
 
-def clean_item_register(df):
+def clean_vendor_register(df):
     df = df.fillna("").astype(str)
 
     cleaned = []
 
-    # Track the current parent header values
-    customer_name = ""
+    vendor_name = ""
     unknown_field = ""
     current_balance = ""
 
     for _, row in df.iterrows():
         row = [v.strip() for v in row.tolist()]
 
-        # Remove TOTAL rows
-        if any("total" in v.lower() for v in row if v):
+        # Skip totally empty rows
+        if all(v == "" for v in row):
             continue
 
-        # ===== HEADER ROW (3 columns) =====
-        if len(row) >= 3 and row[0] and row[1] and row[2] and all(v == "" for v in row[3:]):
-            customer_name   = row[0]
-            unknown_field   = row[1]
-            current_balance = row[2]
-            continue  # do NOT output this row
+        # Skip TOTAL summary lines
+        if any("total:" in v.lower() for v in row if v):
+            continue
 
-        # ===== CHILD TRANSACTION ROW (normal data) =====
-        # Ensure it has at least 6 columns (pad if needed)
-        row = row + [""] * (6 - len(row))
-        child = row[:6] + [customer_name, unknown_field, current_balance]
-        cleaned.append(child)
+        # ===== DETECT VENDOR HEADER ROW (2 columns, not numeric) =====
+        if len(row) >= 2 and row[0] and row[1] and not row[0].isdigit():
+            vendor_name   = row[0]
+            unknown_field = row[1]
+            current_balance = ""     # reset until we see a balance
+            continue
 
-    # Build dataframe
-    return pd.DataFrame(cleaned, columns=REAL_HEADERS + EXTRA_HEADERS)
+        # ===== DETECT BALANCE ROW (like ",,,,...,$33,662.42") =====
+        if len(row) >= 6 and row[4] and row[5].replace("$","").replace(",","").replace("-","").isdigit():
+            # we assume Amount field is a number = balance row
+            current_balance = row[5]
+            continue
+
+        # ===== TRANSACTION ROW (first col is numeric) =====
+        if row[0].isdigit():
+            # pad
+            row = row + [""] * (6 - len(row))
+            child = row[:6]
+
+            # attach vendor info
+            child += [vendor_name, unknown_field, current_balance]
+
+            cleaned.append(child)
+
+    return pd.DataFrame(
+        cleaned,
+        columns=REAL_HEADERS + ["vendor_name", "unknown_field", "current_balance"]
+    )
+
 
 
 # RUN
-sl = load_csvs(SALES_PATH)
-cleaned = clean_item_register(sl)
+sl = load_csvs(VENDOR_LEDGER_PATH)
+cleaned = clean_vendor_register(sl)
 cleaned.to_csv(OUTPUT_FILE, index=False)
 print("Written:", OUTPUT_FILE)

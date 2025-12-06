@@ -1,6 +1,6 @@
 import pandas as pd
 
-company = "complexrehab"
+company = "tccg"
 input_file = f"{company}/salesinvline/sales.csv"
 output_file = f"{company}/salesinvheader/cleaned.csv"
 
