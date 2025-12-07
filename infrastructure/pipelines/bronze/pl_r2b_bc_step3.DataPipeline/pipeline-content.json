@@ -3937,7 +3937,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"code\", \"company\", \"description\"]",
+                    "value": "[\"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "business_keys": {
