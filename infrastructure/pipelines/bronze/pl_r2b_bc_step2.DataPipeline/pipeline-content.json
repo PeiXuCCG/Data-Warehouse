@@ -6161,7 +6161,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\"]",
+                    "value": "[\"originating_company\", \"postingdate\"]",
                     "type": "string"
                   },
                   "skip_activities": {
