@@ -611,6 +611,10 @@
             "source_path": "custledgerentry"
           },
           {
+            "target_table": "myob_employee",
+            "source_path": "employee"
+          },
+          {
             "target_table": "myob_glaccount",
             "source_path": "glaccount"
           },
@@ -651,7 +655,7 @@
             "source_path": "purchinvheader"
           },
           {
-            "target_table": "myob_purchase_invoice_line",
+            "target_table": "myob_purchaseinvline",
             "source_path": "purchinvline"
           },
           {
