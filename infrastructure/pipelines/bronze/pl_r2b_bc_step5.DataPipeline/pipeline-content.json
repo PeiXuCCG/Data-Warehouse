@@ -6441,7 +6441,7 @@
       "job_configuration": {
         "type": "array",
         "defaultValue": [
-          "BC"
+           "BC"
         ]
       },
       "dry_run": {
