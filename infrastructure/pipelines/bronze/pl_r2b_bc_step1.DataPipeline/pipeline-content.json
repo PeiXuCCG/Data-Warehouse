@@ -5261,15 +5261,15 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"cuurencycode\"]",
+                    "value": "[\"currencycode\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"company\", \"source_system\"]",
+                    "value": "[\"currencycode\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -6668,7 +6668,7 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": "false"
+        "defaultValue": false
       },
       "wait_seconds": {
         "type": "int",
