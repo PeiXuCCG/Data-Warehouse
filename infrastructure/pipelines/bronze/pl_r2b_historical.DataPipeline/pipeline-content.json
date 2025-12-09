@@ -113,7 +113,7 @@
                 {
                   "activity": "PaymentTerms_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -210,7 +210,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_PaymentTerms",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -228,7 +228,7 @@
                 {
                   "activity": "Currency_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -325,7 +325,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Currency",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -343,7 +343,7 @@
                 {
                   "activity": "SalespersonPurchaser_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -440,7 +440,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -458,7 +458,7 @@
                 {
                   "activity": "Location_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -555,7 +555,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Location",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -573,7 +573,7 @@
                 {
                   "activity": "GLAccount_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -670,7 +670,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_GLAccount",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -688,7 +688,7 @@
                 {
                   "activity": "GLEntry_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -785,7 +785,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_GLEntry",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -803,7 +803,7 @@
                 {
                   "activity": "Customer_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -900,7 +900,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Customer",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -918,7 +918,7 @@
                 {
                   "activity": "CustLedgerEntry_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1015,7 +1015,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_CustLedgerEntry",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1033,7 +1033,7 @@
                 {
                   "activity": "Vendor_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1130,7 +1130,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Vendor",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1148,7 +1148,7 @@
                 {
                   "activity": "VendorLedgerEntry_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1245,7 +1245,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1263,7 +1263,7 @@
                 {
                   "activity": "Item_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1360,7 +1360,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Item",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1378,7 +1378,7 @@
                 {
                   "activity": "ItemLedgerEntry_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1475,7 +1475,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1493,7 +1493,7 @@
                 {
                   "activity": "SalesHeader_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1590,7 +1590,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalesHeader",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1608,7 +1608,7 @@
                 {
                   "activity": "SalesLine_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1705,7 +1705,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalesLine",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1723,7 +1723,7 @@
                 {
                   "activity": "PurchaseHeader_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1820,7 +1820,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_PurchaseHeader",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1838,7 +1838,7 @@
                 {
                   "activity": "PurchaseLine_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1935,7 +1935,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_PurchaseLine",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -1953,7 +1953,7 @@
                 {
                   "activity": "SalesInvoiceHeader_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2050,7 +2050,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalesInvoiceHeader",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2068,7 +2068,7 @@
                 {
                   "activity": "SalesInvoiceLine_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2165,7 +2165,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SalesInvoiceLine",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2183,7 +2183,7 @@
                 {
                   "activity": "PurchInvHeader_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2280,7 +2280,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_PurchInvHeader",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2298,7 +2298,7 @@
                 {
                   "activity": "PurchInvLine_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2395,7 +2395,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_PurchInvLine",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2413,7 +2413,7 @@
                 {
                   "activity": "Prescriber_Activity",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
@@ -2510,7 +2510,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Prescriber",
                   "dependencyConditions": [
-                    "completed"
+                    "Completed"
                   ]
                 }
               ]
