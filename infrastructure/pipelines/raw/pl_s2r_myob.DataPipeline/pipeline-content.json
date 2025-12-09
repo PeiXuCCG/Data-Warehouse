@@ -397,7 +397,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat(\n    'Files/history/myob/fisherLanemobility/',item().source_path\n)",
+                      "value": "@concat(\n    'Files/history/myob/fisherlane/',item().source_path\n)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -647,8 +647,8 @@
                 "source_path": "purchinvline"
             },
             {
-                "target_table": "myob_salesiinvoiceheader",
-                "source_path": "salesiinvoiceheader"
+                "target_table": "myob_salesinvoiceheader",
+                "source_path": "salesinvoiceheader"
             },
             {
                 "target_table": "myob_salesinvoiceline",
