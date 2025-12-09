@@ -256,8 +256,8 @@ def align_headers(df, master_columns):
     """
 
     # 🔹 Clean DF column names
-    cleaned_cols = [clean_col(c) for c in df.columns]
-    df = df.toDF(*cleaned_cols)
+    # cleaned_cols = [clean_col(c) for c in df.columns]
+    # df = df.toDF(*cleaned_cols)
 
     # 🔹 Clean master columns as well (to ensure match)
     master_columns_clean = [clean_col(c) for c in master_columns]
@@ -295,8 +295,6 @@ for file in new_files:
     if not file.lower().endswith(".csv"):
         continue
 
-
-
     print(f"Loading {file}")
 
     one_df = (
@@ -310,6 +308,11 @@ for file in new_files:
             .option("columnNameOfCorruptRecord", "_corrupt_record")
             .csv(file)
     )
+
+    # 🔹 Clean DF column names
+    if source_system != "BC": #use this clean function for historical sources, not BC because BC has a number append to the end of each column and we can do a split on the dash
+        cleaned_cols = [clean_col(c) for c in one_df.columns]
+        one_df = one_df.toDF(*cleaned_cols)
 
     # First file defines the master schema
     if df is None:

@@ -27,6 +27,7 @@
 # CELL ********************
 
 from notebookutils import mssparkutils
+import json
 
 # METADATA ********************
 
@@ -37,11 +38,10 @@ from notebookutils import mssparkutils
 
 # CELL ********************
 
-# Welcome to your new notebook
-# Type here in the cell editor to add code!
+
+
 base_path = "Files/deltas/"
 prefix = "hirepos"
-
 
 entries = []
 
@@ -53,55 +53,12 @@ for f in mssparkutils.fs.ls(base_path):
         source_path = f"{folder_name}"
 
         entries.append({
-            "target_table": f"{target_table}",
-            "source_path": f"{source_path}"
+            "target_table": target_table,
+            "source_path": source_path
         })
 
-print(entries)
-
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-lst = [
-    "accounttype",
-    "globaldimension1code",
-    "globaldimension2code",
-    "accountcategory",
-    "sourcecurrencycode",
-    "sourcecurrencyposting",
-    "consoltranslationmethod",
-    "genpostingtype",
-    "genbuspostinggroup",
-    "genprodpostinggroup",
-    "taxareacode",
-    "taxgroupcode",
-    "vatbuspostinggroup",
-    "vatprodpostinggroup",
-    "defaulticpartnerglaccno",
-    "defaultdeferraltemplatecode",
-    "apiaccounttype",
-    "whtbusinesspostinggroup"
-    "whtproductpostinggroup"
-]
-
-
-result = "[\\n"
-for item in lst:
-    result += (
-        "    {\\\"" + item + "\\\": [\\\"" + item + "\\\", \\\"source_system\\\", \\\"company\\\"]},\\n"
-    )
-result = result.rstrip(",\\n") + "\\n]"
-
-print(result)
-
-
+# Print as valid formatted JSON
+print(json.dumps(entries, indent=4))
 
 
 # METADATA ********************
