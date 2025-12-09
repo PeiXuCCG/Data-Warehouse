@@ -385,7 +385,7 @@
                     "type": "string"
                   },
                   "source_entity": {
-                    "value": "FisherLane Mobility",
+                    "value": "Fisherlane",
                     "type": "string"
                   },
                   "target_table": {
@@ -440,7 +440,7 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "S2R_FisherLane_Mobility_Activity",
+              "name": "S2R_Fisherlane_Activity",
               "dependsOn": []
             },
             {
@@ -451,7 +451,7 @@
               "name": "Wait_For_Spark_To_Stop_Fisherlane",
               "dependsOn": [
                 {
-                  "activity": "S2R_FisherLane_Mobility_Activity",
+                  "activity": "S2R_Fisherlane_Activity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -460,7 +460,7 @@
             }
           ]
         },
-        "name": "S2R_FisherLane_Mobility",
+        "name": "S2R_Fisherlane",
         "dependsOn": [
           {
             "activity": "S2R_Ergo",
@@ -582,7 +582,7 @@
         "name": "S2R_WILLAID",
         "dependsOn": [
           {
-            "activity": "S2R_FisherLane_Mobility",
+            "activity": "S2R_Fisherlane",
             "dependencyConditions": [
               "Succeeded"
             ]
