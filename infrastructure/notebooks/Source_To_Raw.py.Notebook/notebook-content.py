@@ -36,6 +36,8 @@ import re
 from notebookutils import mssparkutils
 import sys
 import os
+from pyspark.sql.types import IntegerType, DoubleType, DateType, StringType
+import datetime
 
 # METADATA ********************
 
@@ -373,6 +375,18 @@ df = prevent_duplicate_data(df)
 # CELL ********************
 
 display(df)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+
+
 
 # METADATA ********************
 
