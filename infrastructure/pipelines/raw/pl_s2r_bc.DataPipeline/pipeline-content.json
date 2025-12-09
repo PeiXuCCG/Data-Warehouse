@@ -75,6 +75,13 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
                   }
                 }
               },
@@ -1365,6 +1372,10 @@
       "wait": {
         "type": "int",
         "defaultValue": 0
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     },
     "concurrency": 1

@@ -64,7 +64,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -89,6 +92,24 @@
               },
               "name": "S2R_Ansteys_Lightspeed_Activity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_for_Spark_Ansteys_To_Stop",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Ansteys_Lightspeed_Activity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -183,6 +204,24 @@
               },
               "name": "S2R_Open_Mobility_Lightspeed_Acitivity",
               "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_for_OpenMobility_Spark_To_Stop",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Open_Mobility_Lightspeed_Acitivity",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -266,6 +305,14 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     }
   }

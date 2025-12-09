@@ -107,7 +107,10 @@
                 }
               ],
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               }
             }
           ]
@@ -207,6 +210,10 @@
       "write_method": {
         "type": "string",
         "defaultValue": "append"
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     }
   }

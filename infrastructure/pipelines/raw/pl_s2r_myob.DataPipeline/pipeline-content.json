@@ -96,7 +96,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Healthsaver",
               "dependsOn": [
@@ -147,7 +150,7 @@
                     "type": "string"
                   },
                   "source_entity": {
-                    "value": "Chair Doctor",
+                    "value": "The Chair Doctor",
                     "type": "string"
                   },
                   "target_table": {
@@ -159,7 +162,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat(\n    'Files/history/myob/chairdoctor/',item().source_path\n)",
+                      "value": "@concat(\n    'Files/history/myob/thechairdoctor/',item().source_path\n)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -176,10 +179,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -208,7 +208,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_ChairDoctor",
               "dependsOn": [
@@ -295,10 +298,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -327,7 +327,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Ergo",
               "dependsOn": [
@@ -414,10 +417,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -446,7 +446,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Fisherlane",
               "dependsOn": [
@@ -533,10 +536,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -565,7 +565,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Willaid",
               "dependsOn": [
@@ -675,6 +678,10 @@
       "write_method": {
         "type": "string",
         "defaultValue": "append"
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     },
     "concurrency": 1

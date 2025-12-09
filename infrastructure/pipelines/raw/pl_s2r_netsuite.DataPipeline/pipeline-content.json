@@ -4,6 +4,7 @@
       {
         "type": "ForEach",
         "typeProperties": {
+          "isSequential": true,
           "items": {
             "value": "@pipeline().parameters.job_configuration",
             "type": "Expression"
@@ -98,7 +99,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Netsuite",
               "dependsOn": [
@@ -237,6 +241,10 @@
       "write_method": {
         "type": "string",
         "defaultValue": "append"
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     }
   }

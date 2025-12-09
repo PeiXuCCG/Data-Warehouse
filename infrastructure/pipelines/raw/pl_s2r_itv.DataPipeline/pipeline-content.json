@@ -75,6 +75,13 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
                   }
                 }
               },
@@ -91,7 +98,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_ITV",
               "dependsOn": [
@@ -131,6 +141,14 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     }
   }

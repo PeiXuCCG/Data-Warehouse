@@ -64,7 +64,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -93,7 +96,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Lakeside",
               "dependsOn": [
@@ -202,7 +208,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Homecare",
               "dependsOn": [
@@ -304,6 +313,14 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     }
   }

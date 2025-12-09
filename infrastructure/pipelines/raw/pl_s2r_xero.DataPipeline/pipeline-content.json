@@ -96,7 +96,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Ansteys",
               "dependsOn": [
@@ -176,10 +179,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -208,7 +208,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Lakeside",
               "dependsOn": [
@@ -295,10 +298,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -327,7 +327,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Open",
               "dependsOn": [
@@ -414,10 +417,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -446,7 +446,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Homecare",
               "dependsOn": [
@@ -533,10 +536,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -565,7 +565,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Uccello_Marketing_AU",
               "dependsOn": [
@@ -652,10 +655,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -684,7 +684,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Ucello_Designs",
               "dependsOn": [
@@ -771,10 +774,7 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": {
-                      "value": "@pipeline().parameters.write_method",
-                      "type": "Expression"
-                    },
+                    "value": "append",
                     "type": "string"
                   },
                   "infer_schema": {
@@ -803,7 +803,10 @@
             {
               "type": "Wait",
               "typeProperties": {
-                "waitTimeInSeconds": 5
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
               },
               "name": "Wait_For_Spark_To_Stop_Ucello_Marketing_EU",
               "dependsOn": [
@@ -929,6 +932,10 @@
       "write_method": {
         "type": "string",
         "defaultValue": "append"
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 5
       }
     }
   }
