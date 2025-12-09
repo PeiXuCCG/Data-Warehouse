@@ -186,7 +186,7 @@ if path_exists(source_path):
         print(f"Table {ingestion_log} does not exist.")
 
     if log_df is not None:
-        loaded_files = [r["source_file"] for r in log_df.collect()]
+        loaded_files = [r["source_file"].split("?")[0] for r in log_df.collect()]
 
         # Step 3: Filter new files
         new_files = [f for f in files if f not in loaded_files]
