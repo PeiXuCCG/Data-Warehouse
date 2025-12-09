@@ -118,7 +118,7 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 # CELL ********************
 
 decimal_fields = ["amount", "quantity", "qty"]
-integer_fields = [""]
+integer_fields = []
 
 # METADATA ********************
 
@@ -130,11 +130,11 @@ integer_fields = [""]
 # CELL ********************
 
 # Reload strings as arrays
-# deduplicate_fields = json.loads(deduplicate_fields)
-# business_keys = json.loads(business_keys)
-# source_primary_keys = json.loads(source_primary_keys)
-# source_foreign_keys = json.loads(source_foreign_keys)
-# skip_activities = json.loads(skip_activities)
+deduplicate_fields = json.loads(deduplicate_fields)
+business_keys = json.loads(business_keys)
+source_primary_keys = json.loads(source_primary_keys)
+source_foreign_keys = json.loads(source_foreign_keys)
+skip_activities = json.loads(skip_activities)
 
 # METADATA ********************
 
@@ -324,7 +324,7 @@ bronze_table = KeyedTable(
             target_schema=target_lakehouse,
             name=target_table,
             schema_evolution=True,
-            df=converted_df,
+            df=df,
             target_path="NOT_SUPPORTED_YET", # NOT SUPPORTED IN FABRIC
             business_keys=business_keys,
             source_primary_keys=source_primary_keys,
