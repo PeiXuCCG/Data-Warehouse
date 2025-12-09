@@ -37,7 +37,6 @@ from notebookutils import mssparkutils
 import sys
 import os
 
-
 # METADATA ********************
 
 # META {
@@ -230,6 +229,25 @@ def prevent_duplicate_data(df):
 
 # CELL ********************
 
+def clean_col(col_name):
+    """
+    Clean column names:
+      - lowercases
+      - replaces non-alphanumeric chars
+    """
+    col_name = col_name.lower()
+    col_name = re.sub(r'[^a-zA-Z0-9]', '', col_name)
+    return col_name
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def align_headers(df, master_columns):
     """
     Adds missing columns as NULL.
@@ -237,20 +255,27 @@ def align_headers(df, master_columns):
     Reorders columns to match master_columns.
     """
 
+    # 🔹 Clean DF column names
+    cleaned_cols = [clean_col(c) for c in df.columns]
+    df = df.toDF(*cleaned_cols)
+
+    # 🔹 Clean master columns as well (to ensure match)
+    master_columns_clean = [clean_col(c) for c in master_columns]
+
     df_cols = df.columns
 
     # Add missing columns
-    for col in master_columns:
+    for col in master_columns_clean:
         if col not in df_cols:
             df = df.withColumn(col, lit(None))
 
     # Drop unexpected columns
     for col in df_cols:
-        if col not in master_columns:
+        if col not in master_columns_clean:
             df = df.drop(col)
 
     # Reorder to match master schema
-    df = df.select(master_columns)
+    df = df.select(master_columns_clean)
 
     return df
 
