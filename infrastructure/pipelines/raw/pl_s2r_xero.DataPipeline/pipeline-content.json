@@ -64,7 +64,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -173,7 +176,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -289,7 +295,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -405,7 +414,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -521,7 +533,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -637,7 +652,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -753,7 +771,10 @@
                     "type": "string"
                   },
                   "write_method": {
-                    "value": "append",
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "infer_schema": {
@@ -904,6 +925,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     }
   }
