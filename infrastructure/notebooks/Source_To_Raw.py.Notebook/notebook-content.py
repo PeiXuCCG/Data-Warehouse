@@ -316,14 +316,16 @@ for file in new_files:
         cleaned_cols = [clean_col(c) for c in one_df.columns]
         one_df = one_df.toDF(*cleaned_cols)
 
-    # First file defines the master schema
-    if df is None:
+        # First file defines the master schema
+        if df is None:
+            df = one_df
+            master_columns = df.columns
+            continue
+        
+        one_df = align_headers(one_df, master_columns)
+        df = df.unionByName(one_df)
+    else:
         df = one_df
-        master_columns = df.columns
-        continue
-
-    one_df = align_headers(one_df, master_columns)
-    df = df.unionByName(one_df)
 
 # METADATA ********************
 
