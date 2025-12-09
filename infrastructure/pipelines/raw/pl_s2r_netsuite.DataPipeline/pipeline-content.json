@@ -75,6 +75,13 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
                   }
                 }
               },
@@ -226,6 +233,10 @@
       "dry_run": {
         "type": "bool",
         "defaultValue": false
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
       }
     }
   }
