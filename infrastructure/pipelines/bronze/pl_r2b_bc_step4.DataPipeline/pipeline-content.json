@@ -47,11 +47,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_prodorderrtngcommentline",
+                    "value": "bronze_prodorderrtngcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"code\"]",
+                    "value": "[\"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -151,11 +151,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionbomcommentline",
+                    "value": "bronze_productionbomcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"code\"]",
+                    "value": "[\"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -262,11 +262,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionbomheader",
+                    "value": "bronze_productionbomheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -373,11 +373,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionbomline",
+                    "value": "bronze_productionbomline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"no\", \"description\"]",
+                    "value": "[\"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -484,11 +484,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionforecastentry",
+                    "value": "bronze_productionforecastentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"description\"]",
+                    "value": "[\"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -595,11 +595,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionforecastname",
+                    "value": "bronze_productionforecastname",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"name\", \"description\"]",
+                    "value": "[\"name\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -706,11 +706,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_productionorder",
+                    "value": "bronze_productionorder",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -817,11 +817,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchcommentline",
+                    "value": "bronze_purchcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"lineno\", \"code\"]",
+                    "value": "[\"no\", \"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -928,11 +928,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchcommentlinearchive",
+                    "value": "bronze_purchcommentlinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"lineno\", \"code\"]",
+                    "value": "[\"no\", \"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1039,11 +1039,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchcrmemoentitybuffer",
+                    "value": "bronze_purchcrmemoentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1150,11 +1150,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchcrmemohdr",
+                    "value": "bronze_purchcrmemohdr",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1261,11 +1261,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchcrmemoline",
+                    "value": "bronze_purchcrmemoline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1372,11 +1372,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchinventityaggregate",
+                    "value": "bronze_purchinventityaggregate",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1483,11 +1483,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentalcontractheader",
+                    "value": "bronze_odtrentalcontractheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1594,11 +1594,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentalcontractline",
+                    "value": "bronze_odtrentalcontractline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1705,11 +1705,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchrcptheader",
+                    "value": "bronze_purchrcptheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1816,11 +1816,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchrcptline",
+                    "value": "bronze_purchrcptline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1927,11 +1927,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentaldeliveryheader",
+                    "value": "bronze_odtrentaldeliveryheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2038,11 +2038,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaseheaderarchive",
+                    "value": "bronze_purchaseheaderarchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2149,11 +2149,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentaldeliveryline",
+                    "value": "bronze_odtrentaldeliveryline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2260,11 +2260,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaselinearchive",
+                    "value": "bronze_purchaselinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2371,11 +2371,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaseorderentitybuffer",
+                    "value": "bronze_purchaseorderentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2482,11 +2482,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchaseprice",
+                    "value": "bronze_purchaseprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"itemno\"]",
+                    "value": "[\"itemno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2593,11 +2593,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_purchasing",
+                    "value": "bronze_purchasing",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2704,11 +2704,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_reasoncode",
+                    "value": "bronze_reasoncode",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2815,11 +2815,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_registeredwhseactivityhdr",
+                    "value": "bronze_registeredwhseactivityhdr",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2926,11 +2926,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_registeredwhseactivityline",
+                    "value": "bronze_registeredwhseactivityline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"lineno\", \"description\"]",
+                    "value": "[\"no\", \"lineno\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3037,11 +3037,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_resledgerentry",
+                    "value": "bronze_resledgerentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"description\"]",
+                    "value": "[\"documentno\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3148,11 +3148,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_reservationentry",
+                    "value": "bronze_reservationentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"description\"]",
+                    "value": "[\"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3259,11 +3259,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_resourcelocation",
+                    "value": "bronze_resourcelocation",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"resourceno\"]",
+                    "value": "[\"resourceno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3370,11 +3370,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_resourceunitofmeasure",
+                    "value": "bronze_resourceunitofmeasure",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\"]",
+                    "value": "[\"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3481,11 +3481,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_responsibilitycenter",
+                    "value": "bronze_responsibilitycenter",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"name\"]",
+                    "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3592,11 +3592,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_returnreason",
+                    "value": "bronze_returnreason",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3703,11 +3703,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_returnreceiptheader",
+                    "value": "bronze_returnreceiptheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3814,11 +3814,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_returnreceiptline",
+                    "value": "bronze_returnreceiptline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -3925,11 +3925,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_returnshipmentheader",
+                    "value": "bronze_returnshipmentheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4036,11 +4036,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_returnshipmentline",
+                    "value": "bronze_returnshipmentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4147,11 +4147,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_routingcommentline",
+                    "value": "bronze_routingcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"code\"]",
+                    "value": "[\"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4258,11 +4258,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_routingheader",
+                    "value": "bronze_routingheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4369,11 +4369,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_routingline",
+                    "value": "bronze_routingline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"description\"]",
+                    "value": "[\"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4480,11 +4480,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_routinglink",
+                    "value": "bronze_routinglink",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4591,11 +4591,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salescommentline",
+                    "value": "bronze_salescommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"lineno\", \"code\"]",
+                    "value": "[\"no\", \"lineno\", \"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4702,11 +4702,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salescrmemoentitybuffer",
+                    "value": "bronze_salescrmemoentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4813,11 +4813,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salescrmemoheader",
+                    "value": "bronze_salescrmemoheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -4924,11 +4924,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salescrmemoline",
+                    "value": "bronze_salescrmemoline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5035,11 +5035,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salescycle",
+                    "value": "bronze_salescycle",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5146,11 +5146,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentalinvoicingheader",
+                    "value": "bronze_odtrentalinvoicingheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"documentno\", \"description\"]",
+                    "value": "[\"lineno\", \"documentno\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5257,11 +5257,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesheaderarchive",
+                    "value": "bronze_salesheaderarchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5368,11 +5368,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesinvoiceentityaggregate",
+                    "value": "bronze_salesinvoiceentityaggregate",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5479,11 +5479,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentallineinvoice",
+                    "value": "bronze_odtrentallineinvoice",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\"]",
+                    "value": "[\"documentno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5590,11 +5590,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentallinerentalamount",
+                    "value": "bronze_odtrentallinerentalamount",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\"]",
+                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5701,11 +5701,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentalprice",
+                    "value": "bronze_odtrentalprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5812,11 +5812,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_saleslinearchive",
+                    "value": "bronze_saleslinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -5923,11 +5923,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_saleslinediscount",
+                    "value": "bronze_saleslinediscount",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\"]",
+                    "value": "[\"code\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6034,11 +6034,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesorderentitybuffer",
+                    "value": "bronze_salesorderentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6145,11 +6145,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesprice",
+                    "value": "bronze_salesprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"salescode\"]",
+                    "value": "[\"salescode\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6256,11 +6256,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesquoteentitybuffer",
+                    "value": "bronze_salesquoteentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6367,11 +6367,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesshipmentheader",
+                    "value": "bronze_salesshipmentheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6478,11 +6478,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_salesshipmentline",
+                    "value": "bronze_salesshipmentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\"]",
+                    "value": "[\"documentno\", \"lineno\", \"no\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -6589,11 +6589,11 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bc_odtrentalregister",
+                    "value": "bronze_odtrentalregister",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
