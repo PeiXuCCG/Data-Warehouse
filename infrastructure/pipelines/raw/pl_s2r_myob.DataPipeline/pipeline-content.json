@@ -602,90 +602,70 @@
       "job_configuration": {
         "type": "array",
         "defaultValue": [
-          {
-            "target_table": "myob_customer",
-            "source_path": "customer"
-          },
-          {
-            "target_table": "myob_custledgerentry",
-            "source_path": "custledgerentry"
-          },
-          {
-            "target_table": "myob_employee",
-            "source_path": "employee"
-          },
-          {
-            "target_table": "myob_glaccount",
-            "source_path": "glaccount"
-          },
-          {
-            "target_table": "myob_glentry",
-            "source_path": "glentry"
-          },
-          {
-            "target_table": "myob_item",
-            "source_path": "item"
-          },
-          {
-            "target_table": "myob_itemledgerentry",
-            "source_path": "itemledgerentry"
-          },
-          {
-            "target_table": "myob_location",
-            "source_path": "location"
-          },
-          {
-            "target_table": "myob_paymentterms",
-            "source_path": "paymentterms"
-          },
-          {
-            "target_table": "myob_prescriber",
-            "source_path": "prescriber"
-          },
-          {
-            "target_table": "myob_purchheader",
-            "source_path": "purchheader"
-          },
-          {
-            "target_table": "myob_purchline",
-            "source_path": "purchline"
-          },
-          {
-            "target_table": "myob_purchinvheader",
-            "source_path": "purchinvheader"
-          },
-          {
-            "target_table": "myob_purchaseinvline",
-            "source_path": "purchinvline"
-          },
-          {
-            "target_table": "myob_salesheader",
-            "source_path": "salesheader"
-          },
-          {
-            "target_table": "myob_salesline",
-            "source_path": "salesline"
-          },
-          {
-            "target_table": "myob_salesinvoiceheader",
-            "source_path": "salesinvoiceheader"
-          },
-          {
-            "target_table": "myob_salesinvoiceline",
-            "source_path": "salesinvoiceline"
-          },
-          {
-            "target_table": "myob_valueledgerentry",
-            "source_path": "valueledgerentry"
-          },
-          {
-            "target_table": "myob_vendor",
-            "source_path": "vendor"
-          },
-          {
-            "target_table": "myob_vendorledgerentry",
-            "source_path": "vendorledgerentry"
-          }
+            {
+                "target_table": "myob_custledgerentry",
+                "source_path": "custledgerentry"
+            },
+            {
+                "target_table": "myob_customer",
+                "source_path": "customer"
+            },
+            {
+                "target_table": "myob_employee",
+                "source_path": "employee"
+            },
+            {
+                "target_table": "myob_glaccount",
+                "source_path": "glaccount"
+            },
+            {
+                "target_table": "myob_glentry",
+                "source_path": "glentry"
+            },
+            {
+                "target_table": "myob_item",
+                "source_path": "item"
+            },
+            {
+                "target_table": "myob_itemledgerentry",
+                "source_path": "itemledgerentry"
+            },
+            {
+                "target_table": "myob_location",
+                "source_path": "location"
+            },
+            {
+                "target_table": "myob_paymentterms",
+                "source_path": "paymentterms"
+            },
+            {
+                "target_table": "myob_purchinvheader",
+                "source_path": "purchinvheader"
+            },
+            {
+                "target_table": "myob_purchinvline",
+                "source_path": "purchinvline"
+            },
+            {
+                "target_table": "myob_salesiinvoiceheader",
+                "source_path": "salesiinvoiceheader"
+            },
+            {
+                "target_table": "myob_salesinvoiceline",
+                "source_path": "salesinvoiceline"
+            },
+            {
+                "target_table": "myob_valueledger",
+                "source_path": "valueledger"
+            },
+            {
+                "target_table": "myob_vendor",
+                "source_path": "vendor"
+            },
+            {
+                "target_table": "myob_vendorledgerentry",
+                "source_path": "vendorledgerentry"
+            }
         ]
       },
       "dry_run": {
