@@ -325,7 +325,10 @@ for file in new_files:
         one_df = align_headers(one_df, master_columns)
         df = df.unionByName(one_df)
     else:
-        df = one_df
+        if df is None:
+            df = one_df
+        else:
+            df = df.unionByName(one_df)
 
 # METADATA ********************
 
