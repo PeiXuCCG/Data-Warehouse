@@ -262,22 +262,22 @@ def align_headers(df, master_columns):
     # df = df.toDF(*cleaned_cols)
 
     # 🔹 Clean master columns as well (to ensure match)
-    master_columns_clean = [clean_col(c) for c in master_columns]
+    #master_columns_clean = [clean_col(c) for c in master_columns]
 
     df_cols = df.columns
 
     # Add missing columns
-    for col in master_columns_clean:
+    for col in master_columns:
         if col not in df_cols:
             df = df.withColumn(col, lit(None))
 
     # Drop unexpected columns
     for col in df_cols:
-        if col not in master_columns_clean:
+        if col not in master_columns:
             df = df.drop(col)
 
     # Reorder to match master schema
-    df = df.select(master_columns_clean)
+    df = df.select(master_columns)
 
     return df
 
@@ -327,7 +327,9 @@ for file in new_files:
     else:
         if df is None:
             df = one_df
+            master_columns = df.columns
         else:
+            one_df = align_headers(one_df, master_columns)
             df = df.unionByName(one_df)
 
 # METADATA ********************
@@ -369,29 +371,6 @@ if not source_system == 'BC':
 # CELL ********************
 
 df = prevent_duplicate_data(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-display(df)
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-
-
 
 # METADATA ********************
 
