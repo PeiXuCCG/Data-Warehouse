@@ -63,12 +63,12 @@ target_schema = "lh_bronze" # lakehouse
 target_db =  "raw"  # db schema
 source_system = "BC"# data source
 source_entity = "" # the company
-target_table = f"bc_custledgerentry"
-source_path = 'Files/deltas/CustLedgerEntry-21'
+target_table = f"bc_glentry"
+source_path = 'Files/deltas/GLEntry-17'
 is_multi_line = True
 pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
-infer_schema = True
+infer_schema = False
 dry_run=False
 workspace_name = mssparkutils.env.getWorkspaceName()
 
@@ -252,34 +252,77 @@ def clean_col(col_name):
 
 def align_headers(df, master_columns):
     """
-    Adds missing columns as NULL.
-    Drops extra columns.
-    Reorders columns to match master_columns.
+    Return a DataFrame with columns aligned to master_columns **by name**:
+      - keeps exact existing columns (by cleaned name)
+      - inserts NULL columns for missing master columns
+      - does NOT keep any extra columns not in master_columns
+      - prevents positional misalignment by building explicit select expressions
+
+    master_columns: iterable of column-names (strings).
     """
+    # 1) Clean master column names and ensure they are unique (preserve order)
+    cleaned_master = []
+    seen = set()
+    for c in master_columns:
+        cn = clean_name(c)
+        if cn in seen:
+            # if duplicate in master, skip duplicate 
+            continue
+        seen.add(cn)
+        cleaned_master.append(cn)
 
-    # 🔹 Clean DF column names
-    # cleaned_cols = [clean_col(c) for c in df.columns]
-    # df = df.toDF(*cleaned_cols)
-
-    # 🔹 Clean master columns as well (to ensure match)
-    #master_columns_clean = [clean_col(c) for c in master_columns]
-
+    # 2) Map existing df columns by cleaned name -> actual name (preserve first occurrence)
     df_cols = df.columns
+    df_map = {}
+    for actual in df_cols:
+        key = clean_name(actual)
+        # if duplicates in source, keep the first mapping; duplicates should be careful
+        if key not in df_map:
+            df_map[key] = actual
 
-    # Add missing columns
-    for col in master_columns:
+    # 3) Build select expressions explicitly
+    exprs = []
+    for m in cleaned_master:
+        if m in df_map:
+            exprs.append(col(df_map[m]).alias(m))
+        else:
+            exprs.append(lit(None).alias(m))
+
+    # 4) Select in the master order
+    return df.select(*exprs)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def align_headers_dynamic(df, master_columns):
+    """
+    Adds missing columns as NULL and reorders columns to match master_columns.
+    Any extra columns in df are appended to the master_columns list.
+    Returns updated df and updated master_columns.
+    """
+    df_cols = df.columns
+    new_master_cols = master_columns.copy()
+
+    # Add any new columns from df to master
+    for col in df_cols:
+        if col not in new_master_cols:
+            new_master_cols.append(col)
+
+    # Add missing columns in df as null
+    for col in new_master_cols:
         if col not in df_cols:
             df = df.withColumn(col, lit(None))
 
-    # Drop unexpected columns
-    for col in df_cols:
-        if col not in master_columns:
-            df = df.drop(col)
+    # Reorder to match new master columns
+    df = df.select(new_master_cols)
 
-    # Reorder to match master schema
-    df = df.select(master_columns)
-
-    return df
+    return df, new_master_cols
 
 # METADATA ********************
 
@@ -304,33 +347,47 @@ for file in new_files:
             .option("header", True)
             .option("inferSchema", infer_schema)
             .option("multiLine", True)
-            .option("quote", "\"")
-            .option("escape", "\"")
+            .option("quote", '"') 
+            .option("escape", '\\') 
             .option("mode", "PERMISSIVE")
             .option("columnNameOfCorruptRecord", "_corrupt_record")
             .csv(file)
     )
 
-    # 🔹 Clean DF column names
-    if source_system != "BC": #use this clean function for historical sources, not BC because BC has a number append to the end of each column and we can do a split on the dash
+    if source_system != "BC":
+        # Historical sources: clean columns
         cleaned_cols = [clean_col(c) for c in one_df.columns]
         one_df = one_df.toDF(*cleaned_cols)
 
-        # First file defines the master schema
+        # First file defines master schema
         if df is None:
             df = one_df
             master_columns = df.columns
             continue
-        
+
+        # Align columns to master schema
         one_df = align_headers(one_df, master_columns)
         df = df.unionByName(one_df)
+
     else:
+        # ---- BC logic: dynamic schema ----
+        # BC sources
+        cleaned_df = cleanse(one_df)
+
         if df is None:
-            df = one_df
+            df = cleaned_df
             master_columns = df.columns
-        else:
-            one_df = align_headers(one_df, master_columns)
-            df = df.unionByName(one_df)
+            print("Initial BC master schema:", master_columns)
+            continue
+
+        # Align df and update master schema dynamically
+        cleaned_df, master_columns = align_headers_dynamic(cleaned_df, master_columns)
+
+        # Also align the existing df in case new columns appeared
+        df, master_columns = align_headers_dynamic(df, master_columns)
+
+        df = df.unionByName(cleaned_df)
+
 
 # METADATA ********************
 
@@ -341,13 +398,10 @@ for file in new_files:
 
 # CELL ********************
 
-df_with_file = df.withColumn("_source_file_temp", input_file_name())
+df = df.withColumn("_source_file_temp", input_file_name())
 
-# Collect a single filename (in case Spark splits files)
-filename = df_with_file.select(first("_source_file_temp", ignorenulls=True)).collect()[0][0]
-
-# Add a literal column so it survives renames/select/etc
-df = df.withColumn("source_file", lit(filename))
+# Add a column so it survives renames/select/etc
+df = df.withColumn("source_file", col("_source_file_temp")).drop("_source_file_temp")
 
 # METADATA ********************
 
@@ -390,7 +444,7 @@ raw = PlainTable(
     target_path="NOT_SUPPORTED_YET", # this is technically not used due to fabric not supporting it but leave it here
     write_method=write_method,
     schema_evolution=True,
-    cleanse_function=cleanse
+    cleanse_function=None #Doing the cleanse earlier now
 )
 
 # METADATA ********************
