@@ -109,7 +109,7 @@
                 {
                   "activity": "Salutation_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -202,7 +202,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_Salutation",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -220,7 +220,7 @@
                 {
                   "activity": "SavedSegmentCriteria_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -313,7 +313,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SavedSegmentCriteria",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -331,7 +331,7 @@
                 {
                   "activity": "SavedSegmentCriteriaLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -424,7 +424,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SavedSegmentCriteriaLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -442,7 +442,7 @@
                 {
                   "activity": "SegmentCriteriaLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -535,7 +535,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SegmentCriteriaLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -553,7 +553,7 @@
                 {
                   "activity": "SegmentHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -646,7 +646,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SegmentHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -664,7 +664,7 @@
                 {
                   "activity": "SegmentLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -757,7 +757,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SegmentLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -775,7 +775,7 @@
                 {
                   "activity": "SerialNoInformation_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -868,7 +868,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SerialNoInformation",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -886,7 +886,7 @@
                 {
                   "activity": "ServiceItemGroup_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -979,7 +979,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ServiceItemGroup",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -997,7 +997,7 @@
                 {
                   "activity": "ShipmentMethod_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1090,7 +1090,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ShipmentMethod",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1108,7 +1108,7 @@
                 {
                   "activity": "ShippingAgent_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1201,7 +1201,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ShippingAgent",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1219,7 +1219,7 @@
                 {
                   "activity": "ShippingAgentServices_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1312,7 +1312,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ShippingAgentServices",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1330,7 +1330,7 @@
                 {
                   "activity": "ShiptoAddress_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1423,7 +1423,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ShiptoAddress",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1441,7 +1441,7 @@
                 {
                   "activity": "ShiptoAddressCommentLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1534,7 +1534,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ShiptoAddressCommentLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1552,7 +1552,7 @@
                 {
                   "activity": "SourceCode_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1645,7 +1645,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_SourceCode",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1663,7 +1663,7 @@
                 {
                   "activity": "StandardCostWorksheet_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1756,7 +1756,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_StandardCostWorksheet",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1774,7 +1774,7 @@
                 {
                   "activity": "StandardCostWorksheetName_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1867,7 +1867,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_StandardCostWorksheetName",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1885,7 +1885,7 @@
                 {
                   "activity": "StandardGeneralJournal_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1978,7 +1978,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_StandardGeneralJournal",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -1996,7 +1996,7 @@
                 {
                   "activity": "StandardGeneralJournalLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2089,7 +2089,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_StandardGeneralJournalLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2107,7 +2107,7 @@
                 {
                   "activity": "StockkeepingUnit_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2200,7 +2200,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_StockkeepingUnit",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2218,7 +2218,7 @@
                 {
                   "activity": "TrackingSpecification_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2311,7 +2311,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TrackingSpecification",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2329,7 +2329,7 @@
                 {
                   "activity": "TransferHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2422,7 +2422,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2440,7 +2440,7 @@
                 {
                   "activity": "TransferLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2533,7 +2533,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2551,7 +2551,7 @@
                 {
                   "activity": "TransferReceiptHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2644,7 +2644,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferReceiptHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2662,7 +2662,7 @@
                 {
                   "activity": "TransferReceiptLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2755,7 +2755,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferReceiptLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2773,7 +2773,7 @@
                 {
                   "activity": "TransferShipmentHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2866,7 +2866,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferShipmentHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2884,7 +2884,7 @@
                 {
                   "activity": "TransferShipmentLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2977,7 +2977,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransferShipmentLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -2995,7 +2995,7 @@
                 {
                   "activity": "TransportMethod_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3088,7 +3088,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_TransportMethod",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3106,7 +3106,7 @@
                 {
                   "activity": "UnitofMeasure_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3199,7 +3199,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_UnitofMeasure",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3217,7 +3217,7 @@
                 {
                   "activity": "UnplannedDemand_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3310,7 +3310,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_UnplannedDemand",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3328,7 +3328,7 @@
                 {
                   "activity": "UntrackedPlanningElement_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3421,7 +3421,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_UntrackedPlanningElement",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3439,7 +3439,7 @@
                 {
                   "activity": "VATBusinessPostingGroup_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3532,7 +3532,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_VATBusinessPostingGroup",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3550,7 +3550,7 @@
                 {
                   "activity": "VATEntry_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3643,7 +3643,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_VATEntry",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3661,7 +3661,7 @@
                 {
                   "activity": "VATProductPostingGroup_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3754,7 +3754,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_VATProductPostingGroup",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3772,7 +3772,7 @@
                 {
                   "activity": "ValueEntry_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3865,7 +3865,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ValueEntry",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3883,7 +3883,7 @@
                 {
                   "activity": "ODTRentalReservationEntry_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3976,7 +3976,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ODTRentalReservationEntry",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -3994,7 +3994,7 @@
                 {
                   "activity": "ODTRentalValueEntry_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4087,7 +4087,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_ODTRentalValueEntry",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4105,7 +4105,7 @@
                 {
                   "activity": "VendorPostingGroup_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4198,7 +4198,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_VendorPostingGroup",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4216,7 +4216,7 @@
                 {
                   "activity": "WHTProductPostingGroup_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4309,7 +4309,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WHTProductPostingGroup",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4327,7 +4327,7 @@
                 {
                   "activity": "WarehouseActivityHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4420,7 +4420,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseActivityHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4438,7 +4438,7 @@
                 {
                   "activity": "WarehouseActivityLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4531,7 +4531,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseActivityLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4549,7 +4549,7 @@
                 {
                   "activity": "WarehouseClass_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4642,7 +4642,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseClass",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4660,7 +4660,7 @@
                 {
                   "activity": "WarehouseCommentLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4753,7 +4753,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseCommentLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4771,7 +4771,7 @@
                 {
                   "activity": "WarehouseEmployee_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4864,7 +4864,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseEmployee",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4882,7 +4882,7 @@
                 {
                   "activity": "WarehouseEntry_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4975,7 +4975,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseEntry",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -4993,7 +4993,7 @@
                 {
                   "activity": "WarehouseJournalLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5086,7 +5086,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseJournalLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5104,7 +5104,7 @@
                 {
                   "activity": "WarehouseReceiptHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5197,7 +5197,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseReceiptHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5215,7 +5215,7 @@
                 {
                   "activity": "WarehouseReceiptLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5308,7 +5308,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseReceiptLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5326,7 +5326,7 @@
                 {
                   "activity": "WarehouseRegister_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5419,7 +5419,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseRegister",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5437,7 +5437,7 @@
                 {
                   "activity": "WarehouseShipmentHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5530,7 +5530,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseShipmentHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5548,7 +5548,7 @@
                 {
                   "activity": "WarehouseShipmentLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5641,7 +5641,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WarehouseShipmentLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5659,7 +5659,7 @@
                 {
                   "activity": "WhseInternalPutawayHeader_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5752,7 +5752,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseInternalPutawayHeader",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5770,7 +5770,7 @@
                 {
                   "activity": "WhseInternalPutawayLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5863,7 +5863,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseInternalPutawayLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5881,7 +5881,7 @@
                 {
                   "activity": "WhseItemTrackingLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5974,7 +5974,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseItemTrackingLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -5992,7 +5992,7 @@
                 {
                   "activity": "WhsePickRequest_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6085,7 +6085,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhsePickRequest",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6103,7 +6103,7 @@
                 {
                   "activity": "WhsePutawayRequest_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6196,7 +6196,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhsePutawayRequest",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6214,7 +6214,7 @@
                 {
                   "activity": "WhseWorksheetLine_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6307,7 +6307,7 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseWorksheetLine",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6325,7 +6325,7 @@
                 {
                   "activity": "WhseWorksheetName_Activity",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
                   ]
                 }
               ]
@@ -6418,7 +6418,118 @@
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseWorksheetName",
                   "dependencyConditions": [
-                    "Succeeded"
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Zone",
+              "dependsOn": [
+                {
+                  "activity": "Zone_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_dimensionsetentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bronze_dimensionsetentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"dimensionsetid\", \"dimensioncode\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"dimensionvaluecode\":[\"dimensionvaluecode\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"dimensionsetid\", \"dimensioncode\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "DimensionSetEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "DimensionSetEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Zone",
+                  "dependencyConditions": [
+                    "Completed"
                   ]
                 }
               ]

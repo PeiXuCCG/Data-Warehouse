@@ -356,6 +356,10 @@
             "source_path": "Files/deltas/DIFOTShipmentLine-50011"
           },
           {
+            "target_table": "bc_dimensionsetentry",
+            "source_path": "Files/deltas/DimensionSetEntry-480"
+          },
+          {
             "target_table": "bc_defaultdimension",
             "source_path": "Files/deltas/DefaultDimension-352"
           },
