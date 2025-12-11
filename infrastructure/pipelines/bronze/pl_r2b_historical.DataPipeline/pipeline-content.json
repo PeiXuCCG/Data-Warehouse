@@ -631,7 +631,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"postingdate\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1436,7 +1436,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"selltocustomerno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1573,7 +1573,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": "documentno, lineno",
+                    "value": "documentno",
                     "type": "string"
                   }
                 }
@@ -1666,7 +1666,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"buyfromvendorno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1781,7 +1781,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"no\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1803,7 +1803,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": "documentno,lineno",
+                    "value": "documentno",
                     "type": "string"
                   }
                 }
@@ -1896,7 +1896,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"selltocustomerno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -2033,7 +2033,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": "documentno,lineno",
+                    "value": "documentno",
                     "type": "string"
                   }
                 }
@@ -2263,7 +2263,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": "documentno,  lineno",
+                    "value": "documentno",
                     "type": "string"
                   }
                 }
