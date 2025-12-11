@@ -126,7 +126,7 @@ def generate(df,
         }
 
         if "BC" not in source_system:
-            notebook_activity["typeProperties"]["parameters"]["sourcekey"] = {
+            notebook_activity["typeProperties"]["parameters"]["source_key"] = {
                 "value": source_key,
                 "type": "string"
             }

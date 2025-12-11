@@ -84,7 +84,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "code",
                     "type": "string"
                   }
@@ -192,7 +192,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "code",
                     "type": "string"
                   }
@@ -307,7 +307,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "code",
                     "type": "string"
                   }
@@ -422,7 +422,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "code",
                     "type": "string"
                   }
@@ -537,7 +537,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -652,7 +652,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "entryno",
                     "type": "string"
                   }
@@ -767,7 +767,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -882,7 +882,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "entryno",
                     "type": "string"
                   }
@@ -997,7 +997,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -1112,7 +1112,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "entryno",
                     "type": "string"
                   }
@@ -1227,7 +1227,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -1342,7 +1342,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "entryno",
                     "type": "string"
                   }
@@ -1457,7 +1457,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -1572,7 +1572,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "documentno, lineno",
                     "type": "string"
                   }
@@ -1687,7 +1687,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -1802,7 +1802,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "documentno,lineno",
                     "type": "string"
                   }
@@ -1917,7 +1917,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -2032,7 +2032,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "documentno,lineno",
                     "type": "string"
                   }
@@ -2147,7 +2147,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -2262,7 +2262,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "documentno,  lineno",
                     "type": "string"
                   }
@@ -2377,7 +2377,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
@@ -2492,7 +2492,7 @@
                     },
                     "type": "bool"
                   },
-                  "sourcekey": {
+                  "source_key": {
                     "value": "no",
                     "type": "string"
                   }
