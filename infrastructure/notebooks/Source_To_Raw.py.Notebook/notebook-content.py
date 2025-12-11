@@ -300,29 +300,62 @@ def align_headers(df, master_columns):
 
 # CELL ********************
 
+from pyspark.sql.functions import lit
+
 def align_headers_dynamic(df, master_columns):
     """
-    Adds missing columns as NULL and reorders columns to match master_columns.
-    Any extra columns in df are appended to the master_columns list.
-    Returns updated df and updated master_columns.
+    Aligns df columns to master_columns:
+    - Adds missing columns as NULL
+    - Reorders columns to match master_columns
+    - Appends new columns from df to master_columns
+    - If duplicate column names appear, renames duplicates:
+        col, col_2, col_3, etc.
     """
-    df_cols = df.columns
+
+    # ---- 1. Deduplicate df column names ----
+    def dedupe_columns(cols):
+        seen = {}
+        new_cols = []
+        for c in cols:
+            if c not in seen:
+                seen[c] = 1
+                new_cols.append(c)
+            else:
+                seen[c] += 1
+                new_name = f"{c}_{seen[c]}"
+                new_cols.append(new_name)
+        return new_cols
+
+    original_cols = df.columns
+    deduped_cols = dedupe_columns(original_cols)
+
+    # Rename df columns if needed
+    for old, new in zip(original_cols, deduped_cols):
+        if old != new:
+            df = df.withColumnRenamed(old, new)
+
+    df_cols = deduped_cols
+
+    # ---- 2. Deduplicate master columns too ----
+    master_columns = dedupe_columns(master_columns)
+
     new_master_cols = master_columns.copy()
 
-    # Add any new columns from df to master
+    # ---- 3. Add df columns to master if missing ----
     for col in df_cols:
         if col not in new_master_cols:
             new_master_cols.append(col)
 
-    # Add missing columns in df as null
+    # ---- 4. Add missing df columns as NULL ----
     for col in new_master_cols:
         if col not in df_cols:
             df = df.withColumn(col, lit(None))
 
-    # Reorder to match new master columns
+    # ---- 5. Reorder to match master ----
     df = df.select(new_master_cols)
 
     return df, new_master_cols
+
 
 # METADATA ********************
 

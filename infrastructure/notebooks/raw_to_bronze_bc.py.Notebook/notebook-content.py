@@ -36,7 +36,7 @@ from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_br
 import re
 import json
 from notebookutils import mssparkutils
-from pyspark.sql.types import DecimalType, IntegerType
+from pyspark.sql.types import DecimalType, IntegerType, DateType
 
 # METADATA ********************
 
@@ -76,7 +76,6 @@ source_table = "bc_glentry"
 skip_activities = []
 activity = "GLEntry"
 
-pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # source keys 
 source_primary_keys = ["documentno", "description", "company", "source_system"]
@@ -117,8 +116,20 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 
 # CELL ********************
 
+pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 decimal_fields = ["amount", "quantity", "qty"]
 integer_fields = []
+date_fields = ["postingdate"]
 
 # METADATA ********************
 
@@ -290,6 +301,34 @@ def cast_fields_to_integer(df, fields):
 
 # CELL ********************
 
+def cast_fields_to_date(df, fields):
+    """
+    Cast specified fields to IntegerType if they exist in the DataFrame.
+    
+    :param df: Input DataFrame
+    :param fields: List of field names to cast
+    :return: DataFrame with specified fields cast to DecimalType
+    """
+    transformed_cols = []
+    
+    for c in df.columns:
+        if c in fields:
+            transformed_cols.append(trim(col(c)).cast(DateType()).alias(c))
+        else:
+            transformed_cols.append(col(c))
+    
+    return df.select(*transformed_cols)
+    
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # %%
 if spark.catalog.tableExists(f"{source_lakehouse}.{source_schema}.{source_table}"):
     df = spark.read.table(f"{source_lakehouse}.{source_schema}.{source_table}")
@@ -307,6 +346,7 @@ else:
 
 df = cast_fields_to_decimal(df, decimal_fields)
 df = cast_fields_to_integer(df, integer_fields)
+df = cast_fields_to_date(df, date_fields)
 
 # METADATA ********************
 
