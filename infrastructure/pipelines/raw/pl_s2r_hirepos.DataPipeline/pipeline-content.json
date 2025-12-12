@@ -253,8 +253,12 @@
             "source_path": "customer"
           },
           {
-            "target_table": "hirepos_employee",
-            "source_path": "employee"
+            "target_table": "hirepos_facility",
+            "source_path": "facility"
+          },
+          {
+            "target_table": "hirepos_fajournals",
+            "source_path": "fajournals"
           },
           {
             "target_table": "hirepos_faregister",
@@ -273,12 +277,8 @@
             "source_path": "itemledgerentry"
           },
           {
-            "target_table": "hirepos_location",
-            "source_path": "location"
-          },
-          {
-            "target_table": "hirepos_paymentterms",
-            "source_path": "paymentterms"
+            "target_table": "hirepos_prescriber",
+            "source_path": "prescriber"
           },
           {
             "target_table": "hirepos_purchheader",
@@ -303,6 +303,10 @@
           {
             "target_table": "hirepos_salesline",
             "source_path": "salesline"
+          },
+          {
+            "target_table": "hirepos_salespersonpurchaser",
+            "source_path": "salespersonpurchaser"
           },
           {
             "target_table": "hirepos_vendor",
