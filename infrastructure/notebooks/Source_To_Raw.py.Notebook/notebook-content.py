@@ -264,7 +264,7 @@ def align_headers(df, master_columns):
     cleaned_master = []
     seen = set()
     for c in master_columns:
-        cn = clean_name(c)
+        cn = clean_col(c)
         if cn in seen:
             # if duplicate in master, skip duplicate 
             continue
@@ -275,7 +275,7 @@ def align_headers(df, master_columns):
     df_cols = df.columns
     df_map = {}
     for actual in df_cols:
-        key = clean_name(actual)
+        key = clean_col(actual)
         # if duplicates in source, keep the first mapping; duplicates should be careful
         if key not in df_map:
             df_map[key] = actual
