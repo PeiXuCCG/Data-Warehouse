@@ -1375,7 +1375,7 @@
       },
       "wait": {
         "type": "int",
-        "defaultValue": 0
+        "defaultValue": 1
       },
       "write_method": {
         "type": "string",
