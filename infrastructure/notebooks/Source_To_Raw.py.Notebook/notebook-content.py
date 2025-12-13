@@ -300,18 +300,6 @@ def align_headers(df, master_columns):
 
 # CELL ********************
 
-from pyspark.sql.functions import lit
-
-def align_headers_dynamic(df, master_columns):
-    """
-    Aligns df columns to master_columns:
-    - Adds missing columns as NULL
-    - Reorders columns to match master_columns
-    - Appends new columns from df to master_columns
-    - If duplicate column names appear, renames duplicates:
-        col, col_2, col_3, etc.
-    """
-
     # ---- 1. Deduplicate df column names ----
     def dedupe_columns(cols):
         seen = {}
@@ -325,6 +313,27 @@ def align_headers_dynamic(df, master_columns):
                 new_name = f"{c}_{seen[c]}"
                 new_cols.append(new_name)
         return new_cols
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def align_headers_dynamic(df, master_columns):
+    """
+    Aligns df columns to master_columns:
+    - Adds missing columns as NULL
+    - Reorders columns to match master_columns
+    - Appends new columns from df to master_columns
+    - If duplicate column names appear, renames duplicates:
+        col, col_2, col_3, etc.
+    """
+
+
 
     original_cols = df.columns
     deduped_cols = dedupe_columns(original_cols)
@@ -352,10 +361,9 @@ def align_headers_dynamic(df, master_columns):
             df = df.withColumn(col, lit(None))
 
     # ---- 5. Reorder to match master ----
-    df = df.select(new_master_cols)
+    df = df.select(list(dict.fromkeys(new_master_cols)))
 
-    return df, new_master_cols
-
+    return df, list(dict.fromkeys(new_master_cols))
 
 # METADATA ********************
 
@@ -409,7 +417,7 @@ for file in new_files:
 
         if df is None:
             df = cleaned_df
-            master_columns = df.columns
+            master_columns = dedupe_columns(df.columns)
             print("Initial BC master schema:", master_columns)
             continue
 
