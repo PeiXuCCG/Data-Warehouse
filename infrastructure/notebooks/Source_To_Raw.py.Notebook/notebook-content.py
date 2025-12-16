@@ -210,17 +210,23 @@ else:
 
 # CELL ********************
 
-def prevent_duplicate_data(df):
-    exclude_cols = ["systemmodifiedat","systemmodifiedby","delivereddatetime","ingestion_timestamp"]  # Add more if needed 
+def prevent_duplicate_data(df, already_existing_df):
+    exclude_cols = ["systemmodifiedat","systemmodifiedby","delivereddatetime","ingestion_timestamp", "batchid"]  # Add more if needed 
     #***(we want to keep if there are changes in the source system for a record) *** #
     
     cols_to_hash = [c for c in df.columns if c not in exclude_cols]
     
     concat_cols = concat_ws("||", *[col(f"`{c}`").cast("string") for c in cols_to_hash])
     df_hashed = df.withColumn("row_hash", sha2(concat_cols, 256))
-    
-    df_deduped = df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
-    return df_deduped
+
+    if not already_existing_df.isEmpty():
+        already_existing_hashed = already_existing_df.withColumn("row_hash", sha2(concat_cols, 256))
+        all_df = df_hashed.unionByName(already_existing_df)
+        all_df = all_df.dropDuplicates(["row_hash"]).drop("row_hash")
+    else:
+        all_df = df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
+
+    return all_df
 
 # METADATA ********************
 
@@ -465,7 +471,19 @@ if not source_system == 'BC':
 
 # CELL ********************
 
-df = prevent_duplicate_data(df)
+if spark.catalog.tableExists(f"{target_schema}.{target_db}.{target_table}"):
+    already_existing_df = spark.read.table(f"{target_schema}.{target_db}.{target_table}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+df = prevent_duplicate_data(df, already_existing_df=)
 
 # METADATA ********************
 

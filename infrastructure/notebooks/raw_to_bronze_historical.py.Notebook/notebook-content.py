@@ -145,54 +145,72 @@ if activity in skip_activities:
 
 def deduplicate_func(df):
 
-    # --- Generate HK hash key ---
-    df = df.withColumn(
-        f"{target_table}_hk",
-        sha2(
-            concat_ws(
-                "|",
-                *[
-                    regexp_replace(
-                        lower(coalesce(col(c), lit(""))), "\\s+", ""
-                    )
-                    for c in deduplicate_fields
-                ]
-            ),
-            256
+    if len(deduplicate_fields) > 0:
+
+        # --- Generate HK hash key ---
+        df = df.withColumn(
+            f"{target_table}_hk",
+            sha2(
+                concat_ws(
+                    "|",
+                    *[
+                        regexp_replace(
+                            lower(coalesce(col(c), lit(""))), "\\s+", ""
+                        )
+                        for c in deduplicate_fields
+                    ]
+                ),
+                256
+            )
         )
-    )
 
-    # --- Fixed effectivity_start_date ---
-    df = df.withColumn(
-        "effectivity_start_date",
-        lit("1900-01-01 00:00:00").cast("timestamp")
-    )
-
-    # --- Pure surrogate ordering across duplicates ---
-    df = df.withColumn(
-        "surrogate_order",
-        monotonically_increasing_id()
-    )
-
-    # Window by hash key ordered **only** by surrogate_order (descending → newest first)
-    w = (
-        Window
-        .partitionBy(f"{target_table}_hk")
-        .orderBy(col("surrogate_order").desc())
-    )
-
-    # --- SCD2 chaining using surrogate ID ---
-    now_ts = current_timestamp()
-
-    df = (
-        df.withColumn("rn", row_number().over(w))
-        .withColumn(
-            "effectivity_end_date",
-            when(col("rn") == 1, lit(None))   # newest version → still open
-            .otherwise(now_ts)               # older versions → closed now
+        # --- Fixed effectivity_start_date ---
+        df = df.withColumn(
+            "effectivity_start_date",
+            lit("1900-01-01 00:00:00").cast("timestamp")
         )
-        .drop("rn", "surrogate_order")
-    )
+
+        # --- Pure surrogate ordering across duplicates ---
+        df = df.withColumn(
+            "surrogate_order",
+            monotonically_increasing_id()
+        )
+
+        # Window by hash key ordered **only** by surrogate_order (descending → newest first)
+        w = (
+            Window
+            .partitionBy(f"{target_table}_hk")
+            .orderBy(col("surrogate_order").desc())
+        )
+
+        # --- SCD2 chaining using surrogate ID ---
+        now_ts = current_timestamp()
+
+        df = (
+            df.withColumn("rn", row_number().over(w))
+            .withColumn(
+                "effectivity_end_date",
+                when(col("rn") == 1, lit(None))   # newest version → still open
+                .otherwise(now_ts)               # older versions → closed now
+            )
+            .drop("rn", "surrogate_order")
+        )
+    else:
+         df = df.withColumn(
+            f"{target_table}_hk",
+            sha2(
+                concat_ws(
+                    "|",
+                    *[
+                        regexp_replace(
+                            lower(coalesce(col(c), lit(""))), "\\s+", ""
+                        )
+                        for c in source_primary_keys
+                    ]
+                ),
+                256
+            )
+        )
 
     return df
 

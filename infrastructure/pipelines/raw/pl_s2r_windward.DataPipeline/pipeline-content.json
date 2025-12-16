@@ -416,7 +416,7 @@
             "source_path": "purchinvheader"
           },
           {
-            "target_table": "windward_purchase_invoice_line",
+            "target_table": "windward_purchaseinvline",
             "source_path": "purchinvline"
           },
           {

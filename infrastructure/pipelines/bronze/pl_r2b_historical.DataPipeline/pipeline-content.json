@@ -2536,7 +2536,7 @@
           "Xero",
           "Myob",
           "Netsuite",
-          "Hirepos",
+          "HirePos",
           "Lightspeed",
           "Windward",
           "Natsoft",
@@ -2545,7 +2545,7 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": "false"
+        "defaultValue": false
       },
       "wait_seconds": {
         "type": "int",
