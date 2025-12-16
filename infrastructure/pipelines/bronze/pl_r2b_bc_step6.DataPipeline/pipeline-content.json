@@ -155,7 +155,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"sourcetype\", \"sourcsSubtype\", \"sourceno\", \"locationcode\", \"type\", \"company\", \"source_system\"]",
+                    "value": "[\"sourcetype\", \"sourcessubtype\", \"sourceno\", \"locationcode\", \"type\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -534,6 +534,117 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_WhseItemEntryRelation",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_WorkingDay",
+              "dependsOn": [
+                {
+                  "activity": "WorkingDay_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_dimensionsetentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bronze_dimensionsetentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"dimensionsetid\", \"dimensioncode\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"dimensionvaluecode\":[\"dimensionvaluecode\",\"company\",\"source_system\"]},{\"globaldimensionno\":[\"globaldimensionno\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "DimensionSetEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "DimensionSetEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_WorkingDay",
                   "dependencyConditions": [
                     "Completed"
                   ]
