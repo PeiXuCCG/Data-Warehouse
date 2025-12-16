@@ -607,7 +607,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[]",
+                    "value": "[\"dimensionsetid\", \"dimensioncode\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "business_keys": {
