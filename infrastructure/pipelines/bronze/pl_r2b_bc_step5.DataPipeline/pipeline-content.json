@@ -6464,7 +6464,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_dimensionsetentry')",
+                      "value": "@concat(item(),'_segmenthistory')",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -6478,19 +6478,19 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_dimensionsetentry",
+                    "value": "bronze_segmenthistory",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"dimensionsetid\", \"dimensioncode\"]",
+                    "value": "[\"segmentno\", \"segmentactionno\", \"segmentlineno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"dimensionvaluecode\":[\"dimensionvaluecode\",\"company\",\"source_system\"]}]",
+                    "value": "[]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"dimensionsetid\", \"dimensioncode\", \"company\", \"source_system\"]",
+                    "value": "[]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -6505,7 +6505,7 @@
                     "type": "string"
                   },
                   "activity": {
-                    "value": "DimensionSetEntry",
+                    "value": "SegmentHistory",
                     "type": "string"
                   },
                   "dry_run": {
@@ -6524,10 +6524,121 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "DimensionSetEntry_Activity",
+              "name": "SegmentHistory_Activity",
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_Zone",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SegmentHistory",
+              "dependsOn": [
+                {
+                  "activity": "SegmentHistory_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "11363096-0db8-9724-4979-fb4b00909b73",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_transferroute')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "bronze_transferroute",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"transferfromcode\", \"transfertocode\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "TransferRoute",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "TransferRoute_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SegmentHistory",
                   "dependencyConditions": [
                     "Completed"
                   ]
