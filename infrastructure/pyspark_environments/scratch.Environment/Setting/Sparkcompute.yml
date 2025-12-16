@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f798ef1c3144100a63a5aeb8491bde607b064ab
 enable_native_execution_engine: false
 driver_cores: 8
 driver_memory: 56g
@@ -9,4 +12,7 @@ dynamic_executor_allocation:
   min_executors: 1
   max_executors: 9
 runtime_version: 1.3
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2f798ef1c3144100a63a5aeb8491bde607b064ab
