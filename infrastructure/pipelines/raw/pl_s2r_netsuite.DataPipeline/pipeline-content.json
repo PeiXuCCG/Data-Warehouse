@@ -138,17 +138,22 @@
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_customer_ledger_entry",
+            "target_table": "netsuite_custledgerentry",
             "source_path": "Files/history/netsuite/vital_living/custledgerentry",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_gl_account",
+            "target_table": "netsuite_fundingbody",
+            "source_path": "Files/history/netsuite/vital_living/fundingbody",
+            "source_entity": "Vital Living"
+          },
+          {
+            "target_table": "netsuite_glaccount",
             "source_path": "Files/history/netsuite/vital_living/glaccount",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_gl_entry",
+            "target_table": "netsuite_glentry",
             "source_path": "Files/history/netsuite/vital_living/glentry",
             "source_entity": "Vital Living"
           },
@@ -158,7 +163,7 @@
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_item_ledger_entry",
+            "target_table": "netsuite_itemledgerentry",
             "source_path": "Files/history/netsuite/vital_living/itemledgerentry",
             "source_entity": "Vital Living"
           },
@@ -168,8 +173,8 @@
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_payment_method",
-            "source_path": "Files/history/netsuite/vital_living/paymentmethod",
+            "target_table": "netsuite_paymentterms",
+            "source_path": "Files/history/netsuite/vital_living/paymentterms",
             "source_entity": "Vital Living"
           },
           {
@@ -178,47 +183,47 @@
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_purchase_order_header",
+            "target_table": "netsuite_purchheader",
             "source_path": "Files/history/netsuite/vital_living/purchheader",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_purchase_order_line",
+            "target_table": "netsuite_purchline",
             "source_path": "Files/history/netsuite/vital_living/purchline",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_purchase_invoice_header",
+            "target_table": "netsuite_purchinvheader",
             "source_path": "Files/history/netsuite/vital_living/purchinvheader",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_purchase_invoice_line",
+            "target_table": "netsuite_purchinvline",
             "source_path": "Files/history/netsuite/vital_living/purchinvline",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_sales_order_header",
+            "target_table": "netsuite_salesheader",
             "source_path": "Files/history/netsuite/vital_living/salesheader",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_sales_order_line",
+            "target_table": "netsuite_salesline",
             "source_path": "Files/history/netsuite/vital_living/salesline",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_sales_invoice_header",
+            "target_table": "netsuite_salesinvoiceheader",
             "source_path": "Files/history/netsuite/vital_living/salesinvoiceheader",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_sales_invoice_line",
+            "target_table": "netsuite_salesinvoiceline",
             "source_path": "Files/history/netsuite/vital_living/salesinvoiceline",
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_value_ledger",
+            "target_table": "netsuite_valueledger",
             "source_path": "Files/history/netsuite/vital_living/valueledgerentry",
             "source_entity": "Vital Living"
           },
@@ -228,7 +233,7 @@
             "source_entity": "Vital Living"
           },
           {
-            "target_table": "netsuite_vendor_ledger_entry",
+            "target_table": "netsuite_vendorledgerentry",
             "source_path": "Files/history/netsuite/vital_living/vendorledgerentry",
             "source_entity": "Vital Living"
           }

@@ -107,9 +107,34 @@ for t in tables:
 
 # CELL ********************
 
+paased = True
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 for r in results:
     if not r["exists"]:
+        passed = False
         print(f"{r['table']} has rule for {r['source_column']}, missing {r['target_column']}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+if passed:
+    print("All tests passed!!!")
+
 
 # METADATA ********************
 

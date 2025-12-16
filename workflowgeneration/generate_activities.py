@@ -65,7 +65,7 @@ def generate(df,
         if previous_step:
             notebook_depends = [{
                 "activity": previous_step,
-                "dependencyConditions": ["Succeeded"]
+                "dependencyConditions": ["Completed"]
             }]
 
         notebook_activity = {
@@ -126,7 +126,7 @@ def generate(df,
         }
 
         if "BC" not in source_system:
-            notebook_activity["typeProperties"]["parameters"]["sourcekey"] = {
+            notebook_activity["typeProperties"]["parameters"]["source_key"] = {
                 "value": source_key,
                 "type": "string"
             }
@@ -152,7 +152,7 @@ def generate(df,
                 "dependsOn": [
                     {
                         "activity": notebook_name,
-                        "dependencyConditions": ["Succeeded"]
+                        "dependencyConditions": ["Completed"]
                     }
                 ]
             }

@@ -50,10 +50,6 @@
                     "value": "historical_paymentterms",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "code",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -87,6 +83,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
                   }
                 }
               },
@@ -158,10 +158,6 @@
                     "value": "historical_currency",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "code",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -195,6 +191,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
                   }
                 }
               },
@@ -273,10 +273,6 @@
                     "value": "historical_salespersonpurchaser",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "code",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -310,6 +306,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
                   }
                 }
               },
@@ -388,10 +388,6 @@
                     "value": "historical_location",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "code",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -425,6 +421,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
                   }
                 }
               },
@@ -503,10 +503,6 @@
                     "value": "historical_glaccount",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"name\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -540,6 +536,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -618,10 +618,6 @@
                     "value": "historical_glentry",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "entryno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"entryno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -635,7 +631,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"postingdate\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -655,6 +651,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
                   }
                 }
               },
@@ -733,10 +733,6 @@
                     "value": "historical_customer",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -770,6 +766,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -848,10 +848,6 @@
                     "value": "historical_custledgerentry",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "entryno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"entryno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -885,6 +881,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
                   }
                 }
               },
@@ -963,10 +963,6 @@
                     "value": "historical_vendor",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1000,6 +996,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -1078,10 +1078,6 @@
                     "value": "historical_vendorledgerentry",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "entryno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"entryno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1115,6 +1111,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
                   }
                 }
               },
@@ -1193,10 +1193,6 @@
                     "value": "historical_item",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1210,7 +1206,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"itemcategorycode\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1230,6 +1226,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -1308,10 +1308,6 @@
                     "value": "historical_itemledgerentry",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "entryno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"entryno\", \"itemno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1345,6 +1341,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
                   }
                 }
               },
@@ -1423,10 +1423,6 @@
                     "value": "historical_salesheader",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1440,7 +1436,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"selltocustomerno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1460,6 +1456,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -1538,10 +1538,6 @@
                     "value": "historical_salesline",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "documentno, lineno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1575,6 +1571,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
                   }
                 }
               },
@@ -1653,10 +1653,6 @@
                     "value": "historical_purchaseheader",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1670,7 +1666,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"buyfromvendorno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1690,6 +1686,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -1768,10 +1768,6 @@
                     "value": "historical_purchaseline",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "documentno,lineno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1785,7 +1781,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"no\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1805,6 +1801,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
                   }
                 }
               },
@@ -1883,10 +1883,6 @@
                     "value": "historical_salesinvoiceheader",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -1900,7 +1896,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"selltocustomerno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -1920,6 +1916,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -1998,10 +1998,6 @@
                     "value": "historical_salesinvoiceline",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "documentno,lineno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -2035,6 +2031,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
                   }
                 }
               },
@@ -2113,10 +2113,6 @@
                     "value": "historical_purchinvheader",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -2130,7 +2126,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"buyfromvendorno\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -2150,6 +2146,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -2228,10 +2228,6 @@
                     "value": "historical_purchinvline",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "documentno,  lineno",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -2265,6 +2261,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
                   }
                 }
               },
@@ -2343,10 +2343,6 @@
                     "value": "historical_prescriber",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -2380,6 +2376,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -2458,10 +2458,6 @@
                     "value": "historical_facility",
                     "type": "string"
                   },
-                  "source_key": {
-                    "value": "no",
-                    "type": "string"
-                  },
                   "source_primary_keys": {
                     "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
@@ -2495,6 +2491,10 @@
                       "type": "Expression"
                     },
                     "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
                   }
                 }
               },
@@ -2534,10 +2534,13 @@
         "type": "array",
         "defaultValue": [
           "Xero",
-          "Ostendo",
           "Myob",
+          "Netsuite",
+          "Hirepos",
           "Lightspeed",
-          "Windward"
+          "Windward",
+          "Natsoft",
+          "Ostendo"
         ]
       },
       "dry_run": {

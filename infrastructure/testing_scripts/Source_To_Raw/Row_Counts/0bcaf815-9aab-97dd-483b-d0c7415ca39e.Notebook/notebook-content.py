@@ -26,8 +26,21 @@
 
 # CELL ********************
 
-# YOU NEED TO UPLOAD THE BC COUNTS FILE FROM PAGE 8700 and save it in the testing folder
-bc_count_file = "/lakehouse/default/Files/testing/Table Information.csv"
+business_type = "CCG" #KCARE
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# You need to navigate to page=8700 and download the excel file. as save it as a CSV into the paths below
+
+ccg_file = "/lakehouse/default/Files/testing/CCG/Table Information.csv" # https://businesscentral.dynamics.com/2e91d91e-f10a-4460-a8f0-37a2e9ef9221/UAT?page=8700
+kcare_file = "/lakehouse/default/Files/testing/KCare/Table Information.csv" # https://businesscentral.dynamics.com/2e91d91e-f10a-4460-a8f0-37a2e9ef9221/KCAREUAT?page=8700
 
 # METADATA ********************
 
@@ -53,33 +66,7 @@ from pyspark.sql.types import StructType, StructField, IntegerType, StringType
 
 # CELL ********************
 
-company = [
-  ("Retail Country Care Group","bc"),
-  ("K Care Holdings Pty Ltd","bc"),
-  ("CCG Contracts","bc"),
-  ("Ind. Healthcare Solutions","bc"),
-  ("Management Country Care Group","bc"),
-  ("QLD Rehab Equipment","bc"),
-  ("CCGA Holdings","bc"),
-  ("CCGA Bidco Pty Ltd", "bc")
-  # ("Healthsaver", "MYOB"),
-  # ("Chair Doctor", "MYOB"),
-  # ("Ergo", "MYOB"),
-  # ("FisherLane Mobility", ["MYOB", "ITV"]),
-  # ("Vital_Liviing", "Netsuite"),
-  # ("Ansteys",["Xero", "Lightspeed"]),
-  # ("Homecare Equipment", ["Xero", "HirePOS"]),
-  # ("Lakeside Mobility", ["Xero", "HirePOS"]),
-  # ("Open Mobility",["Xero", "Lightspeed"]),
-  # ("Uccello Design UK","Xero"),
-  # ("Uccello Marketing AU","Xero"),
-  # ("Uccello Marketing EU","Xero"),
-  # ("WILLAID",["MYOB", "Ostendo"]),
-  # ("MCLEANS","NATSOFT"),
-  # ("EDEN", "Netsuite"),
-  # ("MERITS","Netsuite"),
-  # ("TCCG & HomeModifications", "Windward")
-]
+source_system = "BC"
 
 # METADATA ********************
 
@@ -90,53 +77,43 @@ company = [
 
 # CELL ********************
 
-entities = ["customer", 
-            "item",
-            "salesinvoiceheader", 
-            "salesinvoiceline",
-            "purchinvheader",
-            "purchinvline",
-            "glentry",
-            "glaccount",
-            "custledgerentry",
-            "vendorledgerentry",
-            "itemledgerentry",
-            "vendor",
-            "valueentry",
-            # These are BC objects
-            "location",
-            "paymentterms",
-            "currency",
-            "salespersonpurchaser",
-            "customerpostinggroup",
-            "vendorpostinggroup",
-            "inventorypostinggroup",
-            "genbusinesspostinggroup",
-            "genproductpostinggroup",
-            "vatbusinesspostinggroup",
-            "vatproductpostinggroup",
-            "employee",
-            "fixedasset",
-            "faledgerentry",
-            "fapostinggroup",
-            "faclass",
-            "fasubclass",
-            "falocation",
-            "depreciationbook",
-            "fadepreciationbook",
-            "faregister",
-            "fajournalline",
-            "fareclassjournalline",
-            "fapostingtype",
-            "manufacturer",
-            "itemcategory",
-            "whtproductpostinggroup",
-            "difotsalesline",
-            "difotshipmentline",
-            "rentalcontract",
-            "fundingbody",
-            "contractorder"
-        ]
+if businesstype == "CCG":
+  company = [
+    ("Retail Country Care Group","bc"),
+    ("K Care Holdings Pty Ltd","bc"),
+    ("CCG Contracts","bc"),
+    ("Ind. Healthcare Solutions","bc"),
+    ("Management Country Care Group","bc"),
+    ("QLD Rehab Equipment","bc"),
+    ("CCGA Holdings","bc"),
+    ("CCGA Bidco Pty Ltd", "bc")
+  ]
+  bc_count_file = ccg_file
+else:
+  company = [
+    ("K Care Healthcare Solutions","bc"),
+  ]
+  bc_count_file = kcare_file
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+entities = []
+
+tables = spark.sql("SHOW TABLES IN lh_bronze.raw") \
+              .toPandas()
+
+
+for t in tables['tableName'].tolist():
+    if source_system.lower() in  t:
+        entities.append(t.split("bc_")[1])
 
 # METADATA ********************
 
@@ -152,8 +129,8 @@ results = []
 for name, system in company:   # your original "for name, system in company:"
     print(f"------------ Starting review of {name} ------------------")
 
-    if system == "bc":
-        for e in entities:
+
+    for e in entities:
             table = f"raw.{system}_{e}"
 
             if spark.catalog.tableExists(table):
@@ -184,9 +161,6 @@ pivot_df = (
         .sum("count")
         .orderBy("entity")
 )
-
-display(pivot_df)
-
 
 # METADATA ********************
 

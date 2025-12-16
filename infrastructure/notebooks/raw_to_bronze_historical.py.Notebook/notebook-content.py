@@ -77,7 +77,6 @@ source_system = "Xero"
 skip_activities = []
 activity = "Customer"
 
-pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # source keys (in bc form, not source field names)
 source_key = "no" # this is used in the schemabridge for capture the unmapped columns
@@ -95,6 +94,17 @@ deduplicate_fields = "[\"phoneno\", \"address\", \"mobilephoneno\"]" # please ch
 dry_run = True # need to override this to make it save to the schema
 
 workspace_name = mssparkutils.env.getWorkspaceName()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
 
 # METADATA ********************
 
@@ -196,6 +206,8 @@ def deduplicate_func(df):
 # CELL ********************
 
 def transform_func(df):
+
+
    
     # Transform
     new_df = transform_using_schema_bridge(
@@ -238,7 +250,7 @@ bronze_table  = KeyedTable(
             target_db=target_schema,
             target_schema=target_lakehouse,
             name=target_table,
-            schema_evolution=False,
+            schema_evolution=True,
             df=df,
             target_path="NOT_SUPPORTED_YET", # NOT SUPPORTED IN FABRIC
             business_keys=business_keys,
