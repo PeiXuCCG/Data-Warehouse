@@ -248,7 +248,7 @@ def deduplicate_func(df):
                 ),
                 256
             )
-        )
+        ).withColumn("effectivity_end_date", lit(None))
 
     return df
 
