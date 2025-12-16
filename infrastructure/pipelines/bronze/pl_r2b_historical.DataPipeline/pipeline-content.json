@@ -2356,7 +2356,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"city\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -2471,7 +2471,7 @@
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"originating_company\", \"city\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -2509,6 +2509,121 @@
               "dependsOn": [
                 {
                   "activity": "Wait_For_Spark_To_Stop_Prescriber",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Facility",
+              "dependsOn": [
+                {
+                  "activity": "Facility_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_fundingbody')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_fundingbody",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"contactno\":[\"contactno\",\"company\",\"source_system\"]},{\"city\":[\"city\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"county\":[\"county\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "FundingBody",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "FundingBody_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Facility",
                   "dependencyConditions": [
                     "Completed"
                   ]
