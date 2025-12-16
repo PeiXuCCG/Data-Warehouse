@@ -464,7 +464,6 @@
                     "value": "lh_bronze",
                     "type": "string"
                   },
-                  
                   "source_schema": {
                     "value": "raw",
                     "type": "string"
@@ -577,3 +576,4 @@
     }
   }
 }
+
