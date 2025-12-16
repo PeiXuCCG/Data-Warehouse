@@ -155,7 +155,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"sourcetype\", \"sourcessubtype\", \"sourceno\", \"locationcode\", \"type\", \"company\", \"source_system\"]",
+                    "value": "[\"sourcetype\", \"sourcesubtype\", \"sourceno\", \"locationcode\", \"type\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
