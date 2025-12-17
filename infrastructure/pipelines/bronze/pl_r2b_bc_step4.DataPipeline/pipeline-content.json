@@ -47,7 +47,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_prodorderrtngcommentline",
+                    "value": "bc_prodorderrtngcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -151,7 +151,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionbomcommentline",
+                    "value": "bc_productionbomcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -262,7 +262,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionbomheader",
+                    "value": "bc_productionbomheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -373,7 +373,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionbomline",
+                    "value": "bc_productionbomline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -484,7 +484,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionforecastentry",
+                    "value": "bc_productionforecastentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -595,7 +595,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionforecastname",
+                    "value": "bc_productionforecastname",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -706,7 +706,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_productionorder",
+                    "value": "bc_productionorder",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -817,7 +817,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchcommentline",
+                    "value": "bc_purchcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -928,7 +928,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchcommentlinearchive",
+                    "value": "bc_purchcommentlinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1039,7 +1039,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchcrmemoentitybuffer",
+                    "value": "bc_purchcrmemoentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1150,7 +1150,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchcrmemohdr",
+                    "value": "bc_purchcrmemohdr",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1261,7 +1261,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchcrmemoline",
+                    "value": "bc_purchcrmemoline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1372,7 +1372,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchinventityaggregate",
+                    "value": "bc_purchinventityaggregate",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1483,7 +1483,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentalcontractheader",
+                    "value": "bc_odtrentalcontractheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1594,7 +1594,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentalcontractline",
+                    "value": "bc_odtrentalcontractline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1705,7 +1705,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchrcptheader",
+                    "value": "bc_purchrcptheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1816,7 +1816,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchrcptline",
+                    "value": "bc_purchrcptline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1927,7 +1927,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentaldeliveryheader",
+                    "value": "bc_odtrentaldeliveryheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2038,7 +2038,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchaseheaderarchive",
+                    "value": "bc_purchaseheaderarchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2149,7 +2149,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentaldeliveryline",
+                    "value": "bc_odtrentaldeliveryline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2260,7 +2260,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchaselinearchive",
+                    "value": "bc_purchaselinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2371,7 +2371,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchaseorderentitybuffer",
+                    "value": "bc_purchaseorderentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2482,7 +2482,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchaseprice",
+                    "value": "bc_purchaseprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2593,7 +2593,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_purchasing",
+                    "value": "bc_purchasing",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2704,7 +2704,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_reasoncode",
+                    "value": "bc_reasoncode",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2815,7 +2815,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_registeredwhseactivityhdr",
+                    "value": "bc_registeredwhseactivityhdr",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2926,7 +2926,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_registeredwhseactivityline",
+                    "value": "bc_registeredwhseactivityline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3037,7 +3037,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_resledgerentry",
+                    "value": "bc_resledgerentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3148,7 +3148,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_reservationentry",
+                    "value": "bc_reservationentry",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3259,7 +3259,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_resourcelocation",
+                    "value": "bc_resourcelocation",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3370,7 +3370,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_resourceunitofmeasure",
+                    "value": "bc_resourceunitofmeasure",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3481,7 +3481,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_responsibilitycenter",
+                    "value": "bc_responsibilitycenter",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3592,7 +3592,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_returnreason",
+                    "value": "bc_returnreason",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3703,7 +3703,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_returnreceiptheader",
+                    "value": "bc_returnreceiptheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3814,7 +3814,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_returnreceiptline",
+                    "value": "bc_returnreceiptline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -3925,7 +3925,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_returnshipmentheader",
+                    "value": "bc_returnshipmentheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4036,7 +4036,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_returnshipmentline",
+                    "value": "bc_returnshipmentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4147,7 +4147,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_routingcommentline",
+                    "value": "bc_routingcommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4258,7 +4258,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_routingheader",
+                    "value": "bc_routingheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4369,7 +4369,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_routingline",
+                    "value": "bc_routingline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4480,7 +4480,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_routinglink",
+                    "value": "bc_routinglink",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4591,7 +4591,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salescommentline",
+                    "value": "bc_salescommentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4702,7 +4702,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salescrmemoentitybuffer",
+                    "value": "bc_salescrmemoentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4813,7 +4813,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salescrmemoheader",
+                    "value": "bc_salescrmemoheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -4924,7 +4924,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salescrmemoline",
+                    "value": "bc_salescrmemoline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5035,7 +5035,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salescycle",
+                    "value": "bc_salescycle",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5146,7 +5146,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentalinvoicingheader",
+                    "value": "bc_odtrentalinvoicingheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5257,7 +5257,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesheaderarchive",
+                    "value": "bc_salesheaderarchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5368,7 +5368,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesinvoiceentityaggregate",
+                    "value": "bc_salesinvoiceentityaggregate",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5479,7 +5479,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentallineinvoice",
+                    "value": "bc_odtrentallineinvoice",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5590,7 +5590,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentallinerentalamount",
+                    "value": "bc_odtrentallinerentalamount",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5701,7 +5701,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentalprice",
+                    "value": "bc_odtrentalprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5812,7 +5812,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_saleslinearchive",
+                    "value": "bc_saleslinearchive",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -5923,7 +5923,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_saleslinediscount",
+                    "value": "bc_saleslinediscount",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6034,7 +6034,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesorderentitybuffer",
+                    "value": "bc_salesorderentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6145,7 +6145,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesprice",
+                    "value": "bc_salesprice",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6256,7 +6256,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesquoteentitybuffer",
+                    "value": "bc_salesquoteentitybuffer",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6367,7 +6367,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesshipmentheader",
+                    "value": "bc_salesshipmentheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6478,7 +6478,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_salesshipmentline",
+                    "value": "bc_salesshipmentline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -6589,7 +6589,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_odtrentalregister",
+                    "value": "bc_odtrentalregister",
                     "type": "string"
                   },
                   "source_primary_keys": {

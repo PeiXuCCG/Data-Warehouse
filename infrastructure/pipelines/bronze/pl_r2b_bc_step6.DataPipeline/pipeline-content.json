@@ -47,7 +47,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_valueentryrelation",
+                    "value": "bc_valueentryrelation",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -151,7 +151,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_warehouserequest",
+                    "value": "bc_warehouserequest",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -262,7 +262,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_whereusedbasecalendar",
+                    "value": "bc_whereusedbasecalendar",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -373,7 +373,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_whseitementryrelation",
+                    "value": "bc_whseitementryrelation",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -484,7 +484,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_workingday",
+                    "value": "bc_workingday",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -595,7 +595,7 @@
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "bronze_dimensionsetentry",
+                    "value": "bc_dimensionsetentry",
                     "type": "string"
                   },
                   "source_primary_keys": {

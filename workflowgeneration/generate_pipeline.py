@@ -105,7 +105,7 @@ if __name__ == "__main__":
     
     bc_job_name = "Load_Data"
     bc_notebook_id =  "11363096-0db8-9724-4979-fb4b00909b73" 
-    bc_table_prefix = "bronze" 
+    bc_table_prefix = "bc" 
     bc_job_configuration = [
         "BC"
     ]
