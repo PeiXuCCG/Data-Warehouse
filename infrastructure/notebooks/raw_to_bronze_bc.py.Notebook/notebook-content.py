@@ -181,6 +181,27 @@ def transform_func(df):
 
 # CELL ********************
 
+def dedupe_columns(df):
+    seen = {}
+    new_cols = []
+    for c in df.columns:
+        if c in seen:
+            seen[c] += 1
+            new_cols.append(f"{c}_{seen[c]}")
+        else:
+            seen[c] = 0
+            new_cols.append(c)
+    return df.toDF(*new_cols)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def deduplicate_func(df):
 
     if len(deduplicate_fields) > 0:
@@ -234,20 +255,12 @@ def deduplicate_func(df):
             .drop("rn", "surrogate_order")
         )
     else:
+         #safety first
+         df = dedupe_columns(df)
+         # hash all columns for the primary key
          df = df.withColumn(
             f"{target_table}_hk",
-            sha2(
-                concat_ws(
-                    "|",
-                    *[
-                        regexp_replace(
-                            lower(coalesce(col(c), lit(""))), "\\s+", ""
-                        )
-                        for c in source_primary_keys
-                    ]
-                ),
-                256
-            )
+            sha2(concat_ws("||", *df.columns), 256)
         ).withColumn("effectivity_end_date", lit(None))
 
     return df

@@ -31,13 +31,14 @@ from loom.tables.plain_table import PlainTable
 from loom.pipelines import Pipeline
 from data_cleaning_rules.rule_engine import clean
 from pyspark.sql import SparkSession, DataFrame
-from pyspark.sql.functions import lit, concat_ws, col, sha2, input_file_name, first
+from pyspark.sql.functions import broadcast, lit, concat_ws, col, sha2, input_file_name, first
 import re
 from notebookutils import mssparkutils
 import sys
 import os
 from pyspark.sql.types import IntegerType, DoubleType, DateType, StringType
 import datetime
+
 
 # METADATA ********************
 
@@ -46,9 +47,21 @@ import datetime
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# MARKDOWN ********************
+
+# conf.set("spark.sql.legacy.parquet.int96RebaseModeInRead", "CORRECTED")
+# conf.set("spark.sql.legacy.parquet.int96RebaseModeInWrite", "CORRECTED")
+# conf.set("spark.sql.legacy.parquet.datetimeRebaseModeInRead", "CORRECTED")
+# conf.set("spark.sql.legacy.parquet.datetimeRebaseModeInWrite", "CORRECTED")
+
+
 # CELL ********************
 
-spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite","LEGACY")
+spark.conf.set("spark.sql.legacy.parquet.int96RebaseModeInRead", "CORRECTED")
+spark.conf.set("spark.sql.legacy.parquet.int96RebaseModeInWrite", "CORRECTED")
+spark.conf.set("spark.sql.legacy.parquet.datetimeRebaseModeInRead", "CORRECTED")
+spark.conf.set("spark.sql.legacy.parquet.datetimeRebaseModeInWrite", "CORRECTED")
+spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
 
 # METADATA ********************
 
@@ -210,23 +223,51 @@ else:
 
 # CELL ********************
 
+def add_row_hash(df, cols):
+    concat_cols = concat_ws(
+        "||",
+        *[col(f"`{c}`").cast("string") for c in cols]
+    )
+    return df.withColumn("row_hash", sha2(concat_cols, 256))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def prevent_duplicate_data(df, already_existing_df):
-    exclude_cols = ["systemmodifiedat","systemmodifiedby","delivereddatetime","ingestion_timestamp", "batchid"]  # Add more if needed 
-    #***(we want to keep if there are changes in the source system for a record) *** #
-    
-    cols_to_hash = [c for c in df.columns if c not in exclude_cols]
-    
-    concat_cols = concat_ws("||", *[col(f"`{c}`").cast("string") for c in cols_to_hash])
-    df_hashed = df.withColumn("row_hash", sha2(concat_cols, 256))
+    exclude_cols = [
+        "source_system", "source_file", "systemmodifiedat", "systemmodifiedby",
+        "delivereddatetime", "ingestion_timestamp", "batch_id",
+        "bc2adls_delivereddatetime", "systemid"
+    ]
 
-    if not already_existing_df.isEmpty():
-        already_existing_hashed = already_existing_df.withColumn("row_hash", sha2(concat_cols, 256))
-        all_df = df_hashed.unionByName(already_existing_df)
-        all_df = all_df.dropDuplicates(["row_hash"]).drop("row_hash")
-    else:
-        all_df = df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
+    if already_existing_df.isEmpty():
+        df_hashed = add_row_hash(
+            df,
+            sorted(set(df.columns) - set(exclude_cols))
+        )
+        return df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
 
-    return all_df
+    common_cols = sorted(
+        set(df.columns) - set(exclude_cols)
+        & set(already_existing_df.columns)
+    )
+
+    df_hashed = add_row_hash(df, common_cols)
+    existing_hashed = add_row_hash(already_existing_df, common_cols)
+
+    result = df_hashed.join(
+        broadcast(existing_hashed.select("row_hash")),
+        on="row_hash",
+        how="left_anti"
+    ).drop("row_hash")
+
+    return result
 
 # METADATA ********************
 
@@ -366,7 +407,19 @@ def align_headers_dynamic(df, master_columns):
         if col not in df_cols:
             df = df.withColumn(col, lit(None))
 
-    # ---- 5. Reorder to match master ----
+    
+    # ---- 5. Rename duplicate columns from source dataframe ----
+    new_cols = []
+    counts = {}
+
+    for i, c in enumerate(df.columns):
+        counts[c] = counts.get(c, 0) + 1
+        alias = c if counts[c] == 1 else f"{c}_{counts[c]}"
+        new_cols.append(col(df.columns[i]).alias(alias))
+
+    df = df.select(*new_cols)
+
+    # ---- 6. Reorder to match master ----
     df = df.select(list(dict.fromkeys(new_master_cols)))
 
     return df, list(dict.fromkeys(new_master_cols))
@@ -406,10 +459,14 @@ for file in new_files:
         cleaned_cols = [clean_col(c) for c in one_df.columns]
         one_df = one_df.toDF(*cleaned_cols)
 
+        # call cleanse engine here
+        one_df = clean(one_df, spark.table(rules_table), source_system)
+
         # First file defines master schema
         if df is None:
             df = one_df
             master_columns = df.columns
+            print(f"Initial {source_system} schema", master_columns)
             continue
 
         # Align columns to master schema
@@ -471,6 +528,8 @@ if not source_system == 'BC':
 
 # CELL ********************
 
+already_existing_df = spark.createDataFrame([], df.schema)
+
 if spark.catalog.tableExists(f"{target_schema}.{target_db}.{target_table}"):
     already_existing_df = spark.read.table(f"{target_schema}.{target_db}.{target_table}")
 
@@ -483,7 +542,7 @@ if spark.catalog.tableExists(f"{target_schema}.{target_db}.{target_table}"):
 
 # CELL ********************
 
-df = prevent_duplicate_data(df, already_existing_df=)
+df = prevent_duplicate_data(df, already_existing_df)
 
 # METADATA ********************
 
