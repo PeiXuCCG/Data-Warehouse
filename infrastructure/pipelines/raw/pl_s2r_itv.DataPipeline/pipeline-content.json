@@ -31,10 +31,7 @@
                     "type": "string"
                   },
                   "source_entity": {
-                    "value": {
-                      "value": "@item().source_entity",
-                      "type": "Expression"
-                    },
+                    "value": "ITV",
                     "type": "string"
                   },
                   "source_system": {
