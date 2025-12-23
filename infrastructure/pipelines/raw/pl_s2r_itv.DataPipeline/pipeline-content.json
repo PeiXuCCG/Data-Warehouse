@@ -31,7 +31,7 @@
                     "type": "string"
                   },
                   "source_entity": {
-                    "value": "ITV",
+                    "value": "Fisherlane",
                     "type": "string"
                   },
                   "source_system": {
@@ -47,7 +47,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@item().source_path",
+                      "value": "@concat('Files/history/itv/fisherlane/', item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -134,6 +134,10 @@
             "source_path": "customer"
           },
           {
+            "target_table": "itv_custledgerentry",
+            "source_path": "custledgerentry"
+          },
+          {
             "target_table": "itv_facility",
             "source_path": "facility"
           },
@@ -162,12 +166,28 @@
             "source_path": "purchline"
           },
           {
+            "target_table": "itv_purchinvheader",
+            "source_path": "purchinvheader"
+          },
+          {
+            "target_table": "itv_purchinvline",
+            "source_path": "purchinvline"
+          },
+          {
             "target_table": "itv_salesheader",
             "source_path": "salesheader"
           },
           {
             "target_table": "itv_salesline",
             "source_path": "salesline"
+          },
+          {
+            "target_table": "itv_salesinvoiceheader",
+            "source_path": "salesinvoiceheader"
+          },
+          {
+            "target_table": "itv_salesinvoiceline",
+            "source_path": "salesinvoiceline"
           },
           {
             "target_table": "itv_salespersonpurchaser",

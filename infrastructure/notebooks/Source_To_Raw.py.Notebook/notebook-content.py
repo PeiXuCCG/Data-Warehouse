@@ -79,11 +79,21 @@ source_entity = "" # the company
 target_table = f"bc_glentry"
 source_path = 'Files/deltas/GLEntry-17'
 is_multi_line = True
-pipeline_name = f"{source_system}_{target_table}"
 write_method = "overwrite"
 infer_schema = False
 dry_run=False
 workspace_name = mssparkutils.env.getWorkspaceName()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+pipeline_name = f"{source_system}_{target_table}"
 
 # METADATA ********************
 
