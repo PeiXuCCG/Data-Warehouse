@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_s2r_natsoft"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5ab82737-6411-be3a-4ab9-d65707e2dfba"
+  }
+}

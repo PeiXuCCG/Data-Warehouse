@@ -2655,7 +2655,8 @@
           "Lightspeed",
           "Windward",
           "Natsoft",
-          "Ostendo"
+          "Ostendo",
+          "ITV"
         ]
       },
       "dry_run": {
@@ -2664,7 +2665,7 @@
       },
       "wait_seconds": {
         "type": "int",
-        "defaultValue": 5
+        "defaultValue": 1
       },
       "skip_activities": {
         "type": "array",

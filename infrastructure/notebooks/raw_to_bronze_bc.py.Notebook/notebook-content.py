@@ -36,7 +36,7 @@ from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_br
 import re
 import json
 from notebookutils import mssparkutils
-from pyspark.sql.types import DecimalType, IntegerType, DateType
+from pyspark.sql.types import DecimalType, IntegerType, DateType, TimestampType
 
 # METADATA ********************
 
@@ -129,7 +129,8 @@ pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_tabl
 
 decimal_fields = ["amount", "quantity", "qty"]
 integer_fields = []
-date_fields = ["postingdate"]
+date_fields = ["postingdate", "duedate", "startingdate"]
+timestamp_fields = ["effectivity_start_date", "effectivity_end_date"]
 
 # METADATA ********************
 
@@ -261,7 +262,7 @@ def deduplicate_func(df):
          df = df.withColumn(
             f"{target_table}_hk",
             sha2(concat_ws("||", *df.columns), 256)
-        ).withColumn("effectivity_end_date", lit(None))
+        ).withColumn("effectivity_end_date", lit(None).cast(TimestampType())).withColumn("effectivity_start_date", current_timestamp())
 
     return df
 
@@ -350,6 +351,33 @@ def cast_fields_to_date(df, fields):
     
     return df.select(*transformed_cols)
     
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def cast_fields_to_timestamp(df, fields):
+    """
+    Cast specified fields to TimestampType if they exist in the DataFrame.
+    
+    :param df: Input DataFrame
+    :param fields: List of field names to cast
+    :return: DataFrame with specified fields cast to DecimalType
+    """
+    transformed_cols = []
+    
+    for c in df.columns:
+        if c in fields:
+            transformed_cols.append(trim(col(c)).cast(TimestampType()).alias(c))
+        else:
+            transformed_cols.append(col(c))
+    
+    return df.select(*transformed_cols)
 
 # METADATA ********************
 

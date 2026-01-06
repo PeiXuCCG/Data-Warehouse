@@ -31,11 +31,11 @@
                     "type": "string"
                   },
                   "source_entity": {
-                    "value": "Fisherlane",
+                    "value": "Mcleans",
                     "type": "string"
                   },
                   "source_system": {
-                    "value": "ITV",
+                    "value": "Natsoft",
                     "type": "string"
                   },
                   "target_table": {
@@ -47,7 +47,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat('Files/history/itv/fisherlane/', item().source_path)",
+                      "value": "@concat('Files/history/natsoft/mcleans/', item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -90,7 +90,7 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "S2R_ITV_Entity",
+              "name": "S2R_Natsoft_Entity",
               "dependsOn": []
             },
             {
@@ -104,7 +104,7 @@
               "name": "Wait_For_Spark_To_Stop_ITV",
               "dependsOn": [
                 {
-                  "activity": "S2R_ITV_Entity",
+                  "activity": "S2R_Natsoft_Entity",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -113,7 +113,7 @@
             }
           ]
         },
-        "name": "S2R_ITV",
+        "name": "S2R_Natsoft",
         "dependsOn": []
       }
     ],
@@ -130,68 +130,72 @@
         "type": "array",
         "defaultValue": [
           {
-            "target_table": "itv_customer",
+            "target_table": "natsoft_custledger",
+            "source_path": "custledger"
+          },
+          {
+            "target_table": "natsoft_customer",
             "source_path": "customer"
           },
           {
-            "target_table": "itv_custledgerentry",
-            "source_path": "custledgerentry"
+            "target_table": "natsoft_glaccount",
+            "source_path": "glaccount"
           },
           {
-            "target_table": "itv_facility",
-            "source_path": "facility"
+            "target_table": "natsoft_glentry",
+            "source_path": "glentry"
           },
           {
-            "target_table": "itv_item",
+            "target_table": "natsoft_item",
             "source_path": "item"
           },
           {
-            "target_table": "itv_itemledgerentry",
+            "target_table": "natsoft_itemledgerentry",
             "source_path": "itemledgerentry"
           },
           {
-            "target_table": "itv_location",
-            "source_path": "location"
-          },
-          {
-            "target_table": "itv_prescriber",
-            "source_path": "prescriber"
-          },
-          {
-            "target_table": "itv_purchheader",
+            "target_table": "natsoft_purchheader",
             "source_path": "purchheader"
           },
           {
-            "target_table": "itv_purchline",
-            "source_path": "purchline"
-          },
-          {
-            "target_table": "itv_purchinvheader",
+            "target_table": "natsoft_purchinvheader",
             "source_path": "purchinvheader"
           },
           {
-            "target_table": "itv_purchinvline",
+            "target_table": "natsoft_purchinvline",
             "source_path": "purchinvline"
           },
           {
-            "target_table": "itv_salesheader",
+            "target_table": "natsoft_purchline",
+            "source_path": "purchline"
+          },
+          {
+            "target_table": "natsoft_salesheader",
             "source_path": "salesheader"
           },
           {
-            "target_table": "itv_salesline",
-            "source_path": "salesline"
-          },
-          {
-            "target_table": "itv_salesinvoiceheader",
+            "target_table": "natsoft_salesinvoiceheader",
             "source_path": "salesinvoiceheader"
           },
           {
-            "target_table": "itv_salesinvoiceline",
+            "target_table": "natsoft_salesinvoiceline",
             "source_path": "salesinvoiceline"
           },
           {
-            "target_table": "itv_salespersonpurchaser",
+            "target_table": "natsoft_salesline",
+            "source_path": "salesline"
+          },
+          {
+            "target_table": "natsoft_salespersonpurchaser",
             "source_path": "salespersonpurchaser"
+          },
+          {
+            "target_table": "natsoft_vendor",
+            "source_path": "vendor"
+          },
+          {
+            "target_table": "natsoft_vendorledgerentry",
+            "source_path": "vendorledgerentry"
           }
         ]
       },

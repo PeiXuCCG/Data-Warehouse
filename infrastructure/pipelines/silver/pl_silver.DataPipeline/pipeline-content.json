@@ -1,0 +1,152 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "50a31db9-87f7-9267-4dd5-312b2e79aa9d",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_lakehouse": {
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "bc_prefix": {
+                    "value": {
+                      "value": "@pipeline().parameters.bc_prefix",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "historical_prefix": {
+                    "value": {
+                      "value": "@pipeline().parameters.historical_prefix",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_dwh": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_dwh",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_warehouse": {
+                    "value": {
+                      "value": "@pipeline().parameters.is_warehouse",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "table": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "partition_key": {
+                    "value": "originating_company",
+                    "type": "string"
+                  },
+                  "primary_key": {
+                    "value": {
+                      "value": "@concat(item(),'_hk')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Merge_BC_Historical_Table",
+              "dependsOn": []
+            }
+          ]
+        },
+        "name": "SIlver_Build",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "is_warehouse": {
+        "type": "string",
+        "defaultValue": "True"
+      },
+      "dry_run": {
+        "type": "string",
+        "defaultValue": "False"
+      },
+      "source_lakehouse": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "source_schema": {
+        "type": "string",
+        "defaultValue": "bronze"
+      },
+      "target_dwh": {
+        "type": "string",
+        "defaultValue": "dwh_silver"
+      },
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "silver"
+      },
+      "bc_prefix": {
+        "type": "string",
+        "defaultValue": "bc_"
+      },
+      "historical_prefix": {
+        "type": "string",
+        "defaultValue": "historical_"
+      },
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          "prescriber"
+        ]
+      }
+    }
+  }
+}
