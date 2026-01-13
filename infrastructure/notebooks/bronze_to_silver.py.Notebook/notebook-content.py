@@ -122,7 +122,7 @@ pipeline_name = f"bronze_to_silver_{target_table}"
 # CELL ********************
 
 # In[4]:
-spark.synapsesql(f"CREATE SCHEMA IF NOT EXISTS `{target_dwh}`.`{target_schema}`")
+spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{target_dwh}`.`{target_schema}`")
 
 # METADATA ********************
 
