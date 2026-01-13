@@ -458,7 +458,7 @@ for file in new_files:
             .option("inferSchema", infer_schema)
             .option("multiLine", True)
             .option("quote", '"') 
-            .option("escape", '\\') 
+            .option("escape", '"')
             .option("mode", "PERMISSIVE")
             .option("columnNameOfCorruptRecord", "_corrupt_record")
             .csv(file)

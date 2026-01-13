@@ -78,6 +78,7 @@ target_schema = "silver"
 bc_prefix = "bc_"
 historical_prefix = "historical_"
 
+masterObjects = []
 
 table = "item"
 partition_key = "itemcode"
@@ -95,9 +96,6 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
-
-# MARKDOWN ********************
-
 
 # CELL ********************
 
@@ -135,9 +133,7 @@ spark.synapsesql(f"CREATE SCHEMA IF NOT EXISTS `{target_dwh}`.`{target_schema}`"
 
 # CELL ********************
 
-# In[7]:
-# LOAD your master data tables here (maybe this is a list of spark.read.table)
-#item_master_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.item_master")
+master_links = []
 
 # METADATA ********************
 
@@ -148,12 +144,37 @@ spark.synapsesql(f"CREATE SCHEMA IF NOT EXISTS `{target_dwh}`.`{target_schema}`"
 
 # CELL ********************
 
-# In[8]:
-# Define add the above spark.read.tables to a dictionary and how it is linked to the resulting dwh table
-master_links = [
-    #("product_master_hk", product_master_df, "productcode", "product_hk", [{"ProductName": "product_name"}])
-]
+# In[7]:
+# LOAD your master data tables here (maybe this is a list of spark.read.table)
+exclude_columns = {
+    "masterkey",
+    "primarykeyfield",
+    "primarykeyvalue",
+    "reason",
+    "effectivity_start_date",
+    "effectivity_end_date",
+}
 
+for object in masterObjects:
+   masterlist_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.masterdata where object = '{object}'")
+
+   row = masterlist_df.collect()[0]
+   
+   # get the keys from the first row
+   business_key = row.business_key
+   primary_key = row.primary_key
+
+   masterdata_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.{object}_master")
+
+   materialized_columns = [
+        col for col in masterdata_df.columns
+        if col not in exclude_columns
+   ]
+
+   master_links.append(
+      # master key, dataframe, businesskey, primarykey, columns
+      (f"{object}_master_hk", masterdata_df, business_key, primary_key, materialized_columns)
+   )
 
 # METADATA ********************
 
