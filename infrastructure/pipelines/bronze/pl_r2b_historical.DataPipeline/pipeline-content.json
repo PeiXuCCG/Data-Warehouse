@@ -51,7 +51,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -159,7 +159,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -274,7 +274,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"name\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -389,7 +389,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"name\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"name\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -504,7 +504,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"name\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"name\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -619,7 +619,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"entryno\", \"company\", \"source_system\"]",
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -627,7 +627,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"company\"]",
+                    "value": "[\"entryno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -734,7 +734,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_ company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -849,7 +849,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"entryno\", \"company\", \"source_system\"]",
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -857,7 +857,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"company\"]",
+                    "value": "[\"entryno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -964,7 +964,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1079,7 +1079,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"entryno\", \"company\", \"source_system\"]",
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1087,7 +1087,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"vendorno\", \"company\"]",
+                    "value": "[\"entryno\", \"vendorno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1194,7 +1194,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1202,7 +1202,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"no\", \"company\"]",
+                    "value": "[\"no\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1309,7 +1309,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"entryno\", \"itemno\", \"company\", \"source_system\"]",
+                    "value": "[\"entryno\", \"itemno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1317,7 +1317,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"itemno\", \"company\"]",
+                    "value": "[\"entryno\", \"itemno\", \"originating_originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1424,7 +1424,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1432,7 +1432,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"no\", \"company\"]",
+                    "value": "[\"no\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1539,7 +1539,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1547,7 +1547,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentno\", \"lineno\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1654,7 +1654,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1662,7 +1662,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"no\", \"company\"]",
+                    "value": "[\"no\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1769,7 +1769,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1777,7 +1777,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentno\", \"lineno\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1884,7 +1884,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -1892,7 +1892,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"no\", \"company\"]",
+                    "value": "[\"no\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -1999,7 +1999,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2007,7 +2007,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentno\", \"lineno\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -2114,7 +2114,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2122,7 +2122,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"no\", \"company\"]",
+                    "value": "[\"no\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -2229,7 +2229,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"lineno\", \"company\", \"source_system\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2237,7 +2237,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"documentno\", \"lineno\", \"company\"]",
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -2344,7 +2344,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2459,7 +2459,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -2574,7 +2574,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
