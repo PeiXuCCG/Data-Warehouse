@@ -121,18 +121,6 @@ pipeline_name = f"bronze_to_silver_{target_table}"
 
 # CELL ********************
 
-# In[4]:
-spark.sql(f"CREATE SCHEMA IF NOT EXISTS `{target_dwh}`.`{target_schema}`")
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 master_links = []
 
 # METADATA ********************
@@ -146,29 +134,23 @@ master_links = []
 
 # In[7]:
 # LOAD your master data tables here (maybe this is a list of spark.read.table)
-exclude_columns = {
-    "masterkey",
-    "primarykeyfield",
-    "primarykeyvalue",
-    "reason",
-    "effectivity_start_date",
-    "effectivity_end_date",
-}
+exclude_patterns = ["_master_hk", "_hk", "reason", "effectivity_start_date", "effectivity_end_date"]
+
 
 for object in masterObjects:
-   masterlist_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.masterdata where object = '{object}'")
+   masterlist_df = spark.sql(f" SELECT * FROM  {target_dwh}.master.masterlist where object = '{object}'")
 
    row = masterlist_df.collect()[0]
    
    # get the keys from the first row
-   business_key = row.business_key
-   primary_key = row.primary_key
+   business_key = row.businesskey
+   primary_key = row.primarykey
 
-   masterdata_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.{object}_master")
+   masterdata_df = spark.sql(f"SELECT * FROM {target_dwh}.master.{object}_master")
 
    materialized_columns = [
-        col for col in masterdata_df.columns
-        if col not in exclude_columns
+      col for col in masterdata_df.columns
+      if not any(pattern in col for pattern in exclude_patterns)
    ]
 
    master_links.append(
