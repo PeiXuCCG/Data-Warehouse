@@ -29,6 +29,15 @@
 # 
 # New notebook
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # In[28]:
 
 
@@ -41,6 +50,15 @@
 # 
 # Demonstration of linking base data with master data using MasterLinkedTable
 # and applying SCD Type 2 logic.
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[1]:
 
@@ -55,17 +73,49 @@ from notebookutils import mssparkutils
 import com.microsoft.spark.fabric
 from com.microsoft.spark.fabric.Constants import Constants
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[29]:
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[2]:
 spark = SparkSession.builder.appName("SilverTableMasterData").getOrCreate()
 spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite", "LEGACY")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[30]:
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[3]:
 source_lakehouse = "lh_bronze"
@@ -90,31 +140,72 @@ is_warehouse = True #this is used by loom as a switch to use T-SQL
 workspace_name = mssparkutils.env.getWorkspaceName()
 
 
-# 
+#
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[31]:
 
 
 spark.conf.set("spark.datawarehouse.dwh_silver.sqlendpoint", "d3mzclqk6fqejkhqg6rot34see-n5wu7ldnbuseznlousn27ddxay.datawarehouse.fabric.microsoft.com")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[32]:
 
 
 target_table = table
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[33]:
 
 
 pipeline_name = f"bronze_to_silver_{target_table}"
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[34]:
 
 
 master_links = []
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[35]:
 
@@ -148,6 +239,14 @@ for object in masterObjects:
 
 # In[36]:
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 bc_table = f"{source_lakehouse}.{source_schema}.{bc_prefix}{table}"
 historical_table = f"{source_lakehouse}.{source_schema}.{historical_prefix}{table}"
@@ -167,6 +266,14 @@ else:
 
 # In[37]:
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 existing_df = spark.createDataFrame(
     spark.sparkContext.emptyRDD(),
@@ -178,6 +285,14 @@ if spark.catalog.tableExists(f"{target_dwh}.{target_schema}.{target_table}"):
 
 # In[38]:
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[9]:
 # Instantiate MasterLinkedTable and prepare data
@@ -196,30 +311,56 @@ masterlinked_table = MasterLinkedTable(
     spark=spark
 )
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[39]:
 
 
 masterlinked_table.prepare()
 
+# METADATA ********************
 
-# In[40]:
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
 
-
-masterlinked_table.df.printSchema()
-
+# CELL ********************
 
 # In[41]:
 
 
 masterlinked_table.df.write.mode("overwrite").synapsesql(f"{target_dwh}.{target_schema}.{target_table}")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[42]:
 
 
 print("✅ MasterLinkedTable completed successfully.")
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[43]:
 
