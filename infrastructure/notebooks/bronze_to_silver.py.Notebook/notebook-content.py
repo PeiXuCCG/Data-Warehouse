@@ -16,15 +16,30 @@
 # META           "id": "059ddf57-7cf2-401b-8bf8-68beddef9667"
 # META         }
 # META       ]
-# META     },
-# META     "environment": {
-# META       "environmentId": "19ef04e9-33e6-8865-4282-9c499f72e816",
-# META       "workspaceId": "00000000-0000-0000-0000-000000000000"
 # META     }
 # META   }
 # META }
 
 # CELL ********************
+
+#!/usr/bin/env python
+# coding: utf-8
+
+# ## bronze_to_silver_rerun.py
+# 
+# New notebook
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# In[28]:
+
 
 # Welcome to your new notebook
 # Type here in the cell editor to add code!
@@ -36,15 +51,38 @@
 # Demonstration of linking base data with master data using MasterLinkedTable
 # and applying SCD Type 2 logic.
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # In[1]:
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
+from pyspark.sql.types import StructType
 from typing import List, Tuple, Callable
 from loom.tables  import MasterLinkedTable
 from loom.pipelines import Pipeline
 import sys
 from notebookutils import mssparkutils
+import com.microsoft.spark.fabric
+from com.microsoft.spark.fabric.Constants import Constants
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# In[29]:
 
 # METADATA ********************
 
@@ -66,7 +104,18 @@ spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite", "LEGACY")
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# PARAMETERS CELL ********************
+# CELL ********************
+
+# In[30]:
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
 
 # In[3]:
 source_lakehouse = "lh_bronze"
@@ -78,17 +127,20 @@ target_schema = "silver"
 bc_prefix = "bc_"
 historical_prefix = "historical_"
 
-masterObjects = []
+masterObjects = ["customer"]
 
-table = "item"
-partition_key = "itemcode"
-primary_key = "item_hk"
+table = "customer"
+partition_key = "originating_company"
+primary_key = "customer_hk"
 
 
-dry_run = True
+dry_run = False
 is_warehouse = True #this is used by loom as a switch to use T-SQL
 
 workspace_name = mssparkutils.env.getWorkspaceName()
+
+
+#
 
 # METADATA ********************
 
@@ -98,6 +150,23 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 # META }
 
 # CELL ********************
+
+# In[31]:
+
+
+spark.conf.set("spark.datawarehouse.dwh_silver.sqlendpoint", "d3mzclqk6fqejkhqg6rot34see-n5wu7ldnbuseznlousn27ddxay.datawarehouse.fabric.microsoft.com")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# In[32]:
+
 
 target_table = table
 
@@ -110,6 +179,9 @@ target_table = table
 
 # CELL ********************
 
+# In[33]:
+
+
 pipeline_name = f"bronze_to_silver_{target_table}"
 
 # METADATA ********************
@@ -120,6 +192,9 @@ pipeline_name = f"bronze_to_silver_{target_table}"
 # META }
 
 # CELL ********************
+
+# In[34]:
+
 
 master_links = []
 
@@ -132,6 +207,9 @@ master_links = []
 
 # CELL ********************
 
+# In[35]:
+
+
 # In[7]:
 # LOAD your master data tables here (maybe this is a list of spark.read.table)
 exclude_patterns = ["_master_hk", "_hk", "reason", "effectivity_start_date", "effectivity_end_date"]
@@ -143,20 +221,23 @@ for object in masterObjects:
    row = masterlist_df.collect()[0]
    
    # get the keys from the first row
-   business_key = row.businesskey
-   primary_key = row.primarykey
+   #business_key = row.businesskey.replace(" ", "")
+   key = row.primarykey
 
    masterdata_df = spark.sql(f"SELECT * FROM {target_dwh}.master.{object}_master")
 
    materialized_columns = [
-      col for col in masterdata_df.columns
+      col.strip() for col in masterdata_df.columns
       if not any(pattern in col for pattern in exclude_patterns)
    ]
 
    master_links.append(
-      # master key, dataframe, businesskey, primarykey, columns
-      (f"{object}_master_hk", masterdata_df, business_key, primary_key, materialized_columns)
+      # master key, dataframe, key, columns
+      (f"{object}_master_hk", masterdata_df, key, materialized_columns)
    )
+
+
+# In[36]:
 
 # METADATA ********************
 
@@ -174,15 +255,16 @@ if spark.catalog.tableExists(bc_table):
     bc_df = spark.read.table(bc_table)
 
 if spark.catalog.tableExists(historical_table):
-    history_df = spark.read.table(historical_table)
+    history_df = spark.read.table(historical_table).drop("unmapped")
     
 
 if not history_df.isEmpty():
-    source_df = bc_df.unionByName(history_df)
+    source_df = bc_df.unionByName(history_df, allowMissingColumns=True)
 else:
     source_df = bc_df    
 
 
+# In[37]:
 
 # METADATA ********************
 
@@ -193,9 +275,15 @@ else:
 
 # CELL ********************
 
+existing_df = spark.createDataFrame(
+    spark.sparkContext.emptyRDD(),
+    StructType()
+)
+if spark.catalog.tableExists(f"{target_dwh}.{target_schema}.{target_table}"):
+    existing_df = spark.read.synapsesql(f"{target_dwh}.{target_schema}.{target_table}")
 
-# In[ ]:
-pipelines = []
+
+# In[38]:
 
 # METADATA ********************
 
@@ -211,6 +299,7 @@ pipelines = []
 masterlinked_table = MasterLinkedTable(
     name=target_table,
     df=source_df,
+    existing_df = existing_df,
     schema_evolution=True,
     target_path="N/A", #Not supported in Fabric
     target_db=target_schema,
@@ -218,7 +307,8 @@ masterlinked_table = MasterLinkedTable(
     business_keys=[partition_key],
     primary_key=[primary_key],
     master_links=master_links,
-    is_warehouse=True
+    is_warehouse=True,
+    spark=spark
 )
 
 # METADATA ********************
@@ -230,16 +320,10 @@ masterlinked_table = MasterLinkedTable(
 
 # CELL ********************
 
-# In[12]:
-pipeline = Pipeline(
-    name=pipeline_name,
-    tables=[masterlinked_table],
-    dry_run=dry_run,  # Set to True to simulate without writing
-    target_schema=target_schema,
-    target_db="dbo"
-)
+# In[39]:
 
-pipelines.append(pipeline)
+
+masterlinked_table.prepare()
 
 # METADATA ********************
 
@@ -250,11 +334,10 @@ pipelines.append(pipeline)
 
 # CELL ********************
 
-# In[12]:
-for p in pipelines:
-    p.summary()
-    p.validate()
-    p.execute()
+# In[41]:
+
+
+masterlinked_table.df.write.mode("overwrite").synapsesql(f"{target_dwh}.{target_schema}.{target_table}")
 
 # METADATA ********************
 
@@ -265,10 +348,11 @@ for p in pipelines:
 
 # CELL ********************
 
-# In[12]:
+# In[42]:
+
+
 print("✅ MasterLinkedTable completed successfully.")
 
-
 # METADATA ********************
 
 # META {
@@ -277,12 +361,16 @@ print("✅ MasterLinkedTable completed successfully.")
 # META }
 
 # CELL ********************
+
+# In[43]:
+
 
 if "DEV" in workspace_name: #DEV (when on the trial)
     try:
         spark.stop()
     except:
         pass
+
 
 # METADATA ********************
 
