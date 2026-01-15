@@ -20,7 +20,7 @@ def build_source_fk(value: str) -> str:
     if not isinstance(value, str):
         return "[]"
     parts = [p.strip() for p in value.split(",") if p.strip()]
-    fk_list = [{p: [p, "company", "source_system"]} for p in parts]
+    fk_list = [{p: [p, "originating_company", "source_system"]} for p in parts]
     return json.dumps(fk_list, separators=(",", ":"))
 
 
