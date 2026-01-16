@@ -1317,7 +1317,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"itemno\", \"originating_originating_company\"]",
+                    "value": "[\"entryno\", \"itemno\", \"originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
