@@ -32,13 +32,16 @@
                   },
                   "source_entity": {
                     "value": {
-                      "value": "@item().source_entity",
+                      "value": "Merits",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "source_system": {
-                    "value": "Netsuite",
+                    "value": {
+                      "value": "@pipeline().parameters.source_system",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -50,7 +53,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@item().source_path",
+                      "value": "@concat(\n    'Files/history/netsuite/merits/',item().source_path\n)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -61,7 +64,7 @@
                   },
                   "pipeline_name": {
                     "value": {
-                      "value": "@concat('S2R_', item().target_table)",
+                      "value": "@concat('S2R_Merits_', item().target_table)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -93,7 +96,7 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "S2R_Netsuite_Entity",
+              "name": "S2R_Merits_Business_Objects",
               "dependsOn": []
             },
             {
@@ -104,10 +107,10 @@
                   "type": "Expression"
                 }
               },
-              "name": "Wait_For_Spark_To_Stop_Netsuite",
+              "name": "Wait_For_Spark_To_Stop_Merits",
               "dependsOn": [
                 {
-                  "activity": "S2R_Netsuite_Entity",
+                  "activity": "S2R_Merits_Business_Objects",
                   "dependencyConditions": [
                     "Succeeded"
                   ]
@@ -116,8 +119,136 @@
             }
           ]
         },
-        "name": "S2R_Netsuite",
+        "name": "S2R_Merits",
         "dependsOn": []
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": {
+                      "value": "Vital Living",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": {
+                      "value": "@pipeline().parameters.source_system",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat(\n    'Files/history/netsuite/vital_living/',item().source_path\n)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": "True",
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_Vital_Living_', item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": "False",
+                    "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_Vital_Living_Business_Objects",
+              "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Vital_Living",
+              "dependsOn": [
+                {
+                  "activity": "S2R_Vital_Living_Business_Objects",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "S2R_Vital_Living",
+        "dependsOn": [
+          {
+            "activity": "S2R_Merits",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
       }
     ],
     "parameters": {
@@ -134,108 +265,95 @@
         "defaultValue": [
           {
             "target_table": "netsuite_customer",
-            "source_path": "Files/history/netsuite/vital_living/customer",
-            "source_entity": "Vital Living"
+            "source_path": "customer"
           },
           {
             "target_table": "netsuite_custledgerentry",
-            "source_path": "Files/history/netsuite/vital_living/custledgerentry",
-            "source_entity": "Vital Living"
+            "source_path": "custledgerentry"
+          },
+          {
+            "target_table": "netsuite_facility",
+            "source_path": "facility"
           },
           {
             "target_table": "netsuite_fundingbody",
-            "source_path": "Files/history/netsuite/vital_living/fundingbody",
-            "source_entity": "Vital Living"
+            "source_path": "funding body"
           },
           {
             "target_table": "netsuite_glaccount",
-            "source_path": "Files/history/netsuite/vital_living/glaccount",
-            "source_entity": "Vital Living"
+            "source_path": "glaccount"
           },
           {
             "target_table": "netsuite_glentry",
-            "source_path": "Files/history/netsuite/vital_living/glentry",
-            "source_entity": "Vital Living"
+            "source_path": "glentry"
           },
           {
             "target_table": "netsuite_item",
-            "source_path": "Files/history/netsuite/vital_living/item",
-            "source_entity": "Vital Living"
+            "source_path": "item"
           },
           {
             "target_table": "netsuite_itemledgerentry",
-            "source_path": "Files/history/netsuite/vital_living/itemledgerentry",
-            "source_entity": "Vital Living"
+            "source_path": "itemledgerentry"
           },
           {
             "target_table": "netsuite_location",
-            "source_path": "Files/history/netsuite/vital_living/location",
-            "source_entity": "Vital Living"
+            "source_path": "location"
           },
           {
             "target_table": "netsuite_paymentterms",
-            "source_path": "Files/history/netsuite/vital_living/paymentterms",
-            "source_entity": "Vital Living"
+            "source_path": "paymentterms"
           },
           {
             "target_table": "netsuite_prescriber",
-            "source_path": "Files/history/netsuite/vital_living/prescriber",
-            "source_entity": "Vital Living"
+            "source_path": "prescriber"
           },
           {
             "target_table": "netsuite_purchheader",
-            "source_path": "Files/history/netsuite/vital_living/purchheader",
-            "source_entity": "Vital Living"
+            "source_path": "purchheader"
           },
           {
             "target_table": "netsuite_purchline",
-            "source_path": "Files/history/netsuite/vital_living/purchline",
-            "source_entity": "Vital Living"
+            "source_path": "purchline"
           },
           {
             "target_table": "netsuite_purchinvheader",
-            "source_path": "Files/history/netsuite/vital_living/purchinvheader",
-            "source_entity": "Vital Living"
+            "source_path": "purchinvheader"
           },
           {
             "target_table": "netsuite_purchinvline",
-            "source_path": "Files/history/netsuite/vital_living/purchinvline",
-            "source_entity": "Vital Living"
+            "source_path": "purchinvline"
           },
           {
             "target_table": "netsuite_salesheader",
-            "source_path": "Files/history/netsuite/vital_living/salesheader",
-            "source_entity": "Vital Living"
+            "source_path": "salesheader"
           },
           {
             "target_table": "netsuite_salesline",
-            "source_path": "Files/history/netsuite/vital_living/salesline",
-            "source_entity": "Vital Living"
+            "source_path": "salesline"
           },
           {
             "target_table": "netsuite_salesinvoiceheader",
-            "source_path": "Files/history/netsuite/vital_living/salesinvoiceheader",
-            "source_entity": "Vital Living"
+            "source_path": "salesinvoiceheader"
           },
           {
             "target_table": "netsuite_salesinvoiceline",
-            "source_path": "Files/history/netsuite/vital_living/salesinvoiceline",
-            "source_entity": "Vital Living"
+            "source_path": "salesinvoiceline"
+          },
+          {
+            "target_table": "netsuite_salespersonpurchaser",
+            "source_path": "salespersonpurchaser"
           },
           {
             "target_table": "netsuite_valueledger",
-            "source_path": "Files/history/netsuite/vital_living/valueledgerentry",
-            "source_entity": "Vital Living"
+            "source_path": "valueledgerentry"
           },
           {
             "target_table": "netsuite_vendor",
-            "source_path": "Files/history/netsuite/vital_living/vendor",
-            "source_entity": "Vital Living"
+            "source_path": "vendor"
           },
           {
             "target_table": "netsuite_vendorledgerentry",
-            "source_path": "Files/history/netsuite/vital_living/vendorledgerentry",
-            "source_entity": "Vital Living"
+            "source_path": "vendorledgerentry"
           }
         ]
       },
@@ -249,7 +367,11 @@
       },
       "wait": {
         "type": "int",
-        "defaultValue": 5
+        "defaultValue": 1
+      },
+      "source_system": {
+        "type": "string",
+        "defaultValue": "Netsuite"
       }
     }
   }
