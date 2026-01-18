@@ -41,24 +41,9 @@ Payment Details
 
 There is no direct Customer Ledger export, but you can get it from:
 
-A. Sales Register → Export
+A. Report -> Customer Ledger → Export
 
-Path:
-Sales → Sales Register → (Filter by Date) → Print/Email → Export
 
-Exports invoices + payments info.
-
-B. Customer Payments
-
-Path:
-Sales → Receive Payments → Print Receipts → Export
-
-C. Activity by Customer Report
-
-Path:
-Reports → Sales → Customer → Activity by Customer → Export (Excel/PDF)
-
-This is the closest to a real ledger.
 
 
 ---
@@ -131,32 +116,17 @@ File → Import/Export Assistant → Export Data → Cards → Supplier Cards
 
 📒 9. Vendor Ledger (Payables Transactions)
 
-A. Purchases Register
-
 Purchases → Purchase Register → Print/Email → Export
 
-B. Activity by Supplier
-
-Reports → Purchases → Supplier → Activity by Supplier → Export
-
-(Equivalent of Payables Ledger.)
 
 
 ---
 
 💲 10. Value Ledger (Inventory Value Movements)
 
-There is no single "Value Ledger" export, but you can export:
-
-A. Item Value Reconciliation
-
-Reports → Inventory → Item List → Item Value Reconciliation → Export
-
-B. Item Transactions Report (includes value + cost)
+Item Transactions Report (includes value + cost)
 
 Reports → Inventory → Item Transactions → Export
-
-These two together give full inventory value movement.
 
 
 ---
@@ -175,30 +145,6 @@ A. General Ledger Details Report
 
 Reports → Accounts → General Ledger → General Ledger Detail → Export
 
-B. Transaction Journals
-
-Accounts → Transaction Journal → Export
-
-
----
-
-🚚 13. DIFOT (Delivery In Full On Time)
-
-MYOB has no DIFOT export, but you can extract:
-
-Sales Orders
-
-Sales → Sales Register → Orders → Export
-
-Sales Invoices
-
-Sales → Sales Register → Invoices → Export
-
-To calculate DIFOT:
-Delivered qty = invoice qty
-Expected date = promise/ship date on order
-
-I can write the formula for you.
 
 
 ---
@@ -265,17 +211,5 @@ Lines:
 Open bill → Print/Email → Excel
 
 
----
 
-🏷 19. Posting Groups (if exist)
-
-MYOB does not have Posting Groups like Dynamics.
-
-But you can export:
-
-Linked Accounts
-
-Lists → Accounts → Linked Accounts → Print → Export
-
-This is the closest equivalent.
 

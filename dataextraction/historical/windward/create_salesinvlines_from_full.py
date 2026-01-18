@@ -5,7 +5,7 @@ import pandas as pd
 # ----------------------------
 company = "tccg"
 input_file = f"{company}/salesinvline/sales.csv"
-output_file = f"{company}/salesinvline/cleaned_lines.csv"
+output_file = f"{company}/salesinvline/cleaned_lines_2.csv"
 
 # ----------------------------
 # Load CSV
@@ -17,12 +17,12 @@ current_invoice_row = None
 
 # Define your desired headers here
 headers = [
-    "Sub Type","Number","Customer","Customer Acct","PO","Parts","Labour","SubTotal",
+    "SubType","Number","Customer","Customer Acct","PO","Parts","Labour","SubTotal",
     "Taxes","Total","Cost","Profit","Margin","Invoice Date","Ordered Date",
     "Creation Date","Date of E","Date of W","Date of A","Invoice Number",
     "Invoice Ref No","Customer Part","Ship To","Delivery","Delivery Phone",
     "Delivery Email","Delivery Notes","Days to Pay","Balance Due","Salesperson",
-    "","","Technicians","Tech Start","Tech End","Tech Desc","Rental State",
+    "","", "Technicians","Tech Start","Tech End","Tech Desc","Rental State",
     "Rental Out","Rental In","Serial","Comments"
 ]
 

@@ -1,9 +1,9 @@
 import pandas as pd
 import glob
 
-company = "healthsaver"
-SALES_PATH = f"{company}/purchinvline/cleaned_2.csv"
-OUTPUT_FILE = f"{company}/purchinvline/cleaned_2.csv"
+company = "thechairdoctor"
+SALES_PATH = f"{company}/salesinvoiceline/ITEMSALE.csv"
+OUTPUT_FILE = f"{company}/salesinvoiceline/cleaned4.csv"
 
 
 def load_csvs(path):

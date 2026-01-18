@@ -1,0 +1,233 @@
+NETSUITE MANUAL DATA EXTRACTION (FRONT END ONLY)
+BC-EQUIVALENT STEP-BY-STEP CHECKLIST
+===================================
+
+1. G/L ACCOUNTS (Chart of Accounts)
+BC: G/L Account
+Navigation:
+Lists → Accounting → Accounts → Export
+Export Fields:
+Name,Display Name,Account Type,Description,Balance,Number,External ID,Internal ID,Formula (Currency),Cash Flow Rate Type,General Rate Type,Localized Number,Special Account Type,Accounting Context
+
+2. G/L ENTRIES
+BC: G/L Entry
+
+Saved Search (Recommended)
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Posting = Yes
+- Main Line = No
+Results Fields:
+Internal ID,Date,Type,Document Number,Account,Account Type,Name,Memo,Amount (Debit),Amount (Credit),Amount (Net),Currency,Exchange Rate,Location,Source,Created By,Line ID
+
+
+
+3. SALES TRANSACTIONS
+BC: Sales Invoice Header / Sales Invoice Line
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Type = Invoice
+- Type = Cash Sale
+- Type = Credit Memo
+- Main Line = No (Yes for Header)
+Results Fields:
+
+Header Fields
+Entry No,Ship To Customer,Date,Document Number,Memo,Terms,Currency,Location,Status,Department,Amount,Sales Rep,Date Created,Tax Item,Class,Reference Number,Billing Address 1,Billing Address 2,Billing Address 3,Billing City,Billing State/Province,Billing Country,Billing Zip,Ship Group,Ship Date
+
+Line Fields
+Line ID,Internal ID,Ship to Customer (ship to),Date,Document Number,Item Code,Item,Quantity,Amount,Amount (Tax),Tax Item,Account Name,Units,Job#,Location,Est. Gross Profit Percent (Line),Price Level,PO#,Est. Extended Cost (Line)
+
+
+BC: Sales Header / Sales Line
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Type = Sales Order
+- Main Line = No (Yes for Header)
+Results Fields:
+
+Header Fields
+Entry No,Ship To Customer,Date,Document Number,Memo,Terms,Currency,Location,Status,Department,Amount,Sales Rep,Date Created,Tax Item,Class,Reference Number,Billing Address 1,Billing Address 2,Billing Address 3,Billing City,Billing State/Province,Billing Country,Billing Zip,Ship Group,Ship Date
+
+
+
+Line Fields
+Entry No,Ship To Customer,Date,Document Number,Memo,Terms,Currency,Location,Status,Department,Amount,Sales Rep,Date Created,Tax Item,Class,Reference Number,Billing Address 1,Billing Address 2,Billing Address 3,Billing City,Billing State/Province,Billing Country,Billing Zip,Ship Group,Ship Date
+
+
+
+
+
+4. CUSTOMER LEDGER ENTRIES
+BC: Customer Ledger Entry
+Navigation:
+Reports -> Saved Search -> New -> Transaction
+Steps:
+- Main Line (Yes)
+- Set date range
+- Type
+  - Invoice
+  - Payment 
+  - Credit Memo
+  - Cash Sale
+  - Cash Refund
+  - Deposit
+
+Fields:
+Internal ID,CustomerNo (Customer (MainLine): Number),Type,Document Number,Date,Due Date/Receive By,Status,Amount,Amount Remaining,Currency,Exchange Rate,Department,Class,Location,Memo,Date Created,Applied To Transaction,Applied To Link Type,Account Type,Account,Period,Sales Rep
+
+
+
+5. PURCHASE TRANSACTIONS
+BC: Purchase Invoice Header / Purchase  Invoice Line
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Type = Vendor Bill
+- Type = Vendor Credit
+- Main Line = No (yes for header)
+Results Fields:
+- Document Number
+- Vendor
+- Item or Expense Account
+- Quantity
+- Amount
+- Posting Date
+
+
+BC: Purchase Header / Purchase Line
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Type = Purchase Order
+- Main Line = No (yes for header)
+Header Fields:
+Type,Document Number,PO/Cheque Number,Internal ID,Shipping Address 1,Shipping Address 2,Shipping Address 3,Legal Name,Ship To,Date,Date Created,Expected Receipt Date,Memo,Terms,Due Date/Receive By,Ship Via,Location,Department,Category,Currency,Exchange Rate,Tax Item,Sales Rep,Order Type,Internal Notes,Reference Number,Applied To Link Type,Balance,Billable,Amount (Transaction Total),Amount,Amount (Net),Shipment Number,Source,Fulfilling/Receiving Transaction,Billing Transaction,Tax Number,Days Open,Days Overdue,Days Late,Date Billed,Paid Amount,Payment Hold,Status
+
+Line Fields:
+Type,Document Number,PO/Cheque Number,Internal ID,Shipping Address 1,Shipping Address 2,Shipping Address 3,Document Number,Legal Name,Ship To,Date,Date Created,Expected Receipt Date,Memo,Terms,Due Date/Receive By,Ship Via,Location,Department,Category,Currency,Exchange Rate,Tax Item,Sales Rep,Order Type,Internal Notes,Reference Number,Applied To Link Type,Balance,Billable,Amount (Transaction Total),Amount,Amount (Net),Shipment Number,Source,Fulfilling/Receiving Transaction,Billing Transaction,Tax Number,Days Open,Days Overdue,Days Late,Date Billed,Paid Amount,Payment Hold,Status,Item, Quantity, Quantity Billed, Quantity Packed, Quantity Picked, Quantity Committed, Quantity Fulfilled/Received
+
+
+
+BC: Purchase Invoice Header / Purchase Invoice Line
+Navigation:
+Reports → Saved Searches → New → Transaction
+Criteria:
+- Type = Bill Credit
+- Type = Bill
+- Main Line = No (yes for header)
+Header Fields:
+Type,Document Number,PO/Cheque Number,Internal ID,Shipping Address 1,Shipping Address 2,Shipping Address 3,Document Number,Legal Name,Ship To,Date,Date Created,Expected Receipt Date,Memo,Terms,Due Date/Receive By,Ship Via,Location,Department,Category,Currency,Exchange Rate,Tax Item,Sales Rep,Order Type,Internal Notes,Reference Number,Applied To Link Type,Balance,Billable,Amount (Transaction Total),Amount,Amount (Net),Shipment Number,Source,Fulfilling/Receiving Transaction,Billing Transaction,Tax Number,Days Open,Days Overdue,Days Late,Date Billed,Paid Amount,Payment Hold,Status
+
+
+
+
+Line Fields:
+Type,Document Number,PO/Cheque Number,Internal ID,Shipping Address 1,Shipping Address 2,Shipping Address 3,Document Number,Legal Name,Ship To,Date,Date Created,Expected Receipt Date,Memo,Terms,Due Date/Receive By,Ship Via,Location,Department,Category,Currency,Exchange Rate,Tax Item,Sales Rep,Order Type,Internal Notes,Reference Number,Applied To Link Type,Balance,Billable,Amount (Transaction Total),Amount,Amount (Net),Shipment Number,Source,Fulfilling/Receiving Transaction,Billing Transaction,Tax Number,Days Open,Days Overdue,Days Late,Date Billed,Paid Amount,Payment Hold,Status,Item, Quantity, Quantity Billed, Quantity Packed, Quantity Picked, Quantity Committed, Quantity Fulfilled/Received
+
+
+
+
+
+6. VENDOR LEDGER ENTRIES
+BC: Vendor Ledger Entry
+Navigation:
+Reports → Purchases -> A/P Register
+
+
+Fields:
+Type ,Date ,Document Number ,Vendor ,Memo ,Date Due ,Billed ,Paid ,Balance 
+
+
+
+
+7. CUSTOMERS
+BC: Customer
+Navigation:
+New Search -> Customer
+Export Fields:
+ID,Inactive,Is Individual,External ID,Company Name,First Name,Middle Name,Last Name,Duplicate,Primary Contact,Category,Sales Rep,Status,Phone,Email,Mobile Phone,Address 1,Address 2,Address 3,Home Phone,Town/City,Postal Code,Territory,State/Province,Overdue Balance,Terms,Tax Number,Alt. Contact,Alt. Email,Billing Address 1,Billing Address 2,Billing Address 3,Billing City,Billing Country,Billing Phone,Billing Address,Billing State/Province,Billing Zip
+
+
+
+8. ITEMS
+BC: Item
+Navigation:
+New Search -> Item
+Export Fields:
+Internal ID,External ID,Inactive,Class,Name,Display Name,Description,Base Price,SubCategory,Available,On Hand,Back Ordered,On Order,Average Cost,Manufacturer,Serial/Lot Number,Supplier,Account,Supplier Code,Income Account,Expense/COGS Account,Preferred Location,Primary Sale Unit,Primary Stock Unit,Primary Units Type
+
+
+
+9. ITEM LEDGER ENTRIES
+BC: Item Ledger Entry
+Navigation:
+New Search -> Inventory Detail
+Steps:
+- Set date range
+- Export → CSV
+Export Fields:
+Internal ID,Item Code,Item,Date,Type,Document Number,Transaction Line Type,Quantity,Quantity Committed,Units,Expected Receipt Date,Memo,Item Rate,Transaction Serial/Lot Number Cost Adjustment,Back Ordered,Location,Transaction Serial/Lot Number,Source,Number,Date Created,Display Name,Department,Class,Currency,Asset Account,Line ID,Average Cost,Purchase Price,Last Purchase Price
+
+
+
+10. VALUE ENTRIES (Inventory Cost)
+BC: Value Entry
+Navigation:
+Reports → Inventory → Inventory Valuation Detail
+Steps:
+- Set date range
+- Export → Excel
+Export Fields:
+- Item
+- Quantity
+- Cost Amount
+- Inventory Value
+- Location
+- Posting Date
+
+
+11. LOCATIONS
+BC: Location
+Navigation:
+Setup → Company → Locations → Export
+Export Fields:
+- Location ID
+- Location Name
+- Subsidiary
+- Address
+
+
+12. PAYMENT TERMS
+BC: Payment Terms
+Navigation:
+Setup → Accounting → Accounting Lists → Terms → Export
+Export Fields:
+- Term Name
+- Due Days
+- Discount Percentage
+
+
+13. SALESPERSONS
+BC: Salesperson / Purchaser
+Navigation:
+Lists → Relationships → Employees → Export
+OR
+Lists → Relationships → Partners → Export
+Export Fields:
+- Name
+- Email
+- Commission Percentage
+- Active Status
+
+
+IMPORTANT NOTES
+==============
+- NetSuite does not have true ledger tables; ledger data is derived from reports and saved searches.
+- Saved Searches are recommended for line-level accuracy.
+- Inventory quantities and inventory values come from different reports.
+- Filter carefully for multi-subsidiary environments.
+- Large datasets may require exporting in date-based batches.

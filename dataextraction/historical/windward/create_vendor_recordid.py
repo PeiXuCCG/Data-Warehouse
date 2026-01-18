@@ -2,7 +2,7 @@ import pandas as pd
 import glob
 
 # Path to folder of CSVs
-COMPANY = f"complexrehab"
+COMPANY = f"tccg"
 PATH = f"{COMPANY}/vendor/*.csv"
 
 # Column to drop
@@ -15,7 +15,7 @@ OUTPUT = f"{COMPANY}/vendor/combined.csv"
 dfs = []
 
 for file in glob.glob(PATH):
-    df = pd.read_csv(file, dtype=str)
+    df = pd.read_csv(file, dtype=str, encoding="utf-8")
     dfs.append(df)
 
 combined = pd.concat(dfs, ignore_index=True)

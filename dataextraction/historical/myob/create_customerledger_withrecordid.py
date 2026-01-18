@@ -1,12 +1,12 @@
 import pandas as pd
 import glob
 
-company = "the chair doctor"
-CUST_LEDGER_PATH = f"{company}/custledgerentry/custledger.csv"
+company = "thechairdoctor"
+CUST_LEDGER_PATH = f"{company}/custledgerentry/cleaned.csv"
 CUST_PATH = f"{company}/customer/CUST.csv"
 OUTPUT_FILE = f"{company}/custledgerentry/cleaned_with_recordid.csv"
 
-REAL_HEADERS = ["Date","Invoice No","Customer PONo","customer_name","Amount","Amount Due","Status", "RecordID" ]
+REAL_HEADERS = ["Date","Src","ID No.","Memo","Transaction Amount","Balance","customer_name","unknown_field","current_balance","Record ID" ]
 
 CUST_HEADERS = ["CoLastName","First Name", "RecordID"]
 

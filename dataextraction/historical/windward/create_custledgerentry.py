@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-company = "complexrehab"
+company = "tccg"
 
 # -----------------------------
 # 1. LOAD CSV FILES

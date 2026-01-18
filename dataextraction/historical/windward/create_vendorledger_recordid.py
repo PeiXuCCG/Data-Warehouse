@@ -1,8 +1,8 @@
 import pandas as pd
 import glob
 
-company = "complexrehab"
-VENDOR_LEDGER_PATH = f"{company}/vendorledger/vendorledger.csv" 
+company = "tccg"
+VENDOR_LEDGER_PATH = f"{company}/vendorledger/*.csv" 
 SUPP_PATH = f"{company}/vendor/combined.csv" 
 OUTPUT_FILE = f"{company}/vendorledger/cleaned_with_recordid.csv"
 
@@ -38,11 +38,14 @@ def update_customer_ledger(ledger_df, cust_df):
     # Build lookup for full name: "lastname,firstname"
     full_name_lookup = {}
 
+
     for _, row in cust_df.iterrows():
-        last = row.get("Name", "")
+        last = row.get("Full Name", "")
+        #print(last)
         recordid = row.get("recordid", "").strip()
 
         full_name_key = norm(f"{last}").strip(",")
+        #print(full_name_key)
 
 
         if full_name_key:
@@ -51,6 +54,7 @@ def update_customer_ledger(ledger_df, cust_df):
     cleaned_rows = []
 
     print(ledger_df)
+
 
     for _, row in ledger_df.iterrows():
         row = row.tolist()
@@ -65,10 +69,12 @@ def update_customer_ledger(ledger_df, cust_df):
         # Normalize ledger customer_name (expected: lastname,firstname)
         
         ledger_key = norm(Supplier)
+        print(ledger_key)
         
 
         # Match on full normalized name
         recordid = full_name_lookup.get(ledger_key, "")
+        #print(recordid)
 
         cleaned_rows.append([
            Date,Time,Supplier,BillCheque,Description,Amount,Balance,

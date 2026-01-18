@@ -3,9 +3,9 @@ import glob
 import re
 import os
 
-company = "healthsaver"
-INPUT_PATH = f"{company}/vendor"
-OUTPUT_FILE = f"{company}/vendor"
+company = "ergo"
+INPUT_PATH = f"{company}/purchinvheader"
+OUTPUT_FILE = f"{company}/purchinvheader"
 
 
 def load_csvs(path):

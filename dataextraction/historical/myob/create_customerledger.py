@@ -1,8 +1,8 @@
 import pandas as pd
 import glob
 
-company = "fisherlane"
-SALES_PATH = f"{company}/custledgerentry/Customer Ledger.csv"
+company = "ergo"
+SALES_PATH = f"{company}/custledgerentry/customerledger2.csv"
 OUTPUT_FILE = f"{company}/custledgerentry/cleaned.csv"
 
 REAL_HEADERS = ["Date", "Src", "ID No.", "Memo", "Transaction Amount", "Balance"]

@@ -1,8 +1,8 @@
 import pandas as pd
 
 company = "tccg"
-input_file = f"{company}/purchinvline/purchaseinvoices.csv"
-output_file = f"{company}/purchinvline/cleaned.csv"
+input_file = f"{company}/purchinvheader/purchases.csv"
+output_file = f"{company}/purchinvheader/cleaned.csv"
 
 # Read CSV with consistent empty strings
 df = pd.read_csv(input_file, dtype=str, encoding='latin1').fillna("")

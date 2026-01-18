@@ -1,7 +1,7 @@
 import pandas as pd
 
 company = "tccg"
-input_file = f"{company}/salesinvline/sales.csv"
+input_file = f"{company}/salesinvheader/sales.csv"
 output_file = f"{company}/salesinvheader/cleaned.csv"
 
 # Load CSV

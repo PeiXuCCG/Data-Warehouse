@@ -1,8 +1,8 @@
 import pandas as pd
 
-company = "tccg"
-input_file = f"{company}/purchline/purchases.csv"
-output_file = f"{company}/purchheader/cleaned.csv"
+company = "countrycaremelbourne"
+input_file = f"{company}/purchheader/purchase_30Jun.csv"
+output_file = f"{company}/purchheader/cleaned2.csv"
 
 # Read CSV
 df = pd.read_csv(input_file, dtype=str, encoding='latin1')

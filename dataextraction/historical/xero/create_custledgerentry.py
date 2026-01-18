@@ -5,10 +5,25 @@ import csv
 # ------------------------------------------
 # CONFIG
 # ------------------------------------------
-company = "uccello_designs"
+
+company = "uccello_marketing_eu"
 AR_ACCOUNTS = [
-    "610", "611", "612", "620"
+      "4000", "4001"
 ]
+
+# company = "uccello_marketing_au"
+# AR_ACCOUNTS = [
+#       "4000", "4020", "4033"
+# ]
+
+# company = "homecare_equipment"
+# AR_ACCOUNTS = [
+#      "200", "201", "202"
+# ]
+# company = "uccello_designs"
+# AR_ACCOUNTS = [
+#     "610", "611", "612", "620"
+# ]
 GL_PATH = f"{company}/glentry/*.csv"
 RID_PATH = f"{company}/salesinvoiceline/*.csv"
 

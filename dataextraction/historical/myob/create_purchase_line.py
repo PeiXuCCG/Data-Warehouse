@@ -1,11 +1,11 @@
 import pandas as pd
 import glob
 
-company = "healthsaver"
-PATH = f"{company}/purchinvline/SERVPUR.csv"
-OUTPUT_FILE = f"{company}/purchinvline/cleaned_2.csv"
+company = "ergo"
+PATH = f"{company}/purchinvline/cleaned.csv"
+OUTPUT_FILE = f"{company}/purchinvline/cleaned6.csv"
 
-REAL_HEADERS = ["Purchase No.","Job", "Amount", "Shipping Date","Tax Code","Tax Amount","Freight Amount","Freight Tax Code","Freight Tax Amount"]
+REAL_HEADERS = ["Record ID", "Purchase No.", "Item Number","Job", "Amount", "Shipping Date","Tax Code","Tax Amount","Freight Amount","Freight Tax Code","Freight Tax Amount"]
 NUM_COLS = len(REAL_HEADERS)
 
 def load_csvs(path):
@@ -22,7 +22,7 @@ def clean_purchases(df):
 
     # Scan every column for each expected header value in the first row
     for col_index in range(df.shape[1]):
-        value = df.iloc[0, col_index].strip()
+        value = str(df.iloc[0, col_index]).strip()
         if value in REAL_HEADERS:
             header_map[value] = col_index
 

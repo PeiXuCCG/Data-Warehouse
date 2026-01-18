@@ -1,8 +1,8 @@
 import pandas as pd
 import glob
 
-company = "healthsaver"
-VENDOR_LEDGER_PATH = f"{company}/vendorledgerentry/vendorledgerentry.csv"
+company = "ergo"
+VENDOR_LEDGER_PATH = f"{company}/vendorledgerentry/supplierledger.csv"
 OUTPUT_FILE = f"{company}/vendorledgerentry/cleaned.csv"
 
 REAL_HEADERS = ["Date","Src","ID No.","Memo","Transaction Amount","Balance"]
@@ -18,9 +18,19 @@ def load_csvs(path):
         dfs.append(df)
     return pd.concat(dfs, ignore_index=True)
 
+def is_number(val):
+    val = val.replace("$","").replace(",","").replace("-","").replace(".","")
+    return val.isdigit()
+
+def is_date(val):
+    try:
+        pd.to_datetime(val, errors="raise")
+        return True
+    except Exception:
+        return False
+
 def clean_vendor_register(df):
     df = df.fillna("").astype(str)
-
     cleaned = []
 
     vendor_name = ""
@@ -30,42 +40,39 @@ def clean_vendor_register(df):
     for _, row in df.iterrows():
         row = [v.strip() for v in row.tolist()]
 
-        # Skip totally empty rows
+        # Skip empty rows
         if all(v == "" for v in row):
             continue
 
-        # Skip TOTAL summary lines
+        # Skip TOTAL rows
         if any("total:" in v.lower() for v in row if v):
             continue
 
-        # ===== DETECT VENDOR HEADER ROW (2 columns, not numeric) =====
-        if len(row) >= 2 and row[0] and row[1] and not row[0].isdigit():
-            vendor_name   = row[0]
-            unknown_field = row[1]
-            current_balance = ""     # reset until we see a balance
+        # Vendor header row (2 columns only)
+        if row[0] and not is_date(row[0]):
+            vendor_name = row[0]
+            print("Vendor:", vendor_name)
+            unknown_field = row[1] if len(row) > 1 else ""
+            current_balance = ""
             continue
 
-        # ===== DETECT BALANCE ROW (like ",,,,...,$33,662.42") =====
-        if len(row) >= 6 and row[4] and row[5].replace("$","").replace(",","").replace("-","").isdigit():
-            # we assume Amount field is a number = balance row
+        # Balance row
+        if not row[0] and not row[1] and not row[2] and is_number(row[5]):
             current_balance = row[5]
             continue
 
-        # ===== TRANSACTION ROW (first col is numeric) =====
-        if row[0].isdigit():
-            # pad
+        # Transaction row
+        if is_number(row[4]):
             row = row + [""] * (6 - len(row))
             child = row[:6]
-
-            # attach vendor info
             child += [vendor_name, unknown_field, current_balance]
-
             cleaned.append(child)
 
     return pd.DataFrame(
         cleaned,
-        columns=REAL_HEADERS + ["vendor_name", "unknown_field", "current_balance"]
+        columns=REAL_HEADERS + EXTRA_HEADERS
     )
+
 
 
 

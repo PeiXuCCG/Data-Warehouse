@@ -1,8 +1,8 @@
 import pandas as pd
 import glob
 
-company = "healthsaver"
-PATH = f"{company}/purchinvline/ITEMPUR.csv"
+company = "ergo"
+PATH = f"{company}/purchinvline/*.csv"
 OUTPUT_FILE = f"{company}/purchinvheader/cleaned.csv"
 
 EXCLUDE_HEADERS = [

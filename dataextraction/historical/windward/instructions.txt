@@ -2,12 +2,6 @@ Windward Extraction
 
 With all reports -  Once Report is loaded right click in the report and export to file
 
-Brands
- Reports -> Sales Reports -> Supplier  / Brand Sales Report -> Brand Sales Report
- 
- Change the book months to your reqired extract
-
- Click View
 
 
 
@@ -47,7 +41,7 @@ Item
 
 ItemLedgerEntry
 
-  Inventory and Purchases -> Inventory Reports -> Dailiy Receiving Report
+  Inventory and Purchases -> Inventory Reports -> Daily Receiving Report
 
 ItemCategory
 
@@ -77,7 +71,7 @@ Purchline
 
 
 Salesinvline
-	Reports -> Sales Reports -> Customer andd Invoice Sales Reports -> Invoice Report
+	Reports -> Sales Reports -> Customer and Invoice Sales Reports -> Invoice Report
 	Need to convert to headers with python scripts
 
 Salesline

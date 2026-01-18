@@ -111,7 +111,7 @@ ledger = ledger.sort_values(["vendorno", "date"])
 # 6. FINAL LEDGER OUTPUT
 # -----------------------------
 vendor_ledger = ledger[
-    ["vendorno", "date", "entry_type", "debit", "credit"]
+    ["vendorno", "documentnumber","salesrep", "status","date","datecreated", "entry_type", "debit", "credit"]
 ]
 
 OUTPUT_FILE = f"{company}/vendorledgerentry/cleaned.csv"

@@ -2,10 +2,10 @@ import pandas as pd
 import glob
 
 company = "ergo"
-SALES_PATH = f"{company}/valueledger/*.csv"
-OUTPUT_FILE = f"{company}/valueledger/cleaned.csv"
+SALES_PATH = f"{company}/itemledgerentry/*.csv"
+OUTPUT_FILE = f"{company}/itemledgerentry/cleaned.csv"
 
-REAL_HEADERS = ["IDNo","Src","Date","Memo","Debit","Credit"]
+REAL_HEADERS = ["Date","Src","IDNo","Memo","Starting Qty","Qty Changed","Amount","On Hand","Current Value"]
 NUM_COLS = len(REAL_HEADERS)
 
 def load_csvs(path):
@@ -35,21 +35,17 @@ def clean_item_register(df):
         if all(c == "" for c in row):
             continue
 
+        # --- Detect TOTAL rows ---
+        if any("total" in c.lower() for c in row[:NUM_COLS] if c):
+            current_item_code = None
+            current_item_name = None
+            continue   # remove total row
+
         # --- Detect ITEM HEADER rows (ItemCode + ItemName only) ---
-              # --- Detect ITEM HEADER rows (ItemCode + ItemName only) ---
         if colA and colB and all(c == "" for c in row[2:]):
             current_item_code = colA
             current_item_name = colB
             continue  # do not include header row in output
-
-        # --- Skip rows where IDNo + Src are blank (the second line in your example) ---
-        if colA == "" and colB == "":
-            continue
-
-        # --- Normal data row ---
-        if current_item_code:
-            cleaned.append(row[:NUM_COLS] + [current_item_code, current_item_name])
-
 
         # --- Normal data row ---
         # Must have a Name but NOT be a header row
