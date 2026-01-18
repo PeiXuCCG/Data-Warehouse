@@ -144,7 +144,25 @@
       "job_configuration": {
         "type": "array",
         "defaultValue": [
-          "prescriber"
+          "customer",
+          "facility",
+          "fundingbody",
+          "custledgerentry",
+          "glaccount",
+          "glentry",
+          "item",
+          "itemledgerentry",
+          "location",
+          "paymentterms",
+          "prescriber",
+          "purchinvheader",
+          "purchinvline",
+          "salesheader",
+          "salesinvoiceheader",
+          "salesline",
+          "salespersonpurchaser",
+          "vendor",
+          "vendorledgerentry"
         ]
       }
     }
