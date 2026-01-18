@@ -127,7 +127,6 @@ target_schema = "silver"
 bc_prefix = "bc_"
 historical_prefix = "historical_"
 
-masterObjects = ["customer"]
 
 table = "customer"
 partition_key = "originating_company"
@@ -141,6 +140,42 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 
 
 #
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# Adding more master objects here
+masterObjects = [
+    "customer",
+    "facility", 
+    "fundingbody", 
+    "custledgerentry", 
+    "glaccount", 
+    "glentry", 
+    "item", 
+    "itemledgerentry",
+    "location", 
+    "paymentterms", 
+    "prescriber", 
+    "purchinvheader",
+    "purchinvline",
+    "salesheader",
+    "salesinvoiceheader",
+    "salesline",
+    "salespersonpurchaser",
+    "vendor",
+    "vendorledgerentry",
+    # Tagging
+    "brand",
+    "customerchannel",
+    "customertype"
+]
 
 # METADATA ********************
 
