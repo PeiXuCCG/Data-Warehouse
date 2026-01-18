@@ -1,0 +1,2676 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@pipeline().parameters.job_configuration",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_paymentterms', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_paymentterms",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"description\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"code\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PaymentTerms",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PaymentTerms_Activity",
+              "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PaymentTerms",
+              "dependsOn": [
+                {
+                  "activity": "PaymentTerms_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_currency', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_currency",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"description\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"code\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Currency",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Currency_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_PaymentTerms",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Currency",
+              "dependsOn": [
+                {
+                  "activity": "Currency_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salespersonpurchaser', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_salespersonpurchaser",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\", \"name\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"jobtitle\":[\"jobtitle\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"name\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalespersonPurchaser",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalespersonPurchaser_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Currency",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
+              "dependsOn": [
+                {
+                  "activity": "SalespersonPurchaser_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_location', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_location",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"code\", \"name\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"county\":[\"county\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"code\", \"name\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Location",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "code",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Location_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Location",
+              "dependsOn": [
+                {
+                  "activity": "Location_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_glaccount', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_glaccount",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"name\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"accounttype\":[\"accounttype\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"accountcategory\":[\"accountcategory\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"name\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "GLAccount",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "GLAccount_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Location",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_GLAccount",
+              "dependsOn": [
+                {
+                  "activity": "GLAccount_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_glentry', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_glentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"glaccountno\":[\"glaccountno\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"entryno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "GLEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "GLEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_GLAccount",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_GLEntry",
+              "dependsOn": [
+                {
+                  "activity": "GLEntry_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_customer', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_customer",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"originating_company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"contacttype\":[\"contacttype\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\", \"mobilephoneno\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Customer",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Customer_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_GLEntry",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Customer",
+              "dependsOn": [
+                {
+                  "activity": "Customer_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_custledgerentry', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_custledgerentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"customerno\":[\"customerno\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"entryno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "CustLedgerEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "CustLedgerEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Customer",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_CustLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "CustLedgerEntry_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_vendor', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_vendor",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"vendorpostinggroup\":[\"vendorpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"purchasercode\":[\"purchasercode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"originating_company\",\"source_system\"]},{\"paytovendorno\":[\"paytovendorno\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\", \"mobilephoneno\", \"abn\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Vendor",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Vendor_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_CustLedgerEntry",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Vendor",
+              "dependsOn": [
+                {
+                  "activity": "Vendor_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_vendorledgerentry', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_vendorledgerentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"buyfromvendorno\":[\"buyfromvendorno\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"purchasercode\":[\"purchasercode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"entryno\", \"vendorno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "VendorLedgerEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "VendorLedgerEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Vendor",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "VendorLedgerEntry_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_item', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_item",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"baseunitofmeasure\":[\"baseunitofmeasure\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"shelfno\":[\"shelfno\",\"originating_company\",\"source_system\"]},{\"itemdiscgroup\":[\"itemdiscgroup\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"countryregionpurchasedcode\":[\"countryregionpurchasedcode\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"flushingmethod\":[\"flushingmethod\",\"originating_company\",\"source_system\"]},{\"salesunitofmeasure\":[\"salesunitofmeasure\",\"originating_company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"originating_company\",\"source_system\"]},{\"manufacturingpolicy\":[\"manufacturingpolicy\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"itemtrackingcode\":[\"itemtrackingcode\",\"originating_company\",\"source_system\"]},{\"subscriptionoption\":[\"subscriptionoption\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Item",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Item_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Item",
+              "dependsOn": [
+                {
+                  "activity": "Item_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_itemledgerentry', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_itemledgerentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"entryno\", \"itemno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"globaldimension1code\":[\"globaldimension1code\",\"originating_company\",\"source_system\"]},{\"globaldimension2code\":[\"globaldimension2code\",\"originating_company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"itemtracking\":[\"itemtracking\",\"originating_company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"entryno\", \"itemno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ItemLedgerEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "entryno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ItemLedgerEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Item",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
+              "dependsOn": [
+                {
+                  "activity": "ItemLedgerEntry_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesheader', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_salesheader",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"billtocity\":[\"billtocity\",\"originating_company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"originating_company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"vatcountryregioncode\":[\"vatcountryregioncode\",\"originating_company\",\"source_system\"]},{\"selltocity\":[\"selltocity\",\"originating_company\",\"source_system\"]},{\"billtopostcode\":[\"billtopostcode\",\"originating_company\",\"source_system\"]},{\"billtocounty\":[\"billtocounty\",\"originating_company\",\"source_system\"]},{\"billtocountryregioncode\":[\"billtocountryregioncode\",\"originating_company\",\"source_system\"]},{\"selltopostcode\":[\"selltopostcode\",\"originating_company\",\"source_system\"]},{\"selltocounty\":[\"selltocounty\",\"originating_company\",\"source_system\"]},{\"selltocountryregioncode\":[\"selltocountryregioncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"prepmtpaymenttermscode\":[\"prepmtpaymenttermscode\",\"originating_company\",\"source_system\"]},{\"selltocontactno\":[\"selltocontactno\",\"originating_company\",\"source_system\"]},{\"billtocontactno\":[\"billtocontactno\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"shippingadvice\":[\"shippingadvice\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesHeader",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesHeader_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesHeader",
+              "dependsOn": [
+                {
+                  "activity": "SalesHeader_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesline', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_salesline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"purchaseorderno\":[\"purchaseorderno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"taxcategory\":[\"taxcategory\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"vatidentifier\":[\"vatidentifier\",\"originating_company\",\"source_system\"]},{\"prepmtvatcalctype\":[\"prepmtvatcalctype\",\"originating_company\",\"source_system\"]},{\"dimensionsetid\":[\"dimensionsetid\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"originating_company\",\"source_system\"]},{\"shippingagentservicecode\":[\"shippingagentservicecode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesHeader",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesLine",
+              "dependsOn": [
+                {
+                  "activity": "SalesLine_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchaseheader', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_purchaseheader",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"buyfromvendorno\":[\"buyfromvendorno\",\"originating_company\",\"source_system\"]},{\"paytovendorno\":[\"paytovendorno\",\"originating_company\",\"source_system\"]},{\"paytocity\":[\"paytocity\",\"originating_company\",\"source_system\"]},{\"shiptocode\":[\"shiptocode\",\"originating_company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"vendorpostinggroup\":[\"vendorpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"purchasercode\":[\"purchasercode\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"vatcountryregioncode\":[\"vatcountryregioncode\",\"originating_company\",\"source_system\"]},{\"buyfromcity\":[\"buyfromcity\",\"originating_company\",\"source_system\"]},{\"paytopostcode\":[\"paytopostcode\",\"originating_company\",\"source_system\"]},{\"paytocounty\":[\"paytocounty\",\"originating_company\",\"source_system\"]},{\"buyfrompostcode\":[\"buyfrompostcode\",\"originating_company\",\"source_system\"]},{\"buyfromcounty\":[\"buyfromcounty\",\"originating_company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"originating_company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"originating_company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"prepmtpaymenttermscode\":[\"prepmtpaymenttermscode\",\"originating_company\",\"source_system\"]},{\"buyfromcontactno\":[\"buyfromcontactno\",\"originating_company\",\"source_system\"]},{\"paytocontactno\":[\"paytocontactno\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchaseHeader",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PurchaseHeader_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesLine",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchaseHeader",
+              "dependsOn": [
+                {
+                  "activity": "PurchaseHeader_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchaseline', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_purchaseline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"buyfromvendorno\":[\"buyfromvendorno\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"paytovendorno\":[\"paytovendorno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"vatidentifier\":[\"vatidentifier\",\"originating_company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"originating_company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"originating_company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"originating_company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchaseLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PurchaseLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_PurchaseHeader",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchaseLine",
+              "dependsOn": [
+                {
+                  "activity": "PurchaseLine_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesinvoiceheader', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_salesinvoiceheader",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"billtocity\":[\"billtocity\",\"originating_company\",\"source_system\"]},{\"billtocontact\":[\"billtocontact\",\"originating_company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"originating_company\",\"source_system\"]},{\"shiptocontact\":[\"shiptocontact\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcountryregioncode\":[\"vatcountryregioncode\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"selltocity\":[\"selltocity\",\"originating_company\",\"source_system\"]},{\"billtopostcode\":[\"billtopostcode\",\"originating_company\",\"source_system\"]},{\"billtocounty\":[\"billtocounty\",\"originating_company\",\"source_system\"]},{\"billtocountryregioncode\":[\"billtocountryregioncode\",\"originating_company\",\"source_system\"]},{\"selltopostcode\":[\"selltopostcode\",\"originating_company\",\"source_system\"]},{\"selltocounty\":[\"selltocounty\",\"originating_company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"originating_company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"originating_company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"originating_company\",\"source_system\"]},{\"preassignedno\":[\"preassignedno\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"prepaymentorderno\":[\"prepaymentorderno\",\"originating_company\",\"source_system\"]},{\"dimensionsetid\":[\"dimensionsetid\",\"originating_company\",\"source_system\"]},{\"custledgerentryno\":[\"custledgerentryno\",\"originating_company\",\"source_system\"]},{\"selltocontactno\":[\"selltocontactno\",\"originating_company\",\"source_system\"]},{\"billtocontactno\":[\"billtocontactno\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesInvoiceHeader",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesInvoiceHeader_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_PurchaseLine",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesInvoiceHeader",
+              "dependsOn": [
+                {
+                  "activity": "SalesInvoiceHeader_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_salesinvoiceline', 'view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_salesinvoiceline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"shipmentno\":[\"shipmentno\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"taxcategory\":[\"taxcategory\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatidentifier\":[\"vatidentifier\",\"originating_company\",\"source_system\"]},{\"funder\":[\"funder\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "SalesInvoiceLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "SalesInvoiceLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesInvoiceHeader",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_SalesInvoiceLine",
+              "dependsOn": [
+                {
+                  "activity": "SalesInvoiceLine_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchinvheader', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_purchinvheader",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"buyfromvendorno\":[\"buyfromvendorno\",\"originating_company\",\"source_system\"]},{\"paytovendorno\":[\"paytovendorno\",\"originating_company\",\"source_system\"]},{\"paytocity\":[\"paytocity\",\"originating_company\",\"source_system\"]},{\"paytocontact\":[\"paytocontact\",\"originating_company\",\"source_system\"]},{\"shiptocode\":[\"shiptocode\",\"originating_company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"originating_company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"vendorpostinggroup\":[\"vendorpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"invoicedisccode\":[\"invoicedisccode\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"purchasercode\":[\"purchasercode\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"vendorinvoiceno\":[\"vendorinvoiceno\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"vatcountryregioncode\":[\"vatcountryregioncode\",\"originating_company\",\"source_system\"]},{\"buyfromcity\":[\"buyfromcity\",\"originating_company\",\"source_system\"]},{\"buyfromcontact\":[\"buyfromcontact\",\"originating_company\",\"source_system\"]},{\"paytopostcode\":[\"paytopostcode\",\"originating_company\",\"source_system\"]},{\"paytocounty\":[\"paytocounty\",\"originating_company\",\"source_system\"]},{\"paytocountryregioncode\":[\"paytocountryregioncode\",\"originating_company\",\"source_system\"]},{\"buyfrompostcode\":[\"buyfrompostcode\",\"originating_company\",\"source_system\"]},{\"buyfromcounty\":[\"buyfromcounty\",\"originating_company\",\"source_system\"]},{\"buyfromcountryregioncode\":[\"buyfromcountryregioncode\",\"originating_company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"originating_company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"originating_company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]},{\"preassignedno\":[\"preassignedno\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"prepaymentorderno\":[\"prepaymentorderno\",\"originating_company\",\"source_system\"]},{\"quoteno\":[\"quoteno\",\"originating_company\",\"source_system\"]},{\"creditorno\":[\"creditorno\",\"originating_company\",\"source_system\"]},{\"dimensionsetid\":[\"dimensionsetid\",\"originating_company\",\"source_system\"]},{\"remittocode\":[\"remittocode\",\"originating_company\",\"source_system\"]},{\"vendorledgerentryno\":[\"vendorledgerentryno\",\"originating_company\",\"source_system\"]},{\"buyfromcontactno\":[\"buyfromcontactno\",\"originating_company\",\"source_system\"]},{\"paytocontactno\":[\"paytocontactno\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"pricecalculationmethod\":[\"pricecalculationmethod\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"no\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchInvHeader",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PurchInvHeader_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_SalesInvoiceLine",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchInvHeader",
+              "dependsOn": [
+                {
+                  "activity": "PurchInvHeader_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_purchinvline', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_purchinvline",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"buyfromvendorno\":[\"buyfromvendorno\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"shortcutdimension2code\":[\"shortcutdimension2code\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"receiptno\":[\"receiptno\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"paytovendorno\":[\"paytovendorno\",\"originating_company\",\"source_system\"]},{\"vendoritemno\":[\"vendoritemno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatidentifier\":[\"vatidentifier\",\"originating_company\",\"source_system\"]},{\"dimensionsetid\":[\"dimensionsetid\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]},{\"jobcurrencycode\":[\"jobcurrencycode\",\"originating_company\",\"source_system\"]},{\"deferralcode\":[\"deferralcode\",\"originating_company\",\"source_system\"]},{\"allocationaccountno\":[\"allocationaccountno\",\"originating_company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"originating_company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"originating_company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"originating_company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"purchasingcode\":[\"purchasingcode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"documentno\", \"lineno\", \"originating_company\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "PurchInvLine",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "documentno",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "PurchInvLine_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_PurchInvHeader",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_PurchInvLine",
+              "dependsOn": [
+                {
+                  "activity": "PurchInvLine_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_prescriber', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_prescriber",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"contactno\":[\"contactno\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"county\":[\"county\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\", \"mobilephoneno\", \"abn\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Prescriber",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Prescriber_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_PurchInvLine",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Prescriber",
+              "dependsOn": [
+                {
+                  "activity": "Prescriber_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_facility', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_facility",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"contactno\":[\"contactno\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"county\":[\"county\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\", \"mobilephoneno\", \"abn\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "Facility",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "Facility_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Prescriber",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Facility",
+              "dependsOn": [
+                {
+                  "activity": "Facility_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_fundingbody', '_view')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "contract_fundingbody",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"contactno\":[\"contactno\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"county\":[\"county\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[\"phoneno\", \"address\"]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "FundingBody",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "FundingBody_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_Facility",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "Load_Historical_Data",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "job_configuration": {
+        "type": "array",
+        "defaultValue": [
+          "Contracts"
+        ]
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
+      },
+      "wait_seconds": {
+        "type": "int",
+        "defaultValue": 1
+      },
+      "skip_activities": {
+        "type": "array",
+        "defaultValue": []
+      },
+      "source_lakehouse": {
+        "type": "string",
+        "defaultValue": "cj_contracts"
+      },
+      "source_schema": {
+        "type": "string",
+        "defaultValue": "contracts"
+      },
+      "target_lakehouse": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "bronze"
+      }
+    }
+  }
+}

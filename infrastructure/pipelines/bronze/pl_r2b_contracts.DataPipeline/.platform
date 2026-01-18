@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "pl_r2b_contracts"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f6da8377-6f9e-8752-4ba4-280071c58bd4"
+  }
+}
