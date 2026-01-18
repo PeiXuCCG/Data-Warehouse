@@ -24,11 +24,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -39,11 +45,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -132,11 +144,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -147,11 +165,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -247,11 +271,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -262,11 +292,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -362,11 +398,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -377,11 +419,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -477,11 +525,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -492,11 +546,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -592,11 +652,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -607,11 +673,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -707,11 +779,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -722,11 +800,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -822,11 +906,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -837,11 +927,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -937,11 +1033,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -952,11 +1054,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1052,11 +1160,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1067,11 +1181,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1167,11 +1287,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1182,11 +1308,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1282,11 +1414,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1297,11 +1435,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1397,11 +1541,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1412,11 +1562,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1512,11 +1668,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1527,11 +1689,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1627,11 +1795,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1642,11 +1816,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1742,11 +1922,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1757,11 +1943,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1857,11 +2049,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1872,11 +2070,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -1972,11 +2176,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -1987,11 +2197,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2087,11 +2303,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -2102,11 +2324,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2202,11 +2430,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -2217,11 +2451,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2317,11 +2557,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -2332,11 +2578,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2432,11 +2684,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -2447,11 +2705,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2547,11 +2811,17 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "@pipeline().parameters.source_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.source_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "@pipeline().parameters.source_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.source_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "source_table": {
@@ -2562,11 +2832,17 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "@pipeline().parameters.target_lakehouse",
+                    "value": {
+                      "value": "@pipeline().parameters.target_lakehouse",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "@pipeline().parameters.target_schema",
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
                     "type": "string"
                   },
                   "target_table": {
@@ -2665,11 +2941,11 @@
       },
       "target_lakehouse": {
         "type": "string",
-        "defaultValue": "@pipeline().parameters.target_lakehouse"
+        "defaultValue": "lh_bronze"
       },
       "target_schema": {
         "type": "string",
-        "defaultValue": "@pipeline().parameters.target_schema"
+        "defaultValue": "bronze"
       }
     }
   }
