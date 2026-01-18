@@ -70,7 +70,8 @@ target_schema = "bronze"
 target_table = "contract_customer"
 
 # source tables
-source_schema = "raw"
+source_lakehouse="contracts"
+source_schema = "contracts"
 source_table = "customer_view"
 source_system = "Contracts"
 
@@ -224,8 +225,6 @@ def deduplicate_func(df):
 # CELL ********************
 
 def transform_func(df):
-
-
    
     # Transform
     new_df = transform_using_schema_bridge(
@@ -248,10 +247,10 @@ def transform_func(df):
 # CELL ********************
 
 # %%
-if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
-    df = spark.read.table(f"{source_schema}.{source_table}")
+if spark.catalog.tableExists(f"{source_lakehouse}.{source_schema}.{source_table}"):
+    df = spark.read.table(f"{source_lakehouse}{source_schema}.{source_table}")
 else:
-   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
+   mssparkutils.notebook.exit(f"{source_lakehouse}.{source_schema}.{source_table} doesn't exist in raw")
 
 # METADATA ********************
 

@@ -24,26 +24,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_paymentterms', '_view')",
+                      "value": "vw_paymentterms",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -132,26 +132,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_currency', '_view')",
+                      "value": "vw_currency",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -247,26 +247,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_salespersonpurchaser', '_view')",
+                      "value": "vw_salespersonpurchaser",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -362,26 +362,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_location', '_view')",
+                      "value": "vw_location",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -477,26 +477,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_glaccount', '_view')",
+                      "value": "vw_glaccount",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -592,26 +592,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_glentry', '_view')",
+                      "value": "vw_glentry",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -707,26 +707,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_customer', '_view')",
+                      "value": "vw_customer",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -822,26 +822,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_custledgerentry', '_view')",
+                      "value": "vw_custledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -937,26 +937,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_vendor', '_view')",
+                      "value": "vw_vendor",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1052,26 +1052,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_vendorledgerentry', '_view')",
+                      "value": "vw_vendorledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1167,26 +1167,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_item', '_view')",
+                      "value": "vw_item",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1282,26 +1282,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_itemledgerentry', '_view')",
+                      "value": "vw_itemledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1397,26 +1397,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_salesheader', '_view')",
+                      "value": "vw_salesheader",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1512,26 +1512,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_salesline', '_view')",
+                      "value": "vw_salesline",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1627,26 +1627,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_purchaseheader', '_view')",
+                      "value": "vw_purchaseheader",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1742,26 +1742,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_purchaseline', '_view')",
+                      "value": "vw_purchaseline",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1857,26 +1857,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_salesinvoiceheader', '_view')",
+                      "value": "vw_salesinvoiceheader",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -1972,26 +1972,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_salesinvoiceline', 'view')",
+                      "value": "vw_salesinvoiceline'",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2087,26 +2087,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_purchinvheader', '_view')",
+                      "value": "vw_purchinvheader",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2202,26 +2202,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_purchinvline', '_view')",
+                      "value": "vw_purchinvline",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2317,26 +2317,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_prescriber', '_view')",
+                      "value": "vw_prescriber",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2432,26 +2432,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_facility', '_view')",
+                      "value": "vw_facility",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2547,26 +2547,26 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.source_lakehouse",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "raw",
+                    "value": "@pipeline().parameters.source_schema",
                     "type": "string"
                   },
                   "source_table": {
                     "value": {
-                      "value": "@concat(item(),'_fundingbody', '_view')",
+                      "value": "vw_fundingbody",
                       "type": "Expression"
                     },
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": "lh_bronze",
+                    "value": "@pipeline().parameters.target_lakehouse",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": "bronze",
+                    "value": "@pipeline().parameters.target_schema",
                     "type": "string"
                   },
                   "target_table": {
@@ -2665,11 +2665,11 @@
       },
       "target_lakehouse": {
         "type": "string",
-        "defaultValue": "lh_bronze"
+        "defaultValue": "@pipeline().parameters.target_lakehouse"
       },
       "target_schema": {
         "type": "string",
-        "defaultValue": "bronze"
+        "defaultValue": "@pipeline().parameters.target_schema"
       }
     }
   }
