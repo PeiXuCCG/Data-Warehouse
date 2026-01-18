@@ -102,7 +102,8 @@ def build_pipeline_jsons(output_path, job_config, job_name, source_lakehouse, so
 
 if __name__ == "__main__":
     # Example usage:
-    
+    workflow_type = sys.argv[1]
+
     bc_job_name = "Load_Data"
     bc_notebook_id =  "11363096-0db8-9724-4979-fb4b00909b73" 
     bc_table_prefix = "bc" 
@@ -126,8 +127,16 @@ if __name__ == "__main__":
     ]
     historical_path_to_excel = "../documentation/workflow/historical_bronze_workflow_mapping.xlsx"
 
-    source_lakehouse = "lh_bronze"
-    source_schema = "raw"
+    contracts_job_name = "Contracts_Load_Data"
+    contracts_job_configuration = ["Contracts"]
+    contracts_notebook_id =  "d3c2a0ef-cc3b-862b-4552-5ea28821bd0c" 
+    contracts_table_prefix = "contracts" 
+    contracts_job_configuration = [
+        "Contracts"
+    ]
+    contracts_path_to_excel = "../documentation/workflow/contracts_bronze_workflow_mapping.xlsx"
+
+
     target_lakehouse = "lh_bronze"
     target_schema = "bronze"
     
@@ -135,7 +144,7 @@ if __name__ == "__main__":
     
     output_path = "pipeline-content"
       
-    workflow_type = sys.argv[1]
+   
 
     if workflow_type == "bc":
         job_configuration = bc_job_configuration
@@ -143,12 +152,24 @@ if __name__ == "__main__":
         notebook_id = bc_notebook_id
         table_prefix = bc_table_prefix
         path_to_excel = bc_path_to_excel
+        source_lakehouse = "lh_bronze"
+        source_schema = "raw"
     elif workflow_type == "historical":
         job_configuration = historical_job_configuration
         job_name = historical_job_name
         notebook_id = historical_notebook_id
         table_prefix = historical_table_prefix
         path_to_excel = historical_path_to_excel
+        source_lakehouse = "lh_bronze"
+        source_schema = "raw"
+    elif workflow_type == "contracts":
+        job_configuration = contracts_job_configuration
+        job_name = contracts_job_name
+        notebook_id = contracts_notebook_id
+        table_prefix = contracts_table_prefix
+        path_to_excel = contracts_path_to_excel
+        source_lakehouse = "contracts"
+        source_schema = "contracts"  
     else:
         raise Exception("Unknown workflow generation")
 
