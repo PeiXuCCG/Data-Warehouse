@@ -72,6 +72,7 @@ import sys
 from notebookutils import mssparkutils
 import com.microsoft.spark.fabric
 from com.microsoft.spark.fabric.Constants import Constants
+from functools import reduce
 
 # METADATA ********************
 
@@ -126,6 +127,7 @@ target_schema = "silver"
 
 bc_prefix = "bc_"
 historical_prefix = "historical_"
+contracts_prefix = "contract_"
 
 
 table = "customer"
@@ -283,21 +285,42 @@ for object in masterObjects:
 
 # CELL ********************
 
-bc_table = f"{source_lakehouse}.{source_schema}.{bc_prefix}{table}"
-historical_table = f"{source_lakehouse}.{source_schema}.{historical_prefix}{table}"
+tables = {
+    "bc": f"{source_lakehouse}.{source_schema}.{bc_prefix}{table}",
+    "history": f"{source_lakehouse}.{source_schema}.{historical_prefix}{table}",
+    "contracts": f"{source_lakehouse}.{source_schema}.{contracts_prefix}{table}",
+    # add more sources here later
+    # "future": f"{source_lakehouse}.{source_schema}.{future_prefix}{table}",
+}
 
-if spark.catalog.tableExists(bc_table):
-    bc_df = spark.read.table(bc_table)
+# -------------------------------------------------
+# Load only tables that exist
+# -------------------------------------------------
+dfs = {}
 
-if spark.catalog.tableExists(historical_table):
-    history_df = spark.read.table(historical_table).drop("unmapped")
-    
+for name, table_name in tables.items():
+    if spark.catalog.tableExists(table_name):
+        df = spark.read.table(table_name)
 
-if not history_df.isEmpty():
-    source_df = bc_df.unionByName(history_df, allowMissingColumns=True)
-else:
-    source_df = bc_df    
+        # source-specific cleanup
+        if name != "bc" and "unmapped" in df.columns:
+            df = df.drop("unmapped") #don't need to carry the unmapped
 
+        dfs[name] = df
+
+# -------------------------------------------------
+# Validate base source
+# -------------------------------------------------
+if "bc" not in dfs:
+    raise ValueError(f"Base table not found: {tables['bc']}")
+
+# -------------------------------------------------
+# Union all available sources
+# -------------------------------------------------
+source_df = reduce(
+    lambda d1, d2: d1.unionByName(d2, allowMissingColumns=True),
+    dfs.values()
+)
 
 # In[37]:
 
