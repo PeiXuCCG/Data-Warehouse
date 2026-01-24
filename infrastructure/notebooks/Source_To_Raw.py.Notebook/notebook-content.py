@@ -133,9 +133,9 @@ def cleanse(df):
     rename_map = {}
     drop_cols = []
 
-    for col in df.columns:
+    for column in df.columns:
         # Step 1: split on '-' and lowercase
-        base = col.split("-")[0].lower()
+        base = column.split("-")[0].lower()
 
         if '$' in base and "company" not in base:
             #set the prefix to bc2adls for deliverytime 
@@ -146,10 +146,10 @@ def cleanse(df):
 
         # Step 3: Skip predictionconfidence
         if sanitized == "predictionconfidence":
-            drop_cols.append(col)
+            drop_cols.append(column)
             continue
 
-        rename_map[col] = sanitized
+        rename_map[column] = sanitized
 
     # Apply renames safely
     df_cleaned = df
@@ -408,14 +408,14 @@ def align_headers_dynamic(df, master_columns):
     new_master_cols = master_columns.copy()
 
     # ---- 3. Add df columns to master if missing ----
-    for col in df_cols:
-        if col not in new_master_cols:
-            new_master_cols.append(col)
+    for column in df_cols:
+        if column not in new_master_cols:
+            new_master_cols.append(column)
 
     # ---- 4. Add missing df columns as NULL ----
-    for col in new_master_cols:
-        if col not in df_cols:
-            df = df.withColumn(col, lit(None))
+    for column in new_master_cols:
+        if column not in df_cols:
+            df = df.withColumn(column, lit(None))
 
     
     # ---- 5. Rename duplicate columns from source dataframe ----

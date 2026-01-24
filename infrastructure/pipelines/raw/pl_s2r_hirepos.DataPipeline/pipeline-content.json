@@ -230,7 +230,7 @@
           {
             "activity": "S2R_Lakeside_Mobility",
             "dependencyConditions": [
-              "Succeeded"
+              "Completed"
             ]
           }
         ]
