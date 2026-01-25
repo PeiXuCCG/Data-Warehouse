@@ -39,7 +39,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat('Files/deltas/retail/',item().source_path)",
+                      "value": "@concat('retail/',item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -156,7 +156,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat('Files/deltas/kcare/',item().source_path)",
+                      "value": "@concat('kcare/',item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -253,1235 +253,1235 @@
           },
           {
             "target_table": "bc_3plline",
-            "source_path": "Files/deltas/3PLLine-50006"
+            "source_path": "3PLLine-50006"
           },
           {
             "target_table": "bc_accountcategory",
-            "source_path": "Files/deltas/AccountCategory-36953"
+            "source_path": "AccountCategory-36953"
           },
           {
             "target_table": "bc_accountingperiod",
-            "source_path": "Files/deltas/AccountingPeriod-50"
+            "source_path": "AccountingPeriod-50"
           },
           {
             "target_table": "bc_actionmessageentry",
-            "source_path": "Files/deltas/ActionMessageEntry-99000849"
+            "source_path": "ActionMessageEntry-99000849"
           },
           {
             "target_table": "bc_activity",
-            "source_path": "Files/deltas/Activity-5081"
+            "source_path": "Activity-5081"
           },
           {
             "target_table": "bc_activitystep",
-            "source_path": "Files/deltas/ActivityStep-5082"
+            "source_path": "ActivityStep-5082"
           },
           {
             "target_table": "bc_analysisreportchartsetup",
-            "source_path": "Files/deltas/AnalysisReportChartSetup-770"
+            "source_path": "AnalysisReportChartSetup-770"
           },
           {
             "target_table": "bc_approvalcommentline",
-            "source_path": "Files/deltas/ApprovalCommentLine-455"
+            "source_path": "ApprovalCommentLine-455"
           },
           {
             "target_table": "bc_approvalentry",
-            "source_path": "Files/deltas/ApprovalEntry-454"
+            "source_path": "ApprovalEntry-454"
           },
           {
             "target_table": "bc_assembletoorderlink",
-            "source_path": "Files/deltas/AssembletoOrderLink-904"
+            "source_path": "AssembletoOrderLink-904"
           },
           {
             "target_table": "bc_assemblycommentline",
-            "source_path": "Files/deltas/AssemblyCommentLine-906"
+            "source_path": "AssemblyCommentLine-906"
           },
           {
             "target_table": "bc_assemblyheader",
-            "source_path": "Files/deltas/AssemblyHeader-900"
+            "source_path": "AssemblyHeader-900"
           },
           {
             "target_table": "bc_assemblyline",
-            "source_path": "Files/deltas/AssemblyLine-901"
+            "source_path": "AssemblyLine-901"
           },
           {
             "target_table": "bc_assemblysetup",
-            "source_path": "Files/deltas/AssemblySetup-905"
+            "source_path": "AssemblySetup-905"
           },
           {
             "target_table": "bc_bomcomponent",
-            "source_path": "Files/deltas/BOMComponent-90"
+            "source_path": "BOMComponent-90"
           },
           {
             "target_table": "bc_basecalendar",
-            "source_path": "Files/deltas/BaseCalendar-7600"
+            "source_path": "BaseCalendar-7600"
           },
           {
             "target_table": "bc_basecalendarchange",
-            "source_path": "Files/deltas/BaseCalendarChange-7601"
+            "source_path": "BaseCalendarChange-7601"
           },
           {
             "target_table": "bc_bin",
-            "source_path": "Files/deltas/Bin-7354"
+            "source_path": "Bin-7354"
           },
           {
             "target_table": "bc_bincontent",
-            "source_path": "Files/deltas/BinContent-7302"
+            "source_path": "BinContent-7302"
           },
           {
             "target_table": "bc_bincreationwkshname",
-            "source_path": "Files/deltas/BinCreationWkshName-7337"
+            "source_path": "BinCreationWkshName-7337"
           },
           {
             "target_table": "bc_bincreationworksheetline",
-            "source_path": "Files/deltas/BinCreationWorksheetLine-7338"
+            "source_path": "BinCreationWorksheetLine-7338"
           },
           {
             "target_table": "bc_bintype",
-            "source_path": "Files/deltas/BinType-7303"
+            "source_path": "BinType-7303"
           },
           {
             "target_table": "bc_calendarentry",
-            "source_path": "Files/deltas/CalendarEntry-99000757"
+            "source_path": "CalendarEntry-99000757"
           },
           {
             "target_table": "bc_campaign",
-            "source_path": "Files/deltas/Campaign-5071"
+            "source_path": "Campaign-5071"
           },
           {
             "target_table": "bc_campaignstatus",
-            "source_path": "Files/deltas/CampaignStatus-5073"
+            "source_path": "CampaignStatus-5073"
           },
           {
             "target_table": "bc_campaigntargetgroup",
-            "source_path": "Files/deltas/CampaignTargetGroup-7030"
+            "source_path": "CampaignTargetGroup-7030"
           },
           {
             "target_table": "bc_capacityledgerentry",
-            "source_path": "Files/deltas/CapacityLedgerEntry-5832"
+            "source_path": "CapacityLedgerEntry-5832"
           },
           {
             "target_table": "bc_capacityunitofmeasure",
-            "source_path": "Files/deltas/CapacityUnitofMeasure-99000780"
+            "source_path": "CapacityUnitofMeasure-99000780"
           },
           {
             "target_table": "bc_cashflowaccount",
-            "source_path": "Files/deltas/CashFlowAccount-841"
+            "source_path": "CashFlowAccount-841"
           },
           {
             "target_table": "bc_cashflowchartsetup",
-            "source_path": "Files/deltas/CashFlowChartSetup-869"
+            "source_path": "CashFlowChartSetup-869"
           },
           {
             "target_table": "bc_cashflowforecast",
-            "source_path": "Files/deltas/CashFlowForecast-840"
+            "source_path": "CashFlowForecast-840"
           },
           {
             "target_table": "bc_cashflowforecastentry",
-            "source_path": "Files/deltas/CashFlowForecastEntry-847"
+            "source_path": "CashFlowForecastEntry-847"
           },
           {
             "target_table": "bc_cashflowreportselection",
-            "source_path": "Files/deltas/CashFlowReportSelection-856"
+            "source_path": "CashFlowReportSelection-856"
           },
           {
             "target_table": "bc_cashflowsetup",
-            "source_path": "Files/deltas/CashFlowSetup-843"
+            "source_path": "CashFlowSetup-843"
           },
           {
             "target_table": "bc_cashflowworksheetline",
-            "source_path": "Files/deltas/CashFlowWorksheetLine-846"
+            "source_path": "CashFlowWorksheetLine-846"
           },
           {
             "target_table": "bc_closeopportunitycode",
-            "source_path": "Files/deltas/CloseOpportunityCode-5094"
+            "source_path": "CloseOpportunityCode-5094"
           },
           {
             "target_table": "bc_columnlayout",
-            "source_path": "Files/deltas/ColumnLayout-334"
+            "source_path": "ColumnLayout-334"
           },
           {
             "target_table": "bc_commentline",
-            "source_path": "Files/deltas/CommentLine-97"
+            "source_path": "CommentLine-97"
           },
           {
             "target_table": "bc_companyinformation",
-            "source_path": "Files/deltas/CompanyInformation-79"
+            "source_path": "CompanyInformation-79"
           },
           {
             "target_table": "bc_contact",
-            "source_path": "Files/deltas/Contact-5050"
+            "source_path": "Contact-5050"
           },
           {
             "target_table": "bc_contactaltaddress",
-            "source_path": "Files/deltas/ContactAltAddress-5051"
+            "source_path": "ContactAltAddress-5051"
           },
           {
             "target_table": "bc_contactduplicate",
-            "source_path": "Files/deltas/ContactDuplicate-5085"
+            "source_path": "ContactDuplicate-5085"
           },
           {
             "target_table": "bc_contactindustrygroup",
-            "source_path": "Files/deltas/ContactIndustryGroup-5058"
+            "source_path": "ContactIndustryGroup-5058"
           },
           {
             "target_table": "bc_costadjmtactionmessage",
-            "source_path": "Files/deltas/CostAdjmtActionMessage-5842"
+            "source_path": "CostAdjmtActionMessage-5842"
           },
           {
             "target_table": "bc_countryregion",
-            "source_path": "Files/deltas/CountryRegion-9"
+            "source_path": "CountryRegion-9"
           },
           {
             "target_table": "bc_county",
-            "source_path": "Files/deltas/County-28004"
+            "source_path": "County-28004"
           },
           {
             "target_table": "bc_currency",
-            "source_path": "Files/deltas/Currency-4"
+            "source_path": "Currency-4"
           },
           {
             "target_table": "bc_currencyexchangerate",
-            "source_path": "Files/deltas/CurrencyExchangeRate-330"
+            "source_path": "CurrencyExchangeRate-330"
           },
           {
             "target_table": "bc_custinvoicedisc",
-            "source_path": "Files/deltas/CustInvoiceDisc-19"
+            "source_path": "CustInvoiceDisc-19"
           },
           {
             "target_table": "bc_custledgerentry",
-            "source_path": "Files/deltas/CustLedgerEntry-21"
+            "source_path": "CustLedgerEntry-21"
           },
           {
             "target_table": "bc_customer",
-            "source_path": "Files/deltas/Customer-18"
+            "source_path": "Customer-18"
           },
           {
             "target_table": "bc_customerdiscountgroup",
-            "source_path": "Files/deltas/CustomerDiscountGroup-340"
+            "source_path": "CustomerDiscountGroup-340"
           },
           {
             "target_table": "bc_customerpostinggroup",
-            "source_path": "Files/deltas/CustomerPostingGroup-92"
+            "source_path": "CustomerPostingGroup-92"
           },
           {
             "target_table": "bc_customerpricegroup",
-            "source_path": "Files/deltas/CustomerPriceGroup-6"
+            "source_path": "CustomerPriceGroup-6"
           },
           {
             "target_table": "bc_customizedcalendarentry",
-            "source_path": "Files/deltas/CustomizedCalendarEntry-7603"
+            "source_path": "CustomizedCalendarEntry-7603"
           },
           {
             "target_table": "bc_difotsalesline",
-            "source_path": "Files/deltas/DIFOTSalesLine-50010"
+            "source_path": "DIFOTSalesLine-50010"
           },
           {
             "target_table": "bc_difotshipmentline",
-            "source_path": "Files/deltas/DIFOTShipmentLine-50011"
+            "source_path": "DIFOTShipmentLine-50011"
           },
           {
             "target_table": "bc_dimensionsetentry",
-            "source_path": "Files/deltas/DimensionSetEntry-480"
+            "source_path": "DimensionSetEntry-480"
           },
           {
             "target_table": "bc_defaultdimension",
-            "source_path": "Files/deltas/DefaultDimension-352"
+            "source_path": "DefaultDimension-352"
           },
           {
             "target_table": "bc_defaultdimensionpriority",
-            "source_path": "Files/deltas/DefaultDimensionPriority-354"
+            "source_path": "DefaultDimensionPriority-354"
           },
           {
             "target_table": "bc_depreciationbook",
-            "source_path": "Files/deltas/DepreciationBook-5611"
+            "source_path": "DepreciationBook-5611"
           },
           {
             "target_table": "bc_depreciationtableheader",
-            "source_path": "Files/deltas/DepreciationTableHeader-5642"
+            "source_path": "DepreciationTableHeader-5642"
           },
           {
             "target_table": "bc_depreciationtableline",
-            "source_path": "Files/deltas/DepreciationTableLine-5643"
+            "source_path": "DepreciationTableLine-5643"
           },
           {
             "target_table": "bc_detailedcustledgentry",
-            "source_path": "Files/deltas/DetailedCustLedgEntry-379"
+            "source_path": "DetailedCustLedgEntry-379"
           },
           {
             "target_table": "bc_detailedvendorledgentry",
-            "source_path": "Files/deltas/DetailedVendorLedgEntry-380"
+            "source_path": "DetailedVendorLedgEntry-380"
           },
           {
             "target_table": "bc_dimension",
-            "source_path": "Files/deltas/Dimension-348"
+            "source_path": "Dimension-348"
           },
           {
             "target_table": "bc_dimensionvalue",
-            "source_path": "Files/deltas/DimensionValue-349"
+            "source_path": "DimensionValue-349"
           },
           {
             "target_table": "bc_edochistoricalmatchingsetup",
-            "source_path": "Files/deltas/EDocHistoricalMatchingSetup-6113"
+            "source_path": "EDocHistoricalMatchingSetup-6113"
           },
           {
             "target_table": "bc_employee",
-            "source_path": "Files/deltas/Employee-5200"
+            "source_path": "Employee-5200"
           },
           {
             "target_table": "bc_errormessage",
-            "source_path": "Files/deltas/ErrorMessage-700"
+            "source_path": "ErrorMessage-700"
           },
           {
             "target_table": "bc_faclass",
-            "source_path": "Files/deltas/FAClass-5607"
+            "source_path": "FAClass-5607"
           },
           {
             "target_table": "bc_fadepreciationbook",
-            "source_path": "Files/deltas/FADepreciationBook-5612"
+            "source_path": "FADepreciationBook-5612"
           },
           {
             "target_table": "bc_fajournalline",
-            "source_path": "Files/deltas/FAJournalLine-5621"
+            "source_path": "FAJournalLine-5621"
           },
           {
             "target_table": "bc_faledgerentry",
-            "source_path": "Files/deltas/FALedgerEntry-5601"
+            "source_path": "FALedgerEntry-5601"
           },
           {
             "target_table": "bc_falocation",
-            "source_path": "Files/deltas/FALocation-5609"
+            "source_path": "FALocation-5609"
           },
           {
             "target_table": "bc_fapostinggroup",
-            "source_path": "Files/deltas/FAPostingGroup-5606"
+            "source_path": "FAPostingGroup-5606"
           },
           {
             "target_table": "bc_fapostingtype",
-            "source_path": "Files/deltas/FAPostingType-5644"
+            "source_path": "FAPostingType-5644"
           },
           {
             "target_table": "bc_fareclassjournalline",
-            "source_path": "Files/deltas/FAReclassJournalLine-5624"
+            "source_path": "FAReclassJournalLine-5624"
           },
           {
             "target_table": "bc_faregister",
-            "source_path": "Files/deltas/FARegister-5617"
+            "source_path": "FARegister-5617"
           },
           {
             "target_table": "bc_fasubclass",
-            "source_path": "Files/deltas/FASubclass-5608"
+            "source_path": "FASubclass-5608"
           },
           {
             "target_table": "bc_financechargeterms",
-            "source_path": "Files/deltas/FinanceChargeTerms-5"
+            "source_path": "FinanceChargeTerms-5"
           },
           {
             "target_table": "bc_fixedasset",
-            "source_path": "Files/deltas/FixedAsset-5600"
+            "source_path": "FixedAsset-5600"
           },
           {
             "target_table": "bc_glaccount",
-            "source_path": "Files/deltas/GLAccount-15"
+            "source_path": "GLAccount-15"
           },
           {
             "target_table": "bc_glaccountcategory",
-            "source_path": "Files/deltas/GLAccountCategory-570"
+            "source_path": "GLAccountCategory-570"
           },
           {
             "target_table": "bc_glaccountsourcecurrency",
-            "source_path": "Files/deltas/GLAccountSourceCurrency-589"
+            "source_path": "GLAccountSourceCurrency-589"
           },
           {
             "target_table": "bc_glbudgetentry",
-            "source_path": "Files/deltas/GLBudgetEntry-96"
+            "source_path": "GLBudgetEntry-96"
           },
           {
             "target_table": "bc_glbudgetname",
-            "source_path": "Files/deltas/GLBudgetName-95"
+            "source_path": "GLBudgetName-95"
           },
           {
             "target_table": "bc_glentry",
-            "source_path": "Files/deltas/GLEntry-17"
+            "source_path": "GLEntry-17"
           },
           {
             "target_table": "bc_glitemledgerrelation",
-            "source_path": "Files/deltas/GLItemLedgerRelation-5823"
+            "source_path": "GLItemLedgerRelation-5823"
           },
           {
             "target_table": "bc_glregister",
-            "source_path": "Files/deltas/GLRegister-45"
+            "source_path": "GLRegister-45"
           },
           {
             "target_table": "bc_gstpurchaseentry",
-            "source_path": "Files/deltas/GSTPurchaseEntry-28160"
+            "source_path": "GSTPurchaseEntry-28160"
           },
           {
             "target_table": "bc_gstsalesentry",
-            "source_path": "Files/deltas/GSTSalesEntry-28161"
+            "source_path": "GSTSalesEntry-28161"
           },
           {
             "target_table": "bc_genbusinesspostinggroup",
-            "source_path": "Files/deltas/GenBusinessPostingGroup-250"
+            "source_path": "GenBusinessPostingGroup-250"
           },
           {
             "target_table": "bc_genjournalline",
-            "source_path": "Files/deltas/GenJournalLine-81"
+            "source_path": "GenJournalLine-81"
           },
           {
             "target_table": "bc_genjournaltemplate",
-            "source_path": "Files/deltas/GenJournalTemplate-80"
+            "source_path": "GenJournalTemplate-80"
           },
           {
             "target_table": "bc_genproductpostinggroup",
-            "source_path": "Files/deltas/GenProductPostingGroup-251"
+            "source_path": "GenProductPostingGroup-251"
           },
           {
             "target_table": "bc_generalpostingsetup",
-            "source_path": "Files/deltas/GeneralPostingSetup-252"
+            "source_path": "GeneralPostingSetup-252"
           },
           {
             "target_table": "bc_industrygroup",
-            "source_path": "Files/deltas/IndustryGroup-5057"
+            "source_path": "IndustryGroup-5057"
           },
           {
             "target_table": "bc_inventoryadjmtentryorder",
-            "source_path": "Files/deltas/InventoryAdjmtEntryOrder-5896"
+            "source_path": "InventoryAdjmtEntryOrder-5896"
           },
           {
             "target_table": "bc_inventorycommentline",
-            "source_path": "Files/deltas/InventoryCommentLine-5748"
+            "source_path": "InventoryCommentLine-5748"
           },
           {
             "target_table": "bc_inventorypostinggroup",
-            "source_path": "Files/deltas/InventoryPostingGroup-94"
+            "source_path": "InventoryPostingGroup-94"
           },
           {
             "target_table": "bc_invtadjapprovallogentry",
-            "source_path": "Files/deltas/InvtAdjApprovalLogEntry-50013"
+            "source_path": "InvtAdjApprovalLogEntry-50013"
           },
           {
             "target_table": "bc_item",
-            "source_path": "Files/deltas/Item-27"
+            "source_path": "Item-27"
           },
           {
             "target_table": "bc_itemapplicationentry",
-            "source_path": "Files/deltas/ItemApplicationEntry-339"
+            "source_path": "ItemApplicationEntry-339"
           },
           {
             "target_table": "bc_itemattribute",
-            "source_path": "Files/deltas/ItemAttribute-7500"
+            "source_path": "ItemAttribute-7500"
           },
           {
             "target_table": "bc_itemattributetranslation",
-            "source_path": "Files/deltas/ItemAttributeTranslation-7502"
+            "source_path": "ItemAttributeTranslation-7502"
           },
           {
             "target_table": "bc_itemattributevalue",
-            "source_path": "Files/deltas/ItemAttributeValue-7501"
+            "source_path": "ItemAttributeValue-7501"
           },
           {
             "target_table": "bc_itemattributevaluemapping",
-            "source_path": "Files/deltas/ItemAttributeValueMapping-7505"
+            "source_path": "ItemAttributeValueMapping-7505"
           },
           {
             "target_table": "bc_itembudgetentry",
-            "source_path": "Files/deltas/ItemBudgetEntry-7134"
+            "source_path": "ItemBudgetEntry-7134"
           },
           {
             "target_table": "bc_itembudgetname",
-            "source_path": "Files/deltas/ItemBudgetName-7132"
+            "source_path": "ItemBudgetName-7132"
           },
           {
             "target_table": "bc_itemcategory",
-            "source_path": "Files/deltas/ItemCategory-5722"
+            "source_path": "ItemCategory-5722"
           },
           {
             "target_table": "bc_itemcharge",
-            "source_path": "Files/deltas/ItemCharge-5800"
+            "source_path": "ItemCharge-5800"
           },
           {
             "target_table": "bc_itemclass",
-            "source_path": "Files/deltas/ItemClass-50024"
+            "source_path": "ItemClass-50024"
           },
           {
             "target_table": "bc_itemdiscountgroup",
-            "source_path": "Files/deltas/ItemDiscountGroup-341"
+            "source_path": "ItemDiscountGroup-341"
           },
           {
             "target_table": "bc_itementryrelation",
-            "source_path": "Files/deltas/ItemEntryRelation-6507"
+            "source_path": "ItemEntryRelation-6507"
           },
           {
             "target_table": "bc_itemidentifier",
-            "source_path": "Files/deltas/ItemIdentifier-7704"
+            "source_path": "ItemIdentifier-7704"
           },
           {
             "target_table": "bc_itemjournalline",
-            "source_path": "Files/deltas/ItemJournalLine-83"
+            "source_path": "ItemJournalLine-83"
           },
           {
             "target_table": "bc_itemledgerentry",
-            "source_path": "Files/deltas/ItemLedgerEntry-32"
+            "source_path": "ItemLedgerEntry-32"
           },
           {
             "target_table": "bc_itemreference",
-            "source_path": "Files/deltas/ItemReference-5777"
+            "source_path": "ItemReference-5777"
           },
           {
             "target_table": "bc_itemregister",
-            "source_path": "Files/deltas/ItemRegister-46"
+            "source_path": "ItemRegister-46"
           },
           {
             "target_table": "bc_itemsubstitution",
-            "source_path": "Files/deltas/ItemSubstitution-5715"
+            "source_path": "ItemSubstitution-5715"
           },
           {
             "target_table": "bc_itemtrackingcode",
-            "source_path": "Files/deltas/ItemTrackingCode-6502"
+            "source_path": "ItemTrackingCode-6502"
           },
           {
             "target_table": "bc_itemtrackingcomment",
-            "source_path": "Files/deltas/ItemTrackingComment-6506"
+            "source_path": "ItemTrackingComment-6506"
           },
           {
             "target_table": "bc_itemunitofmeasure",
-            "source_path": "Files/deltas/ItemUnitofMeasure-5404"
+            "source_path": "ItemUnitofMeasure-5404"
           },
           {
             "target_table": "bc_itemvariant",
-            "source_path": "Files/deltas/ItemVariant-5401"
+            "source_path": "ItemVariant-5401"
           },
           {
             "target_table": "bc_itemvendor",
-            "source_path": "Files/deltas/ItemVendor-99"
+            "source_path": "ItemVendor-99"
           },
           {
             "target_table": "bc_itemforwebshop",
-            "source_path": "Files/deltas/ItemforWebShop-50014"
+            "source_path": "ItemforWebShop-50014"
           },
           {
             "target_table": "bc_jobqueuecategory",
-            "source_path": "Files/deltas/JobQueueCategory-471"
+            "source_path": "JobQueueCategory-471"
           },
           {
             "target_table": "bc_jobqueueentry",
-            "source_path": "Files/deltas/JobQueueEntry-472"
+            "source_path": "JobQueueEntry-472"
           },
           {
             "target_table": "bc_jobqueuelogentry",
-            "source_path": "Files/deltas/JobQueueLogEntry-474"
+            "source_path": "JobQueueLogEntry-474"
           },
           {
             "target_table": "bc_kcarelookups",
-            "source_path": "Files/deltas/KCareLookups-50023"
+            "source_path": "KCareLookups-50023"
           },
           {
             "target_table": "bc_location",
-            "source_path": "Files/deltas/Location-14"
+            "source_path": "Location-14"
           },
           {
             "target_table": "bc_lotnoinformation",
-            "source_path": "Files/deltas/LotNoInformation-6505"
+            "source_path": "LotNoInformation-6505"
           },
           {
             "target_table": "bc_manufacturer",
-            "source_path": "Files/deltas/Manufacturer-5720"
+            "source_path": "Manufacturer-5720"
           },
           {
             "target_table": "bc_manufacturingcommentline",
-            "source_path": "Files/deltas/ManufacturingCommentLine-99000770"
+            "source_path": "ManufacturingCommentLine-99000770"
           },
           {
             "target_table": "bc_manufacturingusertemplate",
-            "source_path": "Files/deltas/ManufacturingUserTemplate-5525"
+            "source_path": "ManufacturingUserTemplate-5525"
           },
           {
             "target_table": "bc_noseries",
-            "source_path": "Files/deltas/NoSeries-308"
+            "source_path": "NoSeries-308"
           },
           {
             "target_table": "bc_noseriesline",
-            "source_path": "Files/deltas/NoSeriesLine-309"
+            "source_path": "NoSeriesLine-309"
           },
           {
             "target_table": "bc_noseriesrelationship",
-            "source_path": "Files/deltas/NoSeriesRelationship-310"
+            "source_path": "NoSeriesRelationship-310"
           },
           {
             "target_table": "bc_nonstockitem",
-            "source_path": "Files/deltas/NonstockItem-5718"
+            "source_path": "NonstockItem-5718"
           },
           {
             "target_table": "bc_odtdefaultdimension",
-            "source_path": "Files/deltas/ODTDefaultDimension-70014246"
+            "source_path": "ODTDefaultDimension-70014246"
           },
           {
             "target_table": "bc_odtrentalcontractheader",
-            "source_path": "Files/deltas/ODTRentalContractHeader-70014220"
+            "source_path": "ODTRentalContractHeader-70014220"
           },
           {
             "target_table": "bc_odtrentalcontractline",
-            "source_path": "Files/deltas/ODTRentalContractLine-70014221"
+            "source_path": "ODTRentalContractLine-70014221"
           },
           {
             "target_table": "bc_odtrentaldeliveryheader",
-            "source_path": "Files/deltas/ODTRentalDeliveryHeader-70014222"
+            "source_path": "ODTRentalDeliveryHeader-70014222"
           },
           {
             "target_table": "bc_odtrentaldeliveryline",
-            "source_path": "Files/deltas/ODTRentalDeliveryLine-70014223"
+            "source_path": "ODTRentalDeliveryLine-70014223"
           },
           {
             "target_table": "bc_odtrentalinvoicingheader",
-            "source_path": "Files/deltas/ODTRentalInvoicingHeader-70014232"
+            "source_path": "ODTRentalInvoicingHeader-70014232"
           },
           {
             "target_table": "bc_odtrentallineinvoice",
-            "source_path": "Files/deltas/ODTRentalLineInvoice-70014266"
+            "source_path": "ODTRentalLineInvoice-70014266"
           },
           {
             "target_table": "bc_odtrentallinerentalamount",
-            "source_path": "Files/deltas/ODTRentalLineRentalAmount-70014217"
+            "source_path": "ODTRentalLineRentalAmount-70014217"
           },
           {
             "target_table": "bc_odtrentalprice",
-            "source_path": "Files/deltas/ODTRentalPrice-70014203"
+            "source_path": "ODTRentalPrice-70014203"
           },
           {
             "target_table": "bc_odtrentalregister",
-            "source_path": "Files/deltas/ODTRentalRegister-70014228"
+            "source_path": "ODTRentalRegister-70014228"
           },
           {
             "target_table": "bc_odtrentalreservationentry",
-            "source_path": "Files/deltas/ODTRentalReservationEntry-70014230"
+            "source_path": "ODTRentalReservationEntry-70014230"
           },
           {
             "target_table": "bc_odtrentalvalueentry",
-            "source_path": "Files/deltas/ODTRentalValueEntry-70014205"
+            "source_path": "ODTRentalValueEntry-70014205"
           },
           {
             "target_table": "bc_onlinemapsetup",
-            "source_path": "Files/deltas/OnlineMapSetup-800"
+            "source_path": "OnlineMapSetup-800"
           },
           {
             "target_table": "bc_opportunity",
-            "source_path": "Files/deltas/Opportunity-5092"
+            "source_path": "Opportunity-5092"
           },
           {
             "target_table": "bc_orderaddress",
-            "source_path": "Files/deltas/OrderAddress-224"
+            "source_path": "OrderAddress-224"
           },
           {
             "target_table": "bc_orderpromisingline",
-            "source_path": "Files/deltas/OrderPromisingLine-99000880"
+            "source_path": "OrderPromisingLine-99000880"
           },
           {
             "target_table": "bc_overdueapprovalentry",
-            "source_path": "Files/deltas/OverdueApprovalEntry-458"
+            "source_path": "OverdueApprovalEntry-458"
           },
           {
             "target_table": "bc_paymentmethod",
-            "source_path": "Files/deltas/PaymentMethod-289"
+            "source_path": "PaymentMethod-289"
           },
           {
             "target_table": "bc_paymentperiod",
-            "source_path": "Files/deltas/PaymentPeriod-685"
+            "source_path": "PaymentPeriod-685"
           },
           {
             "target_table": "bc_paymentterms",
-            "source_path": "Files/deltas/PaymentTerms-3"
+            "source_path": "PaymentTerms-3"
           },
           {
             "target_table": "bc_physinventoryledgerentry",
-            "source_path": "Files/deltas/PhysInventoryLedgerEntry-281"
+            "source_path": "PhysInventoryLedgerEntry-281"
           },
           {
             "target_table": "bc_planningassignment",
-            "source_path": "Files/deltas/PlanningAssignment-99000850"
+            "source_path": "PlanningAssignment-99000850"
           },
           {
             "target_table": "bc_planningcomponent",
-            "source_path": "Files/deltas/PlanningComponent-99000829"
+            "source_path": "PlanningComponent-99000829"
           },
           {
             "target_table": "bc_postcode",
-            "source_path": "Files/deltas/PostCode-225"
+            "source_path": "PostCode-225"
           },
           {
             "target_table": "bc_postedapprovalcommentline",
-            "source_path": "Files/deltas/PostedApprovalCommentLine-457"
+            "source_path": "PostedApprovalCommentLine-457"
           },
           {
             "target_table": "bc_postedapprovalentry",
-            "source_path": "Files/deltas/PostedApprovalEntry-456"
+            "source_path": "PostedApprovalEntry-456"
           },
           {
             "target_table": "bc_postedassembletoorderlink",
-            "source_path": "Files/deltas/PostedAssembletoOrderLink-914"
+            "source_path": "PostedAssembletoOrderLink-914"
           },
           {
             "target_table": "bc_postedassemblyheader",
-            "source_path": "Files/deltas/PostedAssemblyHeader-910"
+            "source_path": "PostedAssemblyHeader-910"
           },
           {
             "target_table": "bc_postedassemblyline",
-            "source_path": "Files/deltas/PostedAssemblyLine-911"
+            "source_path": "PostedAssemblyLine-911"
           },
           {
             "target_table": "bc_postedwhsereceiptheader",
-            "source_path": "Files/deltas/PostedWhseReceiptHeader-7318"
+            "source_path": "PostedWhseReceiptHeader-7318"
           },
           {
             "target_table": "bc_postedwhsereceiptline",
-            "source_path": "Files/deltas/PostedWhseReceiptLine-7319"
+            "source_path": "PostedWhseReceiptLine-7319"
           },
           {
             "target_table": "bc_postedwhseshipmentheader",
-            "source_path": "Files/deltas/PostedWhseShipmentHeader-7322"
+            "source_path": "PostedWhseShipmentHeader-7322"
           },
           {
             "target_table": "bc_postedwhseshipmentline",
-            "source_path": "Files/deltas/PostedWhseShipmentLine-7323"
+            "source_path": "PostedWhseShipmentLine-7323"
           },
           {
             "target_table": "bc_pricelistheader",
-            "source_path": "Files/deltas/PriceListHeader-7000"
+            "source_path": "PriceListHeader-7000"
           },
           {
             "target_table": "bc_pricelistline",
-            "source_path": "Files/deltas/PriceListLine-7001"
+            "source_path": "PriceListLine-7001"
           },
           {
             "target_table": "bc_prodordercapacityneed",
-            "source_path": "Files/deltas/ProdOrderCapacityNeed-5410"
+            "source_path": "ProdOrderCapacityNeed-5410"
           },
           {
             "target_table": "bc_prodordercommentline",
-            "source_path": "Files/deltas/ProdOrderCommentLine-5414"
+            "source_path": "ProdOrderCommentLine-5414"
           },
           {
             "target_table": "bc_prodordercompcmtline",
-            "source_path": "Files/deltas/ProdOrderCompCmtLine-5416"
+            "source_path": "ProdOrderCompCmtLine-5416"
           },
           {
             "target_table": "bc_prodordercomponent",
-            "source_path": "Files/deltas/ProdOrderComponent-5407"
+            "source_path": "ProdOrderComponent-5407"
           },
           {
             "target_table": "bc_prodorderline",
-            "source_path": "Files/deltas/ProdOrderLine-5406"
+            "source_path": "ProdOrderLine-5406"
           },
           {
             "target_table": "bc_prodorderroutingline",
-            "source_path": "Files/deltas/ProdOrderRoutingLine-5409"
+            "source_path": "ProdOrderRoutingLine-5409"
           },
           {
             "target_table": "bc_prodorderroutingtool",
-            "source_path": "Files/deltas/ProdOrderRoutingTool-5411"
+            "source_path": "ProdOrderRoutingTool-5411"
           },
           {
             "target_table": "bc_prodorderrtngcommentline",
-            "source_path": "Files/deltas/ProdOrderRtngCommentLine-5415"
+            "source_path": "ProdOrderRtngCommentLine-5415"
           },
           {
             "target_table": "bc_productionbomcommentline",
-            "source_path": "Files/deltas/ProductionBOMCommentLine-99000776"
+            "source_path": "ProductionBOMCommentLine-99000776"
           },
           {
             "target_table": "bc_productionbomheader",
-            "source_path": "Files/deltas/ProductionBOMHeader-99000771"
+            "source_path": "ProductionBOMHeader-99000771"
           },
           {
             "target_table": "bc_productionbomline",
-            "source_path": "Files/deltas/ProductionBOMLine-99000772"
+            "source_path": "ProductionBOMLine-99000772"
           },
           {
             "target_table": "bc_productionforecastentry",
-            "source_path": "Files/deltas/ProductionForecastEntry-99000852"
+            "source_path": "ProductionForecastEntry-99000852"
           },
           {
             "target_table": "bc_productionforecastname",
-            "source_path": "Files/deltas/ProductionForecastName-99000851"
+            "source_path": "ProductionForecastName-99000851"
           },
           {
             "target_table": "bc_productionorder",
-            "source_path": "Files/deltas/ProductionOrder-5405"
+            "source_path": "ProductionOrder-5405"
           },
           {
             "target_table": "bc_purchcommentline",
-            "source_path": "Files/deltas/PurchCommentLine-43"
+            "source_path": "PurchCommentLine-43"
           },
           {
             "target_table": "bc_purchcommentlinearchive",
-            "source_path": "Files/deltas/PurchCommentLineArchive-5125"
+            "source_path": "PurchCommentLineArchive-5125"
           },
           {
             "target_table": "bc_purchcrmemoentitybuffer",
-            "source_path": "Files/deltas/PurchCrMemoEntityBuffer-5508"
+            "source_path": "PurchCrMemoEntityBuffer-5508"
           },
           {
             "target_table": "bc_purchcrmemohdr",
-            "source_path": "Files/deltas/PurchCrMemoHdr-124"
+            "source_path": "PurchCrMemoHdr-124"
           },
           {
             "target_table": "bc_purchcrmemoline",
-            "source_path": "Files/deltas/PurchCrMemoLine-125"
+            "source_path": "PurchCrMemoLine-125"
           },
           {
             "target_table": "bc_purchinventityaggregate",
-            "source_path": "Files/deltas/PurchInvEntityAggregate-5477"
+            "source_path": "PurchInvEntityAggregate-5477"
           },
           {
             "target_table": "bc_purchinvheader",
-            "source_path": "Files/deltas/PurchInvHeader-122"
+            "source_path": "PurchInvHeader-122"
           },
           {
             "target_table": "bc_purchinvline",
-            "source_path": "Files/deltas/PurchInvLine-123"
+            "source_path": "PurchInvLine-123"
           },
           {
             "target_table": "bc_purchrcptheader",
-            "source_path": "Files/deltas/PurchRcptHeader-120"
+            "source_path": "PurchRcptHeader-120"
           },
           {
             "target_table": "bc_purchrcptline",
-            "source_path": "Files/deltas/PurchRcptLine-121"
+            "source_path": "PurchRcptLine-121"
           },
           {
             "target_table": "bc_purchaseheader",
-            "source_path": "Files/deltas/PurchaseHeader-38"
+            "source_path": "PurchaseHeader-38"
           },
           {
             "target_table": "bc_purchaseheaderarchive",
-            "source_path": "Files/deltas/PurchaseHeaderArchive-5109"
+            "source_path": "PurchaseHeaderArchive-5109"
           },
           {
             "target_table": "bc_purchaseline",
-            "source_path": "Files/deltas/PurchaseLine-39"
+            "source_path": "PurchaseLine-39"
           },
           {
             "target_table": "bc_purchaselinearchive",
-            "source_path": "Files/deltas/PurchaseLineArchive-5110"
+            "source_path": "PurchaseLineArchive-5110"
           },
           {
             "target_table": "bc_purchaselinediscount",
-            "source_path": "Files/deltas/PurchaseLineDiscount-7014"
+            "source_path": "PurchaseLineDiscount-7014"
           },
           {
             "target_table": "bc_purchaseorderentitybuffer",
-            "source_path": "Files/deltas/PurchaseOrderEntityBuffer-5496"
+            "source_path": "PurchaseOrderEntityBuffer-5496"
           },
           {
             "target_table": "bc_purchaseprice",
-            "source_path": "Files/deltas/PurchasePrice-7012"
+            "source_path": "PurchasePrice-7012"
           },
           {
             "target_table": "bc_purchasing",
-            "source_path": "Files/deltas/Purchasing-5721"
+            "source_path": "Purchasing-5721"
           },
           {
             "target_table": "bc_reasoncode",
-            "source_path": "Files/deltas/ReasonCode-231"
+            "source_path": "ReasonCode-231"
           },
           {
             "target_table": "bc_registeredwhseactivityhdr",
-            "source_path": "Files/deltas/RegisteredWhseActivityHdr-5772"
+            "source_path": "RegisteredWhseActivityHdr-5772"
           },
           {
             "target_table": "bc_registeredwhseactivityline",
-            "source_path": "Files/deltas/RegisteredWhseActivityLine-5773"
+            "source_path": "RegisteredWhseActivityLine-5773"
           },
           {
             "target_table": "bc_resledgerentry",
-            "source_path": "Files/deltas/ResLedgerEntry-203"
+            "source_path": "ResLedgerEntry-203"
           },
           {
             "target_table": "bc_reservationentry",
-            "source_path": "Files/deltas/ReservationEntry-337"
+            "source_path": "ReservationEntry-337"
           },
           {
             "target_table": "bc_resourcelocation",
-            "source_path": "Files/deltas/ResourceLocation-5952"
+            "source_path": "ResourceLocation-5952"
           },
           {
             "target_table": "bc_resourceunitofmeasure",
-            "source_path": "Files/deltas/ResourceUnitofMeasure-205"
+            "source_path": "ResourceUnitofMeasure-205"
           },
           {
             "target_table": "bc_responsibilitycenter",
-            "source_path": "Files/deltas/ResponsibilityCenter-5714"
+            "source_path": "ResponsibilityCenter-5714"
           },
           {
             "target_table": "bc_returnreason",
-            "source_path": "Files/deltas/ReturnReason-6635"
+            "source_path": "ReturnReason-6635"
           },
           {
             "target_table": "bc_returnreceiptheader",
-            "source_path": "Files/deltas/ReturnReceiptHeader-6660"
+            "source_path": "ReturnReceiptHeader-6660"
           },
           {
             "target_table": "bc_returnreceiptline",
-            "source_path": "Files/deltas/ReturnReceiptLine-6661"
+            "source_path": "ReturnReceiptLine-6661"
           },
           {
             "target_table": "bc_returnshipmentheader",
-            "source_path": "Files/deltas/ReturnShipmentHeader-6650"
+            "source_path": "ReturnShipmentHeader-6650"
           },
           {
             "target_table": "bc_returnshipmentline",
-            "source_path": "Files/deltas/ReturnShipmentLine-6651"
+            "source_path": "ReturnShipmentLine-6651"
           },
           {
             "target_table": "bc_routingcommentline",
-            "source_path": "Files/deltas/RoutingCommentLine-99000775"
+            "source_path": "RoutingCommentLine-99000775"
           },
           {
             "target_table": "bc_routingheader",
-            "source_path": "Files/deltas/RoutingHeader-99000763"
+            "source_path": "RoutingHeader-99000763"
           },
           {
             "target_table": "bc_routingline",
-            "source_path": "Files/deltas/RoutingLine-99000764"
+            "source_path": "RoutingLine-99000764"
           },
           {
             "target_table": "bc_routinglink",
-            "source_path": "Files/deltas/RoutingLink-99000777"
+            "source_path": "RoutingLink-99000777"
           },
           {
             "target_table": "bc_salescommentline",
-            "source_path": "Files/deltas/SalesCommentLine-44"
+            "source_path": "SalesCommentLine-44"
           },
           {
             "target_table": "bc_salescrmemoentitybuffer",
-            "source_path": "Files/deltas/SalesCrMemoEntityBuffer-5507"
+            "source_path": "SalesCrMemoEntityBuffer-5507"
           },
           {
             "target_table": "bc_salescrmemoheader",
-            "source_path": "Files/deltas/SalesCrMemoHeader-114"
+            "source_path": "SalesCrMemoHeader-114"
           },
           {
             "target_table": "bc_salescrmemoline",
-            "source_path": "Files/deltas/SalesCrMemoLine-115"
+            "source_path": "SalesCrMemoLine-115"
           },
           {
             "target_table": "bc_salescycle",
-            "source_path": "Files/deltas/SalesCycle-5090"
+            "source_path": "SalesCycle-5090"
           },
           {
             "target_table": "bc_salesheader",
-            "source_path": "Files/deltas/SalesHeader-36"
+            "source_path": "SalesHeader-36"
           },
           {
             "target_table": "bc_salesheaderarchive",
-            "source_path": "Files/deltas/SalesHeaderArchive-5107"
+            "source_path": "SalesHeaderArchive-5107"
           },
           {
             "target_table": "bc_salesinvoiceentityaggregate",
-            "source_path": "Files/deltas/SalesInvoiceEntityAggregate-5475"
+            "source_path": "SalesInvoiceEntityAggregate-5475"
           },
           {
             "target_table": "bc_salesinvoiceheader",
-            "source_path": "Files/deltas/SalesInvoiceHeader-112"
+            "source_path": "SalesInvoiceHeader-112"
           },
           {
             "target_table": "bc_salesinvoiceline",
-            "source_path": "Files/deltas/SalesInvoiceLine-113"
+            "source_path": "SalesInvoiceLine-113"
           },
           {
             "target_table": "bc_salesline",
-            "source_path": "Files/deltas/SalesLine-37"
+            "source_path": "SalesLine-37"
           },
           {
             "target_table": "bc_saleslinearchive",
-            "source_path": "Files/deltas/SalesLineArchive-5108"
+            "source_path": "SalesLineArchive-5108"
           },
           {
             "target_table": "bc_saleslinediscount",
-            "source_path": "Files/deltas/SalesLineDiscount-7004"
+            "source_path": "SalesLineDiscount-7004"
           },
           {
             "target_table": "bc_salesorderentitybuffer",
-            "source_path": "Files/deltas/SalesOrderEntityBuffer-5495"
+            "source_path": "SalesOrderEntityBuffer-5495"
           },
           {
             "target_table": "bc_salesprice",
-            "source_path": "Files/deltas/SalesPrice-7002"
+            "source_path": "SalesPrice-7002"
           },
           {
             "target_table": "bc_salesquoteentitybuffer",
-            "source_path": "Files/deltas/SalesQuoteEntityBuffer-5505"
+            "source_path": "SalesQuoteEntityBuffer-5505"
           },
           {
             "target_table": "bc_salesshipmentheader",
-            "source_path": "Files/deltas/SalesShipmentHeader-110"
+            "source_path": "SalesShipmentHeader-110"
           },
           {
             "target_table": "bc_salesshipmentline",
-            "source_path": "Files/deltas/SalesShipmentLine-111"
+            "source_path": "SalesShipmentLine-111"
           },
           {
             "target_table": "bc_salespersonpurchaser",
-            "source_path": "Files/deltas/SalespersonPurchaser-13"
+            "source_path": "SalespersonPurchaser-13"
           },
           {
             "target_table": "bc_salutation",
-            "source_path": "Files/deltas/Salutation-5068"
+            "source_path": "Salutation-5068"
           },
           {
             "target_table": "bc_savedsegmentcriteria",
-            "source_path": "Files/deltas/SavedSegmentCriteria-5098"
+            "source_path": "SavedSegmentCriteria-5098"
           },
           {
             "target_table": "bc_savedsegmentcriterialine",
-            "source_path": "Files/deltas/SavedSegmentCriteriaLine-5099"
+            "source_path": "SavedSegmentCriteriaLine-5099"
           },
           {
             "target_table": "bc_segmentcriterialine",
-            "source_path": "Files/deltas/SegmentCriteriaLine-5097"
+            "source_path": "SegmentCriteriaLine-5097"
           },
           {
             "target_table": "bc_segmentheader",
-            "source_path": "Files/deltas/SegmentHeader-5076"
+            "source_path": "SegmentHeader-5076"
           },
           {
             "target_table": "bc_segmenthistory",
-            "source_path": "Files/deltas/SegmentHistory-5078"
+            "source_path": "SegmentHistory-5078"
           },
           {
             "target_table": "bc_segmentline",
-            "source_path": "Files/deltas/SegmentLine-5077"
+            "source_path": "SegmentLine-5077"
           },
           {
             "target_table": "bc_serialnoinformation",
-            "source_path": "Files/deltas/SerialNoInformation-6504"
+            "source_path": "SerialNoInformation-6504"
           },
           {
             "target_table": "bc_serviceitemgroup",
-            "source_path": "Files/deltas/ServiceItemGroup-5904"
+            "source_path": "ServiceItemGroup-5904"
           },
           {
             "target_table": "bc_shipmentmethod",
-            "source_path": "Files/deltas/ShipmentMethod-10"
+            "source_path": "ShipmentMethod-10"
           },
           {
             "target_table": "bc_shippingagent",
-            "source_path": "Files/deltas/ShippingAgent-291"
+            "source_path": "ShippingAgent-291"
           },
           {
             "target_table": "bc_shippingagentservices",
-            "source_path": "Files/deltas/ShippingAgentServices-5790"
+            "source_path": "ShippingAgentServices-5790"
           },
           {
             "target_table": "bc_shiptoaddress",
-            "source_path": "Files/deltas/ShiptoAddress-222"
+            "source_path": "ShiptoAddress-222"
           },
           {
             "target_table": "bc_shiptoaddresscommentline",
-            "source_path": "Files/deltas/ShiptoAddressCommentLine-50001"
+            "source_path": "ShiptoAddressCommentLine-50001"
           },
           {
             "target_table": "bc_sourcecode",
-            "source_path": "Files/deltas/SourceCode-230"
+            "source_path": "SourceCode-230"
           },
           {
             "target_table": "bc_standardcostworksheet",
-            "source_path": "Files/deltas/StandardCostWorksheet-5841"
+            "source_path": "StandardCostWorksheet-5841"
           },
           {
             "target_table": "bc_standardcostworksheetname",
-            "source_path": "Files/deltas/StandardCostWorksheetName-5840"
+            "source_path": "StandardCostWorksheetName-5840"
           },
           {
             "target_table": "bc_standardgeneraljournal",
-            "source_path": "Files/deltas/StandardGeneralJournal-750"
+            "source_path": "StandardGeneralJournal-750"
           },
           {
             "target_table": "bc_standardgeneraljournalline",
-            "source_path": "Files/deltas/StandardGeneralJournalLine-751"
+            "source_path": "StandardGeneralJournalLine-751"
           },
           {
             "target_table": "bc_stockkeepingunit",
-            "source_path": "Files/deltas/StockkeepingUnit-5700"
+            "source_path": "StockkeepingUnit-5700"
           },
           {
             "target_table": "bc_trackingspecification",
-            "source_path": "Files/deltas/TrackingSpecification-336"
+            "source_path": "TrackingSpecification-336"
           },
           {
             "target_table": "bc_transferheader",
-            "source_path": "Files/deltas/TransferHeader-5740"
+            "source_path": "TransferHeader-5740"
           },
           {
             "target_table": "bc_transferline",
-            "source_path": "Files/deltas/TransferLine-5741"
+            "source_path": "TransferLine-5741"
           },
           {
             "target_table": "bc_transferreceiptheader",
-            "source_path": "Files/deltas/TransferReceiptHeader-5746"
+            "source_path": "TransferReceiptHeader-5746"
           },
           {
             "target_table": "bc_transferreceiptline",
-            "source_path": "Files/deltas/TransferReceiptLine-5747"
+            "source_path": "TransferReceiptLine-5747"
           },
           {
             "target_table": "bc_transferroute",
-            "source_path": "Files/deltas/TransferRoute-5742"
+            "source_path": "TransferRoute-5742"
           },
           {
             "target_table": "bc_transfershipmentheader",
-            "source_path": "Files/deltas/TransferShipmentHeader-5744"
+            "source_path": "TransferShipmentHeader-5744"
           },
           {
             "target_table": "bc_transfershipmentline",
-            "source_path": "Files/deltas/TransferShipmentLine-5745"
+            "source_path": "TransferShipmentLine-5745"
           },
           {
             "target_table": "bc_transportmethod",
-            "source_path": "Files/deltas/TransportMethod-259"
+            "source_path": "TransportMethod-259"
           },
           {
             "target_table": "bc_unitofmeasure",
-            "source_path": "Files/deltas/UnitofMeasure-204"
+            "source_path": "UnitofMeasure-204"
           },
           {
             "target_table": "bc_unplanneddemand",
-            "source_path": "Files/deltas/UnplannedDemand-5520"
+            "source_path": "UnplannedDemand-5520"
           },
           {
             "target_table": "bc_untrackedplanningelement",
-            "source_path": "Files/deltas/UntrackedPlanningElement-99000855"
+            "source_path": "UntrackedPlanningElement-99000855"
           },
           {
             "target_table": "bc_vatbusinesspostinggroup",
-            "source_path": "Files/deltas/VATBusinessPostingGroup-323"
+            "source_path": "VATBusinessPostingGroup-323"
           },
           {
             "target_table": "bc_vatentry",
-            "source_path": "Files/deltas/VATEntry-254"
+            "source_path": "VATEntry-254"
           },
           {
             "target_table": "bc_vatproductpostinggroup",
-            "source_path": "Files/deltas/VATProductPostingGroup-324"
+            "source_path": "VATProductPostingGroup-324"
           },
           {
             "target_table": "bc_valueentry",
-            "source_path": "Files/deltas/ValueEntry-5802"
+            "source_path": "ValueEntry-5802"
           },
           {
             "target_table": "bc_valueentryrelation",
-            "source_path": "Files/deltas/ValueEntryRelation-6508"
+            "source_path": "ValueEntryRelation-6508"
           },
           {
             "target_table": "bc_vendor",
-            "source_path": "Files/deltas/Vendor-23"
+            "source_path": "Vendor-23"
           },
           {
             "target_table": "bc_vendorledgerentry",
-            "source_path": "Files/deltas/VendorLedgerEntry-25"
+            "source_path": "VendorLedgerEntry-25"
           },
           {
             "target_table": "bc_vendorpostinggroup",
-            "source_path": "Files/deltas/VendorPostingGroup-93"
+            "source_path": "VendorPostingGroup-93"
           },
           {
             "target_table": "bc_whtproductpostinggroup",
-            "source_path": "Files/deltas/WHTProductPostingGroup-28041"
+            "source_path": "WHTProductPostingGroup-28041"
           },
           {
             "target_table": "bc_warehouseactivityheader",
-            "source_path": "Files/deltas/WarehouseActivityHeader-5766"
+            "source_path": "WarehouseActivityHeader-5766"
           },
           {
             "target_table": "bc_warehouseactivityline",
-            "source_path": "Files/deltas/WarehouseActivityLine-5767"
+            "source_path": "WarehouseActivityLine-5767"
           },
           {
             "target_table": "bc_warehouseclass",
-            "source_path": "Files/deltas/WarehouseClass-7304"
+            "source_path": "WarehouseClass-7304"
           },
           {
             "target_table": "bc_warehousecommentline",
-            "source_path": "Files/deltas/WarehouseCommentLine-5770"
+            "source_path": "WarehouseCommentLine-5770"
           },
           {
             "target_table": "bc_warehouseemployee",
-            "source_path": "Files/deltas/WarehouseEmployee-7301"
+            "source_path": "WarehouseEmployee-7301"
           },
           {
             "target_table": "bc_warehouseentry",
-            "source_path": "Files/deltas/WarehouseEntry-7312"
+            "source_path": "WarehouseEntry-7312"
           },
           {
             "target_table": "bc_warehousejournalline",
-            "source_path": "Files/deltas/WarehouseJournalLine-7311"
+            "source_path": "WarehouseJournalLine-7311"
           },
           {
             "target_table": "bc_warehousereceiptheader",
-            "source_path": "Files/deltas/WarehouseReceiptHeader-7316"
+            "source_path": "WarehouseReceiptHeader-7316"
           },
           {
             "target_table": "bc_warehousereceiptline",
-            "source_path": "Files/deltas/WarehouseReceiptLine-7317"
+            "source_path": "WarehouseReceiptLine-7317"
           },
           {
             "target_table": "bc_warehouseregister",
-            "source_path": "Files/deltas/WarehouseRegister-7313"
+            "source_path": "WarehouseRegister-7313"
           },
           {
             "target_table": "bc_warehouserequest",
-            "source_path": "Files/deltas/WarehouseRequest-5765"
+            "source_path": "WarehouseRequest-5765"
           },
           {
             "target_table": "bc_warehouseshipmentheader",
-            "source_path": "Files/deltas/WarehouseShipmentHeader-7320"
+            "source_path": "WarehouseShipmentHeader-7320"
           },
           {
             "target_table": "bc_warehouseshipmentline",
-            "source_path": "Files/deltas/WarehouseShipmentLine-7321"
+            "source_path": "WarehouseShipmentLine-7321"
           },
           {
             "target_table": "bc_whereusedbasecalendar",
-            "source_path": "Files/deltas/WhereUsedBaseCalendar-7604"
+            "source_path": "WhereUsedBaseCalendar-7604"
           },
           {
             "target_table": "bc_whseinternalputawayheader",
-            "source_path": "Files/deltas/WhseInternalPutawayHeader-7331"
+            "source_path": "WhseInternalPutawayHeader-7331"
           },
           {
             "target_table": "bc_whseinternalputawayline",
-            "source_path": "Files/deltas/WhseInternalPutawayLine-7332"
+            "source_path": "WhseInternalPutawayLine-7332"
           },
           {
             "target_table": "bc_whseitementryrelation",
-            "source_path": "Files/deltas/WhseItemEntryRelation-6509"
+            "source_path": "WhseItemEntryRelation-6509"
           },
           {
             "target_table": "bc_whseitemtrackingline",
-            "source_path": "Files/deltas/WhseItemTrackingLine-6550"
+            "source_path": "WhseItemTrackingLine-6550"
           },
           {
             "target_table": "bc_whsepickrequest",
-            "source_path": "Files/deltas/WhsePickRequest-7325"
+            "source_path": "WhsePickRequest-7325"
           },
           {
             "target_table": "bc_whseputawayrequest",
-            "source_path": "Files/deltas/WhsePutawayRequest-7324"
+            "source_path": "WhsePutawayRequest-7324"
           },
           {
             "target_table": "bc_whseworksheetline",
-            "source_path": "Files/deltas/WhseWorksheetLine-7326"
+            "source_path": "WhseWorksheetLine-7326"
           },
           {
             "target_table": "bc_whseworksheetname",
-            "source_path": "Files/deltas/WhseWorksheetName-7327"
+            "source_path": "WhseWorksheetName-7327"
           },
           {
             "target_table": "bc_workingday",
-            "source_path": "Files/deltas/WorkingDay-36952"
+            "source_path": "WorkingDay-36952"
           },
           {
             "target_table": "bc_zone",
-            "source_path": "Files/deltas/Zone-7300"
+            "source_path": "Zone-7300"
           }
         ]
       },
