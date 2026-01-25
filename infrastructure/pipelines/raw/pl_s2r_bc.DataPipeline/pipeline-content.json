@@ -39,7 +39,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat('retail/',item().source_path)",
+                      "value": "@concat('Files/deltas/retail/',item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -156,7 +156,7 @@
                   },
                   "source_path": {
                     "value": {
-                      "value": "@concat('kcare/',item().source_path)",
+                      "value": "@concat('Files/deltas/kcare/',item().source_path)",
                       "type": "Expression"
                     },
                     "type": "string"
