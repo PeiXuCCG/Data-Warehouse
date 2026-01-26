@@ -70,6 +70,19 @@ spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+spark.conf.set("spark.sql.shuffle.partitions", 400)
+spark.conf.set("spark.sql.adaptive.enabled", "true")
+spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # PARAMETERS CELL ********************
 
 target_schema = "lh_bronze" # lakehouse

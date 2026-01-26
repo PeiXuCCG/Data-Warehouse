@@ -82,6 +82,10 @@
                       "type": "Expression"
                     },
                     "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "retail",
+                    "type": "string"
                   }
                 }
               },
@@ -199,6 +203,10 @@
                       "type": "Expression"
                     },
                     "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "kcare",
+                    "type": "string"
                   }
                 }
               },
@@ -232,7 +240,7 @@
             }
           ]
         },
-        "name": "S2R_BC_KCare",
+        "name": "S2R_KCare",
         "dependsOn": [
           {
             "activity": "S2R_Retail",
