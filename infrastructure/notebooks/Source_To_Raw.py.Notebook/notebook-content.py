@@ -262,33 +262,74 @@ def add_row_hash(df, cols):
 
 # CELL ********************
 
+def dedupe_dataframe_columns(df):
+    return df.toDF(*build_dedup_columns(df.columns))
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+# ---- 1. Deduplicate df column names ----
+def build_dedup_columns(cols):
+    seen = {}
+    new_cols = []
+    for c in cols:
+        if c not in seen:
+            seen[c] = 1
+            new_cols.append(c)
+        else:
+            seen[c] += 1
+            new_name = f"{c}_{seen[c]}"
+            new_cols.append(new_name)
+    return new_cols
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 def prevent_duplicate_data(df, already_existing_df):
-    exclude_cols = [
+    exclude_cols = {
         "source_system", "source_file", "systemmodifiedat", "systemmodifiedby",
         "delivereddatetime", "ingestion_timestamp", "batch_id",
         "bc2adls_delivereddatetime", "systemid"
-    ]
+    }
+
+    # 🔑 Deduplicate column names first (both sides)
+    df = dedupe_dataframe_columns(df)
+    already_existing_df = dedupe_dataframe_columns(already_existing_df)
 
     if already_existing_df.isEmpty():
-        df_hashed = add_row_hash(
-            df,
-            sorted(set(df.columns) - set(exclude_cols))
-        )
+        hash_cols = sorted(set(df.columns) - exclude_cols)
+        df_hashed = add_row_hash(df, hash_cols)
         return df_hashed.dropDuplicates(["row_hash"]).drop("row_hash")
 
     common_cols = sorted(
-        set(df.columns) - set(exclude_cols)
+        (set(df.columns) - exclude_cols)
         & set(already_existing_df.columns)
     )
 
     df_hashed = add_row_hash(df, common_cols)
     existing_hashed = add_row_hash(already_existing_df, common_cols)
 
-    result = df_hashed.join(
-        broadcast(existing_hashed.select("row_hash")),
-        on="row_hash",
-        how="left_anti"
-    ).drop("row_hash")
+    result = (
+        df_hashed
+        .join(
+            broadcast(existing_hashed.select("row_hash")),
+            on="row_hash",
+            how="left_anti"
+        )
+        .drop("row_hash")
+    )
 
     return result
 
@@ -370,57 +411,30 @@ def align_headers(df, master_columns):
 
 # CELL ********************
 
-    # ---- 1. Deduplicate df column names ----
-    def dedupe_columns(cols):
-        seen = {}
-        new_cols = []
-        for c in cols:
-            if c not in seen:
-                seen[c] = 1
-                new_cols.append(c)
-            else:
-                seen[c] += 1
-                new_name = f"{c}_{seen[c]}"
-                new_cols.append(new_name)
-        return new_cols
-
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 def align_headers_dynamic(df, master_columns):
     """
     Aligns df columns to master_columns:
     - Adds missing columns as NULL
     - Reorders columns to match master_columns
     - Appends new columns from df to master_columns
-    - If duplicate column names appear, renames duplicates:
-        col, col_2, col_3, etc.
+    - Deduplicates column names safely
     """
 
-
-
+    # ---- 1. Deduplicate df columns SAFELY ----
     original_cols = df.columns
-    deduped_cols = dedupe_columns(original_cols)
+    deduped_cols = build_dedup_columns(original_cols)
 
-    # Rename df columns if needed
     for old, new in zip(original_cols, deduped_cols):
         if old != new:
             df = df.withColumnRenamed(old, new)
 
-    df_cols = deduped_cols
+    df_cols = df.columns
 
-    # ---- 2. Deduplicate master columns too ----
-    master_columns = dedupe_columns(master_columns)
-
+    # ---- 2. Deduplicate master columns ----
+    master_columns = build_dedup_columns(master_columns)
     new_master_cols = master_columns.copy()
 
-    # ---- 3. Add df columns to master if missing ----
+    # ---- 3. Add new df columns to master ----
     for column in df_cols:
         if column not in new_master_cols:
             new_master_cols.append(column)
@@ -430,22 +444,10 @@ def align_headers_dynamic(df, master_columns):
         if column not in df_cols:
             df = df.withColumn(column, lit(None))
 
-    
-    # ---- 5. Rename duplicate columns from source dataframe ----
-    new_cols = []
-    counts = {}
+    # ---- 5. Reorder columns ----
+    df = df.select(new_master_cols)
 
-    for i, c in enumerate(df.columns):
-        counts[c] = counts.get(c, 0) + 1
-        alias = c if counts[c] == 1 else f"{c}_{counts[c]}"
-        new_cols.append(col(df.columns[i]).alias(alias))
-
-    df = df.select(*new_cols)
-
-    # ---- 6. Reorder to match master ----
-    df = df.select(list(dict.fromkeys(new_master_cols)))
-
-    return df, list(dict.fromkeys(new_master_cols))
+    return df, new_master_cols
 
 # METADATA ********************
 
@@ -477,7 +479,7 @@ for file in new_files:
             .csv(file)
     )
 
-    if source_system != "BC":
+    if source_system.lower() != "bc":
         # Historical sources: clean columns
         cleaned_cols = [clean_col(c) for c in one_df.columns]
         one_df = one_df.toDF(*cleaned_cols)
@@ -503,7 +505,7 @@ for file in new_files:
 
         if df is None:
             df = cleaned_df
-            master_columns = dedupe_columns(df.columns)
+            master_columns = build_dedup_columns(df.columns)
             print("Initial BC master schema:", master_columns)
             continue
 
@@ -555,6 +557,17 @@ already_existing_df = spark.createDataFrame([], df.schema)
 
 if spark.catalog.tableExists(f"{target_schema}.{target_db}.{target_table}"):
     already_existing_df = spark.read.table(f"{target_schema}.{target_db}.{target_table}")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+print(df.columns)
 
 # METADATA ********************
 
