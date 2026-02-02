@@ -1,5 +1,17 @@
 [
   {
+    "name": "contracts_customers",
+    "path": "/Tables/raw",
+    "target": {
+      "type": "OneLake",
+      "oneLake": {
+        "path": "Tables/dbo/contracts_customers",
+        "itemId": "a339ad8e-4b05-473e-9858-4555a6d87f3d",
+        "workspaceId": "f368bfab-68d5-4371-9d51-086e4d741baf"
+      }
+    }
+  },
+  {
     "name": "xero",
     "path": "/Files/history",
     "target": {

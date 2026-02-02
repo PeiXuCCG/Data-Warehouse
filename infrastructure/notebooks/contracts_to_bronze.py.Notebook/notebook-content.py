@@ -31,7 +31,7 @@ from pyspark.sql import SparkSession, Row
 from notebookutils import mssparkutils
 from loom.tables.keyed_table import KeyedTable
 from loom.pipelines import Pipeline
-from pyspark.sql.functions import sum, monotonically_increasing_id, coalesce,lower, expr,regexp_replace, col, sha2, window, current_timestamp, lag, concat_ws, lit, row_number, when
+from pyspark.sql.functions import to_json, create_map,map_filter, sum, monotonically_increasing_id, coalesce,lower, expr,regexp_replace, col, sha2, window, current_timestamp, lag, concat_ws, lit, row_number, when
 from pyspark.sql import Window
 from schemabridge4bc.schemabridge.bridgeschemas import transform_using_schema_bridge
 import re
@@ -60,6 +60,21 @@ spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")  # optional, for p
 # META   "language_group": "synapse_pyspark"
 # META }
 
+# CELL ********************
+
+spark.conf.set("spark.sql.shuffle.partitions", 400)
+spark.conf.set("spark.sql.adaptive.enabled", "true")
+spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "false")
+spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
 # PARAMETERS CELL ********************
 
 # %%
@@ -70,9 +85,9 @@ target_schema = "bronze"
 target_table = "contract_customer"
 
 # source tables
-source_lakehouse="contracts"
-source_schema = "contracts"
-source_table = "customer_view"
+source_lakehouse="lh_bronze"
+source_schema = "raw"
+source_table = "cuontracts_customer"
 source_system = "Contracts"
 
 skip_activities = []
@@ -94,7 +109,7 @@ deduplicate_fields = "[\"phoneno\", \"address\", \"mobilephoneno\"]" # please ch
 
 dry_run = True # need to override this to make it save to the schema
 
-workspace_name = mssparkutils.env.getWorkspaceName()
+
 
 # METADATA ********************
 
@@ -106,6 +121,17 @@ workspace_name = mssparkutils.env.getWorkspaceName()
 # CELL ********************
 
 pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_table}"
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+workspace_name = mssparkutils.env.getWorkspaceName()
 
 # METADATA ********************
 
@@ -226,16 +252,26 @@ def deduplicate_func(df):
 
 def transform_func(df):
    
+   
     # Transform
-    new_df = transform_using_schema_bridge(
-        spark,
-        source_system,
-        target_table.split("_")[1],
-        df,
-        source_key
+    CAMEL_CASE_REGEX = re.compile(r'^[a-z]+[A-Z][a-zA-Z0-9]*$')
+
+    def is_camel_case(col_name: str) -> bool:
+        return bool(CAMEL_CASE_REGEX.match(col_name))
+
+    camel_case_cols = [c for c in df.columns if is_camel_case(c)]
+
+    json_expr = to_json(
+        map_filter(
+            create_map(
+                *[x for c in camel_case_cols for x in (lit(c), col(c))]
+            ),lambda k, v: v.isNotNull()
+        )
     )
 
-    return new_df
+    df_with_unmapped = df.withColumn("unmapped", json_expr)
+
+    return df_with_unmapped
 
 # METADATA ********************
 
@@ -246,11 +282,28 @@ def transform_func(df):
 
 # CELL ********************
 
-# %%
-if spark.catalog.tableExists(f"{source_lakehouse}.{source_schema}.{source_table}"):
-    df = spark.read.table(f"{source_lakehouse}{source_schema}.{source_table}")
+# # %%
+# # %%
+# path = f"abfss://f368bfab-68d5-4371-9d51-086e4d741baf@onelake.dfs.fabric.microsoft.com/a339ad8e-4b05-473e-9858-4555a6d87f3d/Tables/dbo/{source_table}"
+
+# if mssparkutils.fs.exists(path):
+#     df = spark.read.format("delta").load(path)
+# else:
+#    mssparkutils.notebook.exit(f"{path} doesn't exist")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
+    df = spark.read.table(f"{source_schema}.{source_table}")
 else:
-   mssparkutils.notebook.exit(f"{source_lakehouse}.{source_schema}.{source_table} doesn't exist in raw")
+   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
 
 # METADATA ********************
 

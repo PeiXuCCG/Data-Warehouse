@@ -39,7 +39,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_paymentterms",
+                      "value": "contracts_paymentterms",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -159,7 +159,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_currency",
+                      "value": "contracts_currency",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -286,7 +286,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_salespersonpurchaser",
+                      "value": "contracts_salespersonpurchaser",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -413,7 +413,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_location",
+                      "value": "contracts_location",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -540,7 +540,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_glaccount",
+                      "value": "contracts_glaccount",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -667,7 +667,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_glentry",
+                      "value": "contracts_glentry",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -794,7 +794,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_customer",
+                      "value": "contracts_customer",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -921,7 +921,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_custledgerentry",
+                      "value": "contracts_custledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1048,7 +1048,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_vendor",
+                      "value": "contracts_vendor",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1175,7 +1175,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_vendorledgerentry",
+                      "value": "contracts_vendorledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1302,7 +1302,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_item",
+                      "value": "contracts_item",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1429,7 +1429,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_itemledgerentry",
+                      "value": "contracts_itemledgerentry",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1556,7 +1556,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_salesheader",
+                      "value": "contracts_salesheader",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1683,7 +1683,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_salesline",
+                      "value": "contracts_salesline",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1810,7 +1810,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_purchaseheader",
+                      "value": "contracts_purchaseheader",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -1937,7 +1937,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_purchaseline",
+                      "value": "contracts_purchaseline",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2064,7 +2064,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_salesinvoiceheader",
+                      "value": "contracts_salesinvoiceheader",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2191,7 +2191,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_salesinvoiceline'",
+                      "value": "contracts_salesinvoiceline'",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2318,7 +2318,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_purchinvheader",
+                      "value": "contracts_purchinvheader",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2445,7 +2445,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_purchinvline",
+                      "value": "contracts_purchinvline",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2572,7 +2572,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_prescriber",
+                      "value": "contracts_prescriber",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2699,7 +2699,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_facility",
+                      "value": "contracts_facility",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2826,7 +2826,7 @@
                   },
                   "source_table": {
                     "value": {
-                      "value": "vw_fundingbody",
+                      "value": "contracts_fundingbody",
                       "type": "Expression"
                     },
                     "type": "string"
@@ -2933,11 +2933,11 @@
       },
       "source_lakehouse": {
         "type": "string",
-        "defaultValue": "cj_contracts"
+        "defaultValue": "lh_bronze"
       },
       "source_schema": {
         "type": "string",
-        "defaultValue": "contracts"
+        "defaultValue": "raw"
       },
       "target_lakehouse": {
         "type": "string",
