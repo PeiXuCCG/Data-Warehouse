@@ -168,8 +168,8 @@ if __name__ == "__main__":
         notebook_id = contracts_notebook_id
         table_prefix = contracts_table_prefix
         path_to_excel = contracts_path_to_excel
-        source_lakehouse = "contracts"
-        source_schema = "contracts"  
+        source_lakehouse = "lh_bronze"
+        source_schema = "raw"  
     else:
         raise Exception("Unknown workflow generation")
 

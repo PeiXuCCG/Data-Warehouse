@@ -24,11 +24,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -132,11 +132,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -247,11 +247,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -362,11 +362,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -477,11 +477,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -592,11 +592,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -707,11 +707,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -822,11 +822,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -937,11 +937,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -1052,11 +1052,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -1167,11 +1167,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -1282,11 +1282,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -1397,11 +1397,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
@@ -1512,11 +1512,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": "contracts",
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": "contracts",
+                    "value": "raw",
                     "type": "string"
                   },
                   "source_table": {
