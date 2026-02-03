@@ -24,17 +24,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -45,37 +39,31 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_paymentterms",
+                    "value": "contracts_itemvariant",
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"code\", \"description\"]",
+                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "business_keys": {
-                    "value": "[\"code\"]",
+                    "value": "[\"originating_company\"]",
                     "type": "string"
                   },
                   "skip_activities": {
@@ -86,7 +74,7 @@
                     "type": "string"
                   },
                   "activity": {
-                    "value": "PaymentTerms",
+                    "value": "ItemVariant",
                     "type": "string"
                   },
                   "dry_run": {
@@ -97,7 +85,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": "code",
+                    "value": "",
                     "type": "string"
                   }
                 }
@@ -109,7 +97,7 @@
                 "secureInput": false,
                 "secureOutput": false
               },
-              "name": "PaymentTerms_Activity",
+              "name": "ItemVariant_Activity",
               "dependsOn": []
             },
             {
@@ -120,10 +108,10 @@
                   "type": "Expression"
                 }
               },
-              "name": "Wait_For_Spark_To_Stop_PaymentTerms",
+              "name": "Wait_For_Spark_To_Stop_ItemVariant",
               "dependsOn": [
                 {
-                  "activity": "PaymentTerms_Activity",
+                  "activity": "ItemVariant_Activity",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -144,17 +132,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -165,17 +147,11 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -486,7 +462,7 @@
               "name": "Location_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_SalespersonPurchaser",
+                  "activity": "Wait_For_Spark_To_Stop_ItemVariant",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -525,17 +501,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -546,17 +516,11 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -867,7 +831,7 @@
               "name": "Customer_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_GLEntry",
+                  "activity": "Wait_For_Spark_To_Stop_Location",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -906,17 +870,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -927,17 +885,11 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1375,7 +1327,7 @@
               "name": "Item_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_VendorLedgerEntry",
+                  "activity": "Wait_For_Spark_To_Stop_Customer",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -1414,17 +1366,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -1435,17 +1381,11 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -1629,7 +1569,7 @@
               "name": "SalesHeader_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_ItemLedgerEntry",
+                  "activity": "Wait_For_Spark_To_Stop_Item",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -1668,17 +1608,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -1689,21 +1623,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_salesline",
+                    "value": "contracts_salesline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1795,17 +1723,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -1816,21 +1738,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_purchaseheader",
+                    "value": "contracts_purchaseheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -1922,17 +1838,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -1943,21 +1853,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_purchaseline",
+                    "value": "contracts_purchaseline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2049,17 +1953,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2070,21 +1968,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_salesinvoiceheader",
+                    "value": "contracts_salesinvoiceheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2176,17 +2068,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2197,21 +2083,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_salesinvoiceline",
+                    "value": "contracts_salesinvoiceline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2303,17 +2183,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2324,21 +2198,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_purchinvheader",
+                    "value": "contracts_purchinvheader",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2430,17 +2298,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2451,21 +2313,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_purchinvline",
+                    "value": "contracts_purchinvline",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2557,17 +2413,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2578,21 +2428,15 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
-                    "value": "contract_prescriber",
+                    "value": "contracts_prescriber",
                     "type": "string"
                   },
                   "source_primary_keys": {
@@ -2684,17 +2528,11 @@
                     "type": "string"
                   },
                   "source_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.source_schema",
-                      "type": "Expression"
-                    },
+                    "value": "contracts",
                     "type": "string"
                   },
                   "source_table": {
@@ -2705,17 +2543,11 @@
                     "type": "string"
                   },
                   "target_lakehouse": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_lakehouse",
-                      "type": "Expression"
-                    },
+                    "value": "lh_bronze",
                     "type": "string"
                   },
                   "target_schema": {
-                    "value": {
-                      "value": "@pipeline().parameters.target_schema",
-                      "type": "Expression"
-                    },
+                    "value": "bronze",
                     "type": "string"
                   },
                   "target_table": {
@@ -2899,7 +2731,7 @@
               "name": "FundingBody_Activity",
               "dependsOn": [
                 {
-                  "activity": "Wait_For_Spark_To_Stop_Facility",
+                  "activity": "Wait_For_Spark_To_Stop_Prescriber",
                   "dependencyConditions": [
                     "Completed"
                   ]
@@ -2908,11 +2740,19 @@
             }
           ]
         },
-        "name": "Load_Historical_Data",
+        "name": "Contracts_Load_Data",
         "dependsOn": []
       }
     ],
     "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "bronze"
+      },
       "job_configuration": {
         "type": "array",
         "defaultValue": [
@@ -2921,11 +2761,11 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": false
+        "defaultValue": "false"
       },
       "wait_seconds": {
         "type": "int",
-        "defaultValue": 1
+        "defaultValue": 5
       },
       "skip_activities": {
         "type": "array",
