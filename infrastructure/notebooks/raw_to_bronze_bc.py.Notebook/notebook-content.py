@@ -64,7 +64,9 @@ spark.conf.set("spark.sql.legacy.timeParserPolicy", "LEGACY")  # optional, for p
 
 spark.conf.set("spark.sql.shuffle.partitions", 400)
 spark.conf.set("spark.sql.adaptive.enabled", "true")
-spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "true")
+spark.conf.set("spark.sql.adaptive.coalescePartitions.enabled", "false")
+spark.conf.set("spark.sql.adaptive.skewJoin.enabled", "true")
+spark.conf.set("spark.sql.autoBroadcastJoinThreshold", "-1")
 
 # METADATA ********************
 
@@ -118,6 +120,17 @@ deduplicate_fields = [] # please change this for each entity
 
 dry_run = True # you need to override this to false to make it save to the schema
 
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 workspace_name = mssparkutils.env.getWorkspaceName()
 
 # METADATA ********************
@@ -142,7 +155,7 @@ pipeline_name = f"{source_schema}_{source_table}_to_{target_schema}_{target_tabl
 
 decimal_fields = ["amount", "quantity", "qty"]
 integer_fields = []
-date_fields = ["postingdate", "duedate", "startingdate"]
+date_fields = ["postingdate", "duedate", "startingdate", "rentalstartdatetime", "rentalenddatetime"]
 timestamp_fields = ["effectivity_start_date", "effectivity_end_date"]
 
 # METADATA ********************

@@ -2747,7 +2747,7 @@
     "parameters": {
       "target_schema": {
         "type": "string",
-        "defaultValue": "lh_bronze"
+        "defaultValue": "bronze"
       },
       "target_db": {
         "type": "string",
@@ -2782,10 +2782,6 @@
       "target_lakehouse": {
         "type": "string",
         "defaultValue": "lh_bronze"
-      },
-      "target_schema": {
-        "type": "string",
-        "defaultValue": "bronze"
       }
     }
   }

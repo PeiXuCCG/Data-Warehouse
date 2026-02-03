@@ -302,6 +302,8 @@ def transform_func(df):
 
 if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
     df = spark.read.table(f"{source_schema}.{source_table}")
+
+    df = df.withColumnRenamed("company", "originating_company")
 else:
    mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
 
