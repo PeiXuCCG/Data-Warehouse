@@ -85,7 +85,7 @@
                     "type": "bool"
                   },
                   "source_key": {
-                    "value": NaN,
+                    "value": "",
                     "type": "string"
                   }
                 }
