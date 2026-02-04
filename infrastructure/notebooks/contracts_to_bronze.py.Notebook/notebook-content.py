@@ -282,14 +282,10 @@ def transform_func(df):
 
 # CELL ********************
 
-# # %%
-# # %%
-# path = f"abfss://f368bfab-68d5-4371-9d51-086e4d741baf@onelake.dfs.fabric.microsoft.com/a339ad8e-4b05-473e-9858-4555a6d87f3d/Tables/dbo/{source_table}"
-
-# if mssparkutils.fs.exists(path):
-#     df = spark.read.format("delta").load(path)
-# else:
-#    mssparkutils.notebook.exit(f"{path} doesn't exist")
+if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
+    df = spark.read.table(f"{source_schema}.{source_table}")
+else:
+   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
 
 # METADATA ********************
 
@@ -300,12 +296,10 @@ def transform_func(df):
 
 # CELL ********************
 
-if spark.catalog.tableExists(f"{source_schema}.{source_table}"):
-    df = spark.read.table(f"{source_schema}.{source_table}")
-
-    df = df.withColumnRenamed("company", "originating_company")
-else:
-   mssparkutils.notebook.exit(f"{source_table} doesn't exist in raw")
+if "company" not in [c.lower() for c in df.columns]:
+    df = df.withColumn("originating_company", lit(source_system))
+    
+df = df.withColumn("source_system", lit(source_system))
 
 # METADATA ********************
 

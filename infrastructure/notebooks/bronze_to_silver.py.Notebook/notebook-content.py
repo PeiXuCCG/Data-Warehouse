@@ -138,7 +138,7 @@ primary_key = "customer_hk"
 dry_run = False
 is_warehouse = True #this is used by loom as a switch to use T-SQL
 
-workspace_name = mssparkutils.env.getWorkspaceName()
+
 
 
 #
@@ -188,10 +188,23 @@ masterObjects = [
 
 # CELL ********************
 
+workspace_name = mssparkutils.env.getWorkspaceName()
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # In[31]:
-
-
-spark.conf.set("spark.datawarehouse.dwh_silver.sqlendpoint", "d3mzclqk6fqejkhqg6rot34see-n5wu7ldnbuseznlousn27ddxay.datawarehouse.fabric.microsoft.com")
+if "PROD" in workspace_name: 
+    spark.conf.set("spark.datawarehouse.dwh_silver.sqlendpoint", "d3mzclqk6fqejkhqg6rot34see-nxxzyi4xhxuudjers5wfcrz3ce.datawarehouse.fabric.microsoft.com")
+else:
+    # UAT
+    spark.conf.set("spark.datawarehouse.dwh_silver.sqlendpoint", "d3mzclqk6fqejkhqg6rot34see-n5wu7ldnbuseznlousn27ddxay.datawarehouse.fabric.microsoft.com")
 
 # METADATA ********************
 
