@@ -1539,7 +1539,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"originating_company\", \"source_system\"]",
+                    "value": "[\"no\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
