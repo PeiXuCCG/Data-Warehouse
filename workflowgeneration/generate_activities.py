@@ -16,11 +16,11 @@ def build_busines_keys(value: str) -> str:
     return json.dumps(cleaned)
 
 
-def build_source_fk(value: str) -> str:
+def build_source_fk(value: str, fk: str) -> str:
     if not isinstance(value, str):
         return "[]"
     parts = [p.strip() for p in value.split(",") if p.strip()]
-    fk_list = [{p: [p, "originating_company", "source_system"]} for p in parts]
+    fk_list = [{p: [p, fk, "source_system"]} for p in parts]
     return json.dumps(fk_list, separators=(",", ":"))
 
 
@@ -34,7 +34,8 @@ def generate(df,
              target_lakehouse,
              target_schema,
              table_prefix,
-             notebook_id):
+             notebook_id,
+             fk):
 
 
 
@@ -51,7 +52,7 @@ def generate(df,
 
         source_primary_keys = clean_key_list(row["Bronze_Source_Keys"])
         dedup = clean_key_list(row["Bronze_Deduplication_Keys"])
-        source_fk = build_source_fk(row["Bronze_Source_Foreign_Keys"])
+        source_fk = build_source_fk(row["Bronze_Source_Foreign_Keys"], fk)
         business_keys = build_busines_keys(row["Bronze_Partition_Keys"])
 
 

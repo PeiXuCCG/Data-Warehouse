@@ -53,7 +53,7 @@ TEMPLATE = {
 }
 
 
-def build_pipeline_jsons(output_path, job_config, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id):
+def build_pipeline_jsons(output_path, job_config, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id, fk):
     """
     Build updated ADF pipeline JSON from template.
     job_config: list (job configuration array)
@@ -88,7 +88,7 @@ def build_pipeline_jsons(output_path, job_config, job_name, source_lakehouse, so
         # Set job configuration parameter
         pipeline_json["properties"]["parameters"]["job_configuration"]["defaultValue"] = job_config
 
-        generated = generate_activities.generate(chunk, job_config, source_lakehouse,source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+        generated = generate_activities.generate(chunk, job_config, source_lakehouse,source_schema, target_lakehouse, target_schema, table_prefix, notebook_id, fk)
 
         pipeline_json["properties"]["activities"][0]["typeProperties"]["activities"] = generated
 
@@ -154,6 +154,7 @@ if __name__ == "__main__":
         path_to_excel = bc_path_to_excel
         source_lakehouse = "lh_bronze"
         source_schema = "raw"
+        fk = "originating_company"
     elif workflow_type == "historical":
         job_configuration = historical_job_configuration
         job_name = historical_job_name
@@ -162,6 +163,7 @@ if __name__ == "__main__":
         path_to_excel = historical_path_to_excel
         source_lakehouse = "lh_bronze"
         source_schema = "raw"
+        fk = "originating_company"
     elif workflow_type == "contracts":
         job_configuration = contracts_job_configuration
         job_name = contracts_job_name
@@ -170,9 +172,10 @@ if __name__ == "__main__":
         path_to_excel = contracts_path_to_excel
         source_lakehouse = "lh_bronze"
         source_schema = "raw"  
+        fk = "company"
     else:
         raise Exception("Unknown workflow generation")
 
-    build_pipeline_jsons(output_path, job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id)
+    build_pipeline_jsons(output_path, job_configuration, job_name, source_lakehouse, source_schema, target_lakehouse, target_schema, table_prefix, notebook_id, fk)
 
 
