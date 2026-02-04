@@ -51,7 +51,7 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
@@ -59,7 +59,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"code\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"code\", \"description\", \"originating_company\", \"source_system\"]",
                     "type": "string"
                   },
                   "business_keys": {
