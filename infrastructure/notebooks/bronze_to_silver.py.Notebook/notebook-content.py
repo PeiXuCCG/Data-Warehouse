@@ -16,6 +16,10 @@
 # META           "id": "059ddf57-7cf2-401b-8bf8-68beddef9667"
 # META         }
 # META       ]
+# META     },
+# META     "environment": {
+# META       "environmentId": "39f1badd-f616-482b-9dc2-e9db7c8b2617",
+# META       "workspaceId": "ac4f6d6f-0d6d-4c24-b56e-a49baf8c7706"
 # META     }
 # META   }
 # META }
@@ -64,7 +68,7 @@
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
-from pyspark.sql.types import StructType
+from pyspark.sql.types import StructType, DateType, TimestampType
 from typing import List, Tuple, Callable
 from loom.tables  import MasterLinkedTable
 from loom.pipelines import Pipeline
@@ -116,7 +120,7 @@ spark.conf.set("spark.sql.parquet.datetimeRebaseModeInWrite", "LEGACY")
 # META   "language_group": "synapse_pyspark"
 # META }
 
-# CELL ********************
+# PARAMETERS CELL ********************
 
 # In[3]:
 source_lakehouse = "lh_bronze"
@@ -137,11 +141,6 @@ primary_key = "customer_hk"
 
 dry_run = False
 is_warehouse = True #this is used by loom as a switch to use T-SQL
-
-
-
-
-#
 
 # METADATA ********************
 
@@ -268,23 +267,25 @@ exclude_patterns = ["_master_hk", "_hk", "reason", "effectivity_start_date", "ef
 for object in masterObjects:
    masterlist_df = spark.sql(f" SELECT * FROM  {target_dwh}.master.masterlist where object = '{object}'")
 
-   row = masterlist_df.collect()[0]
-   
-   # get the keys from the first row
-   #business_key = row.businesskey.replace(" ", "")
-   key = row.primarykey
+   if masterlist_df.count() > 0:
 
-   masterdata_df = spark.sql(f"SELECT * FROM {target_dwh}.master.{object}_master")
+      row = masterlist_df.collect()[0]
+      
+      # get the keys from the first row
+      #business_key = row.businesskey.replace(" ", "")
+      key = row.primarykey
 
-   materialized_columns = [
-      col.strip() for col in masterdata_df.columns
-      if not any(pattern in col for pattern in exclude_patterns)
-   ]
+      masterdata_df = spark.sql(f"SELECT * FROM {target_dwh}.master.{object}_master")
 
-   master_links.append(
-      # master key, dataframe, key, columns
-      (f"{object}_master_hk", masterdata_df, key, materialized_columns)
-   )
+      materialized_columns = [
+         col.strip() for col in masterdata_df.columns
+         if not any(pattern in col for pattern in exclude_patterns)
+      ]
+
+      master_links.append(
+         # master key, dataframe, key, columns
+         (f"{object}_master_hk", masterdata_df, key, materialized_columns)
+      )
 
 
 # In[36]:
@@ -306,6 +307,85 @@ tables = {
     # "future": f"{source_lakehouse}.{source_schema}.{future_prefix}{table}",
 }
 
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def cast_df_to_schema(source_df, target_df):
+    target_schema = target_df.schema
+
+    select_exprs = []
+    for field in target_schema:
+        name = field.name
+        dtype = field.dataType
+
+        if name in source_df.columns:
+            select_exprs.append(F.col(name).cast(dtype).alias(name))
+        else:
+            select_exprs.append(F.lit(None).cast(dtype).alias(name))
+
+    return source_df.select(*select_exprs)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+def normalize_all_dates_for_sql(df, sql_min_date="1753-01-01"):
+    """
+    Normalizes all DATE, TIMESTAMP, and date-like STRING columns
+    to be SQL Server / Fabric Warehouse compatible.
+    """
+
+    for field in df.schema.fields:
+        c = field.name
+        t = field.dataType
+
+        # Handle DATE & TIMESTAMP columns
+        if isinstance(t, (DateType, TimestampType)):
+            df = df.withColumn(
+                c,
+                F.when(
+                    F.col(c).isNull(), None
+                ).when(
+                    F.to_date(F.col(c)) >= F.lit(sql_min_date),
+                    F.to_date(F.col(c))
+                ).otherwise(None)
+            )
+
+        # Handle STRING columns that look like dates
+        elif isinstance(t, StringType) and "date" in c.lower():
+            df = df.withColumn(
+                c,
+                F.when(
+                    F.trim(F.col(c)) == "", None
+                ).when(
+                    F.to_date(F.col(c)) >= F.lit(sql_min_date),
+                    F.to_date(F.col(c))
+                ).otherwise(None)
+            )
+
+    return df
+
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
 # -------------------------------------------------
 # Load only tables that exist
 # -------------------------------------------------
@@ -318,6 +398,7 @@ for name, table_name in tables.items():
         # source-specific cleanup
         if name != "bc" and "unmapped" in df.columns:
             df = df.drop("unmapped") #don't need to carry the unmapped
+ 
 
         dfs[name] = df
 
@@ -325,16 +406,24 @@ for name, table_name in tables.items():
 # Validate base source
 # -------------------------------------------------
 if "bc" not in dfs:
-    raise ValueError(f"Base table not found: {tables['bc']}")
+    print(f"WARNING: BC table not found: {tables['bc']}")
+else:
+    bc_df = dfs["bc"]
+    for name, df in dfs.items():
+        if name != "bc":
+            #cast to bc schema
+            dfs[name] = cast_df_to_schema(df, bc_df)
+
+if not dfs:
+    mssparkutils.notebook.exit(f"All Dataframes were empty for {target_table}")
 
 # -------------------------------------------------
 # Union all available sources
 # -------------------------------------------------
-source_df = reduce(
+source_df = normalize_all_dates_for_sql(reduce(
     lambda d1, d2: d1.unionByName(d2, allowMissingColumns=True),
     dfs.values()
-)
-
+))
 # In[37]:
 
 # METADATA ********************
@@ -408,7 +497,7 @@ masterlinked_table.prepare()
 # In[41]:
 
 
-masterlinked_table.df.write.mode("overwrite").synapsesql(f"{target_dwh}.{target_schema}.{target_table}")
+masterlinked_table.df.write.mode("overwrite").option("overwriteSchema", "true").synapsesql(f"{target_dwh}.{target_schema}.{target_table}")
 
 # METADATA ********************
 

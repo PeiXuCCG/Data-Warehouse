@@ -89,6 +89,10 @@
                       "type": "Expression"
                     },
                     "type": "string"
+                  },
+                  "contracts_prefix": {
+                    "value": "contracts_",
+                    "type": "string"
                   }
                 }
               },
@@ -145,6 +149,9 @@
         "type": "array",
         "defaultValue": [
           "customer",
+          "dimensionvalue",
+          "dimension",
+          "detailedcustledgentry",
           "facility",
           "fundingbody",
           "custledgerentry",
@@ -159,11 +166,16 @@
           "purchinvline",
           "salesheader",
           "salesinvoiceheader",
+          "salesinvoiceline",
           "salesline",
           "salespersonpurchaser",
           "vendor",
           "vendorledgerentry"
         ]
+      },
+      "contracts_prefix": {
+        "type": "string",
+        "defaultValue": "contracts_"
       }
     }
   }
