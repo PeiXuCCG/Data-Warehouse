@@ -912,7 +912,7 @@
             "source_path": "salesinvoiceline"
           },
           {
-            "target_table": "xero_valueledgerentry",
+            "target_table": "xero_valueentry",
             "source_path": "valueledgerentry"
           },
           {

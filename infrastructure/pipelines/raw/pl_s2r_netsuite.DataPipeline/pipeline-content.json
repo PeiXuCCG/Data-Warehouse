@@ -344,7 +344,7 @@
             "source_path": "salespersonpurchaser"
           },
           {
-            "target_table": "netsuite_valueledger",
+            "target_table": "netsuite_valueentry",
             "source_path": "valueledgerentry"
           },
           {

@@ -1317,7 +1317,7 @@
                     "type": "string"
                   },
                   "deduplicate_fields": {
-                    "value": "[\"entryno\", \"itemno\", \"originating_company\"]",
+                    "value": "[\"entryno\", \"itemno\", \"originating_originating_company\"]",
                     "type": "string"
                   },
                   "business_keys": {
@@ -2629,6 +2629,121 @@
                   ]
                 }
               ]
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait_seconds",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_FundingBody",
+              "dependsOn": [
+                {
+                  "activity": "FundingBody_Activity",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "91dad485-d600-8560-4fea-29a406f901ff",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "source_system": {
+                    "value": {
+                      "value": "@item()",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "source_schema": {
+                    "value": "raw",
+                    "type": "string"
+                  },
+                  "source_table": {
+                    "value": {
+                      "value": "@concat(item(),'_valueentry')",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_lakehouse": {
+                    "value": "lh_bronze",
+                    "type": "string"
+                  },
+                  "target_schema": {
+                    "value": "bronze",
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": "historical_valueentry",
+                    "type": "string"
+                  },
+                  "source_primary_keys": {
+                    "value": "[\"documentno\", \"description\", \"no\", \"company\", \"source_system\"]",
+                    "type": "string"
+                  },
+                  "source_foreign_keys": {
+                    "value": "[{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
+                    "type": "string"
+                  },
+                  "deduplicate_fields": {
+                    "value": "[]",
+                    "type": "string"
+                  },
+                  "business_keys": {
+                    "value": "[\"originating_company\"]",
+                    "type": "string"
+                  },
+                  "skip_activities": {
+                    "value": {
+                      "value": "@string(pipeline().parameters.skip_activities)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "activity": {
+                    "value": "ValueEntry",
+                    "type": "string"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "source_key": {
+                    "value": "no",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "ValueEntry_Activity",
+              "dependsOn": [
+                {
+                  "activity": "Wait_For_Spark_To_Stop_FundingBody",
+                  "dependencyConditions": [
+                    "Completed"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -2651,7 +2766,7 @@
           "Xero",
           "Myob",
           "Netsuite",
-          "HirePOS",
+          "Hirepos",
           "Lightspeed",
           "Windward",
           "Natsoft",
@@ -2660,7 +2775,7 @@
       },
       "dry_run": {
         "type": "bool",
-        "defaultValue": false
+        "defaultValue": "false"
       },
       "wait_seconds": {
         "type": "int",

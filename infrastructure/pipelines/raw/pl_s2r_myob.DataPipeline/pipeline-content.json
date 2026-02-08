@@ -658,7 +658,7 @@
             "source_path": "salesinvoiceline"
           },
           {
-            "target_table": "myob_valueledger",
+            "target_table": "myob_valueentry",
             "source_path": "valueledger"
           },
           {
