@@ -68,8 +68,8 @@
 
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
-from pyspark.sql.types import StructType, DateType, TimestampType
-from typing import List, Tuple, Callable
+from pyspark.sql.types import StructType, DateType, TimestampType, StringType
+,from typing import List, Tuple, Callable
 from loom.tables  import MasterLinkedTable
 from loom.pipelines import Pipeline
 import sys
@@ -340,42 +340,76 @@ def cast_df_to_schema(source_df, target_df):
 
 # CELL ********************
 
-def normalize_all_dates_for_sql(df, sql_min_date="1753-01-01"):
-    """
-    Normalizes all DATE, TIMESTAMP, and date-like STRING columns
-    to be SQL Server / Fabric Warehouse compatible.
-    """
+def normalize_all_dates_for_sql(df, exclude_cols=None):
+    SQL_MIN_YEAR = 1753
+    SQL_MAX_YEAR = 9999
+
+    exclude_cols = set(exclude_cols or [])
 
     for field in df.schema.fields:
         c = field.name
         t = field.dataType
 
-        # Handle DATE & TIMESTAMP columns
-        if isinstance(t, (DateType, TimestampType)):
+        if c in exclude_cols:
+            continue
+
+        # ----------------------------
+        # DATE columns
+        # ----------------------------
+        if isinstance(t, DateType):
+            year = F.year(F.col(c))
+
             df = df.withColumn(
                 c,
                 F.when(
                     F.col(c).isNull(), None
                 ).when(
-                    F.to_date(F.col(c)) >= F.lit(sql_min_date),
-                    F.to_date(F.col(c))
-                ).otherwise(None)
+                    (year >= SQL_MIN_YEAR) & (year <= SQL_MAX_YEAR),
+                    F.col(c)
+                ).otherwise(F.lit(None).cast(DateType()))
             )
 
-        # Handle STRING columns that look like dates
-        elif isinstance(t, StringType) and "date" in c.lower():
+        # ----------------------------
+        # TIMESTAMP columns
+        # ----------------------------
+        elif isinstance(t, TimestampType):
+            year = F.year(F.col(c))
+
             df = df.withColumn(
                 c,
                 F.when(
-                    F.trim(F.col(c)) == "", None
+                    F.col(c).isNull(), None
                 ).when(
-                    F.to_date(F.col(c)) >= F.lit(sql_min_date),
-                    F.to_date(F.col(c))
-                ).otherwise(None)
+                    (year >= SQL_MIN_YEAR) & (year <= SQL_MAX_YEAR),
+                    F.col(c).cast("timestamp")  # force precision normalization
+                ).otherwise(F.lit(None).cast(TimestampType()))
+            )
+
+        # ----------------------------
+        # STRING columns that look like dates
+        # ----------------------------
+        elif (
+            isinstance(t, StringType)
+            and any(c.lower().endswith(s) for s in ("date", "datetime", "timestamp", "at"))
+        ):
+            year = F.substring(F.col(c), 1, 4).cast("int")
+
+            parsed = F.to_timestamp(
+                F.col(c),
+                "yyyy-MM-dd['T'HH:mm:ss[.SSSSSS][XXX]]"
+            )
+
+            df = df.withColumn(
+                c,
+                F.when(
+                    F.col(c).isNull(), None
+                ).when(
+                    (year >= SQL_MIN_YEAR) & (year <= SQL_MAX_YEAR),
+                    parsed
+                ).otherwise(F.lit(None).cast(TimestampType()))
             )
 
     return df
-
 
 # METADATA ********************
 

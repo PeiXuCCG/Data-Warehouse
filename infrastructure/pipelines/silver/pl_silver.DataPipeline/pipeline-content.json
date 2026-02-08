@@ -170,7 +170,8 @@
           "salesline",
           "salespersonpurchaser",
           "vendor",
-          "vendorledgerentry"
+          "vendorledgerentry",
+          "valueentry"
         ]
       },
       "contracts_prefix": {
