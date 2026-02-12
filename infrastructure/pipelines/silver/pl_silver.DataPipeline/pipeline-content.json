@@ -149,6 +149,7 @@
         "type": "array",
         "defaultValue": [
           "customer",
+          "dimensionsetentry",
           "dimensionvalue",
           "dimension",
           "detailedcustledgentry",

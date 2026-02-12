@@ -69,7 +69,7 @@
 from pyspark.sql import SparkSession, DataFrame
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, DateType, TimestampType, StringType
-,from typing import List, Tuple, Callable
+from typing import List, Tuple, Callable
 from loom.tables  import MasterLinkedTable
 from loom.pipelines import Pipeline
 import sys
@@ -324,10 +324,13 @@ def cast_df_to_schema(source_df, target_df):
         name = field.name
         dtype = field.dataType
 
-        if name in source_df.columns:
-            select_exprs.append(F.col(name).cast(dtype).alias(name))
+        if name == "effectivity_end_date":
+            select_exprs.append(F.col(name).cast(TimestampType()).alias(name))
         else:
-            select_exprs.append(F.lit(None).cast(dtype).alias(name))
+            if name in source_df.columns:
+                select_exprs.append(F.col(name).cast(dtype).alias(name))
+            else:
+                select_exprs.append(F.lit(None).cast(dtype).alias(name))
 
     return source_df.select(*select_exprs)
 
@@ -396,7 +399,7 @@ def normalize_all_dates_for_sql(df, exclude_cols=None):
 
             parsed = F.to_timestamp(
                 F.col(c),
-                "yyyy-MM-dd['T'HH:mm:ss[.SSSSSS][XXX]]"
+                "yyyy-MM-dd['T'HH:mm:ss[.SSSSSS][Z]]"
             )
 
             df = df.withColumn(

@@ -417,24 +417,25 @@ def align_headers_dynamic(df, master_columns):
     - Adds missing columns as NULL
     - Reorders columns to match master_columns
     - Appends new columns from df to master_columns
-    - Deduplicates column names safely
+    - Renames duplicates in df: col, col_2, col_3, etc.
+    - Ensures no duplicate columns in the final df or master_columns
     """
 
-    # ---- 1. Deduplicate df columns SAFELY ----
+    # ---- 1. Deduplicate source df columns ----
     original_cols = df.columns
-    deduped_cols = build_dedup_columns(original_cols)
+    deduped_cols = dedupe_columns(original_cols)
 
+    # Rename df columns if needed
     for old, new in zip(original_cols, deduped_cols):
         if old != new:
             df = df.withColumnRenamed(old, new)
-
-    df_cols = df.columns
+    df_cols = deduped_cols
 
     # ---- 2. Deduplicate master columns ----
-    master_columns = build_dedup_columns(master_columns)
+    master_columns = dedupe_columns(master_columns)
     new_master_cols = master_columns.copy()
 
-    # ---- 3. Add new df columns to master ----
+    # ---- 3. Add df columns to master if missing ----
     for column in df_cols:
         if column not in new_master_cols:
             new_master_cols.append(column)
@@ -444,10 +445,34 @@ def align_headers_dynamic(df, master_columns):
         if column not in df_cols:
             df = df.withColumn(column, lit(None))
 
-    # ---- 5. Reorder columns ----
-    df = df.select(new_master_cols)
+    # ---- 5. Rename duplicates in df and ensure distinct columns in new_cols ----
+    new_cols = []
+    counts = {}
+    seen_aliases = set()
 
-    return df, new_master_cols
+    for c in df.columns:
+        counts[c] = counts.get(c, 0) + 1
+        alias = c if counts[c] == 1 else f"{c}_{counts[c]}"
+
+        # Ensure alias is globally unique in new_cols
+        while alias in seen_aliases:
+            counts[c] += 1
+            alias = f"{c}_{counts[c]}"
+
+        new_cols.append(col(c).alias(alias))
+        seen_aliases.add(alias)
+
+    df = df.select(*new_cols)
+
+    # ---- 6. Reorder to match master columns and remove duplicates ----
+    # Remove duplicates from master_columns
+    final_master_cols = list(dict.fromkeys(new_master_cols))
+    
+    # Only select columns that exist in df after renaming
+    df = df.select([c for c in final_master_cols if c in df.columns])
+
+    return df, final_master_cols
+
 
 # METADATA ********************
 
@@ -467,13 +492,15 @@ for file in new_files:
 
     print(f"Loading {file}")
 
+    escapeSequence = '\\' if source_system == "BC" else '"'
+
     one_df = (
         spark.read
             .option("header", True)
             .option("inferSchema", infer_schema)
             .option("multiLine", True)
             .option("quote", '"') 
-            .option("escape", '"')
+            .option("escape", escapeSequence)
             .option("mode", "PERMISSIVE")
             .option("columnNameOfCorruptRecord", "_corrupt_record")
             .csv(file)
