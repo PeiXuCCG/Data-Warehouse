@@ -1,0 +1,354 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('check_deltas_for_retail').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": {
+                      "value": "BC",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/deltas/retail/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": {
+                      "value": "True",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_',item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": false,
+                    "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "retail",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 3,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_BC_Retail",
+              "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop",
+              "dependsOn": [
+                {
+                  "activity": "S2R_BC_Retail",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "S2R_Retail",
+        "dependsOn": [
+          {
+            "activity": "check_deltas_for_retail",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "ForEach",
+        "typeProperties": {
+          "isSequential": true,
+          "items": {
+            "value": "@activity('check_deltas_for_kcare').output.value",
+            "type": "Expression"
+          },
+          "activities": [
+            {
+              "type": "TridentNotebook",
+              "typeProperties": {
+                "notebookId": "625b1256-471e-96ad-4aab-261ba86c9696",
+                "workspaceId": "00000000-0000-0000-0000-000000000000",
+                "parameters": {
+                  "target_schema": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_schema",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_db": {
+                    "value": {
+                      "value": "@pipeline().parameters.target_db",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_system": {
+                    "value": {
+                      "value": "BC",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_path": {
+                    "value": {
+                      "value": "@concat('Files/deltas/kcare/',item().source_path)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "is_multi_line": {
+                    "value": {
+                      "value": "True",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "pipeline_name": {
+                    "value": {
+                      "value": "@concat('S2R_',item().target_table)",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "target_table": {
+                    "value": {
+                      "value": "@item().target_table",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "infer_schema": {
+                    "value": false,
+                    "type": "bool"
+                  },
+                  "dry_run": {
+                    "value": {
+                      "value": "@pipeline().parameters.dry_run",
+                      "type": "Expression"
+                    },
+                    "type": "bool"
+                  },
+                  "write_method": {
+                    "value": {
+                      "value": "@pipeline().parameters.write_method",
+                      "type": "Expression"
+                    },
+                    "type": "string"
+                  },
+                  "source_entity": {
+                    "value": "kcare",
+                    "type": "string"
+                  }
+                }
+              },
+              "policy": {
+                "timeout": "0.12:00:00",
+                "retry": 3,
+                "retryIntervalInSeconds": 30,
+                "secureInput": false,
+                "secureOutput": false
+              },
+              "name": "S2R_BC_Kcare",
+              "dependsOn": []
+            },
+            {
+              "type": "Wait",
+              "typeProperties": {
+                "waitTimeInSeconds": {
+                  "value": "@pipeline().parameters.wait",
+                  "type": "Expression"
+                }
+              },
+              "name": "Wait_For_Spark_To_Stop_Kcare",
+              "dependsOn": [
+                {
+                  "activity": "S2R_BC_Kcare",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "name": "S2R_KCare",
+        "dependsOn": [
+          {
+            "activity": "check_deltas_for_kcare",
+            "dependencyConditions": [
+              "Succeeded"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "2ef0356d-6552-885a-4511-a3ef99e3e96b",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "path": {
+              "value": "retail",
+              "type": "string"
+            },
+            "source_system": {
+              "value": {
+                "value": "@pipeline().parameters.source_system",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "check_deltas_for_retail",
+        "dependsOn": [
+          {
+            "activity": "S2R_KCare",
+            "dependencyConditions": [
+              "Completed"
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TridentNotebook",
+        "typeProperties": {
+          "notebookId": "2ef0356d-6552-885a-4511-a3ef99e3e96b",
+          "workspaceId": "00000000-0000-0000-0000-000000000000",
+          "parameters": {
+            "path": {
+              "value": "kcare",
+              "type": "string"
+            },
+            "source_system": {
+              "value": {
+                "value": "@pipeline().parameters.source_system",
+                "type": "Expression"
+              },
+              "type": "string"
+            }
+          }
+        },
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureInput": false,
+          "secureOutput": false
+        },
+        "name": "check_deltas_for_kcare",
+        "dependsOn": []
+      }
+    ],
+    "parameters": {
+      "target_schema": {
+        "type": "string",
+        "defaultValue": "lh_bronze"
+      },
+      "target_db": {
+        "type": "string",
+        "defaultValue": "raw"
+      },
+      "dry_run": {
+        "type": "bool",
+        "defaultValue": false
+      },
+      "wait": {
+        "type": "int",
+        "defaultValue": 1
+      },
+      "write_method": {
+        "type": "string",
+        "defaultValue": "append"
+      },
+      "source_system": {
+        "type": "string",
+        "defaultValue": "BC"
+      }
+    },
+    "concurrency": 1
+  }
+}
