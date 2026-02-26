@@ -158,6 +158,7 @@
           "custledgerentry",
           "glaccount",
           "glentry",
+          "glbudgetentry",
           "item",
           "itemledgerentry",
           "location",

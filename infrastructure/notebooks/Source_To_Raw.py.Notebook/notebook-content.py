@@ -413,66 +413,70 @@ def align_headers(df, master_columns):
 
 def align_headers_dynamic(df, master_columns):
     """
-    Aligns df columns to master_columns:
+    Align df to master schema safely:
+    - Removes duplicate physical columns (position-safe rename)
+    - Ensures globally unique column names
     - Adds missing columns as NULL
-    - Reorders columns to match master_columns
-    - Appends new columns from df to master_columns
-    - Renames duplicates in df: col, col_2, col_3, etc.
-    - Ensures no duplicate columns in the final df or master_columns
+    - Appends new columns to master schema
+    - Returns ordered df + updated master schema
     """
 
-    # ---- 1. Deduplicate source df columns ----
+    # --------------------------------------------------
+    # 1️⃣  FORCE UNIQUE COLUMN NAMES (POSITION SAFE)
+    # --------------------------------------------------
     original_cols = df.columns
-    deduped_cols = dedupe_columns(original_cols)
+    name_counts = {}
+    new_names = []
 
-    # Rename df columns if needed
-    for old, new in zip(original_cols, deduped_cols):
-        if old != new:
-            df = df.withColumnRenamed(old, new)
-    df_cols = deduped_cols
+    for c in original_cols:
+        base = c.lower().strip()
+        name_counts[base] = name_counts.get(base, 0) + 1
 
-    # ---- 2. Deduplicate master columns ----
-    master_columns = dedupe_columns(master_columns)
-    new_master_cols = master_columns.copy()
+        if name_counts[base] == 1:
+            new_name = base
+        else:
+            new_name = f"{base}_{name_counts[base]}"
 
-    # ---- 3. Add df columns to master if missing ----
-    for column in df_cols:
-        if column not in new_master_cols:
-            new_master_cols.append(column)
+        new_names.append(new_name)
 
-    # ---- 4. Add missing df columns as NULL ----
-    for column in new_master_cols:
-        if column not in df_cols:
-            df = df.withColumn(column, lit(None))
+    # Rename using position-safe method (avoids ambiguous reference)
+    df = df.toDF(*new_names)
+    df_cols = df.columns
 
-    # ---- 5. Rename duplicates in df and ensure distinct columns in new_cols ----
-    new_cols = []
-    counts = {}
-    seen_aliases = set()
+    # --------------------------------------------------
+    # 2️⃣  CLEAN & DEDUP MASTER SCHEMA
+    # --------------------------------------------------
+    cleaned_master = []
+    seen_master = set()
 
-    for c in df.columns:
-        counts[c] = counts.get(c, 0) + 1
-        alias = c if counts[c] == 1 else f"{c}_{counts[c]}"
+    for c in master_columns:
+        clean = c.lower().strip()
+        if clean not in seen_master:
+            cleaned_master.append(clean)
+            seen_master.add(clean)
 
-        # Ensure alias is globally unique in new_cols
-        while alias in seen_aliases:
-            counts[c] += 1
-            alias = f"{c}_{counts[c]}"
+    new_master_cols = cleaned_master.copy()
 
-        new_cols.append(col(c).alias(alias))
-        seen_aliases.add(alias)
+    # --------------------------------------------------
+    # 3️⃣  APPEND NEW DF COLUMNS TO MASTER
+    # --------------------------------------------------
+    for c in df_cols:
+        if c not in new_master_cols:
+            new_master_cols.append(c)
 
-    df = df.select(*new_cols)
+    # --------------------------------------------------
+    # 4️⃣  ADD MISSING COLUMNS TO DF
+    # --------------------------------------------------
+    for c in new_master_cols:
+        if c not in df_cols:
+            df = df.withColumn(c, lit(None))
 
-    # ---- 6. Reorder to match master columns and remove duplicates ----
-    # Remove duplicates from master_columns
-    final_master_cols = list(dict.fromkeys(new_master_cols))
-    
-    # Only select columns that exist in df after renaming
-    df = df.select([c for c in final_master_cols if c in df.columns])
+    # --------------------------------------------------
+    # 5️⃣  FINAL ORDER STRICTLY MATCHES MASTER
+    # --------------------------------------------------
+    df = df.select(*new_master_cols)
 
-    return df, final_master_cols
-
+    return df, new_master_cols
 
 # METADATA ********************
 

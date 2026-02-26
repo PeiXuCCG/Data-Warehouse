@@ -6,7 +6,7 @@
         "typeProperties": {
           "isSequential": true,
           "items": {
-            "value": "@activity('check_deltas_for_retail').output.value",
+            "value": "@json(activity('check_deltas_for_retail').output.result.exitValue)",
             "type": "Expression"
           },
           "activities": [
@@ -134,7 +134,7 @@
         "typeProperties": {
           "isSequential": true,
           "items": {
-            "value": "@activity('check_deltas_for_kcare').output.value",
+            "value": "@json(activity('check_deltas_for_kcare').output.result.exitValue)",
             "type": "Expression"
           },
           "activities": [
