@@ -603,7 +603,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"dimensionvaluecode\":[\"dimensionvaluecode\",\"company\",\"source_system\"]},{\"globaldimensionno\":[\"globaldimensionno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"dimensionvaluecode\":[\"dimensionvaluecode\",\"originating_company\",\"source_system\"]},{\"globaldimensionno\":[\"globaldimensionno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {

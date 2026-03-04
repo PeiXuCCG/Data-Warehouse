@@ -270,7 +270,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"customerno\":[\"customerno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"customerno\":[\"customerno\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -381,7 +381,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"vendorledgerentryno\":[\"vendorledgerentryno\",\"company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"vendorledgerentryno\":[\"vendorledgerentryno\",\"originating_company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -825,7 +825,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"city\":[\"city\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1158,7 +1158,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1269,7 +1269,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"originating_company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1380,7 +1380,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1820,11 +1820,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"lineno\", \"description\", \"documentno\", \"company\", \"source_system\"]",
+                    "value": "[\"lineno\", \"documentno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1935,7 +1935,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2268,7 +2268,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2379,7 +2379,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"accounttype\":[\"accounttype\",\"company\",\"source_system\"]},{\"accountcategory\":[\"accountcategory\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"accounttype\":[\"accounttype\",\"originating_company\",\"source_system\"]},{\"accountcategory\":[\"accountcategory\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2490,7 +2490,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"accountcategory\":[\"accountcategory\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"accountcategory\":[\"accountcategory\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2601,7 +2601,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2712,7 +2712,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"glaccountno\":[\"glaccountno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"glaccountno\":[\"glaccountno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2930,11 +2930,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"documentno\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"entryno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"glaccountno\":[\"glaccountno\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"allocationaccountno\":[\"allocationaccountno\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"glaccountno\":[\"glaccountno\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"allocationaccountno\":[\"allocationaccountno\",\"originating_company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3156,7 +3156,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3267,7 +3267,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3378,7 +3378,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"customerno\":[\"customerno\",\"company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"customerno\":[\"customerno\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3600,7 +3600,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"accounttype\":[\"accounttype\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"company\",\"source_system\"]},{\"jobcurrencycode\":[\"jobcurrencycode\",\"company\",\"source_system\"]},{\"allocationaccountno\":[\"allocationaccountno\",\"company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"accounttype\":[\"accounttype\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"vatcalculationtype\":[\"vatcalculationtype\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]},{\"jobcurrencycode\":[\"jobcurrencycode\",\"originating_company\",\"source_system\"]},{\"allocationaccountno\":[\"allocationaccountno\",\"originating_company\",\"source_system\"]},{\"prodorderno\":[\"prodorderno\",\"originating_company\",\"source_system\"]},{\"fapostingtype\":[\"fapostingtype\",\"originating_company\",\"source_system\"]},{\"depreciationbookcode\":[\"depreciationbookcode\",\"originating_company\",\"source_system\"]},{\"maintenancecode\":[\"maintenancecode\",\"originating_company\",\"source_system\"]},{\"insuranceno\":[\"insuranceno\",\"originating_company\",\"source_system\"]},{\"budgetedfano\":[\"budgetedfano\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3711,7 +3711,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3933,7 +3933,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4155,7 +4155,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4377,7 +4377,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4488,7 +4488,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"baseunitofmeasure\":[\"baseunitofmeasure\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"shelfno\":[\"shelfno\",\"company\",\"source_system\"]},{\"itemdiscgroup\":[\"itemdiscgroup\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"vendoritemno\":[\"vendoritemno\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]},{\"salesunitofmeasure\":[\"salesunitofmeasure\",\"company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"company\",\"source_system\"]},{\"manufacturingpolicy\":[\"manufacturingpolicy\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"itemtrackingcode\":[\"itemtrackingcode\",\"company\",\"source_system\"]},{\"subscriptionoption\":[\"subscriptionoption\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"baseunitofmeasure\":[\"baseunitofmeasure\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"shelfno\":[\"shelfno\",\"originating_company\",\"source_system\"]},{\"itemdiscgroup\":[\"itemdiscgroup\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"vendoritemno\":[\"vendoritemno\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"salesunitofmeasure\":[\"salesunitofmeasure\",\"originating_company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"originating_company\",\"source_system\"]},{\"manufacturingpolicy\":[\"manufacturingpolicy\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"itemtrackingcode\":[\"itemtrackingcode\",\"originating_company\",\"source_system\"]},{\"subscriptionoption\":[\"subscriptionoption\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4710,7 +4710,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4821,7 +4821,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"languagecode\":[\"languagecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5043,7 +5043,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5154,7 +5154,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5487,7 +5487,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"taxgroupcode\":[\"taxgroupcode\",\"originating_company\",\"source_system\"]},{\"vatprodpostinggroup\":[\"vatprodpostinggroup\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5820,7 +5820,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5931,7 +5931,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6042,7 +6042,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6153,7 +6153,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]},{\"itemtracking\":[\"itemtracking\",\"company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"entrytype\":[\"entrytype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shptmethodcode\":[\"shptmethodcode\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"transactiontype\":[\"transactiontype\",\"originating_company\",\"source_system\"]},{\"transportmethod\":[\"transportmethod\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]},{\"itemtracking\":[\"itemtracking\",\"originating_company\",\"source_system\"]},{\"packageno\":[\"packageno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6264,7 +6264,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6375,7 +6375,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6486,7 +6486,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {

@@ -55,7 +55,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -159,7 +159,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -492,7 +492,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -714,7 +714,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -936,7 +936,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1047,7 +1047,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1158,7 +1158,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"jobno\":[\"jobno\",\"originating_company\",\"source_system\"]},{\"jobtaskno\":[\"jobtaskno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1269,7 +1269,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1380,7 +1380,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1491,7 +1491,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"inventorypostinggroup\":[\"inventorypostinggroup\",\"originating_company\",\"source_system\"]},{\"genprodpostinggroup\":[\"genprodpostinggroup\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1713,7 +1713,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -1935,7 +1935,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"basecalendarcode\":[\"basecalendarcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"basecalendarcode\":[\"basecalendarcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2046,7 +2046,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2157,7 +2157,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2268,7 +2268,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2379,7 +2379,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"bincode\":[\"bincode\",\"originating_company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2601,7 +2601,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2712,7 +2712,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -2934,7 +2934,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3041,11 +3041,11 @@
                     "type": "string"
                   },
                   "source_primary_keys": {
-                    "value": "[\"no\", \"documentno\", \"description\", \"company\", \"source_system\"]",
+                    "value": "[\"no\", \"documentno\", \"company\", \"source_system\"]",
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"itemno\":[\"itemno\",\"originating_company\",\"source_system\"]},{\"variantcode\":[\"variantcode\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"orderno\":[\"orderno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3156,7 +3156,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3267,7 +3267,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"accounttype\":[\"accounttype\",\"company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"accounttype\":[\"accounttype\",\"originating_company\",\"source_system\"]},{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3489,7 +3489,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3600,7 +3600,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -3933,7 +3933,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"shortcutdimension1code\":[\"shortcutdimension1code\",\"originating_company\",\"source_system\"]},{\"sourceno\":[\"sourceno\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4044,7 +4044,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"type\":[\"type\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4266,7 +4266,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4377,7 +4377,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"city\":[\"city\",\"company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"company\",\"source_system\"]},{\"shiptocontact\":[\"shiptocontact\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"shiptocity\":[\"shiptocity\",\"originating_company\",\"source_system\"]},{\"shiptocontact\":[\"shiptocontact\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"shiptopostcode\":[\"shiptopostcode\",\"originating_company\",\"source_system\"]},{\"shiptocounty\":[\"shiptocounty\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"shiptocountryregioncode\":[\"shiptocountryregioncode\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4488,7 +4488,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"city\":[\"city\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -4599,7 +4599,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"contactno\":[\"contactno\",\"company\",\"source_system\"]},{\"city\":[\"city\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"contactno\":[\"contactno\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5265,7 +5265,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5376,7 +5376,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5487,7 +5487,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"customerno\":[\"customerno\",\"company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"customerno\":[\"customerno\",\"originating_company\",\"source_system\"]},{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"reasoncode\":[\"reasoncode\",\"originating_company\",\"source_system\"]},{\"balaccounttype\":[\"balaccounttype\",\"originating_company\",\"source_system\"]},{\"balaccountno\":[\"balaccountno\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -5598,7 +5598,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]},{\"city\":[\"city\",\"company\",\"source_system\"]},{\"shiptocode\":[\"shiptocode\",\"company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"company\",\"source_system\"]},{\"invoicedisccode\":[\"invoicedisccode\",\"company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"company\",\"source_system\"]},{\"contacttype\":[\"contacttype\",\"company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"company\",\"source_system\"]},{\"shippingadvice\":[\"shippingadvice\",\"company\",\"source_system\"]},{\"shippingagentservicecode\":[\"shippingagentservicecode\",\"company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"city\":[\"city\",\"originating_company\",\"source_system\"]},{\"shiptocode\":[\"shiptocode\",\"originating_company\",\"source_system\"]},{\"customerpostinggroup\":[\"customerpostinggroup\",\"originating_company\",\"source_system\"]},{\"currencycode\":[\"currencycode\",\"originating_company\",\"source_system\"]},{\"customerpricegroup\":[\"customerpricegroup\",\"originating_company\",\"source_system\"]},{\"languagecode\":[\"languagecode\",\"originating_company\",\"source_system\"]},{\"paymenttermscode\":[\"paymenttermscode\",\"originating_company\",\"source_system\"]},{\"salespersoncode\":[\"salespersoncode\",\"originating_company\",\"source_system\"]},{\"shipmentmethodcode\":[\"shipmentmethodcode\",\"originating_company\",\"source_system\"]},{\"shippingagentcode\":[\"shippingagentcode\",\"originating_company\",\"source_system\"]},{\"invoicedisccode\":[\"invoicedisccode\",\"originating_company\",\"source_system\"]},{\"customerdiscgroup\":[\"customerdiscgroup\",\"originating_company\",\"source_system\"]},{\"countryregioncode\":[\"countryregioncode\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"paymentmethodcode\":[\"paymentmethodcode\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"genbuspostinggroup\":[\"genbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"postcode\":[\"postcode\",\"originating_company\",\"source_system\"]},{\"taxareacode\":[\"taxareacode\",\"originating_company\",\"source_system\"]},{\"vatbuspostinggroup\":[\"vatbuspostinggroup\",\"originating_company\",\"source_system\"]},{\"contacttype\":[\"contacttype\",\"originating_company\",\"source_system\"]},{\"responsibilitycenter\":[\"responsibilitycenter\",\"originating_company\",\"source_system\"]},{\"shippingadvice\":[\"shippingadvice\",\"originating_company\",\"source_system\"]},{\"shippingagentservicecode\":[\"shippingagentservicecode\",\"originating_company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6042,7 +6042,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"sourcetype\":[\"sourcetype\",\"company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"sourcetype\":[\"sourcetype\",\"originating_company\",\"source_system\"]},{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]},{\"basecalendarcode\":[\"basecalendarcode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6153,7 +6153,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"company\",\"source_system\"]},{\"type\":[\"type\",\"company\",\"source_system\"]},{\"no\":[\"no\",\"company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]},{\"selltocustomerno\":[\"selltocustomerno\",\"originating_company\",\"source_system\"]},{\"type\":[\"type\",\"originating_company\",\"source_system\"]},{\"no\":[\"no\",\"originating_company\",\"source_system\"]},{\"locationcode\":[\"locationcode\",\"originating_company\",\"source_system\"]},{\"postinggroup\":[\"postinggroup\",\"originating_company\",\"source_system\"]},{\"unitofmeasure\":[\"unitofmeasure\",\"originating_company\",\"source_system\"]},{\"vendorno\":[\"vendorno\",\"originating_company\",\"source_system\"]},{\"billtocustomerno\":[\"billtocustomerno\",\"originating_company\",\"source_system\"]},{\"unitofmeasurecode\":[\"unitofmeasurecode\",\"originating_company\",\"source_system\"]},{\"reorderingpolicy\":[\"reorderingpolicy\",\"originating_company\",\"source_system\"]},{\"itemcategorycode\":[\"itemcategorycode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6264,7 +6264,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"documenttype\":[\"documenttype\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"documenttype\":[\"documenttype\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6375,7 +6375,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"no\":[\"no\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"no\":[\"no\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
@@ -6486,7 +6486,7 @@
                     "type": "string"
                   },
                   "source_foreign_keys": {
-                    "value": "[{\"sourcecode\":[\"sourcecode\",\"company\",\"source_system\"]}]",
+                    "value": "[{\"sourcecode\":[\"sourcecode\",\"originating_company\",\"source_system\"]}]",
                     "type": "string"
                   },
                   "deduplicate_fields": {
